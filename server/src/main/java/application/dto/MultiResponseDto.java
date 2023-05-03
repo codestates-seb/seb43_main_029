@@ -1,14 +1,17 @@
 package application.dto;
 
-public class MultiResponseDto<T> {
-    private List<T> data;
-    private int totalCount;
-    private PageInfo pageInfo;
+import lombok.Getter;
 
-    public MultiResponseDto(List<T> data, int totalCount, PageInfo pageInfo) {
+@Getter
+
+public class MultiResponseDto <T, G> {
+    T data;
+    G pageInfo;
+
+    public MultiResponseDto(T data, G pageInfo) {
+        // 데이터 저장
         this.data = data;
-        this.totalCount = totalCount;
+        // 페이지 정보 저장
         this.pageInfo = pageInfo;
     }
-
 }
