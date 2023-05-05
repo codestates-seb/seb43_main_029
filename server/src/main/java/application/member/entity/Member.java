@@ -33,8 +33,8 @@ public class Member extends Auditable {
     private String phone;
 
     // TODO: 시큐리티 추가시 구현
-//    @ElementCollection(fetch = FetchType.EAGER)
-//    private List<String> roles = new ArrayList<>();
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
     @Column(length = 11)
     private String companyNumber;
