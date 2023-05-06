@@ -2,12 +2,14 @@ import { useState, useRef } from 'react';
 import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
 import profile1 from '../../assets/profile1.png';
+import Modal from './Modal.jsx';
 
 function Profile() {
   const inputEl = useRef();
   const [name, setName] = useState('닉네임');
   const [isEdit, setIsEdit] = useState(false);
   const [isModal, setIsModal] = useState(false);
+  const [img, setImg] = useState(profile1);
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -26,29 +28,35 @@ function Profile() {
     }
   }
   function openModal() {
-    setIsModal(!isModal);
+    setIsModal(true);
+  }
+  function closeModal() {
+    setIsModal(false);
   }
   return (
-    <ProfileBlock>
-      <UserImg background={profile1} onClick={openModal} />
-      <div>
-        <UserName>
-          {!isEdit ? (
-            <p>{name}</p>
-          ) : (
-            <input
-              type="text"
-              value={name}
-              ref={inputEl}
-              onChange={nameChange}
-              onKeyPress={enterPress}
-            />
-          )}
-          <TiPencil className="icon" onClick={nameEditBtn} />
-        </UserName>
-        <p>생성날짜</p>
-      </div>
-    </ProfileBlock>
+    <>
+      <ProfileBlock>
+        <UserImg background={img} onClick={openModal} />
+        <div>
+          <UserName>
+            {!isEdit ? (
+              <p>{name}</p>
+            ) : (
+              <input
+                type="text"
+                value={name}
+                ref={inputEl}
+                onChange={nameChange}
+                onKeyPress={enterPress}
+              />
+            )}
+            <TiPencil className="icon" onClick={nameEditBtn} />
+          </UserName>
+          <p>생성날짜</p>
+        </div>
+      </ProfileBlock>
+      <Modal isOpen={isModal} closeModal={closeModal} setImg={setImg} />
+    </>
   );
 }
 
