@@ -33,8 +33,7 @@ public class MemberService {
         String encryptedPassword = passwordEncoder.encode(member.getPassword());
         member.setPassword(encryptedPassword);
 
-        // TODO: ONER 권한추가 로직 필요
-        List<String> roles = authorityUtils.createRoles(member.getEmail());
+        List<String> roles = authorityUtils.createRoles(member.getEmail(), member.getCompanyNumber());
         member.setRoles(roles);
 
 
