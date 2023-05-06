@@ -5,14 +5,31 @@ import profile2 from '../../assets/profile2.png';
 function Modal({ isOpen, closeModal, setImg }) {
   function changeImg(e) {
     setImg(e.target.src);
+    closeModal();
   }
   return (
     <ModalBackground style={{ display: isOpen ? 'flex' : 'none' }}>
       <ModalBlock>
         <h3>프로필 이미지</h3>
         <UserImgList>
-          <UserImg src={profile1} onClick={changeImg} />
-          <UserImg src={profile2} onClick={changeImg} />
+          <li>
+            <UserImg src={profile1} onClick={changeImg} />
+          </li>
+          <li>
+            <UserImg src={profile2} onClick={changeImg} />
+          </li>
+          <li>
+            <UserImg src={profile1} onClick={changeImg} />
+          </li>
+          <li>
+            <UserImg src={profile2} onClick={changeImg} />
+          </li>
+          <li>
+            <UserImg src={profile1} onClick={changeImg} />
+          </li>
+          <li>
+            <UserImg src={profile2} onClick={changeImg} />
+          </li>
         </UserImgList>
 
         <CloseBtn onClick={closeModal}>취소</CloseBtn>
@@ -40,7 +57,8 @@ const ModalBlock = styled.div`
   max-width: 100%;
   max-height: 90%;
   color: #fff;
-  padding: 3rem;
+  padding: 5rem;
+  border-radius: 30px;
   h3 {
     font-size: 2rem;
   }
@@ -50,6 +68,9 @@ const UserImgList = styled.ul`
   display: flex;
   flex-direction: row;
   gap: 20px;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const UserImg = styled.img`
@@ -57,6 +78,11 @@ const UserImg = styled.img`
   height: 128px;
   border-radius: 50%;
   cursor: pointer;
+  border: 5px solid transparent;
+  transition: all ease-in-out 0.1s;
+  &:hover {
+    border: 5px solid #fff;
+  }
 `;
 
 const CloseBtn = styled.button`
@@ -64,6 +90,7 @@ const CloseBtn = styled.button`
   background: transparent;
   color: #fff;
   font-size: 1.125rem;
+  cursor: pointer;
 `;
 
 export default Modal;
