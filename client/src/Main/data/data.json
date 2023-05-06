@@ -1,0 +1,41 @@
+{
+    "foods":[
+        {
+            "id":1,
+            "name":"chicken",
+            "img":"./img/chicken.jpg",
+            "category":"치킨"
+        },
+        {
+            "id":2,
+            "name":"hamburger",
+            "img":"./img/hamburger.jpg"
+        },
+        {
+            "id":3,
+            "name":"fish",
+            "img":"./img/fish.jpg"
+        },
+        {
+            "id":4,
+            "name":"gambas",
+            "img":"./img/gambas.jpg"
+        },
+        {
+            "id":5,
+            "name":"steak",
+            "img":"./img/steak.jpg"
+        },
+        {
+            "id":6,
+            "name":"pizza",
+            "img":"./img/pizza.jpg"
+        },
+        {
+            "id":7,
+            "name":"salad",
+            "img":"./img/salad.jpg"
+        }
+    ]
+    
+}
