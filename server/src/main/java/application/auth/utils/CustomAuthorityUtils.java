@@ -20,11 +20,11 @@ public class CustomAuthorityUtils {
 
     private final List<GrantedAuthority> USER_ROLES = AuthorityUtils.createAuthorityList("ROLE_USER");
 
-    private final List<GrantedAuthority> ONER_ROLES = AuthorityUtils.createAuthorityList("ROLE_ONER");
+    private final List<GrantedAuthority> OWNER_ROLES = AuthorityUtils.createAuthorityList("ROLE_OWNER");
 
     private final List<String> ADMIN_ROLES_STRING = List.of("ADMIN", "USER");
     private final List<String> USER_ROLES_STRING = List.of("USER");
-    private final List<String> ONER_ROLES_STRING = List.of("ONER");
+    private final List<String> OWNER_ROLES_STRING = List.of("OWNER");
 
     public List<GrantedAuthority> createAuthorities(String email, String companyNumber){
         if (email.equals(adminMailAddress)){
@@ -34,7 +34,7 @@ public class CustomAuthorityUtils {
         Optional<String> optionalNumber = Optional.ofNullable(companyNumber);
 
         if(optionalNumber.isPresent()){
-            return ONER_ROLES;
+            return OWNER_ROLES;
         }
         else return USER_ROLES;
     }
@@ -47,7 +47,7 @@ public class CustomAuthorityUtils {
         Optional<String> optionalNumber = Optional.ofNullable(companyNumber);
 
         if(optionalNumber.isPresent()){
-            return ONER_ROLES_STRING;
+            return OWNER_ROLES_STRING;
         }
         else return USER_ROLES_STRING;
     }
