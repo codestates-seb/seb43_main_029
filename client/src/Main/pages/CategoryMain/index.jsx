@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import CategoryMainTitle from '../../component/CategoryMainTitle';
+import RestarurantComponent from '../../component/RestaurantComponent';
+import SubRestarurantComponent from '../../component/SubRestarurantComponent';
 
 const CategoryMain = () => {
   const StyledCategoryMain = styled.div`
@@ -11,6 +13,8 @@ const CategoryMain = () => {
   return (
     <StyledCategoryMain>
       <CategoryMainTitle />
+      <RestarurantComponent />
+      <SubRestarurantComponent />
     </StyledCategoryMain>
   );
 };
