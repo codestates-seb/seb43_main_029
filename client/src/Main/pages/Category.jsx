@@ -11,7 +11,7 @@ const M_Category = () => {
     display: flex;
     flex-direction: column;
 
-    #TopContainer {
+    .TopContainer {
       display: flex;
       flex: 4;
     }
@@ -37,12 +37,11 @@ const M_Category = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* align-items: center; */
   `;
 
   return (
     <M_CategoryContainer>
-      <div id="TopContainer">
+      <div className="TopContainer">
         <TitleContainer>
           <TitleCategory />
         </TitleContainer>

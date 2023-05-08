@@ -37,6 +37,7 @@ const TitleRestaurant = () => {
       <NameAndRating>
         <RestaurantName>{categoryFood.name}</RestaurantName>
         <RestaurantRating>예상 {categoryFood.rating}</RestaurantRating>
+        <div>{categoryFood.location}</div>
       </NameAndRating>
     </TitleRestaurantContainer>
   );
