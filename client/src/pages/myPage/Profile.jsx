@@ -1,15 +1,18 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
-import profile1 from '../../assets/profile1.png';
 import Modal from './Modal.jsx';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
-function Profile() {
-  const inputEl = useRef();
-  const [name, setName] = useState('닉네임');
+function Profile({ userInfo }) {
+  const { id } = useParams();
+  const { nickname, profileUrl, createdAt } = userInfo;
+  const inputEl = useRef(null);
+  const [name, setName] = useState(nickname);
   const [isEdit, setIsEdit] = useState(false);
   const [isModal, setIsModal] = useState(false);
-  const [img, setImg] = useState(profile1);
+  const [img, setImg] = useState(profileUrl);
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -19,8 +22,13 @@ function Profile() {
       }, 10);
     }
   }
+
   function nameChange(e) {
     setName(e.target.value);
+    const editName = {
+      nickname: `${e.target.value}`,
+    };
+    axios.patch(`http://localhost:3001/members/${id}`, editName);
   }
   function enterPress(e) {
     if (e.key === 'Enter') {
@@ -33,6 +41,12 @@ function Profile() {
   function closeModal() {
     setIsModal(false);
   }
+
+  useEffect(() => {
+    setImg(profileUrl);
+    setName(nickname);
+  }, [profileUrl, nickname]);
+
   return (
     <>
       <ProfileBlock>
@@ -52,10 +66,10 @@ function Profile() {
             )}
             <TiPencil className="icon" onClick={nameEditBtn} />
           </UserName>
-          <p>생성날짜</p>
+          <p>{String(createdAt).slice(0, 10)}</p>
         </div>
       </ProfileBlock>
-      <Modal isOpen={isModal} closeModal={closeModal} setImg={setImg} />
+      <Modal isOpen={isModal} closeModal={closeModal} setImg={setImg} userInfo={userInfo} />
     </>
   );
 }

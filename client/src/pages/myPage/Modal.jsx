@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 import profile1 from '../../assets/profile1.png';
 import profile2 from '../../assets/profile2.png';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 function Modal({ isOpen, closeModal, setImg }) {
+  const { id } = useParams();
   function changeImg(e) {
     setImg(e.target.src);
+    const editImg = {
+      profileUrl: `${e.target.src}`,
+    };
+    axios.patch(`http://localhost:3001/members/${id}`, editImg);
     closeModal();
   }
+
   return (
     <ModalBackground style={{ display: isOpen ? 'flex' : 'none' }}>
       <ModalBlock>
