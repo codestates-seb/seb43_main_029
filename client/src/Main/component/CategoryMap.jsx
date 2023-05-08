@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SubRestaurant from './SubRestaurant';
 
 const CategoryMap = () => {
-  const categoryFoods = dummy.dummy.filter(food => food.id !== 5);
+  const categoryFoods = dummy.foods.filter(food => food.id !== 5);
   const Grid = styled.div`
     display: grid;
     /* width: 1200px; */

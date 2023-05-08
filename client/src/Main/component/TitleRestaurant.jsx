@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import dummy from '../dummy.json';
 // 식당 컴포넌트
 const TitleRestaurant = () => {
-  const categoryFood = dummy.dummy[4];
+  const categoryFood = dummy.foods[4];
   const TitleRestaurantContainer = styled.div`
     width: 450px;
     height: 300px;

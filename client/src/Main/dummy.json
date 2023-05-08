@@ -1,5 +1,5 @@
 {
-    "dummy":[{
+    "foods":[{
         "id":1,
         "category":"한식",
         "img":"https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
@@ -39,5 +39,56 @@
         "name":"소망의식당",
         "location":"노원구 상계동"
     }
+],
+    "review":[{
+        "id":1,
+        "name":"감동식당",
+        "comment":"여기 진짜 갸꿀맛인데",
+        "rating":"5.0",
+        "createdAt":"2023-05-07"
+    },
+    {
+        "id":2,
+        "name":"사랑의식당",
+        "createdAt":"2023-05-07",
+        "rating":"3.0",
+        "comment":"쏘쏘"
+    },
+    {
+        "id":3,
+        "name":"피자스쿨",
+        "createdAt":"2023-05-07",
+        "rating":"4.0",
+        "comment":"먹을만해요 그냥"
+    },
+    {
+        "id":4,
+        "name":"후참잘",
+        "createdAt":"2023-05-07",
+        "rating":"4.5",
+        "comment":"가족이랑 오면 괜찮은 곳!"
+    },
+    {
+        "id":5,
+        "name":"야끼소바최강집",
+        "createdAt":"2023-05-07",
+        "rating":"1.0",
+        "comment":"쒯더 뻑"
+    },
+    {
+        "id":6,
+        "name":"집박백선생",
+        "createdAt":"2023-05-07",
+        "rating":"3.5",
+        "comment":"돈까스 무난, 김밥 무난"
+    },
+    {
+        "id":7,
+        "name":"늘해돈",
+        "createdAt":"2023-05-07",
+        "rating":"5.0",
+        "comment":"돈까스는 여기가 탑이다 ㄹㅇ"
+    }
+
 ]
 }
