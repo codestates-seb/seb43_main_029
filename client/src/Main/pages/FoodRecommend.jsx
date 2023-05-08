@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FoodRecommendBtn from '../../component/FoodRecommendBtn/index';
+import FoodRecommendBtn from '../component/FoodRecommendBtn/index';
 const M_FoodRecommend = () => {
   //시맨틱 section 사용
   const M_FoodRecommendContainer = styled.section`
