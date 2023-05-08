@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import FoodRecommendBtn from '../../component/FoodRecommendBtn/index';
 const M_FoodRecommend = () => {
   //시맨틱 section 사용
   const M_FoodRecommendContainer = styled.section`
@@ -12,7 +12,15 @@ const M_FoodRecommend = () => {
     justify-content: center;
   `;
 
-  return <M_FoodRecommendContainer></M_FoodRecommendContainer>;
+  const RecommendTitle = styled.div`
+    border: 1px solid #000;
+  `;
+  return (
+    <M_FoodRecommendContainer>
+      <RecommendTitle>오늘 뭐먹지?</RecommendTitle>
+      <FoodRecommendBtn />
+    </M_FoodRecommendContainer>
+  );
 };
 
 export default M_FoodRecommend;
