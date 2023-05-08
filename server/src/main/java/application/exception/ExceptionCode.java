@@ -9,8 +9,8 @@ public enum ExceptionCode {
       - 500 Internal Server Error, 502 Bad Gateway
     */
     MEMBER_NOT_FOUND(404, "Member not found"),
-    MEMBER_EXISTS(409, "Member exists");
-
+    MEMBER_EXISTS(409, "Member exists"),
+    RESTAURANT_NOT_FOUND(404, "Member not found");
     @Getter
     private int status;
 
