@@ -1,0 +1,43 @@
+{
+    "dummy":[{
+        "id":1,
+        "category":"한식",
+        "img":"https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "name":"감동식당",
+        "rating":"4.0",
+        "location":"노원구 상계동"
+    },
+    {
+        "id":2,
+        "category":"한식",
+        "img":"https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "rating":"4.0",
+        "name":"후참잘",
+        "location":"노원구 상계동"
+    },
+    {
+        "id":3,
+        "category":"한식",
+        "img":"https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "rating":"4.0",
+        "name":"피자스쿨",
+        "location":"노원구 상계동"
+    },
+    {
+        "id":4,
+        "category":"한식",
+        "img":"https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "rating":"4.0",
+        "name":"사랑의식당",
+        "location":"노원구 상계동"
+    },
+    {
+        "id":5,
+        "category":"한식",
+        "img":"https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "rating":"4.0",
+        "name":"소망의식당",
+        "location":"노원구 상계동"
+    }
+]
+}

@@ -8,8 +8,6 @@ import M_Review from './pages/Review';
 const Main = () => {
   // 역할 : 페이지들을 감쌈
   // 시맨틱 main 사용
-
-  //컨테이너 넣을까 말까
   const StyledMain = styled.main``;
   return (
     <StyledMain>

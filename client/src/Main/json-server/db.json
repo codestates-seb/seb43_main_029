@@ -1,0 +1,140 @@
+{
+    "foods":[
+        {
+            "id":1,
+            "name":"한상차림",
+            "category":"한식",
+            "img":"https://images.unsplash.com/photo-1498654896293-37aacf113fd9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":3.9,
+            "location":"남포동 한식거리"
+        },
+        {
+            "id":2,
+            "name":"비빔의 제왕",
+            "category":"한식",
+            "img":"https://images.unsplash.com/photo-1600289031464-74d374b64991?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=775&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.1,
+            "location":"건대역 3번출구 앞 5분거리"
+        },
+        {
+            "id":3,
+            "name":"우이동 비빔국수",
+            "category":"한식",
+            "img":"https://images.unsplash.com/photo-1616627052149-22c4f8a6316e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.7,
+            "location":"노원역 1번출구에서 5분거리"
+        },
+        {
+            "id":4,
+            "name":"우영우 김밥",
+            "category":"한식",
+            "img":"https://images.unsplash.com/photo-1608731002187-d3448d224d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "createdAt":"2023-05-07",
+            "rating":5.0,
+            "location":"경기도 수원시 팔달구 신풍로23번길 61"
+        },
+        {
+            "id":5,
+            "name":"종로 3가 빈대떡",
+            "category":"한식",
+            "img":"https://images.unsplash.com/photo-1616627077891-a4780e730b7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":3.2,
+            "location":"종로 3가 분식거리"
+        },
+        {
+            "id":6,
+            "name":"나이스 초밥",
+            "category":"일식",
+            "img":"https://images.unsplash.com/photo-1617196035154-1e7e6e28b0db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.3,
+            "location":"건대입구 2번출구에서 500m"
+        },
+        {
+            "id":7,
+            "name":"센다이 훈빵",
+            "category":"일식",
+            "img":"https://images.unsplash.com/photo-1602030029545-52959ef2927c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.7,
+            "location":"강원도 속초 문화의 거리"
+        },
+        {
+            "id":8,
+            "name":"도쿄 집밥(Ouchigohan)",
+            "category":"일식",
+            "img":"https://images.unsplash.com/photo-1504416285472-eccf03dd31eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=872&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.9,
+            "location":"성수동 이마트 옆 골목길"
+        },
+        {
+            "id":9,
+            "name":"스바라시 라멘",
+            "category":"일식",
+            "img":"https://images.unsplash.com/photo-1618889482923-38250401a84e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":2.1,
+            "location":"남포동 맛집거리"
+        },
+        {
+            "id":10,
+            "name":"스시",
+            "category":"일식",
+            "img":"https://images.unsplash.com/photo-1502364271109-0a9a75a2a9df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":3.2,
+            "location":"남포동 맛집거리"
+        },
+        {
+            "id":11,
+            "name":"TGIF",
+            "category":"양식",
+            "img":"https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":3.6,
+            "location":"노원역 6번출구 앞 롯데백화점 9층"
+        },
+        {
+            "id":12,
+            "name":"주호민의 바베큐",
+            "category":"양식",
+            "img":"https://images.unsplash.com/photo-1558030137-d464dd688b00?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.4,
+            "location":"경기도 안산시 단원구 소바위길 12"
+        },
+        {
+            "id":13,
+            "name":"놀웨이 연어 스떼끼",
+            "category":"양식",
+            "img":"https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":4.1,
+            "location":"상계역 1번출구 앞 3분거리"
+        },
+        {
+            "id":14,
+            "name":"감빠스타",
+            "category":"양식",
+            "img":"https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":3.9,
+            "location":"건대입구 먹자골목"
+        },
+        {
+            "id":15,
+            "name":"김민재 피자",
+            "category":"양식",
+            "img":"https://images.unsplash.com/photo-1458642849426-cfb724f15ef7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+            "createdAt":"2023-05-07",
+            "rating":5.0,
+            "location":"건대입구 먹자골목"
+        }
+        
+    ]
+}
