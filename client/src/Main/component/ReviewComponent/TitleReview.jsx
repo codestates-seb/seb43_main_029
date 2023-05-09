@@ -1,25 +1,6 @@
 import styled from 'styled-components';
 
 const TitleReview = () => {
-  const TitleReviewContainer = styled.div`
-    background-color: #fff;
-    width: 800px;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    margin-left: 20px;
-
-    .top {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-    .bottom {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-  `;
   return (
     <TitleReviewContainer>
       <div className="top">#리뷰</div>
@@ -29,3 +10,24 @@ const TitleReview = () => {
 };
 
 export default TitleReview;
+
+//style
+const TitleReviewContainer = styled.div`
+  background-color: #fff;
+  width: 800px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+
+  .top {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .bottom {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+`;

@@ -1,29 +1,6 @@
 import styled from 'styled-components';
 
 const MyReview = props => {
-  const MyReviewContainer = styled.div`
-    background-color: #fff;
-    width: 300px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-
-    .topContainer {
-      flex: 3;
-      background-color: lightgray;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .bottomContainer {
-      flex: 1;
-      display: flex;
-      align-items: center;
-    }
-    .info {
-      padding-left: 10px;
-    }
-  `;
   return (
     <MyReviewContainer>
       <div className="topContainer">{props.comment}</div>
@@ -37,3 +14,28 @@ const MyReview = props => {
 };
 
 export default MyReview;
+
+//style
+const MyReviewContainer = styled.div`
+  background-color: #fff;
+  width: 300px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+
+  .topContainer {
+    flex: 3;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bottomContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .info {
+    padding-left: 10px;
+  }
+`;

@@ -6,9 +6,6 @@ import M_Review from './pages/Review';
 
 // 메인 페이지를 감싸는 컴포넌트
 const Main = () => {
-  // 역할 : 페이지들을 감쌈
-  // 시맨틱 main 사용
-  const StyledMain = styled.main``;
   return (
     <StyledMain>
       <M_FoodRecommend />
@@ -20,3 +17,6 @@ const Main = () => {
 };
 
 export default Main;
+
+//style
+const StyledMain = styled.main``;
