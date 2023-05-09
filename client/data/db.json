@@ -1,0 +1,126 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "memberId": 1,
+      "email": "admin@gmail.com",
+      "password": "12345678",
+      "nickname": "변경된닉네임",
+      "phone": "010-1234-5678",
+      "role": "ONER",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20",
+      "reivew": [
+        {
+          "reviewId": 1,
+          "restaurantId": 1,
+          "name": "김밥천국",
+          "content": "맛있어요",
+          "score": 4,
+          "vote_count": 11
+        },
+        {
+          "reviewId": 2,
+          "restaurantId": 2,
+          "name": "백반집",
+          "content": "별로에요",
+          "score": 3,
+          "vote_count": 14
+        },
+        {
+          "reviewId": 3,
+          "restaurantId": 1,
+          "name": "김밥천국",
+          "content": "맛있어요",
+          "score": 4,
+          "vote_count": 11
+        },
+        {
+          "reviewId": 4,
+          "restaurantId": 2,
+          "name": "백반집",
+          "content": "별로에요",
+          "score": 3,
+          "vote_count": 14
+        },
+        {
+          "reviewId": 5,
+          "restaurantId": 1,
+          "name": "김밥천국",
+          "content": "맛있어요",
+          "score": 4,
+          "vote_count": 11
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "memberId": 2,
+      "email": "tvfxq0423@gmail.com",
+      "password": "87654321",
+      "nickname": "여동희",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 3,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    }
+  ],
+  "restaurants": [
+    {
+      "restaurantId": 1,
+      "name": "김밥천국",
+      "score": 4,
+      "category": "분식",
+      "bookmark": 10,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "김밥 2000원 라면 3000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "url1",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 2,
+      "name": "백반집",
+      "score": 3.5,
+      "category": "한식",
+      "bookmark": 25,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "김밥 2000원 라면 3000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "url1",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    }
+  ]
+}
