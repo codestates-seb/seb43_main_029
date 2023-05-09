@@ -7,7 +7,7 @@ function HeaderLogged() {
       <ContentBox>
         <Logo>
           <LogoLink href="#">
-            <LogoImg src={process.env.PUBLIC_URL + '/'} />
+            <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
           </LogoLink>
         </Logo>
 
@@ -28,7 +28,6 @@ const HeaderBox = styled.div`
   align-items: center;
   box-shadow: 0 10px 10px -10px #999;
   z-index: 1;
-  background-color: #f8f9f9;
 `;
 
 const ContentBox = styled.div`
@@ -49,8 +48,8 @@ const Logo = styled.div`
 const LogoLink = styled.a``;
 
 const LogoImg = styled.img`
-  width: 160px;
-  height: 30px;
+  width: 200px;
+  height: 40px;
 `;
 
 const ProfileBox = styled.div`
