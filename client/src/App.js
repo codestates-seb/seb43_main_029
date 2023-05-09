@@ -1,16 +1,34 @@
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
+import { useState } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Header from './Header';
+import Login from './Login';
 
 const GlobalStyle = createGlobalStyle`
-${reset}
+  ${reset}
 `;
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
-      <div className="App"></div>;
-    </>
+      <Header onLoginClick={handleModalOpen} />
+      <Switch>
+        <Route exact path="/" />
+      </Switch>
+      {isModalOpen && <Login onClose={handleModalClose} />}
+    </BrowserRouter>
   );
 }
 
