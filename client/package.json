@@ -15,6 +15,7 @@
     "react-router-dom": "^6.11.0",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.10",
+    "swiper": "^9.3.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-prettier": "^4.2.1",
