@@ -8,6 +8,16 @@ import MyReivew from './MyReivew.jsx';
 const MyPageBlock = styled.section`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const MyPageLayout = styled.div`
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 `;
 
 function MyPage() {
@@ -21,8 +31,10 @@ function MyPage() {
   return (
     <>
       <MyPageBlock>
-        <Profile userInfo={userInfo} />
-        <MyReivew />
+        <MyPageLayout>
+          <Profile userInfo={userInfo} />
+          <MyReivew />
+        </MyPageLayout>
       </MyPageBlock>
     </>
   );

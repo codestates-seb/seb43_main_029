@@ -14,7 +14,7 @@ function App() {
         <GlobalStyle />
         <div className="App"></div>
         <Routes>
-          <Route path="/users/:id" element={<MyPage />} />
+          <Route path="/mypage/:id" element={<MyPage />} />
         </Routes>
       </BrowserRouter>
     </>
