@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
-import Footer from './Footer.js';
+import MyPage from './pages/myPage/MyPage.jsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -9,10 +10,13 @@ ${reset}
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <div className="App">
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <GlobalStyle />
+        <div className="App"></div>
+        <Routes>
+          <Route path="/mypage/:id" element={<MyPage />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
