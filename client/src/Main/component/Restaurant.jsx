@@ -3,16 +3,18 @@ import styled from 'styled-components';
 // 식당 컴포넌트
 const Restaurant = props => {
   return (
-    <RestaurantContainer>
-      <RestaurantInfo>
-        <img className="R_Image" src={props.images} alt={props.name} />
-        <div className="absolute">
-          <div className="R_Name">{props.name}</div>
-          <div className="R_Score">{props.score}</div>
-        </div>
-      </RestaurantInfo>
-      <RestaurantAddress>{props.address}</RestaurantAddress>
-    </RestaurantContainer>
+    <R_Container>
+      <R_Image>
+        <img src={props.images} alt={props.name} />
+      </R_Image>
+      <R_Info>
+        <R_NameAndScore>
+          <span className="R_Name">{props.name}</span>
+          <span className="R_Score">{props.score}</span>
+        </R_NameAndScore>
+        <R_Address>{props.address}</R_Address>
+      </R_Info>
+    </R_Container>
   );
 };
 
@@ -20,46 +22,43 @@ export default Restaurant;
 
 //style
 //전체를 감싸는 역할
-const RestaurantContainer = styled.section`
+const R_Container = styled.section`
   width: 350px;
   height: 250px;
   display: flex;
   flex-direction: column;
 `;
-//이미지, 이름, 별점, 주소를 감싸는 역할
-const RestaurantInfo = styled.div`
+//이미지 감싸는 역할
+const R_Image = styled.div`
   height: calc(100% - 40px);
   width: 100%;
   position: relative;
 
-  .R_Image {
+  img {
     border-radius: 2px;
     width: 100%;
     height: 100%;
   }
-  .R_Name {
-    font-weight: 700;
-    color: #fff;
-    font-size: 1.3em;
-    padding: 0 0.2em;
-  }
+`;
+// 이름, 별점, 주소 감싸는 역할
+const R_Info = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+  align-items: center;
+`;
+
+const R_NameAndScore = styled.div`
+  font-weight: 700;
+  font-size: 1.2em;
   .R_Score {
-    padding: 0 0.2em 0.2em;
-    font-weight: 700;
-    color: #fff;
-    font-size: 1.3em;
-  }
-  .absolute {
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    padding-left: 0.5em;
+    color: #ec4899;
   }
 `;
-const RestaurantAddress = styled.div`
-  flex: 1;
-  padding-left: 0.2em;
-  display: flex;
-  align-items: center;
+const R_Address = styled.div`
   font-size: 0.8em;
-  color: #1e293b;
+  color: #6b7280;
+  padding-left: 0.2em;
 `;
