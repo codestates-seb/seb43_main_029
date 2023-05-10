@@ -33,19 +33,19 @@ const M_CategoryContainer = styled.section`
   .TopContainer {
     display: flex;
     flex: 4;
+    border-bottom: 1px solid black;
   }
 `;
 
 const TitleContainer = styled.div`
-  background-color: pink;
   display: flex;
   flex: 3;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border-right: 1px solid black;
 `;
 const BigRestaurantContainer = styled.div`
-  background-color: skyblue;
   display: flex;
   flex: 2;
   align-items: center;
@@ -56,4 +56,5 @@ const RestaurantContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid black;
 `;

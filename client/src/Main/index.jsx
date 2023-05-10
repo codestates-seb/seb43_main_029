@@ -7,16 +7,18 @@ import M_Review from './pages/Review';
 // 메인 페이지를 감싸는 컴포넌트
 const Main = () => {
   return (
-    <StyledMain>
+    <M_Container>
       <M_FoodRecommend />
       <M_Category />
       <M_Bookmark />
       <M_Review />
-    </StyledMain>
+    </M_Container>
   );
 };
 
 export default Main;
 
 //style
-const StyledMain = styled.main``;
+const M_Container = styled.main`
+  background-color: #fff;
+`;
