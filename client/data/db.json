@@ -5,7 +5,7 @@
       "memberId": 1,
       "email": "admin@gmail.com",
       "password": "12345678",
-      "nickname": "변경된닉네임",
+      "nickname": "수정된 닉네임",
       "phone": "010-1234-5678",
       "role": "ONER",
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
