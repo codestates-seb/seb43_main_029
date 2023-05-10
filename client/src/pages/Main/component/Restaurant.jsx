@@ -22,7 +22,7 @@ export default Restaurant;
 
 //style
 /** 식당 컴포넌트를 감싸는 역할 */
-const R_Container = styled.section`
+export const R_Container = styled.section`
   width: 100%;
   height: 250px;
   display: flex;

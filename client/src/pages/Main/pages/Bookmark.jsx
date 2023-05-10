@@ -3,6 +3,8 @@ import CategoryTitle from '../component/CategoryTitle';
 import BigRestaurant from '../component/BigRestaurant';
 // import CategoryFilter from '../component/CategoryFilter';
 import Restaurants from '../component/Restaurants';
+
+import { BottomContainer, ContentBox } from './Category';
 const M_Bookmark = () => {
   return (
     <M_BookmarkContainer>
@@ -14,9 +16,11 @@ const M_Bookmark = () => {
           <CategoryTitle />
         </TitleContainer>
       </div>
-      <SubRestaurantContainer>
-        <Restaurants />
-      </SubRestaurantContainer>
+      <BottomContainer>
+        <ContentBox>
+          <Restaurants />
+        </ContentBox>
+      </BottomContainer>
     </M_BookmarkContainer>
   );
 };
@@ -50,10 +54,10 @@ const TitleRestaurantContainer = styled.div`
   justify-content: center;
   border-right: 1px solid black;
 `;
-const SubRestaurantContainer = styled.div`
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid black;
-`;
+// const SubRestaurantContainer = styled.div`
+//   flex: 2;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-bottom: 1px solid black;
+// `;
