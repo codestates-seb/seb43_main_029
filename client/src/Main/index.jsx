@@ -19,6 +19,4 @@ const Main = () => {
 export default Main;
 
 //style
-const M_Container = styled.main`
-  background-color: #fff;
-`;
+const M_Container = styled.main``;
