@@ -11,8 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,6 +46,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                                             FilterChain chain,
                                             Authentication authResult){
         Member member = (Member) authResult.getPrincipal();
+
+        // TODO: 페이지별 권한 부여시 주석 해제하고 throws IOException 추가할 것
+        // 탈퇴한 회원이면 로그인을 할 수 없도록 한다
+//        if (member.getMemberStatus() == Member.MemberStatus.MEMBER_QUIT){
+//            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+//            response.getWriter().write("탈퇴한 회원입니다.");
+//            response.getWriter().flush();
+//            response.getWriter().close();
+//            return;
+//        }
 
         String accessToken = delegateAccessToken(member);
         String refreshToken = delegateRefreshToken(member);
