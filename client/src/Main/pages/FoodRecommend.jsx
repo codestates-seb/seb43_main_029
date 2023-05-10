@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import './styles.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+// import 'swiper/css';
+// import 'swiper/css/pagination';
+// import 'swiper/css/navigation';
 import { Autoplay, EffectCreative } from 'swiper';
 
 const M_FoodRecommend = () => {
