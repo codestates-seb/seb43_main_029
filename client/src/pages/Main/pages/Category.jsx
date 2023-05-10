@@ -50,7 +50,7 @@ export const TitleContainer = styled.div`
   height: 100%;
   flex: 1;
   flex-direction: column;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 /** 페이지 소개글 */
@@ -65,8 +65,8 @@ export const Big_R_Info_Container = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-bottom: 2rem;
+  justify-content: end;
+  margin-bottom: 3rem;
 `;
 
 /** 큰 이미지를 감싸는 컴포넌트 */
@@ -74,10 +74,9 @@ export const BigRestaurantContainer = styled.div`
   display: flex;
   height: 100%;
   flex: 1;
-
   align-items: end;
   justify-content: end;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 
 /** 큰 이미지와 카테고리 타이틀을 감싸는 컴포넌트 */
@@ -90,12 +89,12 @@ export const TopContainer = styled.div`
 
 /** 작은 이미지를 감싸는 컴포넌트 */
 export const BottomContainer = styled.div`
+  background-color: #f0fdf4;
   display: flex;
   width: 100%;
   height: 300px;
   align-items: center;
   justify-content: center;
-  background-color: #f0fdf4;
 `;
 
 /** 양 옆의 여백을 남겨줌 */
@@ -104,7 +103,7 @@ export const ContentBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   max-width: calc(100% - 300px);
   margin: auto;
   width: 100%;

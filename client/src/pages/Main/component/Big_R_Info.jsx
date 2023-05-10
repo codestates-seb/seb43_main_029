@@ -15,7 +15,7 @@ export default Big_R_Info;
 
 //style
 const Big_R_Info_Container = styled.div`
-  background-color: #fff;
+  /* background-color: #fff; */
   display: flex;
   flex-direction: column;
   align-items: end;
