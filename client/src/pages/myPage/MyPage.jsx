@@ -10,7 +10,6 @@ const MyPageBlock = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 `;
 
 const MyPageLayout = styled.div`
