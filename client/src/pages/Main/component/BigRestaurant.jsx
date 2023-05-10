@@ -15,8 +15,8 @@ export default BigRestaurant;
 
 //style
 const BigR_Container = styled.section`
-  width: 600px;
-  height: 400px;
+  width: 750px;
+  height: 550px;
   img {
     border-radius: 2px;
     width: 100%;

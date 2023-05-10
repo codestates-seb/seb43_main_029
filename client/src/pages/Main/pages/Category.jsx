@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import CategoryTitle from '../component/CategoryTitle';
-// import CategoryFilter from '../component/CategoryFilter';
 import Restaurants from '../component/Restaurants';
 import BigRestaurant from '../component/BigRestaurant';
-
+import Title from '../component/Title';
+import Big_R_Info from '../component/Big_R_Info';
 /** 카테고리 감싸는 역할 */
 const M_Category = () => {
   return (
@@ -11,7 +10,12 @@ const M_Category = () => {
       <TopContainer>
         <ContentBox>
           <TitleContainer>
-            <CategoryTitle />
+            <Desc>
+              <Title />
+            </Desc>
+            <Big_R_Info_Container>
+              <Big_R_Info />
+            </Big_R_Info_Container>
           </TitleContainer>
           <BigRestaurantContainer>
             <BigRestaurant />
@@ -32,7 +36,7 @@ export default M_Category;
 
 //style
 /** 메인의 페이지들을 감싸는 컴포넌트 */
-const M_Page_Container = styled.section`
+export const M_Page_Container = styled.section`
   background-color: #fff7ed;
   width: 100vw;
   height: 100vh;
@@ -41,18 +45,32 @@ const M_Page_Container = styled.section`
 `;
 
 /** 카테고리 타이틀을 감싸는 컴포넌트 */
-const TitleContainer = styled.div`
+export const TitleContainer = styled.div`
   display: flex;
   height: 100%;
   flex: 1;
-  /* flex-direction: column;
-  align-items: center;
-  justify-content: center; */
+  flex-direction: column;
   border: 1px solid black;
 `;
 
+/** 페이지 소개글 */
+export const Desc = styled.div`
+  height: 50%;
+  width: 100%;
+`;
+
+/** 큰 이미지 컴포넌트의 정보 */
+export const Big_R_Info_Container = styled.div`
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 2rem;
+`;
+
 /** 큰 이미지를 감싸는 컴포넌트 */
-const BigRestaurantContainer = styled.div`
+export const BigRestaurantContainer = styled.div`
   display: flex;
   height: 100%;
   flex: 1;
