@@ -6,17 +6,19 @@ import BigRestaurant from '../component/BigRestaurant';
 const M_Category = () => {
   return (
     <M_CategoryContainer>
-      <div className="TopContainer">
-        <TitleContainer>
-          <CategoryTitle />
-        </TitleContainer>
-        <BigRestaurantContainer>
-          <BigRestaurant />
-        </BigRestaurantContainer>
-      </div>
-      <RestaurantContainer>
-        <Restaurants />
-      </RestaurantContainer>
+      <MaxWidth>
+        <div className="TopContainer">
+          <TitleContainer>
+            <CategoryTitle />
+          </TitleContainer>
+          <BigRestaurantContainer>
+            <BigRestaurant />
+          </BigRestaurantContainer>
+        </div>
+        <RestaurantContainer>
+          <Restaurants />
+        </RestaurantContainer>
+      </MaxWidth>
     </M_CategoryContainer>
   );
 };
@@ -24,6 +26,16 @@ const M_Category = () => {
 export default M_Category;
 
 //style
+const MaxWidth = styled.div`
+  border: 1px solid black;
+  height: 100%;
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const M_CategoryContainer = styled.section`
   width: 100vw;
   height: 100vh;
