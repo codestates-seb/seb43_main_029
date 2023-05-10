@@ -3,70 +3,91 @@ import CategoryTitle from '../component/CategoryTitle';
 // import CategoryFilter from '../component/CategoryFilter';
 import Restaurants from '../component/Restaurants';
 import BigRestaurant from '../component/BigRestaurant';
+
+/** 카테고리 감싸는 역할 */
 const M_Category = () => {
   return (
-    <M_CategoryContainer>
-      <MaxWidth>
-        <div className="TopContainer">
+    <M_Page_Container>
+      <TopContainer>
+        <ContentBox>
           <TitleContainer>
             <CategoryTitle />
           </TitleContainer>
           <BigRestaurantContainer>
             <BigRestaurant />
           </BigRestaurantContainer>
-        </div>
-        <RestaurantContainer>
+        </ContentBox>
+      </TopContainer>
+
+      <BottomContainer>
+        <ContentBox>
           <Restaurants />
-        </RestaurantContainer>
-      </MaxWidth>
-    </M_CategoryContainer>
+        </ContentBox>
+      </BottomContainer>
+    </M_Page_Container>
   );
 };
 
 export default M_Category;
 
 //style
-const MaxWidth = styled.div`
-  border: 1px solid black;
-  height: 100%;
-  max-width: 1500px;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const M_CategoryContainer = styled.section`
+/** 메인의 페이지들을 감싸는 컴포넌트 */
+const M_Page_Container = styled.section`
+  background-color: #fff7ed;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-
-  .TopContainer {
-    display: flex;
-    flex: 4;
-    border-bottom: 1px solid black;
-  }
 `;
 
+/** 카테고리 타이틀을 감싸는 컴포넌트 */
 const TitleContainer = styled.div`
   display: flex;
-  flex: 3;
-  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  /* flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-right: 1px solid black;
+  justify-content: center; */
+  border: 1px solid black;
 `;
+
+/** 큰 이미지를 감싸는 컴포넌트 */
 const BigRestaurantContainer = styled.div`
   display: flex;
-  flex: 2;
-  align-items: center;
+  height: 100%;
+  flex: 1;
+
+  align-items: end;
+  justify-content: end;
+  border: 1px solid black;
+`;
+
+/** 큰 이미지와 카테고리 타이틀을 감싸는 컴포넌트 */
+export const TopContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex: 1;
   justify-content: center;
 `;
-const RestaurantContainer = styled.div`
-  flex: 2;
+
+/** 작은 이미지를 감싸는 컴포넌트 */
+export const BottomContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 300px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0fdf4;
+`;
+
+/** 양 옆의 여백을 남겨줌 */
+export const ContentBox = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid black;
+  border: 1px solid red;
+  max-width: calc(100% - 300px);
+  margin: auto;
+  width: 100%;
 `;

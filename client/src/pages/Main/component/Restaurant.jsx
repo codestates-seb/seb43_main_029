@@ -21,29 +21,30 @@ const Restaurant = props => {
 export default Restaurant;
 
 //style
-//전체를 감싸는 역할
+/** 식당 컴포넌트를 감싸는 역할 */
 const R_Container = styled.section`
-  width: 350px;
+  width: 100%;
   height: 250px;
   display: flex;
   flex-direction: column;
 `;
-//이미지 감싸는 역할
-const R_Image = styled.div`
-  height: calc(100% - 40px);
-  width: 100%;
-  position: relative;
 
+/** 식당 이미지 컴포넌트 */
+const R_Image = styled.div`
+  height: 200px;
   img {
-    border-radius: 2px;
+    border-radius: 2px 2px 0 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    // 이미지가 뭉개지는 것을 방지
   }
 `;
-// 이름, 별점, 주소 감싸는 역할
+/**  이름, 별점, 주소 감싸는 역할  */
 const R_Info = styled.div`
-  flex: 1;
+  background-color: #fff;
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding: 0.5em;
   align-items: center;

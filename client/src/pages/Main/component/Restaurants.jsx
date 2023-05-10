@@ -34,8 +34,10 @@ const Restaurants = () => {
 export default Restaurants;
 
 //style
+/** 식당 컴포넌트를 map돌려서 grid로 뿌려줌 */
 const RestaurantsContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 50px;
+  column-gap: 15px;
+  width: 100%;
 `;
