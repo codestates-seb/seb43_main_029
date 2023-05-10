@@ -14,7 +14,7 @@
     "react-redux": "^8.0.5",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.10",
-    "swiper": "^9.3.0",
+    "styled-reset": "^4.4.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
