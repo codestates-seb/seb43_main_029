@@ -19,19 +19,18 @@ export default M_Review;
 
 //style
 const M_ReviewContainer = styled.section`
-  background-color: deeppink;
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
+
   .TopContainer {
-    background-color: pink;
     flex: 4;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid black;
   }
   .BottomContainer {
-    background-color: skyblue;
     flex: 2;
     display: flex;
     align-items: center;

@@ -25,7 +25,6 @@ export default M_Bookmark;
 
 //style
 const M_BookmarkContainer = styled.section`
-  background-color: orange;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -34,10 +33,10 @@ const M_BookmarkContainer = styled.section`
   .TopContainer {
     display: flex;
     flex: 4;
+    border-bottom: 1px solid black;
   }
 `;
 const TitleContainer = styled.div`
-  background-color: pink;
   display: flex;
   flex: 3;
   flex-direction: column;
@@ -45,15 +44,16 @@ const TitleContainer = styled.div`
   justify-content: center;
 `;
 const TitleRestaurantContainer = styled.div`
-  background-color: skyblue;
   display: flex;
   flex: 2;
   align-items: center;
   justify-content: center;
+  border-right: 1px solid black;
 `;
 const SubRestaurantContainer = styled.div`
   flex: 2;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid black;
 `;
