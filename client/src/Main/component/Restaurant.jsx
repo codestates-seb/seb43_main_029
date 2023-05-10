@@ -4,14 +4,14 @@ import styled from 'styled-components';
 const Restaurant = props => {
   return (
     <RestaurantContainer>
-      <RestaurantImage>
-        <img src={props.images} alt={props.name} />
-      </RestaurantImage>
       <RestaurantInfo>
-        <RestaurantName>{props.name}</RestaurantName>
-        <RestaurantScore>예상 {props.score}</RestaurantScore>
-        <RestaurantAddress>{props.address}</RestaurantAddress>
+        <img className="R_Image" src={props.images} alt={props.name} />
+        <div className="absolute">
+          <div className="R_Name">{props.name}</div>
+          <div className="R_Score">{props.score}</div>
+        </div>
       </RestaurantInfo>
+      <RestaurantAddress>{props.address}</RestaurantAddress>
     </RestaurantContainer>
   );
 };
@@ -19,29 +19,47 @@ const Restaurant = props => {
 export default Restaurant;
 
 //style
-const RestaurantContainer = styled.div`
-  width: 300px;
-  height: 200px;
+//전체를 감싸는 역할
+const RestaurantContainer = styled.section`
+  width: 350px;
+  height: 250px;
   display: flex;
   flex-direction: column;
 `;
-const RestaurantImage = styled.div`
+//이미지, 이름, 별점, 주소를 감싸는 역할
+const RestaurantInfo = styled.div`
   height: calc(100% - 40px);
   width: 100%;
-  img {
-    border-radius: 5px;
+  position: relative;
+
+  .R_Image {
+    border-radius: 2px;
     width: 100%;
     height: 100%;
   }
+  .R_Name {
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 0 0.2em;
+  }
+  .R_Score {
+    padding: 0 0.2em 0.2em;
+    font-weight: 700;
+    color: #fff;
+    font-size: 1.3em;
+  }
+  .absolute {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
 `;
-const RestaurantInfo = styled.div`
-  background-color: #fff;
+const RestaurantAddress = styled.div`
   flex: 1;
+  padding-left: 0.2em;
   display: flex;
   align-items: center;
+  font-size: 0.8em;
+  color: #1e293b;
 `;
-const RestaurantName = styled.div`
-  padding: 0 10px;
-`;
-const RestaurantScore = styled.div``;
-const RestaurantAddress = styled.div``;
