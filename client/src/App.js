@@ -8,8 +8,9 @@ import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 const GlobalStyle = createGlobalStyle`
-  ${reset}
+${reset}
 `;
 
 const GlobalLayout = styled.div`
@@ -23,16 +24,6 @@ const GlobalLayout = styled.div`
 `;
 
 function App() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       <BrowserRouter>

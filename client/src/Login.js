@@ -1,76 +1,173 @@
-import React from 'react'; // eslint-disable-line no-unused-vars
-import styled, { css } from 'styled-components';
+import React, { useState } from 'react'; // eslint-disable-line no-unused-vars
+import styled from 'styled-components';
+// import LoginLink from './components/Header.js';
+
+const Logo = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+`;
+
+const LogoImg = styled.img`
+  width: 200px;
+  height: 40px;
+`;
 
 const ModalBackground = styled.div`
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 `;
 
 const ModalContent = styled.div`
   background-color: white;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  align-items: right;
+  justify-content: right;
 `;
 
-const FormGroup = styled.div`
-  margin-bottom: 20px;
-`;
-
-const Label = styled.label`
-  display: block;
-  margin-bottom: 5px;
-`;
-
-const Input = styled.input`
-  padding: 5px;
-  border: 1px solid #ccc;
+const LoginButton = styled.a`
+  color: #ff0099;
+  background-color: #fff;
+  font-size: 13px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ff0099;
   border-radius: 3px;
-  font-size: 14px;
+  width: 70px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    background-color: #fabbc6;
+    color: #fff;
+    border: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+  }
 `;
 
-const Button = styled.button`
-  padding: 5px 10px;
-  background-color: #007bff;
-  color: white;
+const LoginForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const LoginInput = styled.input`
+  /* 입력 필드 스타일 */
+  margin-bottom: 10px;
+`;
+
+const LoginSubmitButton = styled.button`
+  color: #ff0099;
+  background-color: #fff;
+  font-size: 13px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #ff0099;
+  border-radius: 3px;
+  width: 100rm;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover,
+  &:focus {
+    background-color: #fabbc6;
+    color: #fff;
+    border: none;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+  }
+`;
+
+const LoginExitButton = styled.button`
+  background-color: #fff;
   border: none;
-  border-radius: 3px;
-  font-size: 14px;
-
-  ${props => props.outline && css`
-    background-color: transparent;
-    color: #007bff;
-    border: 1px solid #007bff;
-  `}
 `;
 
-function Login({ onClose }) {
+const Login = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleEmailChange = e => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    // 로그인 처리
+    console.log('email:', email);
+    console.log('password:', password);
+
+    handleModalClose();
+  };
+
   return (
-    <ModalBackground>
-      <ModalContent>
-        <h2>로그인</h2>
-        <form>
-          <FormGroup>
-            <Label>아이디:</Label>
-            <Input type="text" name="id" />
-          </FormGroup>
-          <FormGroup>
-            <Label>비밀번호:</Label>
-            <Input type="password" name="password" />
-          </FormGroup>
-          <Button type="submit">로그인</Button>
-          <Button outline onClick={onClose}>닫기</Button>
-        </form>
-      </ModalContent>
-    </ModalBackground>
+    <>
+      <LoginButton onClick={handleModalOpen}>로그인</LoginButton>
+      {isModalOpen && (
+        <ModalBackground>
+          <ModalContent>
+            <Logo>
+              <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
+            </Logo>
+            <LoginExitButton onClick={handleModalClose}>X</LoginExitButton>
+            <LoginForm onSubmit={handleSubmit}>
+              <LoginInput
+                type="email"
+                placeholder="example@email.com"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              <LoginInput
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <LoginSubmitButton type="submit">로그인</LoginSubmitButton>
+              <p> 아직 계정이 없으신가요? 회원가입</p>
+              <p> ID / 비밀번호를 잊어버리셨나요?</p>
+            </LoginForm>
+          </ModalContent>
+        </ModalBackground>
+      )}
+    </>
   );
-}
+};
 
 export default Login;
