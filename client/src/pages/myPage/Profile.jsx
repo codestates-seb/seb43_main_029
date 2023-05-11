@@ -28,7 +28,7 @@ function Profile({ userInfo }) {
     const editName = {
       nickname: `${e.target.value}`,
     };
-    axios.patch(`http://localhost:3001/members/${id}`, editName);
+    axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}`, editName);
   }
   function enterPress(e) {
     if (e.key === 'Enter') {
