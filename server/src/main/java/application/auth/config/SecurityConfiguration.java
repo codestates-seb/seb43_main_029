@@ -2,14 +2,20 @@ package application.auth.config;
 
 
 import application.auth.filter.JwtAuthenticationFilter;
+import application.auth.filter.JwtVerificationFilter;
+import application.auth.handler.MemberAccessDeniedHandler;
+import application.auth.handler.MemberAuthenticationEntryPoint;
 import application.auth.handler.MemberAuthenticationFailureHandler;
 import application.auth.handler.MemberAuthenticationSuccessHandler;
 import application.auth.jwt.JwtTokenizer;
+import application.auth.utils.CustomAuthorityUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -25,11 +31,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfiguration {
 
     private final JwtTokenizer jwtTokenizer;
+    private final CustomAuthorityUtils authorityUtils;
 
-    public SecurityConfiguration(JwtTokenizer jwtTokenizer) {
+    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
         this.jwtTokenizer = jwtTokenizer;
+        this.authorityUtils = authorityUtils;
     }
 
+    // TODO: 페이지별 권한 부여, 식당, 리뷰 등 추가되면 진행할 것
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
@@ -37,12 +46,22 @@ public class SecurityConfiguration {
                 .and()
                 .csrf().disable()
                 .cors(withDefaults())
+                .sessionManagement().sessionCreationPolicy((SessionCreationPolicy.STATELESS))
+                .and()
                 .formLogin().disable()
                 .httpBasic().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint(new MemberAuthenticationEntryPoint())
+                .accessDeniedHandler(new MemberAccessDeniedHandler())
+                .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
                 .authorizeHttpRequests(authorize -> authorize
+                        //.antMatchers(HttpMethod.POST, "/members").permitAll()
+                        //.antMatchers(HttpMethod.PATCH, "/members/**").hasRole("USER")
+                        //.antMatchers(HttpMethod.POST, "/login").permitAll()
                         .anyRequest().permitAll());
+                        //.anyRequest().authenticated());
 
         return http.build();
     }
@@ -55,8 +74,16 @@ public class SecurityConfiguration {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.asList("*"));
+        // CORS 요청에서 허용되는 origin을 설정하는 메서드, 모든 origin으로 부터의 요청을 허용한다
+        // S3에서 정적 배포하는 경로가 origin이 된다
+        configuration.setAllowedOrigins(Arrays.asList("http://seb43-main-029-client.s3-website.ap-northeast-2.amazonaws.com"));
+        // 허용되는 HTTP Method 설정
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
+        // 허용되는 HTTP 요청 헤더 설정
+        configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));
+        // 클라이언트가 접근할 수 있는 헤더 설정
+        configuration.setExposedHeaders(Arrays.asList("x-auth-token"));
+        configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
@@ -74,12 +101,12 @@ public class SecurityConfiguration {
 
             // 로그인 URL
             jwtAuthenticationFilter.setFilterProcessesUrl("/login");
-            // 로그인 성공시 동작하는 handler 적용
             jwtAuthenticationFilter.setAuthenticationSuccessHandler(new MemberAuthenticationSuccessHandler());
-            // 로그인 실패시 동작하는 handler 적용
             jwtAuthenticationFilter.setAuthenticationFailureHandler(new MemberAuthenticationFailureHandler());
 
-            builder.addFilter(jwtAuthenticationFilter);
-        }
+            JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
+
+            builder.addFilter(jwtAuthenticationFilter)
+                    .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);        }
     }
 }
