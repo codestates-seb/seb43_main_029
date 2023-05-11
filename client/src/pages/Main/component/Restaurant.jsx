@@ -32,11 +32,18 @@ export const R_Container = styled.section`
   .R_Image {
     height: 200px;
     img {
-      border-radius: 2px 2px 0 0;
+      border-radius: 10px;
       width: 100%;
       height: 100%;
       // 이미지가 뭉개지는 것을 방지
       object-fit: cover;
+
+      transition: transform 0.5s;
+      :hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.02);
+      }
     }
   }
 

@@ -1,6 +1,7 @@
 import { SERVER_ADDRESS_RESTAURANTS, MaxScore } from '../config';
-import styled from 'styled-components';
+
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import axios from 'axios';
 
 const Big_R_Info = () => {
