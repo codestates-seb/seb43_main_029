@@ -41,7 +41,6 @@ export const R_Container = styled.section`
   }
 
   .R_Info {
-    /* background-color: #fff; */
     display: flex;
     flex-direction: column;
     padding: 0.5em;

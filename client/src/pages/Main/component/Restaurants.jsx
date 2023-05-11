@@ -1,7 +1,9 @@
-import styled from 'styled-components';
 import Restaurant from './Restaurant';
+import { SERVER_ADDRESS_RESTAURANTS, MaxScore } from '../config';
+
+import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { SERVER_ADDRESS, MaxScore } from '../config';
+import axios from 'axios';
 
 // 식당 컴포넌트를 map 돌리는 곳
 const Restaurants = () => {
@@ -9,12 +11,12 @@ const Restaurants = () => {
   const [isRestaurants, setIsRestaurants] = useState([]);
 
   useEffect(() => {
-    fetch(`${SERVER_ADDRESS}/restaurants`)
-      .then(res => res.json())
-      .then(data => setIsRestaurants(data));
+    axios
+      .get(SERVER_ADDRESS_RESTAURANTS) //
+      .then(res => setIsRestaurants(res.data));
   }, []);
 
-  const filteredData = isRestaurants.filter(data => data.score < { MaxScore });
+  const filteredData = isRestaurants.filter(data => data.score < MaxScore);
 
   return (
     <RestaurantsContainer>

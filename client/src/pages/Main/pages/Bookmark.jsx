@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import CategoryTitle from '../component/CategoryTitle';
-import BigRestaurant from '../component/BigRestaurant';
-// import CategoryFilter from '../component/CategoryFilter';
+import BigRestaurant from '../component/Big_R';
 import Restaurants from '../component/Restaurants';
 
 import { BottomContainer, ContentBox } from './Category';
@@ -12,9 +10,7 @@ const M_Bookmark = () => {
         <TitleRestaurantContainer>
           <BigRestaurant />
         </TitleRestaurantContainer>
-        <TitleContainer>
-          <CategoryTitle />
-        </TitleContainer>
+        <TitleContainer></TitleContainer>
       </div>
       <BottomContainer>
         <ContentBox>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Restaurants from '../component/Restaurants';
-import BigRestaurant from '../component/BigRestaurant';
+import BigRestaurant from '../component/Big_R';
 import Title from '../component/Title';
 import Big_R_Info from '../component/Big_R_Info';
 /** 카테고리 감싸는 역할 */
@@ -10,9 +10,9 @@ const M_Category = () => {
       <TopContainer>
         <ContentBox>
           <TitleContainer>
-            <Desc>
+            <Page_Desc>
               <Title />
-            </Desc>
+            </Page_Desc>
             <Big_R_Info_Container>
               <Big_R_Info />
             </Big_R_Info_Container>
@@ -54,9 +54,11 @@ export const TitleContainer = styled.div`
 `;
 
 /** 페이지 소개글 */
-export const Desc = styled.div`
+export const Page_Desc = styled.div`
   height: 50%;
   width: 100%;
+  display: flex;
+  align-items: end;
 `;
 
 /** 큰 이미지 컴포넌트의 정보 */
