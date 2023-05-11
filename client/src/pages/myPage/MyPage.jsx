@@ -4,12 +4,15 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import MyReivew from './MyReivew.jsx';
+import MyBookmark from './MyBookmark.jsx';
 
 const MyPageBlock = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 8rem;
 `;
 
 const MyPageLayout = styled.div`
@@ -18,26 +21,46 @@ const MyPageLayout = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4rem;
+  margin: 20px;
+  @media screen and (max-width: 1244px) {
+    max-width: -webkit-fill-available;
+  }
 `;
 
 function MyPage() {
   const { id } = useParams();
   const [userInfo, setUserInfo] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/members/${id}`).then(res => {
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
       setUserInfo(res.data);
     });
   }, []);
-  return (
-    <>
-      <MyPageBlock>
-        <MyPageLayout>
-          <Profile userInfo={userInfo} />
-          <MyReivew />
-        </MyPageLayout>
-      </MyPageBlock>
-    </>
-  );
+
+  if (userInfo.role === 'USER') {
+    return (
+      <>
+        <MyPageBlock>
+          <MyPageLayout>
+            <Profile userInfo={userInfo} />
+            <MyReivew />
+            <MyBookmark />
+          </MyPageLayout>
+        </MyPageBlock>
+      </>
+    );
+  }
+  if (userInfo.role === 'OWNER') {
+    return (
+      <>
+        <MyPageBlock>
+          <MyPageLayout>
+            <Profile userInfo={userInfo} />
+          </MyPageLayout>
+        </MyPageBlock>
+      </>
+    );
+  }
+  return <p>없는 권한입니다. 다시 확인해주십시오</p>;
 }
 
 export default MyPage;
