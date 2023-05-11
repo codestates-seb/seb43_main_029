@@ -1,19 +1,20 @@
 import styled from 'styled-components';
-import MyReview from './MyReview';
-import dummy from '../../dummy.json';
+// import MyReview from './MyReview';
+// import dummy from '../../dummy.json';
 const ReviewMap = () => {
   return (
     <ReviewMapContainer>
-      {reviews.map(review => (
+      {/* {reviews.map(review => (
         <div key={review.id}>
           <MyReview
+          +
             name={review.name}
             createdAt={review.createdAt}
             rating={review.rating}
             comment={review.comment}
           />
         </div>
-      ))}
+      ))} */}
     </ReviewMapContainer>
   );
 };
@@ -21,7 +22,7 @@ const ReviewMap = () => {
 export default ReviewMap;
 
 //style
-const reviews = dummy.review;
+// const reviews = dummy.review;
 const ReviewMapContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);

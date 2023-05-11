@@ -1,39 +1,32 @@
+import { M_Page_Container, TopContainer, BottomContainer, ContentBox } from './Category';
+
+import Rev_Title from '../component/Rev_Title';
+import Reviews from '../component/Reviews';
+
 import styled from 'styled-components';
-import TitleReview from '../component/ReviewComponent/TitleReview';
-import ReviewMap from '../component/ReviewComponent/ReviewMap';
 
 const M_Review = () => {
   return (
-    <M_ReviewContainer>
-      <div className="TopContainer">
-        <TitleReview />
-      </div>
-      <div className="BottomContainer">
-        <ReviewMap />
-      </div>
-    </M_ReviewContainer>
+    <M_Page_Container>
+      <TopContainer>
+        <Rev_ContentBox>
+          <Rev_Title></Rev_Title>
+        </Rev_ContentBox>
+      </TopContainer>
+      <BottomContainer>
+        <ContentBox>
+          <Reviews />
+        </ContentBox>
+      </BottomContainer>
+    </M_Page_Container>
   );
 };
 
 export default M_Review;
 
 //style
-const M_ReviewContainer = styled.section`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
+const Rev_ContentBox = styled(ContentBox)`
   flex-direction: column;
-
-  .TopContainer {
-    flex: 4;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid black;
-  }
-  .BottomContainer {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-  }
+  align-items: start;
+  justify-content: end;
 `;

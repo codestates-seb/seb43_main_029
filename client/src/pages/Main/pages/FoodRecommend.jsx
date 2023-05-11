@@ -1,10 +1,10 @@
-import styled from 'styled-components';
 import './styles.css';
+
+import styled from 'styled-components';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { Autoplay, EffectCreative } from 'swiper';
+import 'swiper/css';
 
 const M_FoodRecommend = () => {
   return (
@@ -61,9 +61,6 @@ export default M_FoodRecommend;
 
 //style
 const M_FoodRecommendContainer = styled.section`
-  /* background: url('https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1467&q=80')
-    no-repeat center;
-  background-size: cover; */
   background-color: #f5f5f4;
   width: 100vw;
   height: 100vh;

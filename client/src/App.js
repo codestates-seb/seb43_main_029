@@ -7,7 +7,7 @@ import Search from './pages/search/Search';
 import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Header from './components/Header';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
@@ -38,7 +38,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
             </Routes>
           </div>
-          <Footer className="footer" />
+          {/* <Footer className="footer" /> */}
         </GlobalLayout>
       </BrowserRouter>
     </>

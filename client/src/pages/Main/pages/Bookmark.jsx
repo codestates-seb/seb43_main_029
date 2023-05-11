@@ -1,59 +1,46 @@
-import styled from 'styled-components';
+import {
+  M_Page_Container,
+  TopContainer,
+  ContentBox,
+  TitleContainer,
+  Page_Desc,
+  Big_R_Info_Container,
+  BigRestaurantContainer,
+  BottomContainer,
+} from './Category';
+
+import Res_Title from '../component/Res_Title';
+import Big_R_Info from '../component/Big_R_Info';
 import BigRestaurant from '../component/Big_R';
 import Restaurants from '../component/Restaurants';
-
-import { BottomContainer, ContentBox } from './Category';
 const M_Bookmark = () => {
   return (
-    <M_BookmarkContainer>
-      <div className="TopContainer">
-        <TitleRestaurantContainer>
-          <BigRestaurant />
-        </TitleRestaurantContainer>
-        <TitleContainer></TitleContainer>
-      </div>
+    <M_Page_Container>
+      <TopContainer>
+        <ContentBox>
+          <TitleContainer>
+            <Page_Desc>
+              <Res_Title />
+            </Page_Desc>
+            <Big_R_Info_Container>
+              <Big_R_Info />
+            </Big_R_Info_Container>
+          </TitleContainer>
+          <BigRestaurantContainer>
+            <BigRestaurant />
+          </BigRestaurantContainer>
+        </ContentBox>
+      </TopContainer>
+
       <BottomContainer>
         <ContentBox>
           <Restaurants />
         </ContentBox>
       </BottomContainer>
-    </M_BookmarkContainer>
+    </M_Page_Container>
   );
 };
 
 export default M_Bookmark;
 
 //style
-const M_BookmarkContainer = styled.section`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  .TopContainer {
-    display: flex;
-    flex: 4;
-    border-bottom: 1px solid black;
-  }
-`;
-const TitleContainer = styled.div`
-  display: flex;
-  flex: 3;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-const TitleRestaurantContainer = styled.div`
-  display: flex;
-  flex: 2;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid black;
-`;
-// const SubRestaurantContainer = styled.div`
-//   flex: 2;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-bottom: 1px solid black;
-// `;

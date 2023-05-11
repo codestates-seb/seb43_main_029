@@ -4,7 +4,7 @@ import styled from 'styled-components';
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
 
-const Title = () => {
+const Res_Title = () => {
   // useEffect(() => {
   //   axios.get(SERVER_ADDRESS_RESTAURANTS).then(res => setIsTag(res.data));
   // }, []);
@@ -22,7 +22,7 @@ const Title = () => {
     </TitleContainer>
   );
 };
-export default Title;
+export default Res_Title;
 
 //style
 const TitleContainer = styled.h1`
