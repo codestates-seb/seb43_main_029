@@ -27,7 +27,7 @@ export default BigRestaurant;
 
 //style
 const BigR_Container = styled.section`
-  padding: 0 0 2rem 1rem;
+  padding-bottom: 2rem;
   width: calc(100% - 20px);
   height: calc(100% - 210px);
   img {

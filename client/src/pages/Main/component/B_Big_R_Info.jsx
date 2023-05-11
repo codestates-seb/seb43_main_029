@@ -1,4 +1,6 @@
 import { SERVER_ADDRESS_RESTAURANTS, MaxScore } from '../config';
+import { Big_R_Info_Container } from './C_Big_R_Info';
+
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -15,11 +17,11 @@ const Big_R_Info = () => {
   return (
     <>
       {filteredData.map(data => (
-        <Big_R_Info_Container key={data.restaurantId}>
+        <B_Big_R_Info_Container key={data.restaurantId}>
           <span className="Big_R_Name">{data.name}</span>
           <span className="Big_R_Score">예상 {data.score}</span>
           <span className="Big_R_Address">{data.address}</span>
-        </Big_R_Info_Container>
+        </B_Big_R_Info_Container>
       ))}
     </>
   );
@@ -28,23 +30,7 @@ const Big_R_Info = () => {
 export default Big_R_Info;
 
 //style
-const Big_R_Info_Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  padding-right: 1rem;
-  .Big_R_Name {
-    font-weight: 700;
-    font-size: 2.2rem;
-    padding-bottom: 0.2rem;
-  }
-  .Big_R_Score {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #ec4899;
-    padding-bottom: 0.3rem;
-  }
-  .Big_R_Address {
-    color: #6b7280;
-  }
+const B_Big_R_Info_Container = styled(Big_R_Info_Container)`
+  align-items: start;
+  padding-left: 1rem;
 `;

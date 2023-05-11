@@ -1,3 +1,8 @@
+import { SERVER_ADDRESS_MEMBERS } from '../config';
+
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Grid, Pagination } from 'swiper';
@@ -7,6 +12,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const Reviews = () => {
+  const [isReview, setIsReveiw] = useState([]);
+
+  useEffect(() => {
+    axios.get(SERVER_ADDRESS_MEMBERS).then(res => setIsReveiw(res.data));
+  }, []);
   return (
     <ReviewsContainer
       slidesPerView={5}
@@ -20,25 +30,31 @@ const Reviews = () => {
       modules={[Grid, Pagination]}
       className="mySwiper"
     >
-      <Mem_Review>
-        <div className="reviewBox">
-          <div className="contentBox">
-            <div className="content">&ldquo; 커밋... &ldquo;</div>
+      {isReview.map(prop => (
+        <Mem_Review key={prop.id}>
+          <div className="reviewBox">
+            <div className="topBox">
+              <div className="contentBox">
+                <div className="content">&ldquo; 마싯따 &ldquo;</div>
+              </div>
+              <div className="nameAndScoreBox">
+                <span className="name">김밥천국</span>
+                <span className="score">4.5</span>
+              </div>
+            </div>
+            <div className="bottomBox">
+              <div className="address">{prop.createdAt}</div>
+            </div>
           </div>
-          <ul className="InfoBox">
-            <li className="nameAndScore">
-              <span className="name">식당이름</span>
-              <span className="score">별점</span>
-            </li>
-            <div className="address">작성일</div>
-          </ul>
-        </div>
-      </Mem_Review>
+        </Mem_Review>
+      ))}
+      ;
     </ReviewsContainer>
   );
 };
 
 export default Reviews;
+
 //style
 const ReviewsContainer = styled(Swiper)`
   height: 100%;
@@ -46,6 +62,7 @@ const ReviewsContainer = styled(Swiper)`
 
 const Mem_Review = styled(SwiperSlide)`
   background-color: initial;
+
   .reviewBox {
     width: 100%;
     height: 100%;
@@ -53,36 +70,43 @@ const Mem_Review = styled(SwiperSlide)`
     flex-direction: column;
     margin-top: 1rem;
   }
-  .contentBox {
+  .topBox {
     background-color: #fff;
-    flex: 1.5;
+    flex: 2;
     display: flex;
     flex-direction: column;
+  }
+  .contentBox {
+    flex: 4;
+    display: flex;
     justify-content: center;
     align-items: center;
   }
   .content {
+    margin-top: 1rem;
     width: 10vw;
     overflow: hidden;
   }
-  .InfoBox {
+  .nameAndScoreBox {
     flex: 1;
-    padding: 0.5rem;
     display: flex;
-    flex-direction: column;
-    align-items: start;
-  }
-
-  .nameAndScore {
+    align-items: center;
+    justify-content: end;
+    padding-right: 0.5rem;
     font-weight: 700;
-    font-size: 1.2rem;
   }
   .score {
     padding-left: 0.5rem;
     color: #ec4899;
   }
+
+  .bottomBox {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    padding: 0.5rem;
+  }
   .address {
-    padding-top: 0.2rem;
     font-size: 0.8em;
     color: #6b7280;
   }

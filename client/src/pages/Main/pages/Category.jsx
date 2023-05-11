@@ -1,7 +1,7 @@
 import Restaurants from '../component/Restaurants';
 import BigRestaurant from '../component/Big_R';
 import Res_Title from '../component/Res_Title';
-import Big_R_Info from '../component/Big_R_Info';
+import Big_R_Info from '../component/C_Big_R_Info';
 
 import styled from 'styled-components';
 /** 카테고리 감싸는 역할 */
@@ -59,7 +59,6 @@ export const Page_Desc = styled.div`
   width: 100%;
   display: flex;
   align-items: end;
-  border: 1px solid red;
 `;
 
 /** 큰 이미지 컴포넌트의 정보 */
@@ -79,7 +78,6 @@ export const BigRestaurantContainer = styled.div`
   flex: 1;
   align-items: end;
   justify-content: end;
-  /* border: 1px solid black; */
 `;
 
 /** 큰 이미지와 카테고리 타이틀을 감싸는 컴포넌트 */
@@ -92,7 +90,7 @@ export const TopContainer = styled.div`
 
 /** 작은 이미지를 감싸는 컴포넌트 */
 export const BottomContainer = styled.div`
-  background-color: #f0fdf4;
+  background-color: #0f172a;
   display: flex;
   width: 100%;
   height: 300px;
@@ -106,7 +104,6 @@ export const ContentBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* border: 1px solid red; */
   max-width: calc(100% - 300px);
   margin: auto;
   width: 100%;

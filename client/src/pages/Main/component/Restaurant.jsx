@@ -51,6 +51,9 @@ export const R_Container = styled.section`
     font-size: 1.2em;
     margin-bottom: 0.2em;
   }
+  .R_Name {
+    color: #fff;
+  }
   .R_Score {
     padding-left: 0.5em;
     color: #ec4899;
