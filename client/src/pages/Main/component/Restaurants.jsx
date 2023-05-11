@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 import Restaurant from './Restaurant';
 import { useEffect, useState } from 'react';
+import { SERVER_ADDRESS, MaxScore } from '../config';
+
 // 식당 컴포넌트를 map 돌리는 곳
 const Restaurants = () => {
   /* TODO : 데이터 가져오고, 필터링 하는 컴포넌트 따로 분리 해야함. */
   const [isRestaurants, setIsRestaurants] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/restaurants')
+    fetch(`${SERVER_ADDRESS}/restaurants`)
       .then(res => res.json())
       .then(data => setIsRestaurants(data));
   }, []);
 
-  const filteredRestaurants = isRestaurants.filter(
-    data => data.category === '한식' && data.score > 4
-  );
+  const filteredData = isRestaurants.filter(data => data.score < { MaxScore });
 
   return (
     <RestaurantsContainer>
-      {filteredRestaurants.map(restaurant => (
+      {filteredData.map(restaurant => (
         <Restaurant
           key={restaurant.restaurantId}
           name={restaurant.name}
