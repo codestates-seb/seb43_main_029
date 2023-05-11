@@ -6,6 +6,7 @@ import Main from './Main/index';
 import Search from './pages/search/Search';
 import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
+import Favorites from './pages/favorites/FavoritesListPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 const GlobalStyle = createGlobalStyle`
@@ -36,6 +37,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/restaurant" element={<Restaurant />} />
               <Route path="/registration" element={<Registration />} />
+              <Route path="/favorites" element={<Favorites />} />
             </Routes>
           </div>
           <Footer className="footer" />
