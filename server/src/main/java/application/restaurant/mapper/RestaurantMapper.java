@@ -7,10 +7,18 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",  uses = {RestaurantImageMapper.class, MenuMapper.class})
 public interface RestaurantMapper {
+    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "menuList", target = "menuList")
     Restaurant restaurantPostDtoToRestaurant(RestaurantDto.RestaurantPostDto restaurantPostDto);
-    //Restaurant restaurantPatchDto(RestaurantDto.RestaurantPatchDto restaurantPatchDto);
+    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "menuList", target = "menuList")
+    Restaurant restaurantPatchDtoToRestaurant(RestaurantDto.RestaurantPatchDto restaurantPatchDto);
+    @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(source = "restaurantImageList", target = "imageList")
+    @Mapping(source = "menuList", target = "menuList")
     RestaurantDto.RestaurantResponseDto restaurantToRestaurantResponseDto(Restaurant restaurant);
+
     List<RestaurantDto.RestaurantResponseDto> restaurantToResponseDto(List<Restaurant>restaurantList);
 }

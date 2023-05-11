@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.UUID;
 
 @Slf4j
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class AwsS3Service {
 
@@ -52,14 +54,16 @@ public class AwsS3Service {
             }
 
             // file에 관한 내용을 Dto로 변환 후 list에 담아 return
-            responseDto.add(new ImageDto.ImageRequestDto(file.getOriginalFilename(), fileName, file.getSize()));
+            responseDto.add(new ImageDto.ImageRequestDto(file.getOriginalFilename(),
+                                                        amazonS3.getUrl(bucket, fileName).toString(), file.getSize()));
         });
 
         return responseDto;
     }
 
-    public void deleteFile(String fileName, String dirName) {
-        amazonS3.deleteObject(new DeleteObjectRequest(bucket, dirName + "/" + fileName));
+    public void deleteFile(String url) {
+        String key = url.substring(url.indexOf("/", url.indexOf("//") + 2) + 1);
+        amazonS3.deleteObject(new DeleteObjectRequest(bucket, key));
     }
 
     //파일 업로드 시, 파일명을 난수화하기 위해 UUID를 붙여준다.

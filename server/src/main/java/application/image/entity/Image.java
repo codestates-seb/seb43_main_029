@@ -1,12 +1,14 @@
 package application.image.entity;
 
 import application.audit.Auditable;
-import application.restaurant.entity.Restaurant;
+import application.restaurant.entity.RestaurantImage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,7 +24,6 @@ public class Image extends Auditable {
     private String url;      // 이미지 파일 경로
     @Column(nullable = false)
     private long imageSize;          // 이미지 파일 크기
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "restaurant_id")
-    private Restaurant restaurant;
+    @OneToMany(mappedBy = "image")
+    private List<RestaurantImage> restaurantImages = new ArrayList<>();
 }

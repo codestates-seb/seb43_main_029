@@ -2,8 +2,6 @@ package application.image.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 public class ImageDto {
     @Getter
     @Setter
