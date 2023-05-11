@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ImageMapper {
     Image imageRequestDtoToimage(ImageDto.ImageRequestDto imagePostDto);
-    //image imagePatchDto(imageDto.imagePatchDto imagePatchDto);
+    //Image imagePatchDto(ImageDto.ImagePatchDto imagePatchDto);
     ImageDto.ImageResponseDto imageToimageResponseDto(Image image);
     List<ImageDto.ImageResponseDto> imageToResponseDto(List<Image>imageList);
 }

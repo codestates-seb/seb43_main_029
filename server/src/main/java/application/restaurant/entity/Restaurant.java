@@ -1,7 +1,7 @@
 package application.restaurant.entity;
 
 import application.audit.Auditable;
-import application.image.entity.Image;
+import application.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,8 +18,9 @@ public class Restaurant extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long restaurantId;
-    @Column(nullable = false)
-    private Long memberId;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -30,13 +31,12 @@ public class Restaurant extends Auditable {
     private String phone;
     @Column(nullable = false)
     private String address;
-    @Column(nullable = false)
-    private String menu;
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<Menu> menuList = new ArrayList<>();;
     @Column(nullable = false)
     private String restDay;
     @Column(nullable = false)
     private String businessDay;
-    @OneToMany(mappedBy = "restaurant", cascade = {CascadeType.ALL})
-    private List<Image> imageList = new ArrayList<>();
-
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
+    private List<RestaurantImage> restaurantImageList = new ArrayList<>();
 }
