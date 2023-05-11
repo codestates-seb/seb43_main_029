@@ -11,7 +11,7 @@ function Modal({ isOpen, closeModal, setImg }) {
     const editImg = {
       profileUrl: `${e.target.src}`,
     };
-    axios.patch(`http://localhost:3001/members/${id}`, editImg);
+    axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}`, editImg);
     closeModal();
   }
 
