@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 
 function FavoritesList() {
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]);
 
   return (
     <FavoritesListBox>
