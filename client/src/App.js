@@ -17,7 +17,6 @@ const GlobalLayout = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  height: 100vh;
   .App {
     flex: 1;
   }
