@@ -2,11 +2,12 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { TiPencil, TiHeartFullOutline } from 'react-icons/ti';
 
 function MyBookmark() {
   const { id } = useParams();
   const [bookmarks, setBookmark] = useState([]);
-  const recentBookmark = bookmarks.slice(-9);
+  // const recentBookmark = bookmarks.slice(-9);
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
       setBookmark(res.data.bookmarks);
@@ -18,23 +19,31 @@ function MyBookmark() {
       <BookmarkList>
         <Bookmarks>
           {bookmarks ? (
-            recentBookmark.map((bookmarks, idx) => {
+            bookmarks.map((bookmarks, idx) => {
               return (
                 <Bookmark key={idx}>
-                  <div className="padding">
-                    <BookmarkTitle className="underLine">
-                      <a href="/">
-                        <MarginP>{bookmarks.name}</MarginP>
-                      </a>
-                      <p>{bookmarks.score}</p>
-                    </BookmarkTitle>
-                    <BookmarkContent className="underLine">
+                  <a href="/">
+                    <BookmarkContent>
                       <img src={bookmarks.image} alt={bookmarks.name} />
                     </BookmarkContent>
-                    <BookmarkDate>
-                      <MarginP>작성날짜</MarginP>
-                    </BookmarkDate>
-                  </div>
+                    <BookmarkDesc>
+                      <BookmarkTitle>
+                        <span>{bookmarks.name}</span>
+                        <span className="score">{bookmarks.score}</span>
+                      </BookmarkTitle>
+                      <BookmarkInfo>
+                        <p>
+                          <TiPencil className="icon" />
+                          {bookmarks.reviewCount}
+                        </p>
+                        <p>
+                          <TiHeartFullOutline className="icon" />
+                          {bookmarks.bookmarkCount}
+                        </p>
+                        <p>작성날짜</p>
+                      </BookmarkInfo>
+                    </BookmarkDesc>
+                  </a>
                 </Bookmark>
               );
             })
@@ -74,11 +83,6 @@ const Bookmarks = styled.ul`
 `;
 
 const Bookmark = styled.li`
-  border-radius: 10px;
-  background: #f2f2f2;
-  .underLine {
-    border-bottom: 1px solid #e5e5e5;
-  }
   .padding {
     padding: 5px 15px;
     width: 100%;
@@ -93,11 +97,18 @@ const Bookmark = styled.li`
     width: 45%;
   }
 `;
-const BookmarkTitle = styled.div`
+const BookmarkDesc = styled.div``;
+const BookmarkTitle = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 5px;
+  span {
+    font-size: 1.5rem;
+  }
+  .score {
+    color: #ff0099;
+  }
 `;
 
 const BookmarkContent = styled.div`
@@ -107,14 +118,14 @@ const BookmarkContent = styled.div`
   }
 `;
 
-const BookmarkDate = styled.div`
+const BookmarkInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
+  p {
+    font-size: 1.125rem;
+  }
 `;
 
-const MarginP = styled.p`
-  margin: 11px 0;
-`;
 export default MyBookmark;

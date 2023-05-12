@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import Login from '../Login';
+import SignUp from '../SignUp';
 
 function Header() {
   return (
     <HeaderBox>
       <ContentBox>
         <Logo>
-          <LogoLink href="#">
+          <LogoLink href="/">
             <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
           </LogoLink>
         </Logo>
@@ -17,9 +19,9 @@ function Header() {
         </SearchBox>
 
         <LogBox>
-          <Login> 로그인 </Login>
+          <Login className="loginLink"> 로그인 </Login>
           {/* <LoginLink>로그인</LoginLink> */}
-          <SignUp> 회원가입 </SignUp>
+          <SignUp className="loginLink"> 회원가입 </SignUp>
           {/* <RegistLink>회원가입</RegistLink> */}
         </LogBox>
       </ContentBox>
@@ -93,64 +95,38 @@ const SearchBox = styled.div`
   }
 `;
 
+// const LoginLink = styled.button`
+//   color: #ff0099;
+//   background-color: #fff;
+//   font-size: 13px;
+//   margin-right: 10px;
+//   padding: 10px;
+//   border: 1px solid #ff0099;
+//   border-radius: 3px;
+//   width: 70px;
+//   height: 33px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   transition: all 0.5s;
+
+//   &:hover,
+//   &:focus {
+//     background-color: #fabbc6;
+//     color: #fff;
+//     border: none;
+//   }
+
+//   &:focus {
+//     box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+//   }
+// `;
+
 const LogBox = styled.div`
   display: flex;
   justify-content: center;
   width: 216px;
-`;
-
-const LoginLink = styled.button`
-  color: #ff0099;
-  background-color: #fff;
-  font-size: 13px;
-  margin-right: 10px;
-  padding: 10px;
-  border: 1px solid #ff0099;
-  border-radius: 3px;
-  width: 70px;
-  height: 33px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.5s;
-
-  &:hover,
-  &:focus {
-    background-color: #fabbc6;
-    color: #fff;
-    border: none;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-  }
-`;
-
-const LogBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-  margin: 0;
-  outline: none;
-  padding: 8px 0.8em;
-  white-space: nowrap;
-  transition: all 0.5s;
-
-  &:hover,
-  &:focus {
-    background-color: #e11d48;
-  }
-
-  &:focus {
-    box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-  }
-
-  &:active {
-    background-color: #0064bd;
-    box-shadow: none;
-  }
 `;
 
 // const LoginLink = styled.button`
