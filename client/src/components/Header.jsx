@@ -27,7 +27,6 @@ const HeaderBox = styled.div`
   align-items: center;
   box-shadow: 0 10px 10px -10px #999;
   z-index: 1;
-  margin-bottom: 20px;
 `;
 
 const ContentBox = styled.div`
