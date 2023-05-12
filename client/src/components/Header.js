@@ -16,7 +16,7 @@ function Header() {
           <Login> 로그인 </Login>
           {/* <LoginLink>로그인</LoginLink> */}
           <SignUp> 회원가입 </SignUp>
-          <RegistLink>회원가입</RegistLink>
+          {/* <RegistLink>회원가입</RegistLink> */}
         </LogBox>
       </ContentBox>
     </HeaderBox>
@@ -88,35 +88,35 @@ const LogBox = styled.div`
 //   }
 // `;
 
-const RegistLink = styled.button`
-  background-color: #ff0099;
-  border-radius: 3px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 13px;
-  margin: 0;
-  outline: none;
-  padding: 8px 0.8em;
-  white-space: nowrap;
-  transition: all 0.5s;
+// const RegistLink = styled.button`
+//   background-color: #ff0099;
+//   border-radius: 3px;
+//   border: none;
+//   color: #fff;
+//   cursor: pointer;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: 13px;
+//   margin: 0;
+//   outline: none;
+//   padding: 8px 0.8em;
+//   white-space: nowrap;
+//   transition: all 0.5s;
 
-  &:hover,
-  &:focus {
-    background-color: #e11d48;
-  }
+//   &:hover,
+//   &:focus {
+//     background-color: #e11d48;
+//   }
 
-  &:focus {
-    box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-  }
+//   &:focus {
+//     box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
+//   }
 
-  &:active {
-    background-color: #0064bd;
-    box-shadow: none;
-  }
-`;
+//   &:active {
+//     background-color: #0064bd;
+//     box-shadow: none;
+//   }
+// `;
 
 export default Header;
