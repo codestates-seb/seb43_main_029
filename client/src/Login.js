@@ -68,7 +68,7 @@ const LoginForm = styled.form`
 `;
 
 const LoginInput = styled.input`
-  /* 입력 필드 스타일 */
+  /* 입력  */
   margin-bottom: 10px;
 `;
 

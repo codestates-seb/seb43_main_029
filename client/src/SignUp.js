@@ -172,7 +172,6 @@ const SignUp = () => {
                 value={businessCode}
                 onChange={handleBusinessCodeChange}
               />
-
               <SignUpSubmitButton type="submit">회원가입</SignUpSubmitButton>
             </SignUpForm>
           </ModalContent>
