@@ -1,4 +1,4 @@
-// import { SERVER_ADDRESS_RESTAURANTS } from '../config';
+// import { SERVER_URL_RESTAURANTS } from '../config';
 
 import styled from 'styled-components';
 // import { useEffect, useState } from 'react';
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Res_Title = () => {
   // useEffect(() => {
-  //   axios.get(SERVER_ADDRESS_RESTAURANTS).then(res => setIsTag(res.data));
+  //   axios.get(SERVER_URL_RESTAURANTS).then(res => setIsTag(res.data));
   // }, []);
   // const [isTag, setIsTag] = useState([]);
 
