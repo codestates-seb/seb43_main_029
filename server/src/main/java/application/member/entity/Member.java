@@ -1,6 +1,7 @@
 package application.member.entity;
 
 import application.audit.Auditable;
+import application.image.entity.Image;
 import application.restaurant.entity.Restaurant;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,7 +34,6 @@ public class Member extends Auditable {
     @Column(nullable = false)
     private String phone;
 
-    // TODO: 시큐리티 추가시 구현
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
 
@@ -45,6 +45,10 @@ public class Member extends Auditable {
 
     @OneToMany(mappedBy = "member")
     private List<Restaurant> restaurants = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     public enum MemberStatus{
         MEMBER_ACTIVE("활동중"),
