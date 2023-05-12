@@ -3,11 +3,10 @@
     {
       "id": 1,
       "memberId": 1,
-      "email": "admin@gmail.com",
-      "nickname": "일반회원",
-      "phone": "010-1234-5678",
+      "url": "http://imageurl.png",
+      "email": "user@gmail.com",
+      "nickname": "사용자닉네임",
       "role": "USER",
-      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20",
@@ -20,7 +19,10 @@
           "content": "맛있어요",
           "score": 4,
           "voteCount": 11,
-          "images": ["url1", "url2"],
+          "images": [
+            "url1",
+            "url2"
+          ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -32,7 +34,10 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": ["url1", "url2"],
+          "images": [
+            "url1",
+            "url2"
+          ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -44,7 +49,10 @@
           "content": "재방문했는데 역시 최곱니다",
           "score": 4,
           "voteCount": 11,
-          "images": ["url1", "url2"],
+          "images": [
+            "url1",
+            "url2"
+          ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -56,7 +64,10 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": ["url1", "url2"],
+          "images": [
+            "url1",
+            "url2"
+          ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -68,7 +79,10 @@
           "content": "재방문했는데 역시 최곱니다",
           "score": 4,
           "voteCount": 11,
-          "images": ["url1", "url2"],
+          "images": [
+            "url1",
+            "url2"
+          ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         }
@@ -94,7 +108,8 @@
           "score": 3,
           "reviewCount": 4
         }
-      ]
+      ],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png"
     },
     {
       "id": 2,
@@ -303,7 +318,7 @@
     {
       "restaurantId": 4,
       "name": "가정식 치킨하우스",
-      "score": 3.0,
+      "score": 3,
       "category": "양식",
       "bookmark": 13,
       "phone": "010-1111-2222",

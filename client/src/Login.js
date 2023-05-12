@@ -42,8 +42,6 @@ const LoginButton = styled.a`
   padding: 10px;
   border: 1px solid #ff0099;
   border-radius: 3px;
-  width: 70px;
-  height: 33px;
   display: flex;
   justify-content: center;
   align-items: center;
