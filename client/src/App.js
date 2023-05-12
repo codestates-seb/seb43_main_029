@@ -8,6 +8,7 @@ import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
 const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
