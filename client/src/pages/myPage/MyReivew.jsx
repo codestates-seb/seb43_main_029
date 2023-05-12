@@ -90,6 +90,7 @@ const CarouselBlock = styled.div`
     button {
       background: #fff;
       color: #4a4a4a;
+      box-shadow: 0px 0px 10px #d9d9d9;
     }
   }
 `;
@@ -104,6 +105,7 @@ const ButtonContainer = styled.div`
     padding: 5px;
     background: transparent;
     color: transparent;
+    transition: ease-in-out 0.2s;
   }
   .Left {
     left: 5px;

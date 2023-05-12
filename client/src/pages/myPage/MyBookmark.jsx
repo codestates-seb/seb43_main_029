@@ -1,57 +1,74 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { TiPencil, TiHeartFullOutline } from 'react-icons/ti';
+import { BookmarkComponent } from '../../components/Bookmark';
+import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 
 function MyBookmark() {
   const { id } = useParams();
   const [bookmarks, setBookmark] = useState([]);
-  // const recentBookmark = bookmarks.slice(-9);
+  const recentBookmark = bookmarks.slice(-9);
+  const elementRef = useRef(null);
+  const [arrowDisable, setArrowDisable] = useState(true);
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
       setBookmark(res.data.bookmarks);
     });
   }, []);
+
+  const handleHorizantalScroll = (element, speed, distance, step) => {
+    let scrollAmount = 0;
+    const slideTimer = setInterval(() => {
+      element.scrollLeft += step;
+      scrollAmount += Math.abs(step);
+      if (scrollAmount >= distance) {
+        clearInterval(slideTimer);
+      }
+      if (element.scrollLeft === 0) {
+        setArrowDisable(true);
+      } else {
+        setArrowDisable(false);
+      }
+    }, speed);
+  };
+
   return (
     <MyBookmarkBlock>
       <h3>즐겨찾기 목록</h3>
-      <BookmarkList>
-        <Bookmarks>
-          {bookmarks ? (
-            bookmarks.map((bookmarks, idx) => {
-              return (
-                <Bookmark key={idx}>
-                  <a href="/">
-                    <BookmarkContent>
-                      <img src={bookmarks.image} alt={bookmarks.name} />
-                    </BookmarkContent>
-                    <BookmarkDesc>
-                      <BookmarkTitle>
-                        <span>{bookmarks.name}</span>
-                        <span className="score">{bookmarks.score}</span>
-                      </BookmarkTitle>
-                      <BookmarkInfo>
-                        <p>
-                          <TiPencil className="icon" />
-                          {bookmarks.reviewCount}
-                        </p>
-                        <p>
-                          <TiHeartFullOutline className="icon" />
-                          {bookmarks.bookmarkCount}
-                        </p>
-                        <p>작성날짜</p>
-                      </BookmarkInfo>
-                    </BookmarkDesc>
-                  </a>
-                </Bookmark>
-              );
-            })
-          ) : (
-            <p>추가하신 즐겨찾기가 없습니다.</p>
-          )}
-        </Bookmarks>
-      </BookmarkList>
+      <CarouselBlock>
+        <ButtonContainer>
+          <button
+            className="Left"
+            onClick={() => {
+              handleHorizantalScroll(elementRef.current, 10, 200, -10);
+            }}
+            disabled={arrowDisable}
+          >
+            <TiChevronLeft className="icon" />
+          </button>
+          <button
+            className="Right"
+            onClick={() => {
+              handleHorizantalScroll(elementRef.current, 10, 200, 10);
+            }}
+          >
+            <TiChevronRight className="icon" />
+          </button>
+        </ButtonContainer>
+        <BookmarkList ref={elementRef}>
+          <Bookmarks>
+            {bookmarks ? (
+              recentBookmark.map((bookmarks, idx) => {
+                return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
+              })
+            ) : (
+              <p>추가하신 즐겨찾기가 없습니다.</p>
+            )}
+          </Bookmarks>
+        </BookmarkList>
+      </CarouselBlock>
     </MyBookmarkBlock>
   );
 }
@@ -64,6 +81,39 @@ const MyBookmarkBlock = styled.section`
   a {
     color: #2f3134;
     text-decoration: none;
+  }
+`;
+const CarouselBlock = styled.div`
+  position: relative;
+  &:hover {
+    button {
+      background: #fff;
+      color: #4a4a4a;
+      box-shadow: 0px 0px 10px #d9d9d9;
+    }
+  }
+`;
+const ButtonContainer = styled.div`
+  button {
+    position: absolute;
+    top: 50%;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 4;
+    padding: 5px;
+    background: transparent;
+    color: transparent;
+    transition: ease-in-out 0.2s;
+  }
+  .Left {
+    left: 5px;
+  }
+  .Right {
+    right: 5px;
+  }
+  .icon {
+    font-size: 1.125rem;
   }
 `;
 const BookmarkList = styled.div`
@@ -80,52 +130,6 @@ const BookmarkList = styled.div`
 `;
 const Bookmarks = styled.ul`
   white-space: nowrap;
-`;
-
-const Bookmark = styled.li`
-  .padding {
-    padding: 5px 15px;
-    width: 100%;
-  }
-  display: inline-flex;
-  margin-right: 1rem;
-  width: 22%;
-  @media screen and (max-width: 1023px) {
-    width: 30%;
-  }
-  @media screen and (max-width: 768px) {
-    width: 45%;
-  }
-`;
-const BookmarkDesc = styled.div``;
-const BookmarkTitle = styled.p`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 5px;
-  span {
-    font-size: 1.5rem;
-  }
-  .score {
-    color: #ff0099;
-  }
-`;
-
-const BookmarkContent = styled.div`
-  img {
-    width: 100%;
-    margin: 12px 0 15px;
-  }
-`;
-
-const BookmarkInfo = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 10px;
-  p {
-    font-size: 1.125rem;
-  }
 `;
 
 export default MyBookmark;
