@@ -145,6 +145,104 @@
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 3,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 4,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 5,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 6,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 7,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 8,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 9,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
     }
   ],
   "restaurants": [
@@ -159,7 +257,10 @@
       "menu": "김밥 2000원 라면 3000원",
       "restDay": "일요일",
       "businessDay": "월~토 9:00 ~ 22:00",
-      "images": ["url1", "url2"],
+      "images": [
+        "https://images.unsplash.com/photo-1608731002187-d3448d224d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
+        "url2"
+      ],
       "createdAt": "2023-05-03 11:24:31",
       "lastModifiedAt": "2023-05-03 11:24:31"
     },
@@ -174,7 +275,64 @@
       "menu": "김밥 2000원 라면 3000원",
       "restDay": "일요일",
       "businessDay": "월~토 9:00 ~ 22:00",
-      "images": ["url1", "url2"],
+      "images": [
+        "https://images.unsplash.com/photo-1596883313954-b67579fa3f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 3,
+      "name": "버거왕",
+      "score": 4.5,
+      "category": "양식",
+      "bookmark": 10,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "치즈버거 19000원",
+      "restDay": "월요일",
+      "businessDay": "화~일 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1609167830220-7164aa360951?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 4,
+      "name": "가정식 치킨하우스",
+      "score": 3.0,
+      "category": "양식",
+      "bookmark": 13,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 한글비석로 47길 99",
+      "menu": "가정식 치킨 스테이크 7000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHN0ZWFrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 5,
+      "name": "뉴욕 피자헛",
+      "score": 4,
+      "category": "양식",
+      "bookmark": 44,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "치즈 피자 14000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+        "url2"
+      ],
       "createdAt": "2023-05-03 11:24:31",
       "lastModifiedAt": "2023-05-03 11:24:31"
     }
