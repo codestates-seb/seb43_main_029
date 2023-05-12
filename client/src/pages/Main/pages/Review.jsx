@@ -29,4 +29,6 @@ const Rev_ContentBox = styled(ContentBox)`
   flex-direction: column;
   align-items: start;
   justify-content: end;
+  /* width: 100vw;
+  height: 100vh; */
 `;

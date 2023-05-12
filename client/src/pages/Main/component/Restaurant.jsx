@@ -39,6 +39,7 @@ export const R_Container = styled.section`
       object-fit: cover;
 
       transition: transform 0.5s;
+      cursor: pointer;
       :hover {
         -ms-transform: scale(1.5); /* IE 9 */
         -webkit-transform: scale(1.5); /* Safari 3-8 */

@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Grid, Pagination } from 'swiper';
+import { Grid, Pagination, Navigation } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -27,11 +27,12 @@ const Reviews = () => {
       pagination={{
         clickable: true,
       }}
-      modules={[Grid, Pagination]}
+      navigation
+      modules={[Grid, Pagination, Navigation]}
       className="mySwiper"
     >
       {isReview.map(prop => (
-        <Mem_Review key={prop.id}>
+        <Mem_Review key={Math.random()}>
           <div className="reviewBox">
             <div className="topBox">
               <div className="contentBox">
@@ -75,6 +76,7 @@ const Mem_Review = styled(SwiperSlide)`
     flex: 2;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
   }
   .contentBox {
     flex: 4;

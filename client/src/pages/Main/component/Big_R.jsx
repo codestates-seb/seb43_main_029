@@ -50,6 +50,7 @@ const BigR_Container = styled.section`
     // 이미지가 뭉개지는 것을 방지
     object-fit: cover;
 
+    cursor: pointer;
     transition: transform 0.5s;
     :hover {
       -ms-transform: scale(1.5); /* IE 9 */
