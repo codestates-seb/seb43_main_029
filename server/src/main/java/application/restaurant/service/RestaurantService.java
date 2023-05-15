@@ -9,19 +9,22 @@ import application.image.repository.ImageFileRepository;
 import application.image.service.AwsS3Service;
 import application.member.entity.Member;
 import application.member.repository.MemberRepository;
+import application.restaurant.dto.MenuDto;
+import application.restaurant.dto.RestaurantDto;
 import application.restaurant.entity.Menu;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.entity.RestaurantImage;
+import application.restaurant.mapper.MenuMapper;
 import application.restaurant.repository.MenuRepository;
 import application.restaurant.repository.RestaurantImageRepository;
 import application.restaurant.repository.RestaurantRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -29,11 +32,13 @@ import java.util.Optional;
 public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
     private final ImageFileRepository imageFileRepository;
-    private final ImageMapper imageMapper;
-    private final AwsS3Service awsS3Service;
     private final MemberRepository memberRepository;
     private final RestaurantImageRepository restaurantImageRepository;
     private final MenuRepository menuRepository;
+    private final ImageMapper imageMapper;
+    private final MenuMapper menuMapper;
+    private final AwsS3Service awsS3Service;
+    private static String dirName = "restaurant-images";
 
     //식당 생성하기
     public Restaurant createRestaurant(Restaurant restaurant, List<ImageDto.ImageRequestDto> imageRequestDtoList) {
@@ -57,84 +62,6 @@ public class RestaurantService {
         saveRestaurant.setRestaurantImageList(restaurantImageList);
         return saveRestaurant;
     }
-
-    //식당 정보 수정 (텍스트 + 기존 이미지 + 신규 이미지)
-    public Restaurant updateRestaurant(Restaurant restaurant, List<Long> saveImageList,
-                                       List<ImageDto.ImageRequestDto> imageRequestDtoList) {
-        Restaurant findRestaurant = findVerifiedRestaurant(restaurant.getRestaurantId());
-
-        Member member = restaurant.getMember();
-        Optional<Member> verifiedMember = memberRepository.findById(member.getMemberId());
-        if (!verifiedMember.isPresent() || !findRestaurant.getMember().getMemberId().equals(member.getMemberId())) {
-            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_EDITING_POST);
-        }
-        // 1. 기존 이미지 중에서 삭제해야 할 이미지 삭제
-        List<RestaurantImage> restaurantImageList = findRestaurant.getRestaurantImageList();
-        List<RestaurantImage> deleteRestaurantImageList = new ArrayList<>();
-        restaurantImageList.stream()
-                .filter(restaurantImage -> !saveImageList.contains(restaurantImage.getImage().getImageId()))
-                .forEach(restaurantImage -> {
-                    imageFileRepository.delete(restaurantImage.getImage());
-                    awsS3Service.deleteFile(restaurantImage.getImage().getUrl());
-                    deleteRestaurantImageList.add(restaurantImage);
-                });
-        restaurantImageList.removeAll(deleteRestaurantImageList);
-
-        // 2. 새로운 이미지들 저장
-        List<RestaurantImage> newRestaurantImageList = new ArrayList<>();
-        for (ImageDto.ImageRequestDto imageRequestDto : imageRequestDtoList) {
-            Image image = imageMapper.imageRequestDtoToimage(imageRequestDto);
-            Image savedImage = imageFileRepository.save(image);
-            RestaurantImage restaurantImage = new RestaurantImage();
-            restaurantImage.setImage(savedImage);
-            restaurantImage.setRestaurant(findRestaurant);
-            restaurantImageRepository.save(restaurantImage);
-            newRestaurantImageList.add(restaurantImage);
-        }
-
-        // 3. 새로운 이미지들을 포함하여 식당 정보 저장 및 반환
-        restaurantImageList.addAll(newRestaurantImageList);
-        findRestaurant.setRestaurantImageList(restaurantImageList);
-
-        // 4. 텍스트 정보 수정
-        updateRestaurantInfo(restaurant, findRestaurant);
-
-        return restaurantRepository.save(findRestaurant);
-    }
-
-
-    //식당 정보 수정 (텍스트 + 신규 이미지)
-    public Restaurant updateRestaurant(Restaurant restaurant,
-                                       List<ImageDto.ImageRequestDto> imageRequestDtoList) {
-        Restaurant findRestaurant = findVerifiedRestaurant(restaurant.getRestaurantId());
-
-        Member member = restaurant.getMember();
-        Optional<Member> verifiedMember = memberRepository.findById(member.getMemberId());
-        if (!verifiedMember.isPresent() || !findRestaurant.getMember().getMemberId().equals(member.getMemberId())) {
-            throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_EDITING_POST);
-        }
-        // 1. 새로운 이미지들 저장
-        List<RestaurantImage> restaurantimageList = findRestaurant.getRestaurantImageList();
-        List<RestaurantImage> newRestaurantImageList = new ArrayList<>();
-        for (ImageDto.ImageRequestDto imageRequestDto : imageRequestDtoList) {
-            Image image = imageMapper.imageRequestDtoToimage(imageRequestDto);
-            Image savedImage = imageFileRepository.save(image);
-            RestaurantImage restaurantImage = new RestaurantImage();
-            restaurantImage.setImage(savedImage);
-            restaurantImage.setRestaurant(findRestaurant);
-            restaurantImageRepository.save(restaurantImage);
-            newRestaurantImageList.add(restaurantImage);
-        }
-        // 2. 새로운 이미지들을 포함하여 식당 정보 저장 및 반환
-        restaurantimageList.addAll(newRestaurantImageList);
-        findRestaurant.setRestaurantImageList(restaurantimageList);
-
-        // 3. 텍스트 정보 수정
-        updateRestaurantInfo(restaurant, findRestaurant);
-
-        return restaurantRepository.save(findRestaurant);
-    }
-
     //식당 정보 수정 (텍스트만)
     public Restaurant updateRestaurant(Restaurant restaurant) {
         Restaurant findRestaurant = findVerifiedRestaurant(restaurant.getRestaurantId());
@@ -144,17 +71,94 @@ public class RestaurantService {
         if (!verifiedMember.isPresent() || !findRestaurant.getMember().getMemberId().equals(member.getMemberId())) {
             throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_EDITING_POST);
         }
-        // 1. 텍스트 정보 수정
         updateRestaurantInfo(restaurant, findRestaurant);
 
         return restaurantRepository.save(findRestaurant);
     }
 
-    //식당 조회
+    // 식당 이미지 추가
+    public Restaurant addRestaurantImages(Restaurant restaurant, List<ImageDto.ImageRequestDto> imageRequestDtoList) {
+        List<RestaurantImage> restaurantimageList = restaurant.getRestaurantImageList();
+        List<RestaurantImage> newRestaurantImageList = new ArrayList<>();
+        for (ImageDto.ImageRequestDto imageRequestDto : imageRequestDtoList) {
+            Image image = imageMapper.imageRequestDtoToimage(imageRequestDto);
+            Image savedImage = imageFileRepository.save(image);
+            RestaurantImage restaurantImage = new RestaurantImage();
+            restaurantImage.setImage(savedImage);
+            restaurantImage.setRestaurant(restaurant);
+            restaurantImageRepository.save(restaurantImage);
+            newRestaurantImageList.add(restaurantImage);
+        }
+
+        restaurant.setRestaurantImageList(restaurantimageList);
+        return restaurantRepository.save(restaurant);
+    }
+
+    // 식당 이미지 삭제
+    public Restaurant deleteRestaurantImages(Restaurant restaurant, List<Long> deleteImageList) {
+        List<RestaurantImage> restaurantImageList = restaurant.getRestaurantImageList();
+        List<RestaurantImage> deleteRestaurantImageList = new ArrayList<>();
+
+        for (Long imageId : deleteImageList) {
+            for (RestaurantImage restaurantImage : restaurantImageList) {
+                if (restaurantImage.getImage().getImageId() == imageId) {
+                    Image image = restaurantImage.getImage();
+                    awsS3Service.deleteFile(image.getUrl());
+                    imageFileRepository.delete(image);
+                    deleteRestaurantImageList.add(restaurantImage);
+                    break;
+                }
+            }
+        }
+
+        restaurantImageList.removeAll(deleteRestaurantImageList);
+        return restaurantRepository.save(restaurant);
+    }
+
+    // 식당 메뉴 추가
+    public Restaurant addRestaurantMenus(Restaurant restaurant, List<MenuDto.MenuPostDto> newMenuList) {
+        List<Menu> menuList = restaurant.getMenuList();
+
+        for (MenuDto.MenuPostDto menuPostDto : newMenuList) {
+            Menu menu = menuMapper.menuPostDtoToMenu(menuPostDto);
+            menu.setRestaurant(restaurant);
+            menuList.add(menu);
+        }
+
+        restaurant.setMenuList(menuList);
+        return restaurantRepository.save(restaurant);
+    }
+
+    // 식당 메뉴 삭제
+    public Restaurant deleteRestaurantMenus(Restaurant restaurant, List<Long> deleteMenuList) {
+        List<Menu> menuList = restaurant.getMenuList();
+        List<Menu> deleteMenuObjList = new ArrayList<>();
+
+        for (Long menuId : deleteMenuList) {
+            for (Menu menu : menuList) {
+                if (menu.getMenuId() == menuId) {
+                    deleteMenuObjList.add(menu);
+                    break;
+                }
+            }
+        }
+
+        menuList.removeAll(deleteMenuObjList);
+        return restaurantRepository.save(restaurant);
+    }
+
+    //식당 상세 조회
     public Restaurant getRestaurant(long restaurantId) {
         Restaurant findRestaurant = findVerifiedRestaurant(restaurantId);
 
         return findRestaurant;
+    }
+
+    //식당 검색
+    public Page<Restaurant> searchRestaurants(String keyword, Pageable pageable) {
+        Pageable pageRequest = PageRequest.of(pageable.getPageNumber() - 1,
+                pageable.getPageSize(), Sort.by("score").descending());
+        return restaurantRepository.searchByKeyword(keyword, pageRequest);
     }
 
     //식당 삭제
@@ -175,6 +179,8 @@ public class RestaurantService {
 
         restaurantRepository.deleteById(restaurantId);
     }
+
+    //식당 텍스트 수정 로직
     private void updateRestaurantInfo(Restaurant restaurantToUpdate, Restaurant existingRestaurant) {
         List<Menu> existingMenuList = existingRestaurant.getMenuList();
         List<Menu> updatedMenuList = restaurantToUpdate.getMenuList();
@@ -196,6 +202,24 @@ public class RestaurantService {
         Optional.ofNullable(restaurantToUpdate.getAddress()).ifPresent(existingRestaurant::setAddress);
         Optional.ofNullable(restaurantToUpdate.getRestDay()).ifPresent(existingRestaurant::setRestDay);
         Optional.ofNullable(restaurantToUpdate.getBusinessDay()).ifPresent(existingRestaurant::setBusinessDay);
+    }
+
+    public List<RestaurantDto.RestaurantSearchResponseDto> setRestaurant(List<RestaurantDto.RestaurantSearchResponseDto> restaurantSearchResponseDtoList){
+        for(RestaurantDto.RestaurantSearchResponseDto restaurantSearchResponseDto : restaurantSearchResponseDtoList){
+            Restaurant restaurant = findVerifiedRestaurant(restaurantSearchResponseDto.getRestaurantId());
+            //주소 앞글자 2글자만 location값에 할당
+            String address = restaurant.getAddress();
+            String location = address.substring(0, Math.min(address.length(), 2));
+            restaurantSearchResponseDto.setLocation(location);
+            //식당의 가장 첫번째 이미지의 url값을 할당
+            restaurantSearchResponseDto.setUrl(restaurant.getRestaurantImageList()
+                    .stream()
+                    .findFirst()
+                    .map(restaurantImage -> restaurantImage.getImage().getUrl())
+                    .orElse(null));
+        }
+
+        return restaurantSearchResponseDtoList;
     }
 
     public Restaurant findVerifiedRestaurant(long restaurantId) {

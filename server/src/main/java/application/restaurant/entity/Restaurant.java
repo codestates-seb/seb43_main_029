@@ -1,6 +1,7 @@
 package application.restaurant.entity;
 
 import application.audit.Auditable;
+import application.bookmark.entity.Bookmark;
 import application.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,6 @@ public class Restaurant extends Auditable {
     private String businessDay;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<RestaurantImage> restaurantImageList = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Bookmark> bookmarkList = new ArrayList<>();
 }

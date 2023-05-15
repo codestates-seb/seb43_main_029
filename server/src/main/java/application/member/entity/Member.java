@@ -1,6 +1,7 @@
 package application.member.entity;
 
 import application.audit.Auditable;
+import application.bookmark.entity.Bookmark;
 import application.image.entity.Image;
 import application.restaurant.entity.Restaurant;
 import lombok.AllArgsConstructor;
@@ -49,6 +50,9 @@ public class Member extends Auditable {
     @OneToOne
     @JoinColumn(name = "image_id")
     private Image image;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<Bookmark> bookmarkList = new ArrayList<>();
 
     public enum MemberStatus{
         MEMBER_ACTIVE("활동중"),

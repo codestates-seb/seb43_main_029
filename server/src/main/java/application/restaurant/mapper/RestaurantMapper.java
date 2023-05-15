@@ -20,5 +20,5 @@ public interface RestaurantMapper {
     @Mapping(source = "menuList", target = "menuList")
     RestaurantDto.RestaurantResponseDto restaurantToRestaurantResponseDto(Restaurant restaurant);
 
-    List<RestaurantDto.RestaurantResponseDto> restaurantToResponseDto(List<Restaurant>restaurantList);
+    List<RestaurantDto.RestaurantSearchResponseDto> restaurantSearchListToDtoList(List<Restaurant> restaurantList);
 }
