@@ -1,48 +1,74 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { BookmarkComponent } from '../../components/Bookmark';
+import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 
 function MyBookmark() {
   const { id } = useParams();
   const [bookmarks, setBookmark] = useState([]);
   const recentBookmark = bookmarks.slice(-9);
+  const elementRef = useRef(null);
+  const [arrowDisable, setArrowDisable] = useState(true);
+
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
       setBookmark(res.data.bookmarks);
     });
   }, []);
+
+  const handleHorizantalScroll = (element, speed, distance, step) => {
+    let scrollAmount = 0;
+    const slideTimer = setInterval(() => {
+      element.scrollLeft += step;
+      scrollAmount += Math.abs(step);
+      if (scrollAmount >= distance) {
+        clearInterval(slideTimer);
+      }
+      if (element.scrollLeft === 0) {
+        setArrowDisable(true);
+      } else {
+        setArrowDisable(false);
+      }
+    }, speed);
+  };
+
   return (
     <MyBookmarkBlock>
       <h3>즐겨찾기 목록</h3>
-      <BookmarkList>
-        <Bookmarks>
-          {bookmarks ? (
-            recentBookmark.map((bookmarks, idx) => {
-              return (
-                <Bookmark key={idx}>
-                  <div className="padding">
-                    <BookmarkTitle className="underLine">
-                      <a href="/">
-                        <MarginP>{bookmarks.name}</MarginP>
-                      </a>
-                      <p>{bookmarks.score}</p>
-                    </BookmarkTitle>
-                    <BookmarkContent className="underLine">
-                      <img src={bookmarks.image} alt={bookmarks.name} />
-                    </BookmarkContent>
-                    <BookmarkDate>
-                      <MarginP>작성날짜</MarginP>
-                    </BookmarkDate>
-                  </div>
-                </Bookmark>
-              );
-            })
-          ) : (
-            <p>추가하신 즐겨찾기가 없습니다.</p>
-          )}
-        </Bookmarks>
-      </BookmarkList>
+      <CarouselBlock>
+        <ButtonContainer>
+          <button
+            className="Left"
+            onClick={() => {
+              handleHorizantalScroll(elementRef.current, 10, 200, -10);
+            }}
+            disabled={arrowDisable}
+          >
+            <TiChevronLeft className="icon" />
+          </button>
+          <button
+            className="Right"
+            onClick={() => {
+              handleHorizantalScroll(elementRef.current, 10, 200, 10);
+            }}
+          >
+            <TiChevronRight className="icon" />
+          </button>
+        </ButtonContainer>
+        <BookmarkList ref={elementRef}>
+          <Bookmarks>
+            {bookmarks ? (
+              recentBookmark.map((bookmarks, idx) => {
+                return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
+              })
+            ) : (
+              <p>추가하신 즐겨찾기가 없습니다.</p>
+            )}
+          </Bookmarks>
+        </BookmarkList>
+      </CarouselBlock>
     </MyBookmarkBlock>
   );
 }
@@ -55,6 +81,39 @@ const MyBookmarkBlock = styled.section`
   a {
     color: #2f3134;
     text-decoration: none;
+  }
+`;
+const CarouselBlock = styled.div`
+  position: relative;
+  &:hover {
+    button {
+      background: #fff;
+      color: #4a4a4a;
+      box-shadow: 0px 0px 10px #d9d9d9;
+    }
+  }
+`;
+const ButtonContainer = styled.div`
+  button {
+    position: absolute;
+    top: 50%;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 4;
+    padding: 5px;
+    background: transparent;
+    color: transparent;
+    transition: ease-in-out 0.2s;
+  }
+  .Left {
+    left: 5px;
+  }
+  .Right {
+    right: 5px;
+  }
+  .icon {
+    font-size: 1.125rem;
   }
 `;
 const BookmarkList = styled.div`
@@ -73,48 +132,4 @@ const Bookmarks = styled.ul`
   white-space: nowrap;
 `;
 
-const Bookmark = styled.li`
-  border-radius: 10px;
-  background: #f2f2f2;
-  .underLine {
-    border-bottom: 1px solid #e5e5e5;
-  }
-  .padding {
-    padding: 5px 15px;
-    width: 100%;
-  }
-  display: inline-flex;
-  margin-right: 1rem;
-  width: 22%;
-  @media screen and (max-width: 1023px) {
-    width: 30%;
-  }
-  @media screen and (max-width: 768px) {
-    width: 45%;
-  }
-`;
-const BookmarkTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const BookmarkContent = styled.div`
-  img {
-    width: 100%;
-    margin: 12px 0 15px;
-  }
-`;
-
-const BookmarkDate = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const MarginP = styled.p`
-  margin: 11px 0;
-`;
 export default MyBookmark;

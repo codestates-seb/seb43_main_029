@@ -7,9 +7,10 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Grid, Pagination, Navigation } from 'swiper';
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
 const Reviews = () => {
   const [isReview, setIsReveiw] = useState([]);
