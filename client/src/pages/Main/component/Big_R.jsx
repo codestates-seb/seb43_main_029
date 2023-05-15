@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
-import { SERVER_URL_RESTAURANTS, MaxScore } from '../config';
+import { SERVER_URL, MaxScore } from '../config';
 import axios from 'axios';
 
 import AOS from 'aos';
@@ -10,7 +10,7 @@ import 'aos/dist/aos.css';
 const BigRestaurant = () => {
   const [isBigRestaurant, setIsBigRestaurant] = useState([]);
   useEffect(() => {
-    axios.get(SERVER_URL_RESTAURANTS).then(res => setIsBigRestaurant(res.data));
+    axios.get(`${SERVER_URL}/restaurants`).then(res => setIsBigRestaurant(res.data));
   }, []);
 
   useEffect(() => {

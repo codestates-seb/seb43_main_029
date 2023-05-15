@@ -37,6 +37,13 @@ const HeaderBox = styled.div`
   align-items: center;
   box-shadow: 0 10px 10px -10px #999;
   z-index: 1;
+
+  // 임시 : 헤더 천장에 달라 붙게 - sinyaenok
+  position: sticky;
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  background-color: #fff;
 `;
 
 const ContentBox = styled.div`

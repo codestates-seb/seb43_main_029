@@ -1,17 +1,21 @@
-import './styles.css';
+//내부 import
+import { M_RootContainer } from '../styled';
 
-import styled from 'styled-components';
+/** swiper css */
+import './FoodRecommend.css';
 
+//외부 import
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
 
+/** 메인 페이지_메뉴 추천 컴포넌트 */
 const M_FoodRecommend = () => {
   return (
-    <M_FoodRecommendContainer>
+    <M_RootContainer>
       <Swiper
-        /* 사이 간격 */
+        //간격
         spaceBetween={0}
         centeredSlides={true}
         autoplay={{
@@ -54,19 +58,8 @@ const M_FoodRecommend = () => {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
-    </M_FoodRecommendContainer>
+    </M_RootContainer>
   );
 };
 
 export default M_FoodRecommend;
-
-//style
-const M_FoodRecommendContainer = styled.section`
-  background-color: #f5f5f4;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;

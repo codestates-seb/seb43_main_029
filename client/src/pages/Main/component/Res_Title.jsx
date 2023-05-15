@@ -1,22 +1,32 @@
-// import { SERVER_URL_RESTAURANTS } from '../config';
+import { SERVER_URL } from '../config';
 
 import styled from 'styled-components';
-// import { useEffect, useState } from 'react';
-// import axios from 'axios';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Res_Title = () => {
-  // useEffect(() => {
-  //   axios.get(SERVER_URL_RESTAURANTS).then(res => setIsTag(res.data));
-  // }, []);
-  // const [isTag, setIsTag] = useState([]);
+  const [isCategoy, setIsCategory] = useState([]);
 
-  // console.log(isTag[0].category);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${SERVER_URL}/restaurants`);
+        const { data } = response;
+        const randomIndex = Math.floor(Math.random() * data.length);
+        const randomCategory = data[randomIndex].category;
+        setIsCategory(randomCategory);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <TitleContainer>
-      <div className="Title_Tag">&#35; 카테고리</div>
+      <div className="Title_Tag">&#35; {isCategoy}</div>
       <div className="Title_Desc_One">
-        <span>카테고리</span> 맛집
+        <span>{isCategoy}</span> 맛집
       </div>
       <div className="Title_Desc_Two">순위별로 골라보기</div>
     </TitleContainer>

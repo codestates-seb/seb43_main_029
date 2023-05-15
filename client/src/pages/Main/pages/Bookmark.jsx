@@ -1,45 +1,46 @@
+//내부 import
 import {
-  M_Page_Container,
-  TopContainer,
-  ContentBox,
-  TitleContainer,
-  Page_Desc,
-  Big_R_Info_Container,
-  BigRestaurantContainer,
-  BottomContainer,
-} from './Category';
-
+  M_RootContainer,
+  M_TopContainer,
+  M_BottomContainer,
+  M_ContentBox,
+  M_Title_And_BigRestaurant_InfoBox,
+  M_TitleBox,
+  M_BigRestaurant_InfoBox,
+  M_BigRestaurant_ImgBox,
+} from '../styled';
 import Res_Title from '../component/Res_Title';
 import B_Big_R_Info from '../component/B_Big_R_Info';
 import BigRestaurant from '../component/Big_R';
 import Restaurants from '../component/Restaurants';
 
+//외부 import
 import styled from 'styled-components';
 const M_Bookmark = () => {
   return (
-    <M_Page_Container>
-      <TopContainer>
-        <ContentBox>
-          <Book_BigRestaurantContainer>
+    <M_RootContainer>
+      <M_TopContainer>
+        <M_ContentBox>
+          <M_Bookmark_BigRestaurant_Img_Box>
             <BigRestaurant />
-          </Book_BigRestaurantContainer>
-          <TitleContainer>
-            <Page_Desc>
+          </M_Bookmark_BigRestaurant_Img_Box>
+          <M_Title_And_BigRestaurant_InfoBox>
+            <M_TitleBox>
               <Res_Title />
-            </Page_Desc>
-            <Book_Big_R_Info_Container>
+            </M_TitleBox>
+            <M_Bookmark_BigRestaurant_InfoBox>
               <B_Big_R_Info />
-            </Book_Big_R_Info_Container>
-          </TitleContainer>
-        </ContentBox>
-      </TopContainer>
+            </M_Bookmark_BigRestaurant_InfoBox>
+          </M_Title_And_BigRestaurant_InfoBox>
+        </M_ContentBox>
+      </M_TopContainer>
 
-      <BottomContainer>
-        <ContentBox>
+      <M_BottomContainer>
+        <M_ContentBox>
           <Restaurants />
-        </ContentBox>
-      </BottomContainer>
-    </M_Page_Container>
+        </M_ContentBox>
+      </M_BottomContainer>
+    </M_RootContainer>
   );
 };
 
@@ -47,11 +48,11 @@ export default M_Bookmark;
 
 //style
 /**  큰 이미지 식당 사진 */
-const Book_BigRestaurantContainer = styled(BigRestaurantContainer)`
+const M_Bookmark_BigRestaurant_Img_Box = styled(M_BigRestaurant_ImgBox)`
   justify-content: start;
 `;
 
 /** 큰 이미지 식당의 정보*/
-const Book_Big_R_Info_Container = styled(Big_R_Info_Container)`
+const M_Bookmark_BigRestaurant_InfoBox = styled(M_BigRestaurant_InfoBox)`
   align-items: start;
 `;

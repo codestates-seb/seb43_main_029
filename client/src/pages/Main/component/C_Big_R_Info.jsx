@@ -1,4 +1,4 @@
-import { SERVER_URL_RESTAURANTS, MaxScore } from '../config';
+import { SERVER_URL, MaxScore } from '../config';
 
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ const Big_R_Info = () => {
   const [isBig_R_Info, setIsBig_R_Info] = useState([]);
 
   useEffect(() => {
-    axios.get(SERVER_URL_RESTAURANTS).then(res => setIsBig_R_Info(res.data));
+    axios.get(`${SERVER_URL}/restaurants`).then(res => setIsBig_R_Info(res.data));
   }, []);
 
   const filteredData = isBig_R_Info.filter(data => data.score >= MaxScore);

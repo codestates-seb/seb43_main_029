@@ -1,5 +1,5 @@
 import Restaurant from './Restaurant';
-import { SERVER_URL_RESTAURANTS, MaxScore } from '../config';
+import { SERVER_URL, MaxScore } from '../config';
 
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
@@ -12,7 +12,7 @@ const Restaurants = () => {
 
   useEffect(() => {
     axios
-      .get(SERVER_URL_RESTAURANTS) //
+      .get(`${SERVER_URL}/restaurants`) //
       .then(res => setIsRestaurants(res.data));
   }, []);
 
