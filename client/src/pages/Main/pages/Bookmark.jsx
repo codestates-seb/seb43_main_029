@@ -9,10 +9,10 @@ import {
   M_BigRestaurant_InfoBox,
   M_BigRestaurant_ImgBox,
 } from '../styled';
-import Res_Title from '../component/Res_Title';
-import B_Big_R_Info from '../component/B_Big_R_Info';
-import BigRestaurant from '../component/Big_R';
-import Restaurants from '../component/Restaurants';
+import Bookmark_Title from '../component/./Bookmark/Bookmark_Title';
+import Bookmark_BigRestaurant_Info from '../component/./Bookmark/Bookmark_BigRestaurant_Info';
+import Bookmark_BigRestaurant_Image from '../component/./Bookmark/Bookmark_BigRestaurant_Image';
+import Bookmark_Restaurants from '../component/./Bookmark/Bookmark_Restaurants';
 
 //외부 import
 import styled from 'styled-components';
@@ -22,14 +22,14 @@ const M_Bookmark = () => {
       <M_TopContainer>
         <M_ContentBox>
           <M_Bookmark_BigRestaurant_Img_Box>
-            <BigRestaurant />
+            <Bookmark_BigRestaurant_Image />
           </M_Bookmark_BigRestaurant_Img_Box>
           <M_Title_And_BigRestaurant_InfoBox>
             <M_TitleBox>
-              <Res_Title />
+              <Bookmark_Title />
             </M_TitleBox>
             <M_Bookmark_BigRestaurant_InfoBox>
-              <B_Big_R_Info />
+              <Bookmark_BigRestaurant_Info />
             </M_Bookmark_BigRestaurant_InfoBox>
           </M_Title_And_BigRestaurant_InfoBox>
         </M_ContentBox>
@@ -37,7 +37,7 @@ const M_Bookmark = () => {
 
       <M_BottomContainer>
         <M_ContentBox>
-          <Restaurants />
+          <Bookmark_Restaurants />
         </M_ContentBox>
       </M_BottomContainer>
     </M_RootContainer>

@@ -9,10 +9,10 @@ import {
   M_BigRestaurant_InfoBox,
   M_BigRestaurant_ImgBox,
 } from '../styled';
+import Category_Title from '../component/Category_Title';
+import Category_BigRestaurant_Image from '../component/Category_BigRestaurant_Image';
+import Category_BigRestaurant_Info from '../component/Category_BigRestaurant_Info';
 import Restaurants from '../component/Restaurants';
-import BigRestaurant from '../component/Big_R';
-import Res_Title from '../component/Res_Title';
-import Big_R_Info from '../component/C_Big_R_Info';
 
 /** 카테고리 감싸는 역할 */
 const M_Category = () => {
@@ -22,14 +22,14 @@ const M_Category = () => {
         <M_ContentBox>
           <M_Title_And_BigRestaurant_InfoBox>
             <M_TitleBox>
-              <Res_Title />
+              <Category_Title />
             </M_TitleBox>
             <M_BigRestaurant_InfoBox>
-              <Big_R_Info />
+              <Category_BigRestaurant_Info />
             </M_BigRestaurant_InfoBox>
           </M_Title_And_BigRestaurant_InfoBox>
           <M_BigRestaurant_ImgBox>
-            <BigRestaurant />
+            <Category_BigRestaurant_Image />
           </M_BigRestaurant_ImgBox>
         </M_ContentBox>
       </M_TopContainer>

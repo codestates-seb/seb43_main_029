@@ -60,7 +60,7 @@ export const R_Container = styled.section`
     margin-bottom: 0.2em;
   }
   .R_Name {
-    color: #fff;
+    color: #000;
   }
   .R_Score {
     padding-left: 0.5em;

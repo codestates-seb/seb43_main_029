@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
+import styled from 'styled-components';
 
 /** 메인 페이지_메뉴 추천 컴포넌트 */
 const M_FoodRecommend = () => {
@@ -38,18 +39,8 @@ const M_FoodRecommend = () => {
         }}
         className="mySwiper"
       >
-        <SwiperSlide className="swiper-slide">
-          <img
-            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            alt=""
-          />
-        </SwiperSlide>
+        <SwiperSlide> Slide 1</SwiperSlide>
+        <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
         <SwiperSlide>Slide 5</SwiperSlide>
@@ -58,8 +49,23 @@ const M_FoodRecommend = () => {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
+      <div>오늘 뭐먹지??</div>
+      <Button>Click!</Button>
     </M_RootContainer>
   );
 };
 
 export default M_FoodRecommend;
+
+//style
+const Button = styled.button`
+  background-color: blue;
+  color: #fff;
+
+  font-size: 1.5rem;
+
+  border: none;
+  border-radius: 5px;
+
+  cursor: pointer;
+`;

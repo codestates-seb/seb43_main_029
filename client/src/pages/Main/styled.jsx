@@ -86,3 +86,120 @@ export const M_BigRestaurant_ImgBox = styled.div`
   align-items: end;
   justify-content: end;
 `;
+
+/**  타이틀 박스 */
+export const TitleBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  padding-left: 10%;
+
+  .Title_Tag {
+    font-size: 1.5rem;
+    padding-bottom: 0.2rem;
+    color: #6b7280;
+  }
+  .Title_Desc_First {
+    font-size: 3rem;
+    padding-bottom: 0.2rem;
+  }
+  .Title_Desc_Second {
+    font-size: 3.5rem;
+  }
+  .point {
+    color: #3b82f6;
+  }
+`;
+
+/** 큰 식당의 정보(이름, 별점, 즐겨찾기, 주소)를 담은 컴포넌트 */
+export const BigRestaurantInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  .BigRestaurant_Name {
+    font-weight: 700;
+    font-size: 2.2rem;
+    padding-bottom: 0.2rem;
+  }
+  .BigRestaurant_Score {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ec4899;
+    padding-bottom: 0.5rem;
+  }
+  .BigRestaurant_Bookmark {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #6366f1;
+    padding-bottom: 0.5rem;
+  }
+  .BigRestaurant_Address {
+    color: #6b7280;
+  }
+`;
+
+/** 식당 컴포넌트 */
+export const RestaurantBox = styled.section`
+  width: 100%;
+  height: 250px;
+
+  display: flex;
+  flex-direction: column;
+
+  //식당 이미지
+  .Restaurant_Image {
+    height: 200px;
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      // 이미지가 뭉개지는 것을 방지
+      object-fit: cover;
+
+      transition: transform 0.5s;
+      cursor: pointer;
+      :hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .Restaurant_Info {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    align-items: end;
+  }
+  .Restaurant_NameAndScore {
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-bottom: 0.2em;
+  }
+  .Restaurant_Name {
+    color: #000;
+  }
+  .Restaurant_Score {
+    padding-left: 0.5em;
+    color: #ec4899;
+  }
+  .Restaurant_Bookmark {
+    padding-left: 0.5em;
+    color: #6366f1;
+  }
+  .Restaurant_Address {
+    font-size: 0.8em;
+    color: #6b7280;
+    padding-left: 0.2em;
+  }
+`;
+
+/** 식당 컴포넌트를 map 돌리는 컴포넌트 */
+export const RestaurantsBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 15px;
+  width: 100%;
+`;
