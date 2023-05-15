@@ -33,23 +33,6 @@ public class BookmarkController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
-//    @GetMapping("/members/{member-id}/bookmark")
-//    public ResponseEntity<List<BookmarkDto.BookmarkResponseDto>> getBookmarkList(
-//                                                        @PathVariable("member-id") @Positive long memberId) {
-//        List<BookmarkDto.BookmarkResponseDto> bookmarkDtoList = bookmarkService.getBookmarkList(memberId);
-//        return ResponseEntity.ok(bookmarkDtoList);
-//    }
-
-//    @GetMapping("/members/{member-id}/bookmark")
-//    public ResponseEntity getBookmarkList(@PathVariable("member-id") @Positive long memberId,
-//                                          @PageableDefault(page = 1, size = 15) Pageable pageable) {
-//        Page<Bookmark> bookmarkPage = bookmarkService.getBookmarkList(pageable, memberId);
-//        List<Bookmark> bookmarkList = bookmarkPage.getContent();
-//
-//        return new ResponseEntity<>(
-//                new MultiResponseDto<>(mapper.bookmarkListToDtoList(bookmarkList),bookmarkPage), HttpStatus.OK
-//        );
-//    }
     @GetMapping("/members/{member-id}/bookmark")
     public ResponseEntity getBookmarkList(@PathVariable("member-id") @Positive long memberId,
                                           @PageableDefault(page = 1, size = 15) Pageable pageable) {

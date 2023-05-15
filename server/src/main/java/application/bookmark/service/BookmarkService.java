@@ -2,17 +2,14 @@ package application.bookmark.service;
 
 import application.bookmark.dto.BookmarkDto;
 import application.bookmark.entity.Bookmark;
-import application.bookmark.mapper.BookmarkMapper;
 import application.bookmark.repository.BookmarkRepository;
 import application.exception.BusinessLogicException;
 import application.exception.ExceptionCode;
 import application.image.repository.ImageFileRepository;
 import application.member.entity.Member;
 import application.member.repository.MemberRepository;
-import application.member.service.MemberService;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.repository.RestaurantRepository;
-import application.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -61,12 +58,6 @@ public class BookmarkService {
             });
         }
     }
-
-//    public List<BookmarkDto.BookmarkResponseDto> getBookmarkList(long memberId) {
-//        Member member = memberService.findVerifiedMember(memberId);
-//        List<Bookmark> bookmarkList = bookmarkRepository.findByMemberId(member.getMemberId());
-//        return mapper.bookmarkListToDtoList(bookmarkList);
-//    }
 
     public Page<Bookmark> getBookmarkList(Pageable pageable, long memberId) {
         Pageable pageRequest = PageRequest.of(pageable.getPageNumber() - 1,

@@ -13,7 +13,8 @@ public enum ExceptionCode {
     RESTAURANT_NOT_FOUND(404, "Restaurant not found"),
     IMAGE_NOT_FOUND(404, "Image not found"),
     NO_PERMISSION_EDITING_POST(403,"작성자만 수정할 수 있습니다."),
-    NO_PERMISSION_DELETING_POST(403,"작성자만 삭제할 수 있습니다.");
+    NO_PERMISSION_DELETING_POST(403,"작성자만 삭제할 수 있습니다."),
+    INVALID_SEARCH_CONDITION(400, "검색은 두글자 이상만 가능합니다.");
     @Getter
     private int status;
 

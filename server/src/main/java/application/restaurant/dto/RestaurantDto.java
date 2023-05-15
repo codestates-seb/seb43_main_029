@@ -65,4 +65,18 @@ public class RestaurantDto {
         private String createdAt;
         private String modifiedAt;
     }
+
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Builder
+    @Getter
+    @Setter
+    public static class RestaurantSearchResponseDto {
+        private long restaurantId;
+        private String name;
+        private String location;
+        private double score;
+        private int bookmark;
+        private String url;
+    }
 }

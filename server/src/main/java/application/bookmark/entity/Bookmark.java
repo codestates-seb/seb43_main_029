@@ -4,7 +4,6 @@ import application.audit.Auditable2;
 import application.member.entity.Member;
 import application.restaurant.entity.Restaurant;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
