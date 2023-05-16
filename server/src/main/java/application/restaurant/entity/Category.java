@@ -1,5 +1,6 @@
 package application.restaurant.entity;
 
+import application.image.entity.Image;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,12 +19,13 @@ public class Category {
     private Long categoryId;
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private String url;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
     @OneToMany(mappedBy = "category")
     private List<Restaurant> restaurantList = new ArrayList<>();
-    public Category(String name, String url) {
+    public Category(String name, Image image) {
         this.name = name;
-        this.url = url;
+        this.image = image;
     }
 }

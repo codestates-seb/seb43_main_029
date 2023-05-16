@@ -73,6 +73,7 @@ public class RestaurantService {
         saveRestaurant.setRestaurantImageList(restaurantImageList);
         return saveRestaurant;
     }
+
     //식당 정보 수정 (텍스트만)
     public Restaurant updateRestaurant(Restaurant restaurant, long categoryId) {
         Restaurant findRestaurant = findVerifiedRestaurant(restaurant.getRestaurantId());

@@ -26,4 +26,8 @@ public class Image extends Auditable {
     private long imageSize;          // 이미지 파일 크기
     @OneToMany(mappedBy = "image")
     private List<RestaurantImage> restaurantImages = new ArrayList<>();
+    public Image(String imageName, String url) {
+        this.imageName = imageName;
+        this.url = url;
+    }
 }
