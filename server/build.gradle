@@ -37,6 +37,11 @@ dependencies {
 
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.projectlombok:lombok'
+	implementation 'com.h2database:h2:1.4.197'
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
 }
 
 tasks.named('test') {
