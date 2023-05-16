@@ -2,30 +2,19 @@ import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { ReviewComponent } from '../../components/Review';
+import RestaurantsComponent from '../myPage/RestaurantsComponent.jsx';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 
-function MyReivew() {
+function MyRestaurant() {
   const { id } = useParams();
-  const [reviews, setReviews] = useState([]);
-  const recentReview = reviews.slice(-9);
+  const [restaurants, setRestaurant] = useState([]);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
 
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-  //     setReviews(res.data.reviews);
-  //   });
-  // }, [id]);
-
-  const reviewApi = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`);
-    setReviews(response.data.reviews);
-    console.log(response.data.reviews);
-  };
-
   useEffect(() => {
-    reviewApi();
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
+      setRestaurant(res.data.restaurantList);
+    });
   }, []);
 
   const handleHorizantalScroll = (element, speed, distance, step) => {
@@ -45,12 +34,12 @@ function MyReivew() {
   };
 
   return (
-    <MyReivewBlock>
-      <h3>작성한 리뷰 목록</h3>
+    <MyRestaurantBlock>
+      <h3>나의 식당</h3>
       <CarouselBlock>
         <ButtonContainer>
           <button
-            className="Left btn"
+            className="Left"
             onClick={() => {
               handleHorizantalScroll(elementRef.current, 10, 200, -10);
             }}
@@ -59,7 +48,7 @@ function MyReivew() {
             <TiChevronLeft className="icon" />
           </button>
           <button
-            className="Right btn"
+            className="Right"
             onClick={() => {
               handleHorizantalScroll(elementRef.current, 10, 200, 10);
             }}
@@ -67,23 +56,22 @@ function MyReivew() {
             <TiChevronRight className="icon" />
           </button>
         </ButtonContainer>
-        <ReivewsList ref={elementRef}>
-          <Reviews>
-            {reviews ? (
-              recentReview.map((review, idx) => {
-                return <ReviewComponent key={idx} idx={idx} review={review} />;
+        <RestaurantList ref={elementRef}>
+          <Restaurants>
+            {restaurants ? (
+              restaurants.map((restaurant, idx) => {
+                return <RestaurantsComponent key={idx} restaurant={restaurant} idx={idx} />;
               })
             ) : (
-              <p>작성하신 리뷰가 없습니다.</p>
+              <p>추가하신 즐겨찾기가 없습니다.</p>
             )}
-          </Reviews>
-        </ReivewsList>
+          </Restaurants>
+        </RestaurantList>
       </CarouselBlock>
-    </MyReivewBlock>
+    </MyRestaurantBlock>
   );
 }
-
-const MyReivewBlock = styled.section`
+const MyRestaurantBlock = styled.section`
   display: flex;
   flex-direction: column;
   h3 {
@@ -97,7 +85,7 @@ const MyReivewBlock = styled.section`
 const CarouselBlock = styled.div`
   position: relative;
   &:hover {
-    .btn {
+    button {
       background: #fff;
       color: #4a4a4a;
       box-shadow: 0px 0px 10px #d9d9d9;
@@ -127,9 +115,11 @@ const ButtonContainer = styled.div`
     font-size: 1.125rem;
   }
 `;
-const ReivewsList = styled.div`
+const RestaurantList = styled.div`
   margin-top: 2rem;
   overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   touch-action: pan-x;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -137,8 +127,8 @@ const ReivewsList = styled.div`
     display: none;
   }
 `;
-const Reviews = styled.ul`
+const Restaurants = styled.ul`
   white-space: nowrap;
 `;
 
-export default MyReivew;
+export default MyRestaurant;

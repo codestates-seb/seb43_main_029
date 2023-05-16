@@ -1,7 +1,19 @@
 import styled from 'styled-components';
 import { TiThumbsUp } from 'react-icons/ti';
+import { MdOutlineInsertPhoto } from 'react-icons/md';
+import Modal from './Modal';
+import { useState } from 'react';
 
 export const ReviewComponent = ({ idx, review }) => {
+  const [isModal, setIsModal] = useState(false);
+
+  function openModal() {
+    setIsModal(true);
+  }
+  function closeModal() {
+    setIsModal(false);
+  }
+
   return (
     <Review key={idx}>
       <div className="padding">
@@ -16,12 +28,14 @@ export const ReviewComponent = ({ idx, review }) => {
         </ReviewContent>
         <ReviewDate>
           <ReviewThumbsUp>
-            <TiThumbsUp className="thumbsUp" />
+            <TiThumbsUp className="icon" />
             {review.voteCount}
           </ReviewThumbsUp>
+          <MdOutlineInsertPhoto className="icon" onClick={openModal} />
           <p>작성날짜</p>
         </ReviewDate>
       </div>
+      <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
     </Review>
   );
 };
@@ -73,11 +87,11 @@ const ReviewDate = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 11px 0;
-`;
-const ReviewThumbsUp = styled.p`
-  .thumbsUp {
+  .icon {
     font-size: 1.125rem;
   }
+`;
+const ReviewThumbsUp = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;

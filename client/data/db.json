@@ -3,10 +3,10 @@
     {
       "id": 1,
       "memberId": 1,
-      "url": "http://imageurl.png",
+      "url": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "email": "user@gmail.com",
       "nickname": "사용자닉네임",
-      "role": "USER",
+      "role": ["USER"],
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20",
@@ -19,10 +19,7 @@
           "content": "맛있어요",
           "score": 4,
           "voteCount": 11,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -34,10 +31,7 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -50,8 +44,10 @@
           "score": 4,
           "voteCount": 11,
           "images": [
-            "url1",
-            "url2"
+            "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           ],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
@@ -64,10 +60,7 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -79,10 +72,7 @@
           "content": "재방문했는데 역시 최곱니다",
           "score": 4,
           "voteCount": 11,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         }
@@ -108,43 +98,47 @@
           "score": 3,
           "reviewCount": 4
         }
-      ],
-      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png"
+      ]
     },
     {
       "id": 2,
       "memberId": 2,
       "email": "owner@gmail.com",
+      "url": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "nickname": "점주",
-      "phone": "010-1111-2222",
-      "role": "OWNER",
-      "profileUrl": "http://localhost:3000/static/media/profile2.216d506732769fab9e0a.png",
+      "role": ["OWNER"],
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20",
-      "restaurantId": 1,
-      "restaurantName": "김밥천국",
-      "category": "치킨",
-      "menu": "후라이드, 양념",
-      "businessDay": "일요일제외",
-      "restDay": "일요일",
-      "imageList": [
+      "restaurantList": [
         {
-          "imageId": 1,
-          "imageName": "이미지파일객체1.jpg",
-          "url": "restaurant-images/랜덤한이미지이름1.jpg",
-          "imageSize": 81749,
-          "createdAt": "2023-05-08 15:42:36",
-          "modifiedAt": "2023-05-08 15:42:36"
-        },
-        {
-          "imageId": 2,
-          "imageName": "이미지파일객체2.jpg",
-          "url": "restaurant-images/랜덤한이미지이름2.jpg",
-          "imageSize": 43203,
-          "createdAt": "2023-05-08 15:42:36",
-          "modifiedAt": "2023-05-08 15:42:36"
+          "restaurantId": 1,
+          "memberId": 2,
+          "name": "김밥천국",
+          "phone": "010-1111-1111",
+          "address": "서울 동작구",
+          "menuList": [
+            {
+              "menuId": 1,
+              "name": "김밥",
+              "price": 1000
+            },
+            {
+              "menuId": 2,
+              "name": "김치김밥",
+              "price": 2000
+            }
+          ],
+          "restDay": "일요일",
+          "businessDay": "월요일",
+          "score": 4.5,
+          "bookmark": 0,
+          "imageList": [
+            "https://images.unsplash.com/photo-1608731002187-d3448d224d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          ],
+          "createdAt": "2023-05-12 10:50:29",
+          "modifiedAt": "2023-05-12 10:50:29"
         }
       ]
     },
@@ -177,12 +171,12 @@
     },
     {
       "id": 4,
-      "memberId": 3,
+      "memberId": 4,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
@@ -191,12 +185,12 @@
     },
     {
       "id": 5,
-      "memberId": 3,
+      "memberId": 5,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
@@ -205,12 +199,12 @@
     },
     {
       "id": 6,
-      "memberId": 3,
+      "memberId": 6,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
@@ -219,12 +213,12 @@
     },
     {
       "id": 7,
-      "memberId": 3,
+      "memberId": 7,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
@@ -233,12 +227,12 @@
     },
     {
       "id": 8,
-      "memberId": 3,
+      "memberId": 8,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
@@ -247,12 +241,12 @@
     },
     {
       "id": 9,
-      "memberId": 3,
+      "memberId": 9,
       "email": "aaa@gmail.com",
       "password": "00000000",
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
-      "role": "NORMAL",
+      "role": ["USER"],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
