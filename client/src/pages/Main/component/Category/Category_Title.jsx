@@ -1,11 +1,12 @@
 //내부 import
-import { SERVER_URL } from '../config';
-import { TitleBox } from '../styled';
+import { SERVER_URL } from '../../config';
+import { TitleBox } from '../../styled';
 
 //외부 import
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+/** 랜덤 카테고리 타이틀 */
 const Category_Title = () => {
   const [isCategoy, setIsCategory] = useState([]);
 
@@ -14,6 +15,7 @@ const Category_Title = () => {
       try {
         const response = await axios.get(`${SERVER_URL}/restaurants`);
         const { data } = response;
+        //랜덤 카테고리를 가져옴
         const randomIndex = Math.floor(Math.random() * data.length);
         const randomCategory = data[randomIndex].category;
         setIsCategory(randomCategory);

@@ -5,7 +5,7 @@ import { RestaurantBox } from '../../styled';
 import { FaHeart, FaStar } from 'react-icons/fa';
 
 /** 즐겨찾기 식당 개별 컴포넌트 */
-const Bookmark_Restaurant = props => {
+const Category_Restaurant = props => {
   return (
     <RestaurantBox>
       <div className="Restaurant_Image">
@@ -31,4 +31,4 @@ const Bookmark_Restaurant = props => {
   );
 };
 
-export default Bookmark_Restaurant;
+export default Category_Restaurant;

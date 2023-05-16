@@ -123,14 +123,13 @@ export const BigRestaurantInfo = styled.div`
     padding-bottom: 0.2rem;
   }
   .BigRestaurant_Score {
-    font-weight: 700;
-    font-size: 1.2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
     color: #ec4899;
-    padding-bottom: 0.5rem;
   }
   .BigRestaurant_Bookmark {
-    font-weight: 700;
-    font-size: 1.2rem;
+    font-weight: 500;
+    font-size: 1.1rem;
     color: #6366f1;
     padding-bottom: 0.5rem;
   }
@@ -173,21 +172,34 @@ export const RestaurantBox = styled.section`
     padding: 0.5em;
     align-items: end;
   }
-  .Restaurant_NameAndScore {
+  /* .Restaurant_NameAndScore {
     font-weight: 700;
     font-size: 1.2em;
     margin-bottom: 0.2em;
-  }
+  } */
   .Restaurant_Name {
     color: #000;
+    font-weight: 600;
+    font-size: 1.2em;
+    padding-bottom: 0.2em;
   }
   .Restaurant_Score {
-    padding-left: 0.5em;
     color: #ec4899;
+    font-weight: 500;
+    padding-left: 0.5em;
+    .icons {
+      font-size: 0.8em;
+      padding-right: 0.2em;
+    }
   }
   .Restaurant_Bookmark {
-    padding-left: 0.5em;
     color: #6366f1;
+    font-weight: 500;
+    padding-left: 0.5em;
+    .icons {
+      font-size: 0.8em;
+      padding-right: 0.2em;
+    }
   }
   .Restaurant_Address {
     font-size: 0.8em;

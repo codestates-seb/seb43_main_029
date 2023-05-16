@@ -1,6 +1,7 @@
 //내부 import
 import { TitleBox } from '../../styled';
 
+/** 즐겨찾기 타이틀을 담은 컴포넌트 */
 const Bookmark_Title = () => {
   return (
     <TitleBox>

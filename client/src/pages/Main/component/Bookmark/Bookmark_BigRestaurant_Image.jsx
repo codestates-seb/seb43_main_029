@@ -13,6 +13,7 @@ const Bookmark_BigRestaurant_Image = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
+    //날라오는 애니메이션 효과
     AOS.init();
 
     const fetchRestaurants = async () => {
@@ -27,6 +28,7 @@ const Bookmark_BigRestaurant_Image = () => {
     fetchRestaurants();
   }, []);
 
+  //즐겨찾기가 가장 높은 식당 필터링
   const findHighestBookmark = () => {
     if (restaurants.length === 0) return null;
 
@@ -37,6 +39,7 @@ const Bookmark_BigRestaurant_Image = () => {
     return highestBookmarkRestaurant;
   };
 
+  //즐겨찾기가 가장 높은 식당
   const highestBookmarkRestaurant = findHighestBookmark();
 
   return (
