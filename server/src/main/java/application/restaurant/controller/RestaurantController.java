@@ -45,7 +45,7 @@ public class RestaurantController {
     }
 
     @PatchMapping("/{restaurant-id}") //식당 수정
-    public ResponseEntity pacthRestaurant(@PathVariable("restaurant-id") @Positive long restaurantId,
+    public ResponseEntity patchRestaurant(@PathVariable("restaurant-id") @Positive long restaurantId,
                                           @RequestPart RestaurantDto.RestaurantPatchDto restaurantPatchDto,
                                           @RequestPart(required = false) List<MultipartFile> multipartFile,
                                           @RequestParam(required = false) List<Long> deleteImageList,
@@ -53,7 +53,8 @@ public class RestaurantController {
                                           @RequestPart(required = false) List<MenuDto.MenuPostDto> newMenuList) {
         Restaurant restaurant = mapper.restaurantPatchDtoToRestaurant(restaurantPatchDto);
         restaurant.setRestaurantId(restaurantId);
-        Restaurant updateRestaurant = restaurantService.updateRestaurant(restaurant);
+        long categoryId = restaurantPatchDto.getCategoryId();
+        Restaurant updateRestaurant = restaurantService.updateRestaurant(restaurant, categoryId);
         if(deleteImageList != null){
             updateRestaurant = restaurantService.deleteRestaurantImages(updateRestaurant, deleteImageList);
         }

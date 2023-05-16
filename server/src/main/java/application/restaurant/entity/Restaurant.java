@@ -22,6 +22,9 @@ public class Restaurant extends Auditable {
     @ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)

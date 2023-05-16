@@ -17,6 +17,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Long>{
             "LEFT JOIN r.menuList m " +
             "WHERE r.name LIKE %:keyword% " +
             "OR r.address LIKE %:keyword% " +
-            "OR m.name LIKE %:keyword%")
+            "OR m.name LIKE %:keyword% " +
+            "OR EXISTS (SELECT 1 FROM Category c JOIN c.restaurantList cr WHERE cr = r AND c.name LIKE %:keyword%)")
     Page<Restaurant> searchByKeyword(String keyword, Pageable pageable);
 }

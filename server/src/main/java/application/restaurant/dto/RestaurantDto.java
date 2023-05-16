@@ -17,6 +17,8 @@ public class RestaurantDto {
         private String name;
         @NotBlank(message = "전화번호를 작성해야 합니다.")
         private String phone;
+        @NotNull(message = "카테고리를 선택해야 합니다.")
+        private long categoryId;
         @NotBlank(message = "주소를 작성해야 합니다.")
         private String address;
         @NotNull(message = "메뉴를 작성해야 합니다.")
@@ -36,6 +38,8 @@ public class RestaurantDto {
         private String name;
         @NotBlank(message = "전화번호를 작성해야 합니다.")
         private String phone;
+        @NotBlank(message = "카테고리를 선택해야 합니다.")
+        private long categoryId;
         @NotBlank(message = "주소를 작성해야 합니다.")
         private String address;
         @NotNull(message = "메뉴를 작성해야 합니다.")
@@ -52,7 +56,7 @@ public class RestaurantDto {
     @Setter
     public static class RestaurantResponseDto {
         private long restaurantId;
-        private long memberId;
+        private String categoryName;
         private String name;
         private String phone;
         private String address;
@@ -75,6 +79,7 @@ public class RestaurantDto {
         private long restaurantId;
         private String name;
         private String location;
+        private String categoryName;
         private double score;
         private int bookmark;
         private String url;
