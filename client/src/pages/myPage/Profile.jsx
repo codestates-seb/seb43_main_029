@@ -1,18 +1,18 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
-import Modal from './Modal.jsx';
+// import Modal from './Modal.jsx';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 function Profile({ userInfo }) {
   const { id } = useParams();
-  const { nickname, profileUrl, createdAt } = userInfo;
+  const { nickname, url, createdAt } = userInfo;
   const inputEl = useRef(null);
   const [name, setName] = useState(nickname);
   const [isEdit, setIsEdit] = useState(false);
-  const [isModal, setIsModal] = useState(false);
-  const [img, setImg] = useState(profileUrl);
+  const [img, setImg] = useState(url);
+  const upload = useRef();
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -25,32 +25,40 @@ function Profile({ userInfo }) {
 
   function nameChange(e) {
     setName(e.target.value);
-    const editName = {
-      nickname: `${e.target.value}`,
-    };
-    axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}`, editName);
   }
   function enterPress(e) {
     if (e.key === 'Enter') {
       setIsEdit(!isEdit);
+      const editName = {
+        nickname: `${name}`,
+      };
+      axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}/nickname`, editName);
     }
   }
-  function openModal() {
-    setIsModal(true);
-  }
-  function closeModal() {
-    setIsModal(false);
+
+  function imgChange() {
+    console.log(upload.current.files[0]);
+    setImg(URL.createObjectURL(upload.current.files[0]));
+    console.log(img);
   }
 
   useEffect(() => {
-    setImg(profileUrl);
+    setImg(url);
     setName(nickname);
-  }, [profileUrl, nickname]);
+  }, [url, nickname]);
 
   return (
     <>
       <ProfileBlock>
-        <UserImg background={img} onClick={openModal} />
+        <UserImg background={img} htmlFor="file" />
+        <input
+          id="file"
+          type="file"
+          ref={upload}
+          onChange={imgChange}
+          accept={'image/*'}
+          className="hidden"
+        />
         <div>
           <UserName>
             {!isEdit ? (
@@ -69,7 +77,6 @@ function Profile({ userInfo }) {
           <p>{String(createdAt).slice(0, 10)}</p>
         </div>
       </ProfileBlock>
-      <Modal isOpen={isModal} closeModal={closeModal} setImg={setImg} userInfo={userInfo} />
     </>
   );
 }
@@ -80,9 +87,12 @@ const ProfileBlock = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  .hidden {
+    display: none;
+  }
 `;
 
-const UserImg = styled.div`
+const UserImg = styled.label`
   width: 128px;
   height: 128px;
   border-radius: 50%;
