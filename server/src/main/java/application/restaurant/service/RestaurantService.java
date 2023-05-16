@@ -11,10 +11,12 @@ import application.member.entity.Member;
 import application.member.repository.MemberRepository;
 import application.restaurant.dto.MenuDto;
 import application.restaurant.dto.RestaurantDto;
+import application.restaurant.entity.Category;
 import application.restaurant.entity.Menu;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.entity.RestaurantImage;
 import application.restaurant.mapper.MenuMapper;
+import application.restaurant.repository.CategoryRepository;
 import application.restaurant.repository.MenuRepository;
 import application.restaurant.repository.RestaurantImageRepository;
 import application.restaurant.repository.RestaurantRepository;
@@ -35,6 +37,7 @@ public class RestaurantService {
     private final MemberRepository memberRepository;
     private final RestaurantImageRepository restaurantImageRepository;
     private final MenuRepository menuRepository;
+    private final CategoryRepository categoryRepository;
     private final ImageMapper imageMapper;
     private final MenuMapper menuMapper;
     private final AwsS3Service awsS3Service;
@@ -43,6 +46,14 @@ public class RestaurantService {
     //식당 생성하기
     public Restaurant createRestaurant(Restaurant restaurant, List<ImageDto.ImageRequestDto> imageRequestDtoList) {
         Restaurant saveRestaurant = restaurantRepository.save(restaurant);
+        // 카테고리 저장
+        Optional<Category> optionalCategory = categoryRepository.findById(restaurant.getCategory().getCategoryId());
+        if (optionalCategory.isEmpty()) {
+            throw new BusinessLogicException(ExceptionCode.CATEGORY_NOT_FOUND);
+        }
+        Category category = optionalCategory.get();
+
+        restaurant.setCategory(category);
         //메뉴 저장
         List<Menu> menuList = restaurant.getMenuList();
         for (Menu menu : menuList) {
@@ -63,8 +74,18 @@ public class RestaurantService {
         return saveRestaurant;
     }
     //식당 정보 수정 (텍스트만)
-    public Restaurant updateRestaurant(Restaurant restaurant) {
+    public Restaurant updateRestaurant(Restaurant restaurant, long categoryId) {
         Restaurant findRestaurant = findVerifiedRestaurant(restaurant.getRestaurantId());
+        //카테고리 수정
+        if(categoryId != findRestaurant.getCategory().getCategoryId());{
+            Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+            if (optionalCategory.isEmpty()) {
+                throw new BusinessLogicException(ExceptionCode.CATEGORY_NOT_FOUND);
+            }
+            Category category = optionalCategory.get();
+
+            findRestaurant.setCategory(category);
+        }
 
         Member member = restaurant.getMember();
         Optional<Member> verifiedMember = memberRepository.findById(member.getMemberId());
@@ -217,6 +238,8 @@ public class RestaurantService {
                     .findFirst()
                     .map(restaurantImage -> restaurantImage.getImage().getUrl())
                     .orElse(null));
+            //카테고리 설정
+            restaurantSearchResponseDto.setCategoryName(restaurant.getCategory().getName());
         }
 
         return restaurantSearchResponseDtoList;
