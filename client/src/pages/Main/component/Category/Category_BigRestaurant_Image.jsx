@@ -70,7 +70,6 @@ const BigR_Container = styled.section`
     height: 100%;
     // 이미지가 뭉개지는 것을 방지
     object-fit: cover;
-
     cursor: pointer;
     transition: transform 0.5s;
     :hover {

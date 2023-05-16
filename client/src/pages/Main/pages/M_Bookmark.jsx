@@ -9,10 +9,10 @@ import {
   M_BigRestaurant_InfoBox,
   M_BigRestaurant_ImgBox,
 } from '../styled';
-import Bookmark_Title from '../component/./Bookmark/Bookmark_Title';
-import Bookmark_BigRestaurant_Info from '../component/./Bookmark/Bookmark_BigRestaurant_Info';
-import Bookmark_BigRestaurant_Image from '../component/./Bookmark/Bookmark_BigRestaurant_Image';
-import Bookmark_Restaurants from '../component/./Bookmark/Bookmark_Restaurants';
+import Bookmark_Title from '../component/Bookmark/Bookmark_Title';
+import Bookmark_BigRestaurant_Info from '../component/Bookmark/Bookmark_BigRestaurant_Info';
+import Bookmark_BigRestaurant_Image from '../component/Bookmark/Bookmark_BigRestaurant_Image';
+import Bookmark_Restaurants from '../component/Bookmark/Bookmark_Restaurants';
 
 //외부 import
 import styled from 'styled-components';

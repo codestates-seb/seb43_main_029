@@ -9,6 +9,9 @@ import Registration from './pages/registration/Registration';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+// import { Provider } from 'react-redux';
+// import store from './redux/store.js';
+
 const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
@@ -25,6 +28,7 @@ const GlobalLayout = styled.div`
 function App() {
   return (
     <>
+      {/* <Provider store={store}> */}
       <BrowserRouter>
         <GlobalStyle />
         <GlobalLayout>
@@ -41,6 +45,7 @@ function App() {
           <Footer className="footer" />
         </GlobalLayout>
       </BrowserRouter>
+      {/* </Provider> */}
     </>
   );
 }

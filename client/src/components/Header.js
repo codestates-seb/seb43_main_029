@@ -38,8 +38,8 @@ const HeaderBox = styled.div`
   box-shadow: 0 10px 10px -10px #999;
 
   //헤더 천장에 달라 붙게 - sinyaenok
-  background-color: #fff;
-  position: sticky;
+  /* background-color: #fff; */
+  position: fixed;
 
   top: 0;
   left: 0;

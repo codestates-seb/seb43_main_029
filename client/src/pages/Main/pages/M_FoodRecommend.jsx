@@ -1,8 +1,7 @@
 //내부 import
 import { M_RootContainer } from '../styled';
-
 /** swiper css */
-import './FoodRecommend.css';
+import './M_FoodRecommend.css';
 
 //외부 import
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -49,8 +48,10 @@ const M_FoodRecommend = () => {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
-      <div>오늘 뭐먹지??</div>
-      <Button>Click!</Button>
+      <RecommendBox>
+        <div>오늘 뭐먹지??</div>
+        <Button>Click!</Button>
+      </RecommendBox>
     </M_RootContainer>
   );
 };
@@ -68,4 +69,9 @@ const Button = styled.button`
   border-radius: 5px;
 
   cursor: pointer;
+`;
+
+const RecommendBox = styled.div`
+  position: absolute;
+  z-index: 11;
 `;

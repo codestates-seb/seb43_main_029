@@ -12,7 +12,7 @@ import {
 import Category_Title from '../component/Category/Category_Title';
 import Category_BigRestaurant_Image from '../component/Category/Category_BigRestaurant_Image';
 import Category_BigRestaurant_Info from '../component/Category/Category_BigRestaurant_Info';
-import Category_Restaurants from '../component/../component/Category/Category_Restaurants';
+import Category_Restaurants from '../component/Category/Category_Restaurants';
 
 /** 카테고리 감싸는 역할 */
 const M_Category = () => {
