@@ -3,6 +3,7 @@ import { TiThumbsUp } from 'react-icons/ti';
 import { MdOutlineInsertPhoto } from 'react-icons/md';
 import Modal from './Modal';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const ReviewComponent = ({ idx, review }) => {
   const [isModal, setIsModal] = useState(false);
@@ -18,9 +19,9 @@ export const ReviewComponent = ({ idx, review }) => {
     <Review key={idx}>
       <div className="padding">
         <ReviewTitle className="underLine">
-          <a href="/">
+          <Link to={`/restaurant/${review.restaurantId}`}>
             <MarginP>{review.name}</MarginP>
-          </a>
+          </Link>
           <p>{review.score}</p>
         </ReviewTitle>
         <ReviewContent className="underLine">

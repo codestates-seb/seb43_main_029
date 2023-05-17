@@ -10,6 +10,7 @@ function RestaurantReview({ restaurantId }) {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews`);
     setInitialReviews(response.data);
   };
+
   useEffect(() => {
     restaurantReviewApi();
   }, []);

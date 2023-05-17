@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
-// import Modal from './Modal.jsx';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -11,8 +10,8 @@ function Profile({ userInfo }) {
   const inputEl = useRef(null);
   const [name, setName] = useState(nickname);
   const [isEdit, setIsEdit] = useState(false);
-  const [img, setImg] = useState(url);
-  const upload = useRef();
+  const [image, setImage] = useState(url);
+  const imgRef = useRef();
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -36,28 +35,33 @@ function Profile({ userInfo }) {
     }
   }
 
-  function imgChange() {
-    console.log(upload.current.files[0]);
-    setImg(URL.createObjectURL(upload.current.files[0]));
-    console.log(img);
-  }
-
   useEffect(() => {
-    setImg(url);
+    setImage(url);
     setName(nickname);
   }, [url, nickname]);
+
+  function imgChange(e) {
+    console.log(e.target.files[0]);
+    const file = imgRef.current.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+      console.log(reader.result);
+    };
+  }
 
   return (
     <>
       <ProfileBlock>
-        <UserImg background={img} htmlFor="file" />
+        <UserImg background={image} htmlFor="file" />
         <input
           id="file"
           type="file"
-          ref={upload}
           onChange={imgChange}
           accept={'image/*'}
           className="hidden"
+          ref={imgRef}
         />
         <div>
           <UserName>

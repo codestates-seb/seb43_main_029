@@ -3,7 +3,7 @@
     {
       "id": 1,
       "memberId": 1,
-      "url": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "url": "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png",
       "email": "user@gmail.com",
       "nickname": "사용자닉네임",
       "role": ["USER"],
