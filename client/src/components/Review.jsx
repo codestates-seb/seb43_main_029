@@ -13,7 +13,7 @@ export const ReviewComponent = ({ idx, review }) => {
   function closeModal() {
     setIsModal(false);
   }
-
+  console.log(review.images);
   return (
     <Review key={idx}>
       <div className="padding">
