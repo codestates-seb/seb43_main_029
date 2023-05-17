@@ -36,7 +36,14 @@ const HeaderBox = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 0 10px 10px -10px #999;
-  z-index: 1;
+
+  //헤더 천장에 고정 - sinyaenok
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  //swiper보다 z-index를 높게 줌
+  z-index: 10;
 `;
 
 const ContentBox = styled.div`

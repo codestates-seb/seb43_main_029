@@ -9,6 +9,9 @@ import Registration from './pages/registration/Registration';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import { Provider } from 'react-redux';
+import store from './redux/store.js';
+
 const GlobalStyle = createGlobalStyle`
 ${reset}
 `;
@@ -25,22 +28,24 @@ const GlobalLayout = styled.div`
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <GlobalStyle />
-        <GlobalLayout>
-          <Header />
-          <div className="App">
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/mypage/:id" element={<MyPage />} />
-              <Route path="/search" element={<Search />} />
-              <Route path="/restaurant" element={<Restaurant />} />
-              <Route path="/registration" element={<Registration />} />
-            </Routes>
-          </div>
-          <Footer className="footer" />
-        </GlobalLayout>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <GlobalStyle />
+          <GlobalLayout>
+            <Header />
+            <div className="App">
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/mypage/:id" element={<MyPage />} />
+                <Route path="/search" element={<Search />} />
+                <Route path="/restaurant" element={<Restaurant />} />
+                <Route path="/registration" element={<Registration />} />
+              </Routes>
+            </div>
+            <Footer className="footer" />
+          </GlobalLayout>
+        </BrowserRouter>
+      </Provider>
     </>
   );
 }
