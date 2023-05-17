@@ -1,64 +1,52 @@
 //내부 import
-import { SERVER_URL } from '../../config';
 import { BigRestaurantInfo } from '../../styled';
+import { fetchRestaurants } from '../../../../redux/actions/main/actions';
 
 //외부 import
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { FaHeart, FaStar } from 'react-icons/fa';
 
 /** 즐겨찾기 큰 이미지 식당 정보 */
-const Bookmark_BigRestaurant_Info = () => {
-  const [restaurants, setRestaurants] = useState([]);
-
+const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading, error }) => {
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const data = response.data;
-        setRestaurants(data);
-      } catch (error) {
-        console.error('식당 데이터를 불러올 수 없습니다', error);
-      }
-    };
     fetchRestaurants();
   }, []);
 
-  //가장 높은 즐겨찾기를 가진 식당을 필터링
-  const findHighestBookmark = () => {
-    if (restaurants.length === 0) return null;
-
-    const highestBookmarkRestaurant = restaurants.reduce((prev, current) => {
-      return current.bookmark > prev.bookmark ? current : prev;
-    });
-
-    return highestBookmarkRestaurant;
-  };
-  //가장 높은 즐겨찾기를 가진 식당
-  const highestBookmarkRestaurant = findHighestBookmark();
-
+  if (isLoading) {
+    console.log(isLoading);
+  }
+  if (error) {
+    console.log(error);
+  }
+  console.log(restaurants);
   return (
     <>
-      {highestBookmarkRestaurant && (
+      {restaurants && (
         <Bookmark_BigRestaurantInfo>
-          <span className="BigRestaurant_Name">{highestBookmarkRestaurant.name}</span>
+          <span className="BigRestaurant_Name">{restaurants.name}</span>
           <div>
             <span className="BigRestaurant_Score">
-              예상 <FaStar className="icons" /> {highestBookmarkRestaurant.score}
+              예상 <FaStar className="icons" /> {restaurants.score}
             </span>
             <span className="BigRestaurant_Bookmark">
-              <FaHeart className="icons" /> {highestBookmarkRestaurant.bookmark}
+              <FaHeart className="icons" /> {restaurants.bookmark}
             </span>
           </div>
-          <span className="BigRestaurant_Address">{highestBookmarkRestaurant.address}</span>
+          <span className="BigRestaurant_Address">{restaurants.address}</span>
         </Bookmark_BigRestaurantInfo>
       )}
     </>
   );
 };
 
-export default Bookmark_BigRestaurant_Info;
+const mapStateToProps = state => ({
+  restaurants: state.restaurants,
+  isLoading: state.isLoading,
+  error: state.error,
+});
+export default connect(mapStateToProps, { fetchRestaurants })(Bookmark_BigRestaurant_Info);
 
 //style
 const Bookmark_BigRestaurantInfo = styled(BigRestaurantInfo)`

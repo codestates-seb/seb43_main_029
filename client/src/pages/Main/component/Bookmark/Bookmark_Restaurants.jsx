@@ -2,7 +2,6 @@
 import Bookmark_Restaurant from './Bookmark_Restaurant';
 import { RestaurantsBox } from '../../styled';
 import { SERVER_URL } from '../../config';
-
 //외부 import
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -24,14 +23,14 @@ const Bookmark_Restaurants = () => {
     fetchRestaurants();
   }, []);
 
-  // 즐겨찾기 내림차순으로 정렬
+  //즐겨찾기 내림차순으로 정렬
   const sortedRestaurants = restaurants.sort((a, b) => b.bookmark - a.bookmark);
-  // 가장 즐겨찾기가 많은 식당을 제거, 1번쨰 인덱스부터 5번째 인덱스 앞까지의 식당들을 담음
+  //가장 즐겨찾기가 많은 식당을 제거, 1번쨰 인덱스부터 5번째 인덱스 앞까지의 식당들을 담음
   const newRestaurants = sortedRestaurants.slice(1, 5);
 
   return (
     <RestaurantsBox>
-      {newRestaurants.map(newRestaurant => (
+      {newRestaurants?.map(newRestaurant => (
         <Bookmark_Restaurant
           key={newRestaurant.restaurantId}
           name={newRestaurant.name}

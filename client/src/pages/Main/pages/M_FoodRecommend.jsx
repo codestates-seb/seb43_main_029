@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
 /** 메인 페이지_메뉴 추천 컴포넌트 */
 const M_FoodRecommend = () => {
@@ -48,10 +48,10 @@ const M_FoodRecommend = () => {
         <SwiperSlide>Slide 8</SwiperSlide>
         <SwiperSlide>Slide 9</SwiperSlide>
       </Swiper>
-      <RecommendBox>
+      {/* <RecommendBox>
         <div>오늘 뭐먹지??</div>
         <Button>Click!</Button>
-      </RecommendBox>
+      </RecommendBox> */}
     </M_RootContainer>
   );
 };
@@ -59,19 +59,19 @@ const M_FoodRecommend = () => {
 export default M_FoodRecommend;
 
 //style
-const Button = styled.button`
-  background-color: blue;
-  color: #fff;
+// const Button = styled.button`
+//   background-color: blue;
+//   color: #fff;
 
-  font-size: 1.5rem;
+//   font-size: 1.5rem;
 
-  border: none;
-  border-radius: 5px;
+//   border: none;
+//   border-radius: 5px;
 
-  cursor: pointer;
-`;
+//   cursor: pointer;
+// `;
 
-const RecommendBox = styled.div`
-  position: absolute;
-  z-index: 11;
-`;
+// const RecommendBox = styled.div`
+//   position: absolute;
+//   z-index: 11;
+// `;
