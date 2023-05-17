@@ -386,22 +386,57 @@
   ],
   "restaurants": [
     {
+      "id": 1,
       "restaurantId": 1,
-      "name": "김밥천국",
-      "score": 4,
-      "category": "분식",
-      "bookmark": 10,
-      "phone": "010-1111-2222",
-      "address": "서울특별시 서대문구 북아현로 8길 32",
-      "menu": "김밥 2000원 라면 3000원",
-      "restDay": "일요일",
-      "businessDay": "월~토 9:00 ~ 22:00",
-      "images": [
-        "https://images.unsplash.com/photo-1608731002187-d3448d224d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
-        "url2"
+      "categoryName": "한식",
+      "name": "농민백암왕순대",
+      "phone": "02-501-2772",
+      "address": "서울특별시 강남구 역삼로3길 20-4",
+      "menuList": [
+        {
+          "menuId": 1,
+          "name": "국밥",
+          "price": 8000
+        },
+        {
+          "menuId": 2,
+          "name": "라면",
+          "price": 4000
+        },
+        {
+          "menuId": 3,
+          "name": "튀김",
+          "price": 5000
+        }
       ],
-      "createdAt": "2023-05-03 11:24:31",
-      "lastModifiedAt": "2023-05-03 11:24:31"
+      "restDay": "일요일",
+      "businessDay": "일요일제외",
+      "score": 0.0,
+      "bookmark": 0,
+      "imageList": [
+        {
+          "imageId": 1,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/87430/59_1491141169295_9384?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 2,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637197922598.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 3,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637277688728.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 4,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637278769008.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 5,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637279790475.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        }
+      ],
+      "createdAt": "2023-05-11 12:55:27",
+      "modifiedAt": "2023-05-11 12:55:27"
     },
     {
       "restaurantId": 2,

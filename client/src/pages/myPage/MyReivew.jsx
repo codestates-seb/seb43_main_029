@@ -21,7 +21,6 @@ function MyReivew() {
   const reviewApi = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`);
     setReviews(response.data.reviews);
-    console.log(response.data.reviews);
   };
 
   useEffect(() => {
