@@ -1,9 +1,9 @@
 import {
   FETCH_RESTAURANTS_REQUEST,
-  FETCH_HIGHEST_BOOKMARK_RESTAURANTS_SUCCESS,
-  FETCH_NEXT_BOOKMARK_RESTAURANTS_SUCCESS,
   FETCH_RESTAURANTS_FAILURE,
-} from './actions/main/actions';
+  FETCH_HIGHEST_BOOKMARK_RESTAURANT_SUCCESS,
+  FETCH_2TO5_BOOKMARK_RESTAURANTS_SUCCESS,
+} from './actions';
 
 const initialState = {
   restaurants: [],
@@ -19,14 +19,14 @@ const restaurantsReducer = (state = initialState, action) => {
         loading: true,
         error: null,
       };
-    case FETCH_HIGHEST_BOOKMARK_RESTAURANTS_SUCCESS:
+    case FETCH_HIGHEST_BOOKMARK_RESTAURANT_SUCCESS:
       return {
         ...state,
-        loading: false,
         restaurants: action.payload,
+        loading: false,
         error: null,
       };
-    case FETCH_NEXT_BOOKMARK_RESTAURANTS_SUCCESS:
+    case FETCH_2TO5_BOOKMARK_RESTAURANTS_SUCCESS:
       return {
         ...state,
         loading: false,

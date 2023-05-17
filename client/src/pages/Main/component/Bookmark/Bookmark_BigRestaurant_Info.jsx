@@ -1,7 +1,6 @@
 //내부 import
 import { BigRestaurantInfo } from '../../styled';
-import { fetchRestaurants } from '../../../../redux/actions/main/actions';
-
+import { fetchHighestBookmarkRestaurant } from '../../../../redux/main/highestBookmark';
 //외부 import
 import styled from 'styled-components';
 import { useEffect } from 'react';
@@ -9,9 +8,14 @@ import { connect } from 'react-redux';
 import { FaHeart, FaStar } from 'react-icons/fa';
 
 /** 즐겨찾기 큰 이미지 식당 정보 */
-const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading, error }) => {
+const Bookmark_BigRestaurant_Info = ({
+  fetchHighestBookmarkRestaurant,
+  restaurants,
+  isLoading,
+  error,
+}) => {
   useEffect(() => {
-    fetchRestaurants();
+    fetchHighestBookmarkRestaurant();
   }, []);
 
   if (isLoading) {
@@ -20,7 +24,7 @@ const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading,
   if (error) {
     console.log(error);
   }
-  console.log(restaurants);
+
   return (
     <>
       {restaurants && (
@@ -46,7 +50,9 @@ const mapStateToProps = state => ({
   isLoading: state.isLoading,
   error: state.error,
 });
-export default connect(mapStateToProps, { fetchRestaurants })(Bookmark_BigRestaurant_Info);
+export default connect(mapStateToProps, { fetchHighestBookmarkRestaurant })(
+  Bookmark_BigRestaurant_Info
+);
 
 //style
 const Bookmark_BigRestaurantInfo = styled(BigRestaurantInfo)`

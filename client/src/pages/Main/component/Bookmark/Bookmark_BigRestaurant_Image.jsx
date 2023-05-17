@@ -1,65 +1,54 @@
 //내부 import
-import { SERVER_URL } from '../../config';
+import { fetchHighestBookmarkRestaurant } from '../../../../redux/main/highestBookmark';
 
 //외부 import
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // 즐겨찾기 큰 식당 이미지
-const Bookmark_BigRestaurant_Image = () => {
-  const [restaurants, setRestaurants] = useState([]);
-
+const Bookmark_BigRestaurant_Image = ({
+  restaurants,
+  isLoading,
+  error,
+  fetchHighestBookmarkRestaurant,
+}) => {
   useEffect(() => {
-    //날라오는 애니메이션 효과
     AOS.init();
-
-    const fetchRestaurants = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const data = response.data;
-        setRestaurants(data);
-      } catch (error) {
-        console.error('식당 데이터를 불러올 수 없습니다', error);
-      }
-    };
-    fetchRestaurants();
+    fetchHighestBookmarkRestaurant();
   }, []);
 
-  //즐겨찾기가 가장 높은 식당 필터링
-  const findHighestBookmark = () => {
-    if (restaurants.length === 0) return null;
-
-    const highestBookmarkRestaurant = restaurants.reduce((prev, current) => {
-      return current.bookmark > prev.bookmark ? current : prev;
-    });
-
-    return highestBookmarkRestaurant;
-  };
-
-  //즐겨찾기가 가장 높은 식당
-  const highestBookmarkRestaurant = findHighestBookmark();
+  if (isLoading) {
+    console.log(isLoading);
+  }
+  if (error) {
+    console.log(error);
+  }
 
   return (
     <>
-      {highestBookmarkRestaurant && (
-        <BigR_Container
-          key={highestBookmarkRestaurant.restaurantId}
-          data-aos="fade-right"
-          data-aos-offset="500"
-          data-aos-duration="1000"
-          data-aos-once="true"
-        >
-          <img src={highestBookmarkRestaurant.images} alt={highestBookmarkRestaurant.name} />
-        </BigR_Container>
-      )}
+      <BigR_Container
+        data-aos="fade-right"
+        data-aos-offset="500"
+        data-aos-duration="1000"
+        data-aos-once="true"
+      >
+        <img src={restaurants.images} alt={restaurants.name} />
+      </BigR_Container>
     </>
   );
 };
+const mapStateToProps = state => ({
+  restaurants: state.restaurants,
+  isLoading: state.isLoading,
+  error: state.error,
+});
 
-export default Bookmark_BigRestaurant_Image;
+export default connect(mapStateToProps, { fetchHighestBookmarkRestaurant })(
+  Bookmark_BigRestaurant_Image
+);
 
 //style
 const BigR_Container = styled.section`
