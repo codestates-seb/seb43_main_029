@@ -39,6 +39,10 @@ public class CustomAuthorityUtils {
         else return USER_ROLES;
     }
 
+    public List<String> createOAuthRoles(){
+        return USER_ROLES_STRING;
+    }
+
     public List<String> createRoles(String email, String companyNumber){
         if (email.equals(adminMailAddress)){
             return ADMIN_ROLES_STRING;

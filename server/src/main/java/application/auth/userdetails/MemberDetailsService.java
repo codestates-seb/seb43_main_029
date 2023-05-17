@@ -32,6 +32,29 @@ public class MemberDetailsService implements UserDetailsService {
         return new MemberDetails(findMember);
     }
 
+    public Member createMember(Member member){
+        verifyExistEmail(member.getEmail());
+
+        return memberRepository.save(member);
+    }
+
+    public void verifyExistEmail(String email){
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+
+        if (optionalMember.isPresent()){
+            throw new BusinessLogicException(ExceptionCode.MEMBER_EXISTS);
+        }
+    }
+
+    public boolean findExistMember(String email){
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+
+        if (optionalMember.isPresent()){
+            return true;
+        }
+        else return false;
+    }
+
     private final class MemberDetails extends Member implements UserDetails{
         MemberDetails(Member member){
             setMemberId(member.getMemberId());
