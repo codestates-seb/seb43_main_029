@@ -1,4 +1,4 @@
-import { SERVER_URL_MEMBERS } from '../config';
+import { SERVER_URL } from '../config';
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -16,7 +16,7 @@ const Reviews = () => {
   const [isReview, setIsReveiw] = useState([]);
 
   useEffect(() => {
-    axios.get(SERVER_URL_MEMBERS).then(res => setIsReveiw(res.data));
+    axios.get(`${SERVER_URL}/members`).then(res => setIsReveiw(res.data));
   }, []);
   return (
     <ReviewsContainer
