@@ -32,6 +32,6 @@ const MapContainer = ({ address }) => {
     });
   }, []);
 
-  return <div id="map" ref={container} style={{ width: '100%', height: '350px', flex: '1' }}></div>;
+  return <div id="map" ref={container} style={{ width: '100%', height: '300px', flex: '1' }}></div>;
 };
 export default MapContainer;

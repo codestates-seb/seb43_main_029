@@ -83,41 +83,42 @@ function Restaurant() {
           <RestaurantInfo>
             <h2 className="visually-hidden">식당정보</h2>
             <RestaurantDesc>
-              <ul>
-                <li>
-                  <p>주소</p>
-                  <p>{address}</p>
-                </li>
-                <li>
-                  <p>연락처</p>
-                  <p>{phone}</p>
-                </li>
-                <li>
-                  <p>영업시간</p>
-                  <p>{businessDay}</p>
-                </li>
-                <li>
-                  <p>휴식시간</p>
-                  <p>{resDay}</p>
-                </li>
-                <li>
-                  <p>메뉴</p>
-                  <ul>
-                    {menuList &&
-                      menuList.map((menu, idx) => {
-                        return (
-                          <li key={idx}>
-                            <p>
-                              {menu.name}
-                              {menu.price}
-                              <span>원</span>
-                            </p>
-                          </li>
-                        );
-                      })}
-                  </ul>
-                </li>
-              </ul>
+              <tbody>
+                <tr>
+                  <th>주소</th>
+                  <td>{address}</td>
+                </tr>
+                <tr>
+                  <th>연락처</th>
+                  <td>{phone}</td>
+                </tr>
+                <tr>
+                  <th>영업시간</th>
+                  <td>{businessDay}</td>
+                </tr>
+                <tr>
+                  <th>휴식시간</th>
+                  <td>{resDay}</td>
+                </tr>
+                <tr>
+                  <th>메뉴</th>
+                  <td>
+                    <ul>
+                      {menuList &&
+                        menuList.map((menu, idx) => {
+                          return (
+                            <li key={idx}>
+                              <p>
+                                <span>{menu.name}</span>
+                                <span>{menu.price}</span>원
+                              </p>
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
             </RestaurantDesc>
             <MapContainer address={address} />
           </RestaurantInfo>
@@ -250,17 +251,47 @@ const RestaurantInfo = styled.section`
   display: flex;
   flex-direction: row;
   gap: 10px;
+  margin: 0 20px;
 `;
-const RestaurantDesc = styled.div`
+const RestaurantDesc = styled.table`
   flex: 1;
-  ul {
+  tbody {
     display: flex;
     flex-direction: column;
+    gap: 1rem;
   }
-  li {
+  tr {
     display: flex;
     flex-direction: row;
     jusify-content: space-between;
+  }
+  th {
+    width: 20%;
+    display: inline-flex;
+    font-size: 1.125rem;
+    color: #2f3134;
+  }
+  td {
+    font-size: 1.125rem;
+    color: #2f3134;
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  p::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: -5px 10px 0;
+    vertical-align: middle;
+    background: #2f3134;
+    border-radius: 50%;
+  }
+  span:first-child {
+    margin-right: 10px;
   }
 `;
 export default Restaurant;
