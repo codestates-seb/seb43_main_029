@@ -108,10 +108,9 @@ public class RestaurantService {
             RestaurantImage restaurantImage = new RestaurantImage();
             restaurantImage.setImage(savedImage);
             restaurantImage.setRestaurant(restaurant);
-            restaurantImageRepository.save(restaurantImage);
-            newRestaurantImageList.add(restaurantImage);
+            newRestaurantImageList.add(restaurantImageRepository.save(restaurantImage));
         }
-
+        restaurantimageList.addAll(newRestaurantImageList);
         restaurant.setRestaurantImageList(restaurantimageList);
         return restaurantRepository.save(restaurant);
     }
@@ -125,15 +124,17 @@ public class RestaurantService {
             for (RestaurantImage restaurantImage : restaurantImageList) {
                 if (restaurantImage.getImage().getImageId() == imageId) {
                     Image image = restaurantImage.getImage();
+                    imageFileRepository.deleteById(image.getImageId());
                     awsS3Service.deleteFile(image.getUrl());
-                    imageFileRepository.delete(image);
+
                     deleteRestaurantImageList.add(restaurantImage);
                     break;
                 }
             }
         }
-
         restaurantImageList.removeAll(deleteRestaurantImageList);
+        restaurant.setRestaurantImageList(restaurantImageList);
+        restaurantImageRepository.deleteAll(deleteRestaurantImageList);
         return restaurantRepository.save(restaurant);
     }
 
@@ -160,12 +161,14 @@ public class RestaurantService {
             for (Menu menu : menuList) {
                 if (menu.getMenuId() == menuId) {
                     deleteMenuObjList.add(menu);
+                    menuRepository.delete(menu);
                     break;
                 }
             }
         }
 
         menuList.removeAll(deleteMenuObjList);
+        restaurant.setMenuList(menuList);
         return restaurantRepository.save(restaurant);
     }
 
