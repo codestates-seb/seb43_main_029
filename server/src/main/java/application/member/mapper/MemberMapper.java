@@ -10,10 +10,13 @@ import org.mapstruct.ReportingPolicy;
 public interface MemberMapper {
     Member memberPostDtoToMember(MemberDto.Post requestBody);
     Member memberPatchNicknameDtoToMember(MemberDto.PatchNickname requestBody);
+    @Mapping(source = "url", target = "image.url")
     Member memberPatchProfileDtoToMember(MemberDto.PatchProfile requestBody);
     @Mapping(source = "image.url", target = "url")
+    @Mapping(source = "member.roles", target = "role")
     MemberDto.Response memberToMemberResponseDto(Member member);
     @Mapping(source = "member.restaurants", target = "restaurantList")
     @Mapping(source = "image.url", target = "url")
+    @Mapping(source = "member.roles", target = "role")
     MemberDto.ResponseOwner memberToMemberResponseOwnerDto(Member member);
 }
