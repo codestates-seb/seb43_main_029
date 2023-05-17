@@ -30,7 +30,7 @@ const MapContainer = ({ address }) => {
         marker.setMap(map);
       }
     });
-  }, []);
+  }, [address]);
 
   return <div id="map" ref={container} style={{ width: '100%', height: '300px', flex: '1' }}></div>;
 };
