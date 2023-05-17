@@ -13,14 +13,19 @@ function Favorites() {
 }
 
 const FavoritesListPageBox = styled.section`
+  margin: 3rem 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  a {
+    color: #2f3134;
+    text-decoration: none;
+  }
 `;
 
 const ContentBox = styled.div`
-  background-color: red;
   min-width: 1200px;
   display: flex;
   flex-direction: column;

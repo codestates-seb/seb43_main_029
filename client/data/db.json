@@ -19,10 +19,7 @@
           "content": "맛있어요",
           "score": 4,
           "voteCount": 11,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -34,10 +31,7 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -49,10 +43,7 @@
           "content": "재방문했는데 역시 최곱니다",
           "score": 4,
           "voteCount": 11,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -64,10 +55,7 @@
           "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
           "score": 3,
           "voteCount": 14,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         },
@@ -79,10 +67,7 @@
           "content": "재방문했는데 역시 최곱니다",
           "score": 4,
           "voteCount": 11,
-          "images": [
-            "url1",
-            "url2"
-          ],
+          "images": ["url1", "url2"],
           "createdAt": "2023-05-03 10:24:31",
           "lastModifiedAt": "2023-05-03 10:29:20"
         }
@@ -107,6 +92,136 @@
           "bookmarkCount": 3,
           "score": 3,
           "reviewCount": 4
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
         }
       ],
       "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png"

@@ -1,28 +1,52 @@
 import styled from 'styled-components';
-// import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { BookmarkComponent } from '../../components/Bookmark';
+import Paging from './Pagination';
+import './PagingStyle.css';
 
 function FavoritesList() {
-  // const [favorites, setFavorites] = useState([]);
+  const { id } = useParams();
+  const [favorites, setFavorites] = useState([]);
+  const [count, setCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemPerPage = 12;
+
+  const [indexOfLastItem, setIndexOfLastItem] = useState(0);
+  const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
+  const [currentItems, setCurrentItems] = useState(0);
+
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
+      setFavorites(res.data.bookmarks);
+    });
+  }, [id]);
+
+  useEffect(() => {
+    setCount(favorites.length);
+    setIndexOfLastItem(currentPage * itemPerPage);
+    setIndexOfFirstItem(indexOfLastItem - itemPerPage);
+    setCurrentItems(favorites.slice(indexOfFirstItem, indexOfLastItem));
+  }, [currentPage, indexOfFirstItem, indexOfLastItem, favorites]);
+
+  const setPage = useCallback(event => {
+    setCurrentPage(event);
+  });
 
   return (
     <FavoritesListBox>
       <FavoritesListContent>
         <FavoritesListElements>
-          <FavoritesListElement>
-            <a href="/">
-              <AddedRestaurantTitle>RRR</AddedRestaurantTitle>
-              <AddedRestaurantImg>
-                <img
-                  src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                  alt="img"
-                />
-              </AddedRestaurantImg>
-              <AddedDate>
-                <div className="inner"></div>
-              </AddedDate>
-            </a>
-          </FavoritesListElement>
+          {currentItems && currentItems.length > 0 ? (
+            currentItems.map((bookmarks, idx) => {
+              return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
+            })
+          ) : (
+            <p>추가하신 즐겨찾기가 없습니다.</p>
+          )}
         </FavoritesListElements>
+        <Paging page={currentPage} count={count} setPage={setPage} itemPerPage={itemPerPage} />
       </FavoritesListContent>
     </FavoritesListBox>
   );
@@ -30,30 +54,13 @@ function FavoritesList() {
 
 const FavoritesListBox = styled.section`
   display: flex;
+  justify-content: center;
 `;
 
 const FavoritesListContent = styled.div`
   width: 1200px;
 `;
 
-const FavoritesListElements = styled.ul`
-  display: flex;
-`;
+const FavoritesListElements = styled.ul``;
 
-const FavoritesListElement = styled.li`
-  flex-basis: 25%;
-  display: flex;
-`;
-
-const AddedRestaurantTitle = styled.h2``;
-
-const AddedRestaurantImg = styled.div`
-  width: 100%;
-
-  img {
-    width: 100%;
-  }
-`;
-
-const AddedDate = styled.div``;
 export default FavoritesList;

@@ -37,7 +37,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/restaurant" element={<Restaurant />} />
               <Route path="/registration" element={<Registration />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
             </Routes>
           </div>
           <Footer className="footer" />
