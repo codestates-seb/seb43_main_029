@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BookmarkComponent } from '../../components/Bookmark';
 import Paging from './Pagination';
-import './PagingStyle.css';
 
 function FavoritesList() {
   const { id } = useParams();
@@ -59,8 +58,14 @@ const FavoritesListBox = styled.section`
 
 const FavoritesListContent = styled.div`
   width: 1200px;
+  display; flex;
+  justify-content: center;
 `;
 
-const FavoritesListElements = styled.ul``;
+const FavoritesListElements = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
 
 export default FavoritesList;
