@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   restaurants: [],
-  loading: false,
+  loading: true,
   error: '',
 };
 

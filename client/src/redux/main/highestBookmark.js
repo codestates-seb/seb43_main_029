@@ -31,10 +31,10 @@ export const fetchNextBookmarkRestaurant = () => {
     try {
       const response = await axios.get(`${SERVER_URL}/restaurants`);
       const responseData = response.data;
-      const sortedData = responseData.sort((a, b) => b.bookmark - a.bookmark);
+      // const sortedData = responseData.sort((a, b) => b.bookmark - a.bookmark);
 
       // const highestBookmarkRestaurant = sortedData[0];
-      const is2to5BookmarkRestaurants = sortedData.slice(1, 5);
+      const is2to5BookmarkRestaurants = responseData.slice(1, 5);
 
       // dispatch(fetchHighestBookmarkRestaurantSuccess(highestBookmarkRestaurant));
       dispatch(fetch2to5BookmarkRestaurantsSuccess(is2to5BookmarkRestaurants));

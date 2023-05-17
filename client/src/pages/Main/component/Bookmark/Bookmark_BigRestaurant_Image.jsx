@@ -9,24 +9,19 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // 즐겨찾기 큰 식당 이미지
-const Bookmark_BigRestaurant_Image = ({
-  restaurants,
-  isLoading,
-  error,
-  fetchHighestBookmarkRestaurant,
-}) => {
+const Bookmark_BigRestaurant_Image = props => {
   useEffect(() => {
     AOS.init();
     fetchHighestBookmarkRestaurant();
   }, []);
 
-  if (isLoading) {
-    console.log(isLoading);
-  }
-  if (error) {
-    console.log(error);
-  }
-
+  // if (isLoading) {
+  //   console.log(isLoading);
+  // }
+  // if (error) {
+  //   console.log(error);
+  // }
+  // console.log(props, '큰이미지');
   return (
     <>
       <BigR_Container
@@ -35,16 +30,19 @@ const Bookmark_BigRestaurant_Image = ({
         data-aos-duration="1000"
         data-aos-once="true"
       >
-        <img src={restaurants.images} alt={restaurants.name} />
+        <img src={props.restaurants.images} alt={props.restaurants.name} />
       </BigR_Container>
     </>
   );
 };
-const mapStateToProps = state => ({
-  restaurants: state.restaurants,
-  isLoading: state.isLoading,
-  error: state.error,
-});
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    restaurants: state.restaurants,
+    isLoading: state.isLoading,
+    error: state.error,
+  };
+};
 
 export default connect(mapStateToProps, { fetchHighestBookmarkRestaurant })(
   Bookmark_BigRestaurant_Image

@@ -8,7 +8,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
 import 'swiper/swiper.min.css';
-// import styled from 'styled-components';
+// import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 /** 메인 페이지_메뉴 추천 컴포넌트 */
 const M_FoodRecommend = () => {
@@ -29,49 +30,50 @@ const M_FoodRecommend = () => {
         creativeEffect={{
           prev: {
             shadow: true,
-            translate: ['-120%', 0, -500],
+            translate: ['-120%', 0, -200],
           },
           next: {
             shadow: true,
-            translate: ['120%', 0, -500],
+            translate: ['120%', 0, -200],
           },
         }}
         className="mySwiper"
       >
-        <SwiperSlide> Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <Carausel1 />
+        <Carausel2 />
+        <Carausel3 />
+        <Carausel4 />
+        <Carausel5 />
       </Swiper>
-      {/* <RecommendBox>
-        <div>오늘 뭐먹지??</div>
-        <Button>Click!</Button>
-      </RecommendBox> */}
+      <Foo />
     </M_RootContainer>
   );
 };
 
 export default M_FoodRecommend;
 
-//style
-// const Button = styled.button`
-//   background-color: blue;
-//   color: #fff;
+const Carausel = styled(SwiperSlide)`
+  background: no-repeat center;
+  background-size: cover;
+`;
 
-//   font-size: 1.5rem;
+const Carausel1 = styled(Carausel)`
+  background-image: url('https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+`;
+const Carausel2 = styled(Carausel)`
+  background-image: url('https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1633&q=80');
+`;
+const Carausel3 = styled(Carausel)`
+  background-image: url('https://images.unsplash.com/photo-1624726175512-19b9baf9fbd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+`;
+const Carausel4 = styled(Carausel)`
+  background-image: url('https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+`;
+const Carausel5 = styled(Carausel)`
+  background-image: url('https://images.unsplash.com/photo-1564759077036-3def242e69c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+`;
 
-//   border: none;
-//   border-radius: 5px;
-
-//   cursor: pointer;
-// `;
-
-// const RecommendBox = styled.div`
-//   position: absolute;
-//   z-index: 11;
-// `;
+const Foo = styled.div`
+  width: 100vw;
+  height: 50vh;
+`;
