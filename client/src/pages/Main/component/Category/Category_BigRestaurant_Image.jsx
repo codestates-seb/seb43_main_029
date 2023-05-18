@@ -1,63 +1,42 @@
 //내부 import
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import { SERVER_URL } from '../../config';
-import axios from 'axios';
+import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
+import { useEffect } from 'react';
+import styled from 'styled-components';
+import { connect } from 'react-redux';
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 // 제일 큰 식당 컴포넌트
-const Category_BigRestaurant_Image = () => {
-  const [isCategory, setIsCategory] = useState('');
-  const [restaurants, setRestaurants] = useState([]);
-
+const Category_BigRestaurant_Image = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
     AOS.init();
-
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const { data } = response;
-        setRestaurants(data);
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomCategory = data[randomIndex].category;
-        setIsCategory(randomCategory);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    fetchRandomRestaurants();
   }, []);
-
-  //랜덤 카테고리 식당 중 가장 점수 높은 식당 필터
-  const filteredRestaurants = restaurants.filter(restaurant => restaurant.category === isCategory);
-  const highestScoreRestaurant = filteredRestaurants.reduce((highest, current) => {
-    if (!highest || current.score > highest.score) {
-      return current;
-    }
-    return highest;
-  }, null);
 
   return (
     <>
-      {highestScoreRestaurant && (
+      {restaurants && (
         <BigR_Container
-          key={highestScoreRestaurant.restaurantId}
           data-aos="fade-left"
           data-aos-offset="500"
           data-aos-duration="1000"
           data-aos-once="true"
         >
-          <img src={highestScoreRestaurant.images} alt={highestScoreRestaurant.name} />
+          <img src={restaurants.images} alt={restaurants.name} />
         </BigR_Container>
       )}
     </>
   );
 };
-
-export default Category_BigRestaurant_Image;
+const mapStateToProps = state => {
+  return {
+    restaurants: state.randomRestaurants.restaurants[0],
+  };
+};
+export default connect(mapStateToProps, { fetchRandomRestaurants })(Category_BigRestaurant_Image);
 
 //style
 const BigR_Container = styled.section`

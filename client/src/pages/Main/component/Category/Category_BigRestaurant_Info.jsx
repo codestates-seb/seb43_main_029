@@ -1,66 +1,47 @@
 //내부 import
-import { SERVER_URL } from '../../config';
 import { BigRestaurantInfo } from '../../styled';
+import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
+import { useEffect } from 'react';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { FaHeart, FaStar } from 'react-icons/fa';
+import { connect } from 'react-redux';
 
 /** 랜덤 카테고리 큰 이미지 식당 정보 */
-const Category_BigRestaurant_Info = () => {
-  const [isCategory, setIsCategory] = useState('');
-  const [restaurants, setRestaurants] = useState([]);
-
+const Category_BigRestaurant_Info = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const { data } = response;
-        setRestaurants(data);
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomCategory = data[randomIndex].category;
-        setIsCategory(randomCategory);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    fetchRandomRestaurants();
   }, []);
 
   //랜덤 카테고리 중, 가장 별점이 높은 식당 필터
-  const filteredRestaurants = restaurants.filter(restaurant => restaurant.category === isCategory);
-
-  const highestScoreRestaurant = filteredRestaurants.reduce((highest, current) => {
-    if (!highest || current.score > highest.score) {
-      return current;
-    }
-    return highest;
-  }, null);
 
   return (
     <>
-      {highestScoreRestaurant && (
+      {restaurants && (
         <Category_BigRestaurantInfo>
-          <span className="BigRestaurant_Name">{highestScoreRestaurant.name}</span>
+          <span className="BigRestaurant_Name">{restaurants.name}</span>
           <div>
             <span className="BigRestaurant_Score">
               예상 <FaStar className="icons" />
-              {highestScoreRestaurant.score}
+              {restaurants.score}
             </span>
             <span className="BigRestaurant_Bookmark">
-              <FaHeart className="icons" /> {highestScoreRestaurant.bookmark}
+              <FaHeart className="icons" /> {restaurants.bookmark}
             </span>
           </div>
-          <span className="BigRestaurant_Address">{highestScoreRestaurant.address}</span>
+          <span className="BigRestaurant_Address">{restaurants.address}</span>
         </Category_BigRestaurantInfo>
       )}
     </>
   );
 };
-
-export default Category_BigRestaurant_Info;
+const mapStateToProps = state => {
+  return {
+    restaurants: state.randomRestaurants.restaurants[0],
+  };
+};
+export default connect(mapStateToProps, { fetchRandomRestaurants })(Category_BigRestaurant_Info);
 
 //style
 const Category_BigRestaurantInfo = styled(BigRestaurantInfo)`
