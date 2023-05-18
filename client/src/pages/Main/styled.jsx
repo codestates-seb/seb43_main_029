@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 /** 높이, 넓이가 꽉 채워지는 flex 컨테이너 */
-export const M_RootContainer = styled.section`
+export const M_RootContainer = styled.div`
   background-color: #fff;
 
   width: 100%;
