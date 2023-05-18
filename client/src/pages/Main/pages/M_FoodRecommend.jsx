@@ -15,10 +15,9 @@ const M_FoodRecommend = () => {
             <div className="subTitle">나만의 맛집</div>
             <div className="mainTitle">푸드 피디아</div>
           </Titles>
-          <Desc>
-            <div className="desc">원하는 카테고리별로 골라보자 &#33;</div>
-          </Desc>
+
           <IconContainer>
+            <div className="desc">원하는 카테고리별로 골라보자 &#33;</div>
             <div className="start">Let&#39;s Go&#33;</div>
             <div>
               <FaRegHandPointDown className="handPoint_icons" />
@@ -69,24 +68,24 @@ const Titles = styled.h1`
   }
 `;
 
-const Desc = styled.h2`
-  color: #fff;
-  font-weight: 700;
-  font-size: 35px;
+// const Desc = styled.h2`
+//   color: #fff;
+//   font-weight: 700;
+//   font-size: 35px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: end;
 
-  margin-top: 200px;
-  margin-right: 70px;
+//   margin-top: 200px;
+//   margin-right: 70px;
 
-  .desc {
-    width: 300px;
+//   .desc {
+//     width: 300px;
 
-    text-align: end;
-  }
-`;
+//     text-align: end;
+//   }
+// `;
 
 const IconContainer = styled.div`
   color: #fff;
