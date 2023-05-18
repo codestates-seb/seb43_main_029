@@ -48,8 +48,8 @@ public class RestaurantController {
     public ResponseEntity patchRestaurant(@PathVariable("restaurant-id") @Positive long restaurantId,
                                           @RequestPart RestaurantDto.RestaurantPatchDto restaurantPatchDto,
                                           @RequestPart(required = false) List<MultipartFile> multipartFile,
-                                          @RequestParam(required = false) List<Long> deleteImageList,
-                                          @RequestParam(required = false) List<Long> deleteMenuList,
+                                          @RequestPart(required = false) List<Long> deleteImageList,
+                                          @RequestPart(required = false) List<Long> deleteMenuList,
                                           @RequestPart(required = false) List<MenuDto.MenuPostDto> newMenuList) {
         Restaurant restaurant = mapper.restaurantPatchDtoToRestaurant(restaurantPatchDto);
         restaurant.setRestaurantId(restaurantId);
