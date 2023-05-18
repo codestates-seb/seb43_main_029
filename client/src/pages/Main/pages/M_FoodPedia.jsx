@@ -115,5 +115,11 @@ const IconContainer = styled.div`
   .guideText {
     font-size: 20px;
     padding-bottom: 5px;
+    //텍스트 커지는 효과
+    :hover {
+      -ms-transform: scale(1.5); /* IE 9 */
+      -webkit-transform: scale(1.5); /* Safari 3-8 */
+      transform: scale(1.02);
+    }
   }
 `;
