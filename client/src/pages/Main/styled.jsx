@@ -36,7 +36,7 @@ export const M_BottomContainer = styled.div`
 
 /** 양 옆의 여백을 남겨 컨텐츠의 넓이를 제한하는 컴포넌트 */
 export const M_ContentBox = styled.div`
-  max-width: calc(100% - 300px);
+  max-width: 1200px;
   width: 100%;
   height: 100%;
 

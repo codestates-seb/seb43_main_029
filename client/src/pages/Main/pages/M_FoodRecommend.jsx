@@ -1,79 +1,104 @@
 //내부 import
-import { M_RootContainer } from '../styled';
-/** swiper css */
-import './M_FoodRecommend.css';
+import { M_RootContainer, M_ContentBox } from '../styled';
 
 //외부 import
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectCreative } from 'swiper';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-// import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { FaRegHandPointDown, FaHandPointDown } from 'react-icons/fa';
 
 /** 메인 페이지_메뉴 추천 컴포넌트 */
 const M_FoodRecommend = () => {
   return (
-    <M_RootContainer>
-      <Swiper
-        //간격
-        spaceBetween={0}
-        centeredSlides={true}
-        autoplay={{
-          /* 넘어가는 속도 : 3초*/
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        resistance={true}
-        modules={[Autoplay, EffectCreative]}
-        effect={'creative'}
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: ['-120%', 0, -200],
-          },
-          next: {
-            shadow: true,
-            translate: ['120%', 0, -200],
-          },
-        }}
-        className="mySwiper"
-      >
-        <Carausel1 />
-        <Carausel2 />
-        <Carausel3 />
-        <Carausel4 />
-        <Carausel5 />
-      </Swiper>
-      <Foo />
-    </M_RootContainer>
+    <S_RootContainer>
+      <M_ContentBox>
+        <TitleContainer>
+          <Titles>
+            <div className="subTitle">나만의 맛집</div>
+            <div className="mainTitle">푸드 피디아</div>
+          </Titles>
+          <Desc>
+            <div className="desc">원하는 카테고리별로 골라보자 &#33;</div>
+          </Desc>
+          <IconContainer>
+            <div className="start">Let&#39;s Go&#33;</div>
+            <div>
+              <FaRegHandPointDown className="handPoint_icons" />
+              <FaHandPointDown className="handPoint_fil_icons" />
+            </div>
+          </IconContainer>
+        </TitleContainer>
+      </M_ContentBox>
+    </S_RootContainer>
   );
 };
 
 export default M_FoodRecommend;
 
-const Carausel = styled(SwiperSlide)`
-  background: no-repeat center;
+const S_RootContainer = styled(M_RootContainer)`
+  background-color: pink;
+  background: url('https://images.unsplash.com/photo-1502741224143-90386d7f8c82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')
+    no-repeat center;
   background-size: cover;
+  font-family: var(--font-googleNanumBrushScript);
 `;
 
-const Carausel1 = styled(Carausel)`
-  background-image: url('https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-`;
-const Carausel2 = styled(Carausel)`
-  background-image: url('https://images.unsplash.com/photo-1576402187878-974f70c890a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1633&q=80');
-`;
-const Carausel3 = styled(Carausel)`
-  background-image: url('https://images.unsplash.com/photo-1624726175512-19b9baf9fbd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-`;
-const Carausel4 = styled(Carausel)`
-  background-image: url('https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-`;
-const Carausel5 = styled(Carausel)`
-  background-image: url('https://images.unsplash.com/photo-1564759077036-3def242e69c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+const TitleContainer = styled.section`
+  width: 100%;
+  height: calc(100% - 100px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 30px 0;
 `;
 
-const Foo = styled.div`
-  width: 100vw;
-  height: 50vh;
+const Titles = styled.h1`
+  margin-left: 70px;
+  margin-top: 160px;
+
+  .subTitle {
+    margin-left: 10px;
+    padding-bottom: 5px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+  }
+  .mainTitle {
+    color: #fff;
+    font-weight: 700;
+    font-size: 100px;
+  }
+`;
+
+const Desc = styled.h2`
+  color: #fff;
+  font-weight: 700;
+  font-size: 35px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+  margin-top: 200px;
+  margin-right: 70px;
+
+  .desc {
+    width: 300px;
+
+    text-align: end;
+  }
+`;
+
+const IconContainer = styled.div`
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .start {
+    font-size: 20px;
+    padding-bottom: 5px;
+  }
 `;
