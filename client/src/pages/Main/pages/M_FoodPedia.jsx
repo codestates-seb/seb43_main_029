@@ -43,7 +43,7 @@ const S_RootContainer = styled(M_RootContainer)`
 `;
 
 /** 높이, 패딩, space-between으로 간격 조절 */
-const TitleContainer = styled.section`
+const TitleContainer = styled.div`
   width: 100%;
   height: calc(100% - 100px);
 

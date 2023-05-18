@@ -7,14 +7,14 @@ import {
   M_Title_And_BigRestaurant_InfoBox,
   M_TitleBox,
   M_BigRestaurant_InfoBox,
-  M_BigRestaurant_ImgBox,
+  M_BigRestaurant_Image_Box,
 } from '../styled';
 import Category_Title from '../component/Category/Category_Title';
 import Category_BigRestaurant_Image from '../component/Category/Category_BigRestaurant_Image';
 import Category_BigRestaurant_Info from '../component/Category/Category_BigRestaurant_Info';
 import Category_Restaurants from '../component/Category/Category_Restaurants';
 
-/** 카테고리 감싸는 역할 */
+/** 메인페이지의 카테고리 컴포넌트*/
 const M_Category = () => {
   return (
     <M_RootContainer>
@@ -28,9 +28,9 @@ const M_Category = () => {
               <Category_BigRestaurant_Info />
             </M_BigRestaurant_InfoBox>
           </M_Title_And_BigRestaurant_InfoBox>
-          <M_BigRestaurant_ImgBox>
+          <M_BigRestaurant_Image_Box>
             <Category_BigRestaurant_Image />
-          </M_BigRestaurant_ImgBox>
+          </M_BigRestaurant_Image_Box>
         </M_ContentBox>
       </M_TopContainer>
 

@@ -1,5 +1,5 @@
 //내부 import
-
+import Loading from '../Loading';
 //외부 import
 import styled from 'styled-components';
 
@@ -11,7 +11,9 @@ const Review_Title = () => {
         <div className="Title">많은 공감을 받는 리뷰</div>
       </HotReviewTitle>
       <HotReviewBox>
-        <HotReview>여기 요새 왤캐 폼 미츴냐이</HotReview>
+        <HotReview>
+          <Loading />
+        </HotReview>
       </HotReviewBox>
       <MemberReviewTitle>회원님들의 식당리뷰</MemberReviewTitle>{' '}
     </ReviewTitleContainer>

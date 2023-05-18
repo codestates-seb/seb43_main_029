@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 /** 높이, 넓이가 꽉 채워지는 flex 컨테이너 */
-export const M_RootContainer = styled.div`
+export const M_RootContainer = styled.section`
   background-color: #fff;
 
   width: 100%;
@@ -48,7 +48,7 @@ export const M_ContentBox = styled.div`
 `;
 
 /** 큰 섹션을 소개하는 타이틀 컴포넌트*/
-export const M_Title_And_BigRestaurant_InfoBox = styled.section`
+export const M_Title_And_BigRestaurant_InfoBox = styled.div`
   height: 100%;
 
   display: flex;
@@ -78,13 +78,13 @@ export const M_BigRestaurant_InfoBox = styled.div`
 `;
 
 /** 큰 식당의 이미지를 감싸는 컴포넌트 */
-export const M_BigRestaurant_ImgBox = styled.div`
+export const M_BigRestaurant_Image_Box = styled.div`
   height: 100%;
 
   display: flex;
   flex: 1;
   align-items: end;
-  justify-content: end;
+  /* justify-content: end; */
 `;
 
 /**  타이틀 박스 */
@@ -139,7 +139,7 @@ export const BigRestaurantInfo = styled.div`
 `;
 
 /** 식당 컴포넌트 */
-export const RestaurantBox = styled.section`
+export const RestaurantBox = styled.div`
   width: 100%;
   height: 250px;
 
@@ -214,4 +214,54 @@ export const RestaurantsBox = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 15px;
   width: 100%;
+`;
+
+// 큰 식당 이미지 컨테이너
+export const BigRestaurantImageContainer = styled.div`
+  padding-bottom: 30px;
+  width: 600px;
+  height: 480px;
+
+  /* PC */
+  @media all and (min-width: 1024px) and (max-width: 1250px) {
+    width: calc(1024px / 2);
+    height: 350px;
+  }
+
+  /* 테블릿 세로 (해상도 768px ~ 1023px)*/
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    width: calc(768px / 2);
+    height: 250px;
+  }
+
+  /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+  @media all and (min-width: 480px) and (max-width: 767px) {
+    width: calc(480px / 2);
+    height: 150px;
+  }
+
+  /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+  @media all and (max-width: 479px) {
+    width: 150px;
+    height: 100px;
+  }
+  img {
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+
+    // 이미지가 뭉개지는 것을 방지
+    object-fit: cover;
+    cursor: pointer;
+    // 이미지 hover시 자연스럽게 커짐
+    transition: transform 0.5s;
+    :hover {
+      /* IE 9 */
+      -ms-transform: scale(1.5);
+      /* Safari 3-8 */
+      -webkit-transform: scale(1.5);
+      // 이미지가 커지는 사이즈
+      transform: scale(1.02);
+    }
+  }
 `;
