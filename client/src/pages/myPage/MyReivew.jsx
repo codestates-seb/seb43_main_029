@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReviewComponent } from '../../components/Review';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
 
-function MyReivew() {
-  const { id } = useParams();
+function MyReivew({ userInfo }) {
   const [reviews, setReviews] = useState([]);
-  const recentReview = reviews.slice(-9);
+  // const recentReview = reviews.slice(-9);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
 
@@ -19,8 +18,8 @@ function MyReivew() {
   // }, [id]);
 
   const reviewApi = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`);
-    setReviews(response.data.reviews);
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews`);
+    setReviews(response.data);
   };
 
   useEffect(() => {
@@ -44,8 +43,11 @@ function MyReivew() {
   };
 
   return (
-    <MyReivewBlock>
-      <h3>작성한 리뷰 목록</h3>
+    <MyReviewBlock>
+      <MyReviewTitle>
+        <h3>작성한 리뷰 목록</h3>
+        <Link to={`/mypage/${userInfo.memberId}/bookmarks`}>더보기</Link>
+      </MyReviewTitle>
       <CarouselBlock>
         <ButtonContainer>
           <button
@@ -69,8 +71,8 @@ function MyReivew() {
         <ReivewsList ref={elementRef}>
           <Reviews>
             {reviews ? (
-              recentReview.map((review, idx) => {
-                return <ReviewComponent key={idx} idx={idx} review={review} />;
+              reviews.map((review, index) => {
+                return <ReviewComponent key={index} reviewId={reviews.reviewId} review={review} />;
               })
             ) : (
               <p>작성하신 리뷰가 없습니다.</p>
@@ -78,19 +80,26 @@ function MyReivew() {
           </Reviews>
         </ReivewsList>
       </CarouselBlock>
-    </MyReivewBlock>
+    </MyReviewBlock>
   );
 }
 
-const MyReivewBlock = styled.section`
+const MyReviewBlock = styled.section`
   display: flex;
   flex-direction: column;
-  h3 {
-    font-size: 1.5rem;
-  }
   a {
     color: #2f3134;
     text-decoration: none;
+  }
+`;
+
+const MyReviewTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    font-size: 1.5rem;
   }
 `;
 const CarouselBlock = styled.div`

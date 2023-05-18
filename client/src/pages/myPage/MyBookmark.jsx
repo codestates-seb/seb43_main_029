@@ -1,16 +1,22 @@
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BookmarkComponent } from '../../components/Bookmark';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 
-function MyBookmark() {
+function MyBookmark({ userInfo }) {
   const { id } = useParams();
   const [bookmarks, setBookmark] = useState([]);
-  const recentBookmark = bookmarks.slice(-9);
+  // const recentBookmark = bookmarks.slice(-9);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
+
+  // useEffect(() => {
+  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
+  //     setBookmark(res.data);
+  //   });
+  // }, []);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
@@ -36,7 +42,10 @@ function MyBookmark() {
 
   return (
     <MyBookmarkBlock>
-      <h3>즐겨찾기 목록</h3>
+      <MyBookmarkTitle>
+        <h3>즐겨찾기 목록</h3>
+        <Link to={`/mypage/${userInfo.memberId}/bookmarks`}>더보기</Link>
+      </MyBookmarkTitle>
       <CarouselBlock>
         <ButtonContainer>
           <button
@@ -60,7 +69,7 @@ function MyBookmark() {
         <BookmarkList ref={elementRef}>
           <Bookmarks>
             {bookmarks ? (
-              recentBookmark.map((bookmarks, idx) => {
+              bookmarks.map((bookmarks, idx) => {
                 return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
               })
             ) : (
@@ -81,6 +90,15 @@ const MyBookmarkBlock = styled.section`
   a {
     color: #2f3134;
     text-decoration: none;
+  }
+`;
+const MyBookmarkTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    font-size: 1.5rem;
   }
 `;
 const CarouselBlock = styled.div`

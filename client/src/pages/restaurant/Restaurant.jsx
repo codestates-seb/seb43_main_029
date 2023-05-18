@@ -27,6 +27,7 @@ function Restaurant() {
 
   const restaurantApi = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${id}`);
+    // console.log(response);
     setRestaurant(response.data);
   };
   useEffect(() => {
@@ -43,9 +44,9 @@ function Restaurant() {
         <h1 className="visually-hidden">식당상세페이지</h1>
         <RestaurantImageList>
           {imageList &&
-            imageList.map((image, idx) => {
+            imageList.map((image, restaurantId) => {
               return (
-                <li key={idx}>
+                <li key={restaurantId}>
                   <img src={image.url} alt="name" />
                 </li>
               );

@@ -10,73 +10,6 @@
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20",
-      "reviews": [
-        {
-          "reviewId": 1,
-          "memberId": 1,
-          "restaurantId": 1,
-          "name": "김밥천국",
-          "content": "맛있어요",
-          "score": 4,
-          "voteCount": 11,
-          "images": ["url1", "url2"],
-          "createdAt": "2023-05-03 10:24:31",
-          "lastModifiedAt": "2023-05-03 10:29:20"
-        },
-        {
-          "reviewId": 2,
-          "memberId": 2,
-          "restaurantId": 2,
-          "name": "백반집",
-          "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
-          "score": 3,
-          "voteCount": 14,
-          "images": ["url1", "url2"],
-          "createdAt": "2023-05-03 10:24:31",
-          "lastModifiedAt": "2023-05-03 10:29:20"
-        },
-        {
-          "reviewId": 3,
-          "memberId": 1,
-          "restaurantId": 1,
-          "name": "김밥천국",
-          "content": "재방문했는데 역시 최곱니다",
-          "score": 4,
-          "voteCount": 11,
-          "images": [
-            "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-            "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-          ],
-          "createdAt": "2023-05-03 10:24:31",
-          "lastModifiedAt": "2023-05-03 10:29:20"
-        },
-        {
-          "reviewId": 4,
-          "memberId": 2,
-          "restaurantId": 2,
-          "name": "백반집",
-          "content": "가장 오래된집의 포스 곰탕 같은 맛! 후추가 뿌려져 나와서 더 그런듯 쌀이 좋다. 딱 국밥에 말기 좋게 노포라 냄새가 좀 날수 있다고 생각했는데 전혀 없다. 수육은 고소하고 맛있지만 특별하진 않음 수육이 엄청 많음 담엔 그냥 돼지국밥!",
-          "score": 3,
-          "voteCount": 14,
-          "images": ["url1", "url2"],
-          "createdAt": "2023-05-03 10:24:31",
-          "lastModifiedAt": "2023-05-03 10:29:20"
-        },
-        {
-          "reviewId": 5,
-          "memberId": 1,
-          "restaurantId": 1,
-          "name": "김밥천국",
-          "content": "재방문했는데 역시 최곱니다",
-          "score": 4,
-          "voteCount": 11,
-          "images": ["url1", "url2"],
-          "createdAt": "2023-05-03 10:24:31",
-          "lastModifiedAt": "2023-05-03 10:29:20"
-        }
-      ],
       "bookmarks": [
         {
           "bookmarkId": 1,
@@ -273,19 +206,6 @@
       ]
     },
     {
-      "memberId": 3,
-      "email": "aaa@gmail.com",
-      "password": "00000000",
-      "nickname": "메인프로젝트",
-      "phone": "010-1234-5678",
-      "role": "NORMAL",
-      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
-      "companyNumber": 12345678901,
-      "memberStatus": "MEMBER_ACTIVE",
-      "createdAt": "2023-05-03 10:24:31",
-      "lastModifiedAt": "2023-05-03 10:29:20"
-    },
-    {
       "id": 3,
       "memberId": 3,
       "email": "aaa@gmail.com",
@@ -293,7 +213,7 @@
       "nickname": "메인프로젝트",
       "phone": "010-1234-5678",
       "role": "NORMAL",
-      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "url": "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png",
       "companyNumber": 12345678901,
       "memberStatus": "MEMBER_ACTIVE",
       "createdAt": "2023-05-03 10:24:31",
@@ -519,18 +439,21 @@
       "reviewId": 1,
       "content": "다시 갔는데 예전보다 별로에요",
       "score": 3.5,
-      "images": ["url1", "url2"],
+      "images": [
+        "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHN0ZWFrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20"
     },
     {
       "id": 2,
-      "memberId": 2,
+      "memberId": 1,
       "restaurantId": 1,
       "reviewId": 2,
       "content": "별로에요",
       "score": 3.5,
-      "images": ["url1", "url2"],
+      "images": null,
       "createdAt": "2023-05-03 10:24:31",
       "lastModifiedAt": "2023-05-03 10:29:20"
     },

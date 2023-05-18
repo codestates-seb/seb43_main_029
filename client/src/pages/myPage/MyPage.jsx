@@ -26,8 +26,6 @@ function MyPage() {
     });
   }, []);
 
-  console.log(role);
-
   if (role === 'USER') {
     return (
       <>
@@ -35,8 +33,8 @@ function MyPage() {
           <h1 className="visually-hidden">마이페이지</h1>
           <MyPageLayout>
             <Profile userInfo={userInfo} />
-            <MyReivew />
-            <MyBookmark />
+            <MyReivew userInfo={userInfo} />
+            <MyBookmark userInfo={userInfo} />
           </MyPageLayout>
         </MyPageBlock>
       </>

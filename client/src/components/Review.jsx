@@ -5,7 +5,7 @@ import Modal from './Modal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-export const ReviewComponent = ({ idx, review }) => {
+export const ReviewComponent = ({ reviewId, review }) => {
   const [isModal, setIsModal] = useState(false);
 
   function openModal() {
@@ -14,9 +14,8 @@ export const ReviewComponent = ({ idx, review }) => {
   function closeModal() {
     setIsModal(false);
   }
-  console.log(review.images);
   return (
-    <Review key={idx}>
+    <Review key={reviewId}>
       <div className="padding">
         <ReviewTitle className="underLine">
           <Link to={`/restaurant/${review.restaurantId}`}>
@@ -32,11 +31,15 @@ export const ReviewComponent = ({ idx, review }) => {
             <TiThumbsUp className="icon" />
             {review.voteCount}
           </ReviewThumbsUp>
-          <MdOutlineInsertPhoto className="icon" onClick={openModal} />
-          <p>작성날짜</p>
+          {review.images === null ? null : (
+            <MdOutlineInsertPhoto className="icon" onClick={openModal} />
+          )}
+          <p>{review.createdAt.slice(0, 10)}</p>
         </ReviewDate>
       </div>
-      <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
+      {review.images === null ? null : (
+        <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
+      )}
     </Review>
   );
 };

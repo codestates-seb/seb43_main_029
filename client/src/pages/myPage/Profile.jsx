@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Button from '../../components/Button';
 
 function Profile({ userInfo }) {
   const { id } = useParams();
@@ -10,8 +11,9 @@ function Profile({ userInfo }) {
   const inputEl = useRef(null);
   const [name, setName] = useState(nickname);
   const [isEdit, setIsEdit] = useState(false);
-  const [image, setImage] = useState(url);
-  const imgRef = useRef();
+  const [image, setImage] = useState(null);
+  const [files, setFiles] = useState({});
+  const [preview, setPreview] = useState(false);
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -41,28 +43,50 @@ function Profile({ userInfo }) {
   }, [url, nickname]);
 
   function imgChange(e) {
-    console.log(e.target.files[0]);
-    const file = imgRef.current.files[0];
+    const file = e.target.files[0];
+
+    setFiles(file);
+
+    setPreview(!preview);
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setImage(reader.result);
-      console.log(reader.result);
     };
+  }
+
+  function handleChangeImg() {
+    const formdata = new FormData();
+    formdata.append('multipartFile', files);
+    console.log(files);
+    const config = {
+      Headers: {
+        'content-type': 'multipart/form-data',
+      },
+    };
+    axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}/profile`, formdata, config);
   }
 
   return (
     <>
       <ProfileBlock>
-        <UserImg background={image} htmlFor="file" />
-        <input
-          id="file"
-          type="file"
-          onChange={imgChange}
-          accept={'image/*'}
-          className="hidden"
-          ref={imgRef}
-        />
+        <UserLayout>
+          <UserImg background={image} htmlFor="file" />
+          <form encType="multipart/form-data">
+            <input
+              id="file"
+              type="file"
+              onChange={imgChange}
+              accept={'image/*'}
+              className="hidden"
+            />
+          </form>
+          {preview ? (
+            <UserImgButton onClick={handleChangeImg}>이미지변경</UserImgButton>
+          ) : (
+            <UserImgButton onClick={imgChange}>이미지선택</UserImgButton>
+          )}
+        </UserLayout>
         <div>
           <UserName>
             {!isEdit ? (
@@ -95,7 +119,11 @@ const ProfileBlock = styled.div`
     display: none;
   }
 `;
-
+const UserLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
 const UserImg = styled.label`
   width: 128px;
   height: 128px;
@@ -103,6 +131,12 @@ const UserImg = styled.label`
   background: ${props => `url(${props.background}) no-repeat center`};
   background-size: 128px;
   cursor: pointer;
+`;
+
+const UserImgButton = styled(Button)`
+  position: absolute;
+  bottom: 0;
+  left: 15%;
 `;
 
 const UserName = styled.div`
