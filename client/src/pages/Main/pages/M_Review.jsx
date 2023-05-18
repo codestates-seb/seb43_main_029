@@ -1,9 +1,9 @@
 //내부 import
 import { M_RootContainer, M_TopContainer, M_BottomContainer, M_ContentBox } from '../styled';
 import Rev_Title from '../component/Review/Review_Title';
-// import MyReivew from '../../myPage/MyReivew';
 
 //외부 import
+// import styled from 'styled-components';
 
 const M_Review = () => {
   return (
