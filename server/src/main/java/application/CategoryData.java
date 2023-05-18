@@ -33,9 +33,10 @@ public class CategoryData implements CommandLineRunner {
             Image image8 = new Image("분식이미지","https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/restaurant-images/a3bfc404-3f83-4651-b932-5a546b3541db.jpg");
             Image image9 = new Image("카페이미지","https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/restaurant-images/fe4d22af-ef4c-45a3-a7e5-1884d54427bc.jpg");
             Image image10 = new Image("아시안이미지","https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/1250510_1681577070417_6579.jpg");
+            Image image11 = new Image("회원프로필", "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png");
 
             imageFileRepository.saveAll(Arrays.asList(image1, image2, image3, image4, image5,
-                    image6, image7, image8, image9, image10));
+                    image6, image7, image8, image9, image10, image11));
 
             Category category1 = new Category("한식", image1);
             Category category2 = new Category("중식", image2);
