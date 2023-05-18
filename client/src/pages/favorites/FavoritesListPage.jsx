@@ -13,12 +13,11 @@ function Favorites() {
 }
 
 const FavoritesListPageBox = styled.section`
-  margin: 3rem 0;
+  padding: 100px 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-
   a {
     color: #2f3134;
     text-decoration: none;
@@ -32,5 +31,9 @@ const ContentBox = styled.div`
   align-items: center;
 `;
 
-const FavoritesTitle = styled.h1``;
+const FavoritesTitle = styled.h1`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+`;
 export default Favorites;

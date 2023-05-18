@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   list-style: none;
+  box-sizing: border-box;
 }
 
 .pagination li {
@@ -11,18 +12,21 @@
 
 .pagination li a {
   padding: 5px 10px;
-  color: #333;
+  font-weight: bold;
+  color: #ff0099;
   text-decoration: none;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ff0099; */
   border-radius: 10px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 .pagination li a:hover {
-  background-color: #f2f2f2;
+  background-color: #fabbc6;
+  color: #fff;
+  border: 1px solid #fabbc6;
 }
 
 .pagination li.active a {
-  background-color: #333;
+  background-color: #ff0099;
   color: #fff;
 }
