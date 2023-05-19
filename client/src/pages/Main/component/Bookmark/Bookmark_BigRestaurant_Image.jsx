@@ -8,6 +8,8 @@ import { fetchBookmarkRestaurants } from '../../../../redux/bookmarkRestaurants/
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 // 즐겨찾기가 가장 많은 식당 이미지 컴포넌트
 // redux에서 서버와 state값을 구조분해할당으로 가져옴
 const Bookmark_BigRestaurant_Image = ({ fetchBookmarkRestaurants, restaurants }) => {
@@ -24,7 +26,9 @@ const Bookmark_BigRestaurant_Image = ({ fetchBookmarkRestaurants, restaurants })
           data-aos-duration="1200" // 재생 시간 설정 (default : 400)
           data-aos-once="true" // 스크롤 할 때마다 애니메이션 실행할지, 현재는 한 번만 실행됨.
         >
-          <img src={restaurants.images} alt={restaurants.name} />
+          <Link to="/restaurant/:restaurantsId">
+            <img src={restaurants.images} alt={restaurants.name} />
+          </Link>
         </BigRestaurantImageContainer>
       )}
     </>

@@ -26,10 +26,12 @@ code {
 }
 
 :root {
+  /* 폰트  전역변수 */
   --font-foodpedia: 'foodpedia';
   --font-maypleStory: 'maypleStory';
   --font-KCC: 'KCC';
 
+  /* 메인페이지 주 색상 */
   --color-bookmark: #60a5fa;
   --color-score: #f472b6;
   --color-address: #6b7280;

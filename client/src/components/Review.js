@@ -31,7 +31,10 @@ export const ReviewComponent = ({ idx, review }) => {
             <TiThumbsUp className="icon" />
             {review.voteCount}
           </ReviewThumbsUp>
-          <MdOutlineInsertPhoto className="icon" onClick={openModal} />
+
+          {review.images === null ? null : (
+            <MdOutlineInsertPhoto className="icon" onClick={openModal} />
+          )}
           <p>작성날짜</p>
         </ReviewDate>
       </div>

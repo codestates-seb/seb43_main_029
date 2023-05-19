@@ -1,4 +1,4 @@
-import { SERVER_URL } from '../../pages/main/config';
+import { SERVER_URL } from '../../config';
 import axios from 'axios';
 import {
   fetchBookmarkRestaurantsRequest,
@@ -11,7 +11,7 @@ export const fetchBookmarkRestaurants = () => {
     dispatch(fetchBookmarkRestaurantsRequest());
 
     axios
-      .get(`${SERVER_URL}/restaurants`)
+      .get(`${SERVER_URL}/restaurant`)
       .then(response => {
         const restaurants = response.data;
         const sortedByBookmark = restaurants.sort((a, b) => b.bookmark - a.bookmark);

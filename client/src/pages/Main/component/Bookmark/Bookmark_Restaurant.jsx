@@ -4,7 +4,7 @@ import Loading from '../Loading';
 
 //외부 import
 import { FaHeart, FaStar } from 'react-icons/fa';
-
+import { Link } from 'react-router-dom';
 /** 즐겨찾기 식당 개별 컴포넌트 */
 const Bookmark_Restaurant = ({ images, name, score, bookmark, address, loading }) => {
   //서버 데이터를 받아오기 전까지는 스피너 컴포넌트를 보여줌.
@@ -15,7 +15,9 @@ const Bookmark_Restaurant = ({ images, name, score, bookmark, address, loading }
       ) : (
         <>
           <div className="Restaurant_Image">
-            <img src={images} alt={name} />
+            <Link to="/restaurant/:restaurantId">
+              <img src={images} alt={name} />
+            </Link>
           </div>
           <div className="Restaurant_Info">
             <h4 className="Restaurant_Name">{name}</h4>

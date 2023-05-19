@@ -234,7 +234,6 @@ export const BigRestaurantInfo = styled.div`
 export const RestaurantBox = styled.li`
   width: 100%;
   height: 250px;
-
   display: flex;
   flex-direction: column;
 

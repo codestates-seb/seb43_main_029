@@ -13,8 +13,12 @@ const M_FoodPedia = () => {
         <TitleContainer>
           <Titles>
             <h3 className="subTitle">나만의 맛집</h3>
-            <h1 className="mainTitle">푸드 피디아&#44;</h1>
-            <h2 className="desc">원하는 카테고리별로 골라먹자 &#33;</h2>
+            <h1 className="mainTitle">
+              푸<span className="TitlePoint">드피디</span>아&#44;
+            </h1>
+            <h2 className="desc">
+              원하는 카<span className="descPoint">테고리별로 </span>골라먹자 &#33;
+            </h2>
           </Titles>
 
           <IconContainer>
@@ -88,6 +92,9 @@ const Titles = styled.div`
     @media all and (max-width: 479px) {
       font-size: 55px;
     }
+    .TitlePoint {
+      color: #f9a8d4;
+    }
   }
   .desc {
     font-size: 110px;
@@ -100,6 +107,9 @@ const Titles = styled.div`
     @media all and (max-width: 479px) {
       font-size: 65px;
     }
+  }
+  .descPoint {
+    color: #fbcfe8;
   }
 `;
 
