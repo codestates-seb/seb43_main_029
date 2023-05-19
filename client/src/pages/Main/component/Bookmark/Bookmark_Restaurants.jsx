@@ -1,47 +1,37 @@
 //내부 import
 import Bookmark_Restaurant from './Bookmark_Restaurant';
 import { RestaurantsBox } from '../../styled';
-import { SERVER_URL } from '../../config';
+//redux
+import { fetchBookmarkRestaurants } from '../../../../redux/bookmarkRestaurants/actions';
+
 //외부 import
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 /** 즐겨찾기 식당들을 담은 컴포넌트 */
-const Bookmark_Restaurants = () => {
-  const [restaurants, setRestaurants] = useState([]);
-
+const Bookmark_Restaurants = ({ fetchBookmarkRestaurants, restaurants, loading }) => {
   useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const data = response.data;
-        setRestaurants(data);
-      } catch (error) {
-        console.error('식당 데이터를 불러올 수 없습니다', error);
-      }
-    };
-    fetchRestaurants();
+    fetchBookmarkRestaurants();
   }, []);
-
-  //즐겨찾기 내림차순으로 정렬
-  const sortedRestaurants = restaurants.sort((a, b) => b.bookmark - a.bookmark);
-  //가장 즐겨찾기가 많은 식당을 제거, 1번쨰 인덱스부터 5번째 인덱스 앞까지의 식당들을 담음
-  const newRestaurants = sortedRestaurants.slice(1, 5);
 
   return (
     <RestaurantsBox>
-      {newRestaurants?.map(newRestaurant => (
+      {restaurants?.map(restaurant => (
         <Bookmark_Restaurant
-          key={newRestaurant.restaurantId}
-          name={newRestaurant.name}
-          images={newRestaurant.images}
-          score={newRestaurant.score}
-          bookmark={newRestaurant.bookmark}
-          address={newRestaurant.address}
+          key={restaurant.restaurantId}
+          name={restaurant.name}
+          images={restaurant.images}
+          score={restaurant.score}
+          bookmark={restaurant.bookmark}
+          address={restaurant.address}
+          loading={loading}
         />
       ))}
     </RestaurantsBox>
   );
 };
-
-export default Bookmark_Restaurants;
+const mapStateToProps = state => ({
+  loading: state.bookmarkRestaurants.loading,
+  restaurants: state.bookmarkRestaurants.restaurants.slice(1, 5),
+});
+export default connect(mapStateToProps, { fetchBookmarkRestaurants })(Bookmark_Restaurants);

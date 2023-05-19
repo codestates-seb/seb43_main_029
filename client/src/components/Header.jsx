@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Login from '../Login';
-import SignUp from '../SignUp';
+import Login from '../pages/registration/Login';
+import SignUp from '../pages/registration/SignUp';
 
 function Header() {
   return (
@@ -38,7 +38,7 @@ const HeaderBox = styled.div`
   box-shadow: 0 10px 10px -10px #999;
 
   //헤더 천장에 고정 - sinyaenok
-  background-color: #fff;
+  /* background-color: #fff; */
   position: fixed;
   top: 0;
   left: 0;

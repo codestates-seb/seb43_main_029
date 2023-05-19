@@ -1,83 +1,67 @@
 //내부 import
-import { SERVER_URL } from '../../config';
 import { BigRestaurantInfo } from '../../styled';
+//redux
+import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+//icon
 import { FaHeart, FaStar } from 'react-icons/fa';
 
-/** 랜덤 카테고리 큰 이미지 식당 정보 */
-const Category_BigRestaurant_Info = () => {
-  const [isCategory, setIsCategory] = useState('');
-  const [restaurants, setRestaurants] = useState([]);
-
+/** 랜덤 카테고리 중 별점이 가장 높은 식당 식당 정보 */
+const Category_BigRestaurant_Info = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const { data } = response;
-        setRestaurants(data);
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomCategory = data[randomIndex].category;
-        setIsCategory(randomCategory);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    //첫 렌더시 서버에서 데이터 받아옴
+    fetchRandomRestaurants();
   }, []);
-
-  //랜덤 카테고리 중, 가장 별점이 높은 식당 필터
-  const filteredRestaurants = restaurants.filter(restaurant => restaurant.category === isCategory);
-
-  const highestScoreRestaurant = filteredRestaurants.reduce((highest, current) => {
-    if (!highest || current.score > highest.score) {
-      return current;
-    }
-    return highest;
-  }, null);
 
   return (
     <>
-      {highestScoreRestaurant && (
+      {restaurants && (
         <Category_BigRestaurantInfo>
-          <span className="BigRestaurant_Name">{highestScoreRestaurant.name}</span>
+          <span className="BigRestaurant_Name">{restaurants.name}</span>
           <div>
             <span className="BigRestaurant_Score">
-              예상 <FaStar className="icons" />
-              {highestScoreRestaurant.score}
+              평균 <FaStar className="icons" />
+              {restaurants.score}
             </span>
             <span className="BigRestaurant_Bookmark">
-              <FaHeart className="icons" /> {highestScoreRestaurant.bookmark}
+              <FaHeart className="icons" /> {restaurants.bookmark}
             </span>
           </div>
-          <span className="BigRestaurant_Address">{highestScoreRestaurant.address}</span>
+          <span className="BigRestaurant_Address">{restaurants.address}</span>
         </Category_BigRestaurantInfo>
       )}
     </>
   );
 };
 
-export default Category_BigRestaurant_Info;
+//랜덤 카테고리 중 별점이 가장 높은 식당 정보를 불러옴
+const mapStateToProps = state => {
+  return {
+    restaurants: state.randomRestaurants.restaurants[0],
+  };
+};
+export default connect(mapStateToProps, { fetchRandomRestaurants })(Category_BigRestaurant_Info);
 
 //style
 const Category_BigRestaurantInfo = styled(BigRestaurantInfo)`
-  padding-right: 1rem;
-
+  padding-right: 20px;
+  align-items: end;
+  justify-content: end;
+  .BigRestaurant_Name {
+    padding-right: 5px;
+  }
   .BigRestaurant_Score {
-    padding-right: 0.5rem;
+    padding-right: 10px;
   }
   .BigRestaurant_Bookmark {
-    padding-right: 0.5rem;
-  }
-  .BigRestaurant_Address {
-    padding-top: 0.2rem;
-    padding-right: 0.5rem;
+    padding-right: 10px;
   }
   .icons {
-    font-size: 0.9rem;
+    font-size: 14px;
     padding-right: 2px;
   }
 `;

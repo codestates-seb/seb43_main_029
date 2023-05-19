@@ -1,84 +1,46 @@
 //내부 import
-import { SERVER_URL } from '../../config';
+import { BigRestaurantImageContainer } from '../../styled';
+
+//redux
+import { fetchBookmarkRestaurants } from '../../../../redux/bookmarkRestaurants/actions';
 
 //외부 import
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-// 즐겨찾기 큰 식당 이미지
-const Bookmark_BigRestaurant_Image = () => {
-  const [restaurants, setRestaurants] = useState([]);
+import { Link } from 'react-router-dom';
 
+// 즐겨찾기가 가장 많은 식당 이미지 컴포넌트
+// redux에서 서버와 state값을 구조분해할당으로 가져옴
+const Bookmark_BigRestaurant_Image = ({ fetchBookmarkRestaurants, restaurants }) => {
   useEffect(() => {
-    //날라오는 애니메이션 효과
-    AOS.init();
-
-    const fetchRestaurants = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const data = response.data;
-        setRestaurants(data);
-      } catch (error) {
-        console.error('식당 데이터를 불러올 수 없습니다', error);
-      }
-    };
-    fetchRestaurants();
+    fetchBookmarkRestaurants();
   }, []);
-
-  //즐겨찾기가 가장 높은 식당 필터링
-  const findHighestBookmark = () => {
-    if (restaurants.length === 0) return null;
-
-    const highestBookmarkRestaurant = restaurants.reduce((prev, current) => {
-      return current.bookmark > prev.bookmark ? current : prev;
-    });
-
-    return highestBookmarkRestaurant;
-  };
-
-  //즐겨찾기가 가장 높은 식당
-  const highestBookmarkRestaurant = findHighestBookmark();
-
   return (
     <>
-      {highestBookmarkRestaurant && (
-        <BigR_Container
-          key={highestBookmarkRestaurant.restaurantId}
-          data-aos="fade-right"
-          data-aos-offset="500"
-          data-aos-duration="1000"
-          data-aos-once="true"
+      {restaurants && (
+        <BigRestaurantImageContainer
+          // Category_BigRestaurant_Image.jsx에서 aos를 실행시키고 있음
+          data-aos="fade-right" //이름
+          data-aos-offset="500" // 애니메이션 시작할 객체 위치 설정 (default : 120)
+          data-aos-duration="1200" // 재생 시간 설정 (default : 400)
+          data-aos-once="true" // 스크롤 할 때마다 애니메이션 실행할지, 현재는 한 번만 실행됨.
         >
-          <img src={highestBookmarkRestaurant.images} alt={highestBookmarkRestaurant.name} />
-        </BigR_Container>
+          <Link to="/restaurant/:restaurantsId">
+            <img src={restaurants.images} alt={restaurants.name} />
+          </Link>
+        </BigRestaurantImageContainer>
       )}
     </>
   );
 };
 
-export default Bookmark_BigRestaurant_Image;
+/** 즐겨찾기가 가장 높은 식당 */
+const mapStateToProps = state => {
+  return {
+    restaurants: state.bookmarkRestaurants.restaurants[0],
+  };
+};
 
-//style
-const BigR_Container = styled.section`
-  padding-bottom: 2rem;
-  width: calc(100% - 20px);
-  height: calc(100% - 210px);
-  img {
-    border-radius: 2px;
-    width: 100%;
-    height: 100%;
-    // 이미지가 뭉개지는 것을 방지
-    object-fit: cover;
-
-    cursor: pointer;
-    transition: transform 0.5s;
-    :hover {
-      -ms-transform: scale(1.5); /* IE 9 */
-      -webkit-transform: scale(1.5); /* Safari 3-8 */
-      transform: scale(1.02);
-    }
-  }
-`;
+//mapStateToProps를 보내줌으로 서버에서 해당 리턴 데이터(state값)을 받아옴.
+export default connect(mapStateToProps, { fetchBookmarkRestaurants })(Bookmark_BigRestaurant_Image);
