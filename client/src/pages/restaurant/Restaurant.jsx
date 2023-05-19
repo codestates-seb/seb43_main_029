@@ -26,9 +26,9 @@ function Restaurant() {
   const [isOn, setIsOn] = useState(false);
 
   const restaurantApi = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurants/${id}`);
+    const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurant/${id}`);
     // console.log(response);
-    setRestaurant(response.data);
+    setRestaurant(response.data.data);
   };
   useEffect(() => {
     restaurantApi();
@@ -103,7 +103,7 @@ function Restaurant() {
 }
 
 const RestaurantSection = styled.section`
-  margin-top: 2rem;
+  margin: 2rem 0 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

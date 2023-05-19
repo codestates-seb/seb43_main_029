@@ -12,19 +12,19 @@ function MyPage() {
   const [userInfo, setUserInfo] = useState({});
   const [role, setRole] = useState();
 
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-  //     setUserInfo(res.data.data);
-  //     setRole(res.data.data.role[0]);
-  //   });
-  // }, []);
-
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setUserInfo(res.data);
-      setRole(res.data.role[0]);
+      setUserInfo(res.data.data);
+      setRole(res.data.data.role[0]);
     });
   }, []);
+
+  // useEffect(() => {
+  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
+  //     setUserInfo(res.data);
+  //     setRole(res.data.role[0]);
+  //   });
+  // }, []);
 
   if (role === 'USER') {
     return (
