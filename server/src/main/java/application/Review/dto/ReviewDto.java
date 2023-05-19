@@ -26,6 +26,7 @@ public class ReviewDto {
     public static class ReviewPatchDto {
         private long reviewId;
         private long memberId;
+        private long restaurantId;
         @NotBlank(message = "리뷰 내용을 작성해야 합니다.")
         private String content;
         @NotNull(message = "별점을 부여해야 합니다.")
