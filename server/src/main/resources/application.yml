@@ -1,4 +1,5 @@
 spring:
+  batch.job.enabled: false # CommandLineRunner 설정 해제
   output:
     ansi:
       enabled: ALWAYS
@@ -8,6 +9,7 @@ spring:
     url: jdbc:mysql://localhost:3306/{데이터베이스명}?serverTimezone=Asia/Seoul
     username: {USERNAME}
     password: {PASSWORD}
+    schema: classpath:/org/springframework/batch/core/schema-h2.sql # 스키마 위치 설정
 
   config:
     use-legacy-processing: true
