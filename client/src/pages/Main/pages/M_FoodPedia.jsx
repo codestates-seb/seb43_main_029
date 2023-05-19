@@ -38,7 +38,7 @@ const S_RootContainer = styled(M_RootContainer)`
   background: url('https://images.unsplash.com/photo-1502741224143-90386d7f8c82?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80')
     no-repeat center;
   background-size: cover;
-  font-family: var(--font-googleNanumBrushScript);
+  font-family: var(--font-foodpedia);
   color: #fff;
 `;
 

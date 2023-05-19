@@ -1,6 +1,7 @@
 //내부 import
-import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 import { TitleBox } from '../../styled';
+//redux
+import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
 import { useEffect } from 'react';
@@ -9,6 +10,7 @@ import { connect } from 'react-redux';
 /** 랜덤 카테고리 타이틀 */
 const Category_Title = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
+    //최초 렌더시 서버 데이터 가져옴
     fetchRandomRestaurants();
   }, []);
   return (

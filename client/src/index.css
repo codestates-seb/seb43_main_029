@@ -11,7 +11,7 @@ code {
 }
 
 @font-face {
-  font-family: 'googleNanumBrushScript';
+  font-family: 'foodpedia';
   src: url(./fonts/NanumBrushScript-Regular.ttf);
 }
 
@@ -26,7 +26,11 @@ code {
 }
 
 :root {
-  --font-googleNanumBrushScript: 'googleNanumBrushScript';
+  --font-foodpedia: 'foodpedia';
   --font-maypleStory: 'maypleStory';
   --font-KCC: 'KCC';
+
+  --color-bookmark: #60a5fa;
+  --color-score: #f472b6;
+  --color-address: #6b7280;
 }

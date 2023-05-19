@@ -1,5 +1,6 @@
 //내부 import
 import { BigRestaurantImageContainer } from '../../styled';
+
 //redux
 import { fetchBookmarkRestaurants } from '../../../../redux/bookmarkRestaurants/actions';
 
@@ -13,7 +14,6 @@ const Bookmark_BigRestaurant_Image = ({ fetchBookmarkRestaurants, restaurants })
   useEffect(() => {
     fetchBookmarkRestaurants();
   }, []);
-
   return (
     <>
       {restaurants && (

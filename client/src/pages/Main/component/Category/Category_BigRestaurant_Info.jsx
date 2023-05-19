@@ -1,20 +1,21 @@
 //내부 import
 import { BigRestaurantInfo } from '../../styled';
+//redux
 import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
-import { useEffect } from 'react';
 import styled from 'styled-components';
-import { FaHeart, FaStar } from 'react-icons/fa';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
+//icon
+import { FaHeart, FaStar } from 'react-icons/fa';
 
-/** 랜덤 카테고리 큰 이미지 식당 정보 */
+/** 랜덤 카테고리 중 별점이 가장 높은 식당 식당 정보 */
 const Category_BigRestaurant_Info = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
+    //첫 렌더시 서버에서 데이터 받아옴
     fetchRandomRestaurants();
   }, []);
-
-  //랜덤 카테고리 중, 가장 별점이 높은 식당 필터
 
   return (
     <>
@@ -23,7 +24,7 @@ const Category_BigRestaurant_Info = ({ fetchRandomRestaurants, restaurants }) =>
           <span className="BigRestaurant_Name">{restaurants.name}</span>
           <div>
             <span className="BigRestaurant_Score">
-              예상 <FaStar className="icons" />
+              평균 <FaStar className="icons" />
               {restaurants.score}
             </span>
             <span className="BigRestaurant_Bookmark">
@@ -36,6 +37,8 @@ const Category_BigRestaurant_Info = ({ fetchRandomRestaurants, restaurants }) =>
     </>
   );
 };
+
+//랜덤 카테고리 중 별점이 가장 높은 식당 정보를 불러옴
 const mapStateToProps = state => {
   return {
     restaurants: state.randomRestaurants.restaurants[0],
@@ -45,20 +48,20 @@ export default connect(mapStateToProps, { fetchRandomRestaurants })(Category_Big
 
 //style
 const Category_BigRestaurantInfo = styled(BigRestaurantInfo)`
-  padding-right: 1rem;
-
+  padding-right: 20px;
+  align-items: end;
+  justify-content: end;
+  .BigRestaurant_Name {
+    padding-right: 5px;
+  }
   .BigRestaurant_Score {
-    padding-right: 0.5rem;
+    padding-right: 10px;
   }
   .BigRestaurant_Bookmark {
-    padding-right: 0.5rem;
-  }
-  .BigRestaurant_Address {
-    padding-top: 0.2rem;
-    padding-right: 0.5rem;
+    padding-right: 10px;
   }
   .icons {
-    font-size: 0.9rem;
+    font-size: 14px;
     padding-right: 2px;
   }
 `;

@@ -24,6 +24,7 @@ const M_Bookmark = () => {
           <M_Bookmark_BigRestaurant_Image_Box>
             <Bookmark_BigRestaurant_Image />
           </M_Bookmark_BigRestaurant_Image_Box>
+
           <M_Title_And_BigRestaurant_InfoBox>
             <M_TitleBox>
               <Bookmark_Title />

@@ -49,27 +49,33 @@ export const M_ContentBox = styled.div`
 
 /** 큰 섹션을 소개하는 타이틀 컴포넌트*/
 export const M_Title_And_BigRestaurant_InfoBox = styled.div`
+  width: 100%;
   height: 100%;
 
   display: flex;
-  flex: 1;
   flex-direction: column;
+  justify-content: end;
 `;
 
 /** 타이틀 감싸는 컴포넌트 */
 export const M_TitleBox = styled.div`
-  height: 50%;
   width: 100%;
 
   display: flex;
-  align-items: end;
+  justify-content: center;
+
+  margin-bottom: 250px;
+
+  @media all and (min-width: 480px) and (max-width: 767px) {
+    margin-bottom: 100px;
+  }
+  @media all and (max-width: 479px) {
+    /* margin-bottom: 80px; */
+  }
 `;
 
 /** 큰 식당의 정보를 감싸는 컴포넌트 */
 export const M_BigRestaurant_InfoBox = styled.div`
-  height: 50%;
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -79,12 +85,11 @@ export const M_BigRestaurant_InfoBox = styled.div`
 
 /** 큰 식당의 이미지를 감싸는 컴포넌트 */
 export const M_BigRestaurant_Image_Box = styled.div`
+  width: 100%;
   height: 100%;
 
   display: flex;
-  flex: 1;
   align-items: end;
-  /* justify-content: end; */
 `;
 
 /**  타이틀 박스 */
@@ -92,22 +97,60 @@ export const TitleBox = styled.div`
   display: flex;
   flex-direction: column;
   font-weight: 700;
-  padding-left: 10%;
-
   .Title_Tag {
-    font-size: 1.5rem;
-    padding-bottom: 0.2rem;
+    font-size: 20px;
+    padding-bottom: 5px;
     color: #6b7280;
   }
-  .Title_Desc_First {
-    font-size: 3rem;
-    padding-bottom: 0.2rem;
-  }
-  .Title_Desc_Second {
-    font-size: 3.5rem;
+  .Title_Desc {
+    font-size: 45px;
   }
   .point {
     color: #3b82f6;
+  }
+
+  @media all and (min-width: 1024px) and (max-width: 1250px) {
+    .Title_Tag {
+      font-size: 16px;
+    }
+    .Title_Desc {
+      font-size: 35px;
+    }
+  }
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    .Title_Tag {
+      font-size: 14px;
+    }
+    .Title_Desc {
+      font-size: 30px;
+    }
+  }
+  @media all and (min-width: 480px) and (max-width: 767px) {
+    .Title_Tag {
+      font-size: 12px;
+    }
+    .Title_Desc {
+      font-size: 22px;
+    }
+    @media all and (min-width: 480px) and (max-width: 569px) {
+      margin: 0;
+
+      .space {
+        display: block;
+      }
+    }
+    @media all and (max-width: 479px) {
+      /* margin-bottom: 0; */
+      .Title_Tag {
+        font-size: 8px;
+      }
+      .Title_Desc {
+        font-size: 16px;
+      }
+      .space {
+        /* display: block; */
+      }
+    }
   }
 `;
 
@@ -115,31 +158,91 @@ export const TitleBox = styled.div`
 export const BigRestaurantInfo = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: end;
 
   .BigRestaurant_Name {
     font-weight: 700;
-    font-size: 2.2rem;
-    padding-bottom: 0.2rem;
+    font-size: 30px;
+    padding-bottom: 5px;
   }
   .BigRestaurant_Score {
+    color: var(--color-score);
     font-weight: 500;
-    font-size: 1.1rem;
-    color: #ec4899;
+    font-size: 18px;
   }
   .BigRestaurant_Bookmark {
+    color: var(--color-bookmark);
     font-weight: 500;
-    font-size: 1.1rem;
-    color: #6366f1;
-    padding-bottom: 0.5rem;
+    font-size: 18px;
+    padding-bottom: 5px;
   }
   .BigRestaurant_Address {
-    color: #6b7280;
+    padding-top: 5px;
+    padding-right: 10px;
+    color: var(--color-address);
+  }
+  /** pc */
+  @media all and (min-width: 1024px) and (max-width: 1250px) {
+    width: calc(1024px / 2);
+  }
+
+  /** 테블릿 가로 */
+  @media all and (min-width: 768px) and (max-width: 1023px) {
+    width: calc(768px / 2);
+    .BigRestaurant_Name {
+      font-size: 24px;
+    }
+    .BigRestaurant_Score {
+      font-size: 16px;
+    }
+    .BigRestaurant_Score {
+      font-size: 16px;
+    }
+    .BigRestaurant_Address {
+      font-size: 14px;
+    }
+  }
+
+  /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
+  @media all and (min-width: 480px) and (max-width: 767px) {
+    width: calc(480px / 2);
+    .BigRestaurant_Name {
+      font-size: 20px;
+    }
+    .BigRestaurant_Score {
+      font-size: 14px;
+    }
+    .BigRestaurant_Score {
+      font-size: 14px;
+    }
+    .BigRestaurant_Address {
+      font-size: 12px;
+    }
+
+    .icons {
+      font-size: 8px;
+    }
+  }
+
+  /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
+  @media all and (max-width: 479px) {
+    width: 150px;
+    .BigRestaurant_Name {
+      font-size: 16px;
+    }
+    .BigRestaurant_Score {
+      font-size: 12px;
+    }
+    .BigRestaurant_Score {
+      font-size: 12px;
+    }
+    .BigRestaurant_Address {
+      font-size: 10px;
+    }
   }
 `;
 
 /** 식당 컴포넌트 */
-export const RestaurantBox = styled.div`
+export const RestaurantBox = styled.li`
   width: 100%;
   height: 250px;
 
@@ -150,7 +253,7 @@ export const RestaurantBox = styled.div`
   .Restaurant_Image {
     height: 200px;
     img {
-      border-radius: 10px;
+      border-radius: 2px;
       width: 100%;
       height: 100%;
       // 이미지가 뭉개지는 것을 방지
@@ -169,47 +272,45 @@ export const RestaurantBox = styled.div`
   .Restaurant_Info {
     display: flex;
     flex-direction: column;
-    padding: 0.5em;
+    padding: 8px;
     align-items: end;
+    background-color: #fff;
   }
-  /* .Restaurant_NameAndScore {
-    font-weight: 700;
-    font-size: 1.2em;
-    margin-bottom: 0.2em;
-  } */
   .Restaurant_Name {
     color: #000;
     font-weight: 600;
-    font-size: 1.2em;
-    padding-bottom: 0.2em;
+    font-size: 18px;
+    padding-bottom: 5px;
   }
   .Restaurant_Score {
-    color: #ec4899;
+    color: var(--color-score);
     font-weight: 500;
-    padding-left: 0.5em;
+    font-size: 14px;
     .icons {
-      font-size: 0.8em;
-      padding-right: 0.2em;
+      font-size: 14px;
+      //좌우 패딩값
+      padding: 0 4px 0;
     }
   }
   .Restaurant_Bookmark {
-    color: #6366f1;
+    color: var(--color-bookmark);
     font-weight: 500;
-    padding-left: 0.5em;
+    font-size: 14px;
+    padding-left: 5px;
     .icons {
-      font-size: 0.8em;
+      font-size: 13px;
       padding-right: 0.2em;
     }
   }
   .Restaurant_Address {
-    font-size: 0.8em;
-    color: #6b7280;
-    padding-left: 0.2em;
+    font-size: 12px;
+    color: var(--color-address);
+    padding-top: 2px;
   }
 `;
 
 /** 식당 컴포넌트를 map 돌리는 컴포넌트 */
-export const RestaurantsBox = styled.div`
+export const RestaurantsBox = styled.ul`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 15px;
@@ -219,30 +320,30 @@ export const RestaurantsBox = styled.div`
 // 큰 식당 이미지 컨테이너
 export const BigRestaurantImageContainer = styled.div`
   padding-bottom: 30px;
-  width: 600px;
+  width: 100%;
   height: 480px;
 
   /* PC */
   @media all and (min-width: 1024px) and (max-width: 1250px) {
-    width: calc(1024px / 2);
-    height: 350px;
+    width: 100%;
+    height: 400px;
   }
 
   /* 테블릿 세로 (해상도 768px ~ 1023px)*/
   @media all and (min-width: 768px) and (max-width: 1023px) {
-    width: calc(768px / 2);
-    height: 250px;
+    width: 100%;
+    height: 400px;
   }
 
   /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
   @media all and (min-width: 480px) and (max-width: 767px) {
-    width: calc(480px / 2);
-    height: 150px;
+    width: 95%;
+    height: 230px;
   }
 
   /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
   @media all and (max-width: 479px) {
-    width: 150px;
+    width: 95%;
     height: 100px;
   }
   img {

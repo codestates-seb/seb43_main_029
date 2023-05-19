@@ -14,6 +14,9 @@ import Category_BigRestaurant_Image from '../component/Category/Category_BigRest
 import Category_BigRestaurant_Info from '../component/Category/Category_BigRestaurant_Info';
 import Category_Restaurants from '../component/Category/Category_Restaurants';
 
+//외부 import
+import styled from 'styled-components';
+
 /** 메인페이지의 카테고리 컴포넌트*/
 const M_Category = () => {
   return (
@@ -24,9 +27,9 @@ const M_Category = () => {
             <M_TitleBox>
               <Category_Title />
             </M_TitleBox>
-            <M_BigRestaurant_InfoBox>
+            <C_BigRestaurant_InfoBox>
               <Category_BigRestaurant_Info />
-            </M_BigRestaurant_InfoBox>
+            </C_BigRestaurant_InfoBox>
           </M_Title_And_BigRestaurant_InfoBox>
           <M_BigRestaurant_Image_Box>
             <Category_BigRestaurant_Image />
@@ -44,3 +47,7 @@ const M_Category = () => {
 };
 
 export default M_Category;
+
+const C_BigRestaurant_InfoBox = styled(M_BigRestaurant_InfoBox)`
+  align-items: end;
+`;
