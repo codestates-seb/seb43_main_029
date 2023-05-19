@@ -1,4 +1,3 @@
-import { SERVER_URL } from '../../config';
 import axios from 'axios';
 import {
   fetchRandomRestaurantsRequest,
@@ -11,7 +10,7 @@ export const fetchRandomRestaurants = () => {
     dispatch(fetchRandomRestaurantsRequest());
 
     axios
-      .get(`${SERVER_URL}/restaurant`)
+      .get(`${process.env.REACT_APP_API_URL}/restaurant`)
       .then(response => {
         //정제 데이터
         const restaurants = response.data;
