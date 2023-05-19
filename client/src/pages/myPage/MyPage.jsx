@@ -12,30 +12,29 @@ function MyPage() {
   const [userInfo, setUserInfo] = useState({});
   const [role, setRole] = useState();
 
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-  //     setUserInfo(res.data.data);
-  //     setRole(res.data.data.role[0]);
-  //   });
-  // }, []);
-
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setUserInfo(res.data);
-      setRole(res.data.role[0]);
+      setUserInfo(res.data.data);
+      setRole(res.data.data.role[0]);
     });
   }, []);
 
-  console.log(role);
+  // useEffect(() => {
+  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
+  //     setUserInfo(res.data);
+  //     setRole(res.data.role[0]);
+  //   });
+  // }, []);
 
   if (role === 'USER') {
     return (
       <>
         <MyPageBlock>
+          <h1 className="visually-hidden">마이페이지</h1>
           <MyPageLayout>
             <Profile userInfo={userInfo} />
-            <MyReivew />
-            <MyBookmark />
+            <MyReivew userInfo={userInfo} />
+            <MyBookmark userInfo={userInfo} />
           </MyPageLayout>
         </MyPageBlock>
       </>
@@ -45,6 +44,7 @@ function MyPage() {
     return (
       <>
         <MyPageBlock>
+          <h1 className="visually-hidden">마이페이지</h1>
           <MyPageLayout>
             <Profile userInfo={userInfo} />
             <MyRestaurant />
@@ -63,6 +63,20 @@ const MyPageBlock = styled.section`
   align-items: center;
   box-sizing: border-box;
   margin: 4rem 0 8rem;
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 `;
 
 const MyPageLayout = styled.div`

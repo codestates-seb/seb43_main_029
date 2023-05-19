@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { TiPencil, TiHeartFullOutline } from 'react-icons/ti';
+import { Link } from 'react-router-dom';
 
 export const BookmarkComponent = ({ idx, bookmarks }) => {
   return (
     <Bookmark key={idx}>
-      <a href="/">
+      <Link to={`/restaurant/${bookmarks.restaurantId}`}>
         <BookmarkContent>
           <img src={bookmarks.image} alt={bookmarks.name} />
         </BookmarkContent>
@@ -25,7 +26,7 @@ export const BookmarkComponent = ({ idx, bookmarks }) => {
             <p>작성날짜</p>
           </BookmarkInfo>
         </BookmarkDesc>
-      </a>
+      </Link>
     </Bookmark>
   );
 };

@@ -3,8 +3,9 @@ import { TiThumbsUp } from 'react-icons/ti';
 import { MdOutlineInsertPhoto } from 'react-icons/md';
 import Modal from './Modal';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-export const ReviewComponent = ({ idx, review }) => {
+export const ReviewComponent = ({ reviewId, review }) => {
   const [isModal, setIsModal] = useState(false);
 
   function openModal() {
@@ -13,14 +14,13 @@ export const ReviewComponent = ({ idx, review }) => {
   function closeModal() {
     setIsModal(false);
   }
-
   return (
-    <Review key={idx}>
+    <Review key={reviewId}>
       <div className="padding">
         <ReviewTitle className="underLine">
-          <a href="/">
+          <Link to={`/restaurant/${review.restaurantId}`}>
             <MarginP>{review.name}</MarginP>
-          </a>
+          </Link>
           <p>{review.score}</p>
         </ReviewTitle>
         <ReviewContent className="underLine">
@@ -38,7 +38,9 @@ export const ReviewComponent = ({ idx, review }) => {
           <p>작성날짜</p>
         </ReviewDate>
       </div>
-      <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
+      {review.images === null ? null : (
+        <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
+      )}
     </Review>
   );
 };
