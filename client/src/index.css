@@ -1,13 +1,38 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+  font-family: 'foodpedia';
+  src: url(./fonts/NanumBrushScript-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'maypleStory';
+  src: url(./fonts/Maplestory\ OTF\ Bold.otf);
+}
+
+@font-face {
+  font-family: 'KCC';
+  src: url(./fonts/KCCMurukmuruk\(MAC용\).otf);
+}
+
+:root {
+  /* 폰트  전역변수 */
+  --font-foodpedia: 'foodpedia';
+  --font-maypleStory: 'maypleStory';
+  --font-KCC: 'KCC';
+
+  /* 메인페이지 주 색상 */
+  --color-bookmark: #60a5fa;
+  --color-score: #f472b6;
+  --color-address: #6b7280;
 }

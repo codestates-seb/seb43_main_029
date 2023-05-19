@@ -6,7 +6,7 @@ function Modal({ isOpen, closeModal, gallery }) {
       <ModalBlock>
         <h3>리뷰 이미지</h3>
         <Gallery>
-          {gallery.map((image, idx) => {
+          {gallery?.map((image, idx) => {
             return (
               <li key={idx}>
                 <img src={image} alt={idx} />

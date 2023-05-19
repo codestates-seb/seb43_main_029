@@ -475,5 +475,43 @@
       "createdAt": "2023-05-03 11:24:31",
       "lastModifiedAt": "2023-05-03 11:24:31"
     }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "memberId": 1,
+      "restaurantId": 1,
+      "reviewId": 1,
+      "content": "다시 갔는데 예전보다 별로에요",
+      "score": 3.5,
+      "images": [
+        "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHN0ZWFrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 2,
+      "memberId": 1,
+      "restaurantId": 1,
+      "reviewId": 2,
+      "content": "별로에요",
+      "score": 3.5,
+      "images": null,
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 3,
+      "memberId": 1,
+      "restaurantId": 2,
+      "reviewId": 3,
+      "content": "별로에요",
+      "score": 3.5,
+      "images": ["url1", "url2"],
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    }
   ]
 }

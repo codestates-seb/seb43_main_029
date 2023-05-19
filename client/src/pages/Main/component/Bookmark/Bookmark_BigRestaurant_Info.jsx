@@ -1,26 +1,22 @@
 //내부 import
 import { BigRestaurantInfo } from '../../styled';
-import { fetchRestaurants } from '../../../../redux/actions/main/actions';
+//redux
+import { fetchBookmarkRestaurants } from '../../../../redux/bookmarkRestaurants/actions';
 
 //외부 import
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+//icon
 import { FaHeart, FaStar } from 'react-icons/fa';
 
-/** 즐겨찾기 큰 이미지 식당 정보 */
-const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading, error }) => {
+/** 즐겨찾기가 가장 많은 식당 정보 */
+const Bookmark_BigRestaurant_Info = ({ fetchBookmarkRestaurants, restaurants }) => {
   useEffect(() => {
-    fetchRestaurants();
+    //첫 렌더시 서버에서 데이터 받아옴
+    fetchBookmarkRestaurants();
   }, []);
 
-  if (isLoading) {
-    console.log(isLoading);
-  }
-  if (error) {
-    console.log(error);
-  }
-  console.log(restaurants);
   return (
     <>
       {restaurants && (
@@ -28,7 +24,7 @@ const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading,
           <span className="BigRestaurant_Name">{restaurants.name}</span>
           <div>
             <span className="BigRestaurant_Score">
-              예상 <FaStar className="icons" /> {restaurants.score}
+              평균 <FaStar className="icons" /> {restaurants.score}
             </span>
             <span className="BigRestaurant_Bookmark">
               <FaHeart className="icons" /> {restaurants.bookmark}
@@ -41,28 +37,32 @@ const Bookmark_BigRestaurant_Info = ({ fetchRestaurants, restaurants, isLoading,
   );
 };
 
+//즐겨찾기가 가장 많은 식당의 정보를 불러옴
 const mapStateToProps = state => ({
-  restaurants: state.restaurants,
-  isLoading: state.isLoading,
-  error: state.error,
+  restaurants: state.bookmarkRestaurants.restaurants[0],
 });
-export default connect(mapStateToProps, { fetchRestaurants })(Bookmark_BigRestaurant_Info);
+export default connect(mapStateToProps, { fetchBookmarkRestaurants })(Bookmark_BigRestaurant_Info);
 
 //style
 const Bookmark_BigRestaurantInfo = styled(BigRestaurantInfo)`
   align-items: start;
-  padding-left: 1rem;
+  padding-left: 20px;
+  justify-content: end;
+  .BigRestaurant_Name {
+    padding-left: 5px;
+  }
   .BigRestaurant_Score {
-    padding-left: 0.2rem;
+    padding-left: 8px;
   }
   .BigRestaurant_Bookmark {
-    padding-left: 0.5rem;
+    padding-left: 5px;
   }
   .BigRestaurant_Address {
-    padding-top: 0.2rem;
-    padding-left: 0.2rem;
+    padding-top: 5px;
+    padding-left: 8px;
   }
   .icons {
-    font-size: 1rem;
+    font-size: 14px;
+    padding-left: 2px;
   }
 `;

@@ -1,13 +1,15 @@
 //내부 import
 import { TitleBox } from '../../styled';
 
-/** 즐겨찾기 타이틀을 담은 컴포넌트 */
+//외부 import
+// import styled from 'styled-components';
+
+/** 즐겨찾기 타이틀 */
 const Bookmark_Title = () => {
   return (
     <TitleBox>
-      <div className="Title_Tag">&#35; 즐겨찾기 Top 5</div>
-      <div className="Title_Desc_First">한 번으로는</div>
-      <div className="Title_Desc_Second">부족한 식당 모음</div>
+      <h2 className="Title_Tag">&#35; 즐겨찾기 Top 5</h2>
+      <h1 className="Title_Desc">한 번으로는 부족한 식당 모음</h1>
     </TitleBox>
   );
 };

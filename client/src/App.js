@@ -12,8 +12,6 @@ import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
 import Login from './pages/registration/Login';
 
-import { Provider } from 'react-redux';
-import store from './redux/store.js';
 import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
@@ -42,32 +40,30 @@ function App() {
 
   return (
     <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <GlobalStyle />
-          <GlobalLayout>
-            {isUserLoggedIn ? (
-              <HeaderLogged onLogout={handleLogout} />
-            ) : (
-              <Header onLogin={handleLogin} />
-            )}
+      <BrowserRouter>
+        <GlobalStyle />
+        <GlobalLayout>
+          {isUserLoggedIn ? (
+            <HeaderLogged onLogout={handleLogout} />
+          ) : (
+            <Header onLogin={handleLogin} />
+          )}
+          <Routes>
+            <Route exact path="/" Component={Login} />
+          </Routes>
+          <div className="App">
             <Routes>
-              <Route exact path="/" Component={Login} />
+              <Route path="/" element={<Main />} />
+              <Route path="/mypage/:id" element={<MyPage />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/restaurant" element={<Restaurant />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
             </Routes>
-            <div className="App">
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/mypage/:id" element={<MyPage />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/restaurant" element={<Restaurant />} />
-                <Route path="/registration" element={<Registration />} />
-                <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
-              </Routes>
-            </div>
-            <Footer className="footer" />
-          </GlobalLayout>
-        </BrowserRouter>
-      </Provider>
+          </div>
+          <Footer className="footer" />
+        </GlobalLayout>
+      </BrowserRouter>
     </>
   );
 }
