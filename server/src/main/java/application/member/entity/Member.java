@@ -26,13 +26,13 @@ public class Member extends Auditable {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
     @Column(nullable = false)
     private String nickname;
 
-    @Column(nullable = false)
+    @Column
     private String phone;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -53,6 +53,12 @@ public class Member extends Auditable {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<Bookmark> bookmarkList = new ArrayList<>();
+
+    public Member(String email, String name, List<String> authorities){
+        this.email = email;
+        this.nickname = name;
+        this.roles = authorities;
+    }
 
     public enum MemberStatus{
         MEMBER_ACTIVE("활동중"),

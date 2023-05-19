@@ -3,11 +3,9 @@ package application.auth.config;
 
 import application.auth.filter.JwtAuthenticationFilter;
 import application.auth.filter.JwtVerificationFilter;
-import application.auth.handler.MemberAccessDeniedHandler;
-import application.auth.handler.MemberAuthenticationEntryPoint;
-import application.auth.handler.MemberAuthenticationFailureHandler;
-import application.auth.handler.MemberAuthenticationSuccessHandler;
+import application.auth.handler.*;
 import application.auth.jwt.JwtTokenizer;
+import application.auth.userdetails.MemberDetailsService;
 import application.auth.utils.CustomAuthorityUtils;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,10 +30,12 @@ public class SecurityConfiguration {
 
     private final JwtTokenizer jwtTokenizer;
     private final CustomAuthorityUtils authorityUtils;
+    private final MemberDetailsService memberService;
 
-    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils) {
+    public SecurityConfiguration(JwtTokenizer jwtTokenizer, CustomAuthorityUtils authorityUtils, MemberDetailsService memberService) {
         this.jwtTokenizer = jwtTokenizer;
         this.authorityUtils = authorityUtils;
+        this.memberService = memberService;
     }
 
     // TODO: 페이지별 권한 부여, 식당, 리뷰 등 추가되면 진행할 것
@@ -56,12 +56,18 @@ public class SecurityConfiguration {
                 .and()
                 .apply(new CustomFilterConfigurer())
                 .and()
+                .oauth2Login()
+                .successHandler(new OAuth2MemberSuccessHandler(jwtTokenizer, authorityUtils, memberService))
+                .and()
                 .authorizeHttpRequests(authorize -> authorize
                         //.antMatchers(HttpMethod.POST, "/members").permitAll()
                         //.antMatchers(HttpMethod.PATCH, "/members/**").hasRole("USER")
                         //.antMatchers(HttpMethod.POST, "/login").permitAll()
                         .anyRequest().permitAll());
-                        //.anyRequest().authenticated());
+                        //.anyRequest().authenticated())
+//                .oauth2Login(oauth2 -> oauth2
+//                        .successHandler(new OAuth2MemberSuccessHandler()));
+
 
         return http.build();
     }
@@ -76,7 +82,7 @@ public class SecurityConfiguration {
         CorsConfiguration configuration = new CorsConfiguration();
         // CORS 요청에서 허용되는 origin을 설정하는 메서드, 모든 origin으로 부터의 요청을 허용한다
         // S3에서 정적 배포하는 경로가 origin이 된다
-        configuration.setAllowedOrigins(Arrays.asList("http://seb43-main-029-client.s3-website.ap-northeast-2.amazonaws.com"));
+        configuration.setAllowedOrigins(Arrays.asList("http://seb43-main-029-client.s3-website.ap-northeast-2.amazonaws.com", "http://localhost:3000"));
         // 허용되는 HTTP Method 설정
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PATCH", "DELETE"));
         // 허용되는 HTTP 요청 헤더 설정
@@ -107,6 +113,7 @@ public class SecurityConfiguration {
             JwtVerificationFilter jwtVerificationFilter = new JwtVerificationFilter(jwtTokenizer, authorityUtils);
 
             builder.addFilter(jwtAuthenticationFilter)
-                    .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);        }
+                    .addFilterAfter(jwtVerificationFilter, JwtAuthenticationFilter.class);
+        }
     }
 }
