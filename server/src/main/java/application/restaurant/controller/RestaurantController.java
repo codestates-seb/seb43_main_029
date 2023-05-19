@@ -48,8 +48,8 @@ public class RestaurantController {
     public ResponseEntity patchRestaurant(@PathVariable("restaurant-id") @Positive long restaurantId,
                                           @RequestPart RestaurantDto.RestaurantPatchDto restaurantPatchDto,
                                           @RequestPart(required = false) List<MultipartFile> multipartFile,
-                                          @RequestParam(required = false) List<Long> deleteImageList,
-                                          @RequestParam(required = false) List<Long> deleteMenuList,
+                                          @RequestPart(required = false) List<Long> deleteImageList,
+                                          @RequestPart(required = false) List<Long> deleteMenuList,
                                           @RequestPart(required = false) List<MenuDto.MenuPostDto> newMenuList) {
         Restaurant restaurant = mapper.restaurantPatchDtoToRestaurant(restaurantPatchDto);
         restaurant.setRestaurantId(restaurantId);
@@ -79,6 +79,20 @@ public class RestaurantController {
                 new SingleResponseDto<>(mapper.restaurantToRestaurantResponseDto(restaurant)), HttpStatus.OK
         );
     }
+
+    @GetMapping("/today")
+    public ResponseEntity today(){
+        List<Restaurant> restaurantList = restaurantService.getRestaurants();
+
+        List<RestaurantDto.RestaurantSearchResponseDto> responseDtoList = mapper.restaurantSearchListToDtoList(restaurantList);
+        responseDtoList = restaurantService.setRestaurant(responseDtoList);
+
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(responseDtoList), HttpStatus.OK
+        );
+    }
+
 
     @GetMapping("/search") //식당 검색
     public ResponseEntity getSearchRestaurant(@RequestParam String keyword,
