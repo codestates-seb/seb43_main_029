@@ -8,10 +8,13 @@ import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Favorites from './pages/favorites/FavoritesListPage';
 import Header from './components/Header';
+import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
+import Login from './pages/registration/Login';
 
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
+import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -27,13 +30,30 @@ const GlobalLayout = styled.div`
 `;
 
 function App() {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsUserLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsUserLoggedIn(false);
+  };
+
   return (
     <>
       <Provider store={store}>
         <BrowserRouter>
           <GlobalStyle />
           <GlobalLayout>
-            <Header />
+            {isUserLoggedIn ? (
+              <HeaderLogged onLogout={handleLogout} />
+            ) : (
+              <Header onLogin={handleLogin} />
+            )}
+            <Routes>
+              <Route exact path="/" Component={Login} />
+            </Routes>
             <div className="App">
               <Routes>
                 <Route path="/" element={<Main />} />
