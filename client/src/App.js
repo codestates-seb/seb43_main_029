@@ -7,6 +7,7 @@ import Search from './pages/search/Search';
 import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Favorites from './pages/favorites/FavoritesListPage';
+import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/restaurant" element={<Restaurant />} />
                 <Route path="/registration" element={<Registration />} />
                 <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
+                <Route path="/mypage/:id/reviews" element={<Reviews />} />
               </Routes>
             </div>
             <Footer className="footer" />
