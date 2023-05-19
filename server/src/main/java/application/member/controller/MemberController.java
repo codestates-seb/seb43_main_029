@@ -1,6 +1,7 @@
 package application.member.controller;
 
 import application.dto.SingleResponseDto;
+import application.image.service.AwsS3Service;
 import application.member.dto.MemberDto;
 import application.member.entity.Member;
 import application.member.mapper.MemberMapper;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -23,10 +25,14 @@ public class MemberController {
 
     private final MemberMapper memberMapper;
     private final MemberService memberService;
+    private final AwsS3Service awsS3Service;
+    private static String dirName = "profile-images";
 
-    public MemberController(MemberMapper memberMapper, MemberService memberService) {
+
+    public MemberController(MemberMapper memberMapper, MemberService memberService, AwsS3Service awsS3Service) {
         this.memberMapper = memberMapper;
         this.memberService = memberService;
+        this.awsS3Service = awsS3Service;
     }
 
     @PostMapping
@@ -69,17 +75,22 @@ public class MemberController {
     }
 
     // 프로필 변경
-    // TODO: 이미지 변경 추가시 수정
+    // TODO : 이미지 변경 추가시 수정
     @PatchMapping("/{member-id}/profile")
     public ResponseEntity patchMemberProfile(@PathVariable("member-id") @Positive long memberId,
-                                             @Valid @RequestBody MemberDto.PatchProfile requestBody){
-        requestBody.setMemberId(memberId);
+                                             @RequestPart(required = false) MultipartFile multipartFile
+                                             ){
 
-        Member member = memberMapper.memberPatchProfileDtoToMember(requestBody);
-        Member updatedMember = memberService.updateMember(member);
+
+        Member member = memberService.findVerifiedMember(memberId);
+
+        //member = memberService.deleteMemberImage(member);
+
+        member = memberService.addMemberImage(member, awsS3Service.uploadProfileFile(multipartFile, dirName));
+
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(memberMapper.memberToMemberResponseDto(updatedMember)),
+                new SingleResponseDto<>(memberMapper.memberToMemberResponseDto(member)),
                 HttpStatus.OK);
     }
 

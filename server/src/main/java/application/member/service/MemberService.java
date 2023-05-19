@@ -3,8 +3,11 @@ package application.member.service;
 import application.auth.utils.CustomAuthorityUtils;
 import application.exception.BusinessLogicException;
 import application.exception.ExceptionCode;
+import application.image.dto.ImageDto;
 import application.image.entity.Image;
+import application.image.mapper.ImageMapper;
 import application.image.repository.ImageFileRepository;
+import application.image.service.AwsS3Service;
 import application.member.entity.Member;
 import application.member.repository.MemberRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -22,14 +25,17 @@ public class MemberService {
     private final PasswordEncoder passwordEncoder;
     private final CustomAuthorityUtils authorityUtils;
     private final ImageFileRepository imageFileRepository;
+    private final ImageMapper imageMapper;
+    private final AwsS3Service awsS3Service;
 
 
-
-    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils, ImageFileRepository imageFileRepository) {
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder, CustomAuthorityUtils authorityUtils, ImageFileRepository imageFileRepository, ImageMapper imageMapper, AwsS3Service awsS3Service) {
         this.memberRepository = memberRepository;
         this.passwordEncoder = passwordEncoder;
         this.authorityUtils = authorityUtils;
         this.imageFileRepository = imageFileRepository;
+        this.imageMapper = imageMapper;
+        this.awsS3Service = awsS3Service;
     }
 
     public Member createMember(Member member){
@@ -107,5 +113,29 @@ public class MemberService {
             return true;
         else
             return false;
+    }
+
+    public Member addMemberImage(Member member, ImageDto.ImageRequestDto imageRequestDto){
+
+        Image image = imageMapper.imageRequestDtoToimage(imageRequestDto);
+        Image savedImage = imageFileRepository.save(image);
+
+        member.setImage(savedImage);
+
+        return memberRepository.save(member);
+    }
+
+    public Member deleteMemberImage(Member member){
+
+        if(member.getImage().getImageId() != 11L){
+            Image image = member.getImage();
+            imageFileRepository.deleteById(image.getImageId());
+            awsS3Service.deleteFile(image.getUrl());
+            member.setImage(null);
+        }
+
+
+
+        return memberRepository.save(member);
     }
 }
