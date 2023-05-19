@@ -58,7 +58,8 @@ const FavoritesListBox = styled.section`
 
 const FavoritesListContent = styled.div`
   width: 1200px;
-  display; flex;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 `;
 
@@ -66,6 +67,9 @@ const FavoritesListElements = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  li {
+    margin-bottom: 30px;
+  }
 `;
 
 export default FavoritesList;
