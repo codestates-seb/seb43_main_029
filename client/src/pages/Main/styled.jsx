@@ -2,8 +2,6 @@ import styled from 'styled-components';
 
 /** 높이, 넓이가 꽉 채워지는 flex 컨테이너 */
 export const M_RootContainer = styled.section`
-  background-color: #fff;
-
   width: 100%;
   height: 100vh;
 
@@ -24,8 +22,6 @@ export const M_TopContainer = styled.div`
 
 /** 식당의 작은 이미지와 소개글들을 담은 컴포넌트 */
 export const M_BottomContainer = styled.div`
-  background-color: #bae6fd;
-
   width: 100%;
   height: 300px;
 
@@ -60,17 +56,21 @@ export const M_Title_And_BigRestaurant_InfoBox = styled.div`
 /** 타이틀 감싸는 컴포넌트 */
 export const M_TitleBox = styled.div`
   width: 100%;
-
   display: flex;
+  margin-bottom: 250px;
   justify-content: center;
 
-  margin-bottom: 250px;
+  @media all and (min-width: 1024px) and (max-width: 1250px) {
+    margin-bottom: 200px;
+  }
 
   @media all and (min-width: 480px) and (max-width: 767px) {
     margin-bottom: 100px;
   }
   @media all and (max-width: 479px) {
-    /* margin-bottom: 80px; */
+    margin-bottom: 200px;
+    padding: 10px;
+    margin-right: 20px;
   }
 `;
 
@@ -90,66 +90,55 @@ export const M_BigRestaurant_Image_Box = styled.div`
 
   display: flex;
   align-items: end;
+
+  /* @media all and (min-width: 480px) and (max-width: 767px) {
+    justify-content: center;
+  } */
 `;
 
-/**  타이틀 박스 */
+/**  타이틀 박스 , 폰트바꾸는 곳 */
 export const TitleBox = styled.div`
+  font-family: var(--font-foodpedia);
+
   display: flex;
   flex-direction: column;
-  font-weight: 700;
+
   .Title_Tag {
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 30px;
     padding-bottom: 5px;
-    color: #6b7280;
+    color: gray;
   }
   .Title_Desc {
-    font-size: 45px;
+    font-weight: 500;
+    font-size: 60px;
   }
-  .point {
-    color: #3b82f6;
-  }
-
-  @media all and (min-width: 1024px) and (max-width: 1250px) {
-    .Title_Tag {
-      font-size: 16px;
-    }
-    .Title_Desc {
-      font-size: 35px;
-    }
+  .randomCategory {
+    font-weight: 600;
+    color: var(--color-score);
   }
   @media all and (min-width: 768px) and (max-width: 1023px) {
     .Title_Tag {
-      font-size: 14px;
+      font-size: 20px;
+    }
+    .Title_Desc {
+      font-size: 45px;
+    }
+  }
+  @media all and (min-width: 480px) and (max-width: 767px) {
+    .Title_Tag {
+      font-size: 15px;
     }
     .Title_Desc {
       font-size: 30px;
     }
   }
-  @media all and (min-width: 480px) and (max-width: 767px) {
+  @media all and (max-width: 479px) {
     .Title_Tag {
-      font-size: 12px;
+      font-size: 20px;
     }
     .Title_Desc {
-      font-size: 22px;
-    }
-    @media all and (min-width: 480px) and (max-width: 569px) {
-      margin: 0;
-
-      .space {
-        display: block;
-      }
-    }
-    @media all and (max-width: 479px) {
-      /* margin-bottom: 0; */
-      .Title_Tag {
-        font-size: 8px;
-      }
-      .Title_Desc {
-        font-size: 16px;
-      }
-      .space {
-        /* display: block; */
-      }
+      font-size: 50px;
     }
   }
 `;
@@ -252,19 +241,43 @@ export const RestaurantBox = styled.li`
   //식당 이미지
   .Restaurant_Image {
     height: 200px;
+    @media all and (min-width: 1024px) and (max-width: 1250px) {
+      height: 180px;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      height: 160px;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      height: 125px;
+    }
+    @media all and (max-width: 479px) {
+      height: 100px;
+      margin-top: 50px;
+    }
     img {
       border-radius: 2px;
       width: 100%;
-      height: 100%;
+      height: 200px;
       // 이미지가 뭉개지는 것을 방지
       object-fit: cover;
-
       transition: transform 0.5s;
       cursor: pointer;
       :hover {
         -ms-transform: scale(1.5); /* IE 9 */
         -webkit-transform: scale(1.5); /* Safari 3-8 */
         transform: scale(1.02);
+      }
+      @media all and (min-width: 1024px) and (max-width: 1250px) {
+        height: 180px;
+      }
+      @media all and (min-width: 768px) and (max-width: 1023px) {
+        height: 160px;
+      }
+      @media all and (min-width: 480px) and (max-width: 767px) {
+        height: 125px;
+      }
+      @media all and (max-width: 479px) {
+        height: 100px;
       }
     }
   }
@@ -274,22 +287,57 @@ export const RestaurantBox = styled.li`
     flex-direction: column;
     padding: 8px;
     align-items: end;
-    background-color: #fff;
   }
   .Restaurant_Name {
     color: #000;
     font-weight: 600;
     font-size: 18px;
     padding-bottom: 5px;
+    @media all and (min-width: 1024px) and (max-width: 1250px) {
+      font-size: 16px;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: 14px;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: 12px;
+    }
+    @media all and (max-width: 479px) {
+      font-size: 10px;
+    }
   }
   .Restaurant_Score {
     color: var(--color-score);
     font-weight: 500;
     font-size: 14px;
+    @media all and (min-width: 1024px) and (max-width: 1250px) {
+      font-size: 12px;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: 12px;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: 12px;
+    }
+    @media all and (max-width: 479px) {
+      font-size: 10px;
+    }
     .icons {
       font-size: 14px;
       //좌우 패딩값
       padding: 0 4px 0;
+      @media all and (min-width: 1024px) and (max-width: 1250px) {
+        font-size: 12px;
+      }
+      @media all and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 12px;
+      }
+      @media all and (min-width: 480px) and (max-width: 767px) {
+        font-size: 12px;
+      }
+      @media all and (max-width: 479px) {
+        font-size: 10px;
+      }
     }
   }
   .Restaurant_Bookmark {
@@ -297,15 +345,50 @@ export const RestaurantBox = styled.li`
     font-weight: 500;
     font-size: 14px;
     padding-left: 5px;
+    @media all and (min-width: 1024px) and (max-width: 1250px) {
+      font-size: 12px;
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: 12px;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: 12px;
+    }
+    @media all and (max-width: 479px) {
+      font-size: 10px;
+    }
     .icons {
       font-size: 13px;
-      padding-right: 0.2em;
+      padding-right: 2px;
+      @media all and (min-width: 1024px) and (max-width: 1250px) {
+        font-size: 12px;
+      }
+      @media all and (min-width: 768px) and (max-width: 1023px) {
+        font-size: 10px;
+      }
+      @media all and (min-width: 480px) and (max-width: 767px) {
+        font-size: 10px;
+      }
+      @media all and (max-width: 479px) {
+        font-size: 8px;
+      }
     }
   }
   .Restaurant_Address {
     font-size: 12px;
     color: var(--color-address);
     padding-top: 2px;
+    @media all and (min-width: 1024px) and (max-width: 1250px) {
+    }
+    @media all and (min-width: 768px) and (max-width: 1023px) {
+      font-size: 10px;
+    }
+    @media all and (min-width: 480px) and (max-width: 767px) {
+      font-size: 10px;
+    }
+    @media all and (max-width: 479px) {
+      font-size: 8px;
+    }
   }
 `;
 

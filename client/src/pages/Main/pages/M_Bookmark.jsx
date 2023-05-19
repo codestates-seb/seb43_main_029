@@ -18,7 +18,7 @@ import Bookmark_Restaurants from '../component/Bookmark/Bookmark_Restaurants';
 import styled from 'styled-components';
 const M_Bookmark = () => {
   return (
-    <M_RootContainer>
+    <B_RootContainer>
       <M_TopContainer>
         <M_ContentBox>
           <M_Bookmark_BigRestaurant_Image_Box>
@@ -41,13 +41,17 @@ const M_Bookmark = () => {
           <Bookmark_Restaurants />
         </M_ContentBox>
       </M_BottomContainer>
-    </M_RootContainer>
+    </B_RootContainer>
   );
 };
 
 export default M_Bookmark;
 
 //style
+const B_RootContainer = styled(M_RootContainer)`
+  background-color: #fff;
+`;
+
 /**  큰 이미지 식당 사진 */
 const M_Bookmark_BigRestaurant_Image_Box = styled(M_BigRestaurant_Image_Box)`
   justify-content: end;

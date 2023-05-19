@@ -20,7 +20,7 @@ import styled from 'styled-components';
 /** 메인페이지의 카테고리 컴포넌트*/
 const M_Category = () => {
   return (
-    <M_RootContainer>
+    <C_RootContainer>
       <M_TopContainer>
         <M_ContentBox>
           <M_Title_And_BigRestaurant_InfoBox>
@@ -42,12 +42,15 @@ const M_Category = () => {
           <Category_Restaurants />
         </M_ContentBox>
       </M_BottomContainer>
-    </M_RootContainer>
+    </C_RootContainer>
   );
 };
 
 export default M_Category;
 
+const C_RootContainer = styled(M_RootContainer)`
+  background-color: #fff1f2;
+`;
 const C_BigRestaurant_InfoBox = styled(M_BigRestaurant_InfoBox)`
   align-items: end;
 `;

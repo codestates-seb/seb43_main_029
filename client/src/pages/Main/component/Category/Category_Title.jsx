@@ -17,11 +17,10 @@ const Category_Title = ({ fetchRandomRestaurants, restaurants }) => {
     <>
       {restaurants && (
         <TitleBox>
-          <div className="Title_Tag">&#35; 푸드피디아 pick!</div>
-          <div className="Title_Desc_First">
-            <span className="point">{restaurants.category}</span> 맛집
-          </div>
-          <div className="Title_Desc_Second">순위별로 골라보기</div>
+          <h2 className="Title_Tag">&#35; 푸드피디아 pick!</h2>
+          <h1 className="Title_Desc">
+            <span className="randomCategory">{restaurants.category}</span> 맛집 순위별로 모아보기
+          </h1>
         </TitleBox>
       )}
     </>

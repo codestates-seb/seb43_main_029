@@ -39,4 +39,6 @@ const Main = () => {
 export default Main;
 
 //style
-const M_Container = styled.main``;
+const M_Container = styled.main`
+  background-color: #ffe4e6;
+`;
