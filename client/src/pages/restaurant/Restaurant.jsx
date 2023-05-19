@@ -14,7 +14,7 @@ function Restaurant() {
     restaurantId,
     name,
     phone,
-    resDay,
+    restDay,
     score,
     address,
     bookmark,
@@ -27,7 +27,7 @@ function Restaurant() {
 
   const restaurantApi = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurant/${id}`);
-    // console.log(response);
+    console.log(response.data.data);
     setRestaurant(response.data.data);
   };
   useEffect(() => {
@@ -89,7 +89,7 @@ function Restaurant() {
             <RestaurantDesc
               address={address}
               phone={phone}
-              resDay={resDay}
+              restDay={restDay}
               businessDay={businessDay}
               menuList={menuList}
             />

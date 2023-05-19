@@ -130,23 +130,22 @@ const LoginExitButton = styled.button`
   font-size: 20px;
 `;
 
-function Login({ onLogin }) {
+function Login() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleModalOpen = () => {
     setIsModalOpen(true);
   };
 
   const handleModalClose = () => {
     setIsModalOpen(false);
-    setEmail('');
+    setUsername('');
     setPassword('');
   };
 
   const handleEmailChange = e => {
-    setEmail(e.target.value);
+    setUsername(e.target.value);
   };
 
   const handlePasswordChange = e => {
@@ -156,22 +155,29 @@ function Login({ onLogin }) {
   const handleSubmit = e => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    // const formData = new FormData(e.target);
+    // const username = formData.get('email');
+    // const password = formData.get('password');
 
     // 로그인 처리
     axios
-      .post('${REACT_APP_API_URL}/login', { email, password })
+      .post(`${process.env.REACT_APP_API_URL}/login`, {
+        username,
+        password,
+      })
       .then(response => {
         if (response.status === 200) {
           console.log(response.data);
+          const { accessToken } = response.data;
+
+          // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+          axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
         }
       })
       .catch(error => {
         console.log(error);
       });
-    onLogin();
+    // onLogin();
 
     handleModalClose();
   };
@@ -191,7 +197,7 @@ function Login({ onLogin }) {
               <LoginInput
                 type="email"
                 placeholder="example@email.com"
-                value={email}
+                value={username}
                 onChange={handleEmailChange}
               />
               <LoginInput

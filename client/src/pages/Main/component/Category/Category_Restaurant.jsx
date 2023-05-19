@@ -7,7 +7,7 @@ import { FaHeart, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 /** 랜덤 카테고리 식당 개별 컴포넌트 */
-const Category_Restaurant = ({ images, name, score, bookmark, address, loading }) => {
+const Category_Restaurant = ({ images, name, score, bookmark, address, loading, restaurantId }) => {
   return (
     <RestaurantBox>
       {/* 서버에서 데이터 오기 전까지 스피너 보여줌 */}
@@ -15,7 +15,7 @@ const Category_Restaurant = ({ images, name, score, bookmark, address, loading }
         <Loading />
       ) : (
         <>
-          <Link to="/restaurant:restaurantId">
+          <Link to={`/restaurant/${restaurantId}`}>
             <div className="Restaurant_Image">
               <img src={images} alt={name} />
             </div>

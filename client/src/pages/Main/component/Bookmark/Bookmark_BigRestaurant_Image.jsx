@@ -26,7 +26,7 @@ const Bookmark_BigRestaurant_Image = ({ fetchBookmarkRestaurants, restaurants })
           data-aos-duration="1200" // 재생 시간 설정 (default : 400)
           data-aos-once="true" // 스크롤 할 때마다 애니메이션 실행할지, 현재는 한 번만 실행됨.
         >
-          <Link to="/restaurant/:restaurantsId">
+          <Link to={`/restaurant/${restaurants.restaurantId}`}>
             <img src={restaurants.images} alt={restaurants.name} />
           </Link>
         </BigRestaurantImageContainer>

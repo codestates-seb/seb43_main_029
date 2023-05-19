@@ -25,6 +25,7 @@ const Bookmark_Restaurants = ({ fetchBookmarkRestaurants, restaurants, loading }
           bookmark={restaurant.bookmark}
           address={restaurant.address}
           loading={loading}
+          restaurantId={restaurant.restaurantId}
         />
       ))}
     </RestaurantsBox>

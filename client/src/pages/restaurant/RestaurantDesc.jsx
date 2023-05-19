@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-function RestaurantDesc({ address, phone, businessDay, resDay, menuList }) {
+function RestaurantDesc({ address, phone, businessDay, restDay, menuList }) {
   return (
     <RestaurantInfo>
       <tbody>
@@ -18,7 +18,7 @@ function RestaurantDesc({ address, phone, businessDay, resDay, menuList }) {
         </tr>
         <tr>
           <th>휴식시간</th>
-          <td>{resDay}</td>
+          <td>{restDay}</td>
         </tr>
         <tr>
           <th>메뉴</th>
