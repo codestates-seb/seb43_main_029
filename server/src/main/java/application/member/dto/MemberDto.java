@@ -1,6 +1,7 @@
 package application.member.dto;
 
 import application.restaurant.dto.RestaurantDto;
+import application.restaurant.dto.RestaurantImageDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -95,7 +96,7 @@ public class MemberDto {
         private String memberStatus;
         private List<String> role;
         private List<RestaurantDto.RestaurantResponseDto> restaurantList = new ArrayList<>();
-
+        private List<RestaurantImageDto.RestaurantImageResponseDto> imageList = new ArrayList<>();
 
     }
 

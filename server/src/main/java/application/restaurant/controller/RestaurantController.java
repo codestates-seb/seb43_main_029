@@ -80,6 +80,20 @@ public class RestaurantController {
         );
     }
 
+    @GetMapping("/today")
+    public ResponseEntity today(){
+        List<Restaurant> restaurantList = restaurantService.getRestaurants();
+
+        List<RestaurantDto.RestaurantSearchResponseDto> responseDtoList = mapper.restaurantSearchListToDtoList(restaurantList);
+        responseDtoList = restaurantService.setRestaurant(responseDtoList);
+
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(responseDtoList), HttpStatus.OK
+        );
+    }
+
+
     @GetMapping("/search") //식당 검색
     public ResponseEntity getSearchRestaurant(@RequestParam String keyword,
                                           @PageableDefault(page = 1, size = 15) Pageable pageable) {

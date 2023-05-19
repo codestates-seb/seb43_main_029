@@ -3,6 +3,8 @@ package application.auth.userdetails;
 import application.auth.utils.CustomAuthorityUtils;
 import application.exception.BusinessLogicException;
 import application.exception.ExceptionCode;
+import application.image.entity.Image;
+import application.image.repository.ImageFileRepository;
 import application.member.entity.Member;
 import application.member.repository.MemberRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,10 +20,12 @@ import java.util.Optional;
 public class MemberDetailsService implements UserDetailsService {
     private final MemberRepository memberRepository;
     private final CustomAuthorityUtils authorityUtils;
+    private final ImageFileRepository imageFileRepository;
 
-    public MemberDetailsService(MemberRepository memberRepository, CustomAuthorityUtils authorityUtils) {
+    public MemberDetailsService(MemberRepository memberRepository, CustomAuthorityUtils authorityUtils, ImageFileRepository imageFileRepository) {
         this.memberRepository = memberRepository;
         this.authorityUtils = authorityUtils;
+        this.imageFileRepository = imageFileRepository;
     }
 
     @Override
@@ -34,6 +38,13 @@ public class MemberDetailsService implements UserDetailsService {
 
     public Member createMember(Member member){
         verifyExistEmail(member.getEmail());
+
+        Optional<Image> image = imageFileRepository.findById(11L);
+
+        Image findImage = image.orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.IMAGE_NOT_FOUND));
+
+        member.setImage(findImage);
 
         return memberRepository.save(member);
     }

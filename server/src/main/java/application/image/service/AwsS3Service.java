@@ -61,6 +61,27 @@ public class AwsS3Service {
         return responseDto;
     }
 
+    public ImageDto.ImageRequestDto uploadProfileFile(MultipartFile multipartFiles, String dirName){
+
+        String fileName = createFileName(multipartFiles.getOriginalFilename(), dirName);
+        ObjectMetadata objectMetadata = new ObjectMetadata();
+        objectMetadata.setContentLength(multipartFiles.getSize());
+        objectMetadata.setContentType(multipartFiles.getContentType());
+
+        try(InputStream inputStream = multipartFiles.getInputStream()){
+            amazonS3.putObject(new PutObjectRequest(bucket, fileName, inputStream, objectMetadata)
+                    .withCannedAcl(CannedAccessControlList.PublicRead));
+            log.info("a3 업로드 성공");
+        } catch (IOException e){
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "파일 업로드에 실패했습니다.");
+        }
+
+        ImageDto.ImageRequestDto responseDto = new ImageDto.ImageRequestDto(multipartFiles.getOriginalFilename(),
+                amazonS3.getUrl(bucket, fileName).toString(), multipartFiles.getSize());
+
+        return responseDto;
+    }
+
     public void deleteFile(String url) {
         String key = url.substring(url.indexOf("/", url.indexOf("//") + 2) + 1);
         amazonS3.deleteObject(new DeleteObjectRequest(bucket, key));

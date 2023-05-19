@@ -179,6 +179,12 @@ public class RestaurantService {
         return findRestaurant;
     }
 
+    public List<Restaurant> getRestaurants(){
+        List<Restaurant> RestaurantList = restaurantRepository.findAll();
+
+        return RestaurantList;
+    }
+
     //식당 검색
     public Page<Restaurant> searchRestaurants(String keyword, Pageable pageable) {
         Pageable pageRequest = PageRequest.of(pageable.getPageNumber() - 1,
