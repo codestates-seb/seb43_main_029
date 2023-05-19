@@ -10,10 +10,13 @@ function MyRestaurant() {
   const [restaurants, setRestaurant] = useState([]);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
+  const [imageList, setImageList] = useState([]);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setRestaurant(res.data.restaurantList);
+      console.log(res);
+      setRestaurant(res.data.data.restaurantList);
+      setImageList(res.data.data.imageList);
     });
   }, []);
 
@@ -60,7 +63,14 @@ function MyRestaurant() {
           <Restaurants>
             {restaurants ? (
               restaurants.map((restaurant, idx) => {
-                return <RestaurantsComponent key={idx} restaurant={restaurant} idx={idx} />;
+                return (
+                  <RestaurantsComponent
+                    key={idx}
+                    restaurant={restaurant}
+                    idx={idx}
+                    imageList={imageList}
+                  />
+                );
               })
             ) : (
               <p>추가하신 즐겨찾기가 없습니다.</p>

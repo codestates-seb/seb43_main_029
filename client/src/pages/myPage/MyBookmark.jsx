@@ -19,8 +19,9 @@ function MyBookmark({ userInfo }) {
   // }, []);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setBookmark(res.data.bookmarks);
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
+      console.log(res.data.data);
+      setBookmark(res.data.data);
     });
   }, []);
 

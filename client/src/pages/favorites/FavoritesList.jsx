@@ -17,8 +17,8 @@ function FavoritesList() {
   const [currentItems, setCurrentItems] = useState(0);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setFavorites(res.data.bookmarks);
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
+      setFavorites(res.data.data);
     });
   }, [id]);
 

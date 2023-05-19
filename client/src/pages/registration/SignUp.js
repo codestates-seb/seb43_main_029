@@ -149,7 +149,8 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [nickName, setNickName] = useState('');
+  const [nickname, setNickName] = useState('');
+  const [phone, setPhone] = useState('');
   const [businessCode, setBusinessCode] = useState('');
   const [showBusinessCode, setShowBusinessCode] = useState(false);
 
@@ -172,6 +173,7 @@ const SignUp = () => {
     setPassword('');
     setConfirmPassword('');
     setNickName('');
+    setPhone('');
     setBusinessCode('');
     setShowBusinessCode('');
   };
@@ -192,26 +194,48 @@ const SignUp = () => {
     setNickName(e.target.value);
   };
 
+  const handlePhoneChange = e => {
+    setPhone(e.target.value);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
-    const nickname = formData.get('nickname');
-    const businessCode = formData.get('businessCode');
-
-    // 로그인 처리
-    axios
-      .post('${REACT_APP_API_URL}/login', { email, password, nickname, businessCode })
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.data);
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    // 점주 회원가입 처리
+    if (businessCode === '') {
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/members`, {
+          email,
+          password,
+          nickname,
+          phone,
+        })
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response.data);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    } else {
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/members`, {
+          email,
+          password,
+          nickname,
+          phone,
+          companyNumber: `${businessCode}`,
+        })
+        .then(response => {
+          if (response.status === 200) {
+            console.log(response.data);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
 
     handleModalClose();
   };
@@ -247,10 +271,16 @@ const SignUp = () => {
                 onChange={handleConfirmPasswordChange}
               />
               <SignUpInput
-                type="nickname"
+                type="text"
                 placeholder="닉네임"
-                value={nickName}
+                value={nickname}
                 onChange={handleNickNameChange}
+              />
+              <SignUpInput
+                type="text"
+                placeholder="연락처"
+                value={phone}
+                onChange={handlePhoneChange}
               />
               <CheckboxWrapper>
                 <label>

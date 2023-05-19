@@ -14,6 +14,7 @@ import 'aos/dist/aos.css';
 // 랜덤 카테고리 중, 별점이 가장 높은 식당 컴포넌트
 // redux에서 서버와 state값을 구조분해할당으로 가져옴
 const Category_BigRestaurant_Image = ({ fetchRandomRestaurants, restaurants }) => {
+  console.log(restaurants);
   useEffect(() => {
     //최초 렌더시 aos 애니메이션 동작
     AOS.init();
@@ -30,7 +31,7 @@ const Category_BigRestaurant_Image = ({ fetchRandomRestaurants, restaurants }) =
           data-aos-duration="1200" // 재생 시간 설정 (default : 400)
           data-aos-once="true" // 스크롤 할 때마다 애니메이션 실행할지, 현재는 한 번만 실행됨.
         >
-          <Link to="/restaurant/:restaurantId">
+          <Link to={`/restaurant/${restaurants.restaurantId}`}>
             <img src={restaurants.images} alt={restaurants.name} />
           </Link>
         </BigRestaurantImageContainer>

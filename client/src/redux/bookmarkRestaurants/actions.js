@@ -10,9 +10,9 @@ export const fetchBookmarkRestaurants = () => {
     dispatch(fetchBookmarkRestaurantsRequest());
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/restaurant`)
+      .get(`${process.env.REACT_APP_API_URL}/restaurant/today`)
       .then(response => {
-        const restaurants = response.data;
+        const restaurants = response.data.data;
         const sortedByBookmark = restaurants.sort((a, b) => b.bookmark - a.bookmark);
         dispatch(fetchBookmarkRestaurantsSuccess(sortedByBookmark));
       })

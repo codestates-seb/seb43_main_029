@@ -25,6 +25,7 @@ const Category_Restaurants = ({ fetchRandomRestaurants, restaurants, loading }) 
           bookmark={restaurant.bookmark}
           address={restaurant.address}
           loading={loading}
+          restaurantId={restaurant.restaurantId}
         />
       ))}
     </RestaurantsBox>

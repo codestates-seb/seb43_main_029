@@ -10,10 +10,10 @@ export const fetchRandomRestaurants = () => {
     dispatch(fetchRandomRestaurantsRequest());
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/restaurant`)
+      .get(`${process.env.REACT_APP_API_URL}/restaurant/today`)
       .then(response => {
         //정제 데이터
-        const restaurants = response.data;
+        const restaurants = response.data.data;
 
         //랜덤 인덱스
         const randomIndex = Math.floor(Math.random() * restaurants.length);
