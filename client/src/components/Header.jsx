@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Login from '../Login';
-import SignUp from '../SignUp';
+import Login from '../pages/registration/Login';
+import SignUp from '../pages/registration/SignUp';
 
 function Header() {
   return (
