@@ -1,39 +1,34 @@
 //내부 import
-import { SERVER_URL } from '../../config';
 import { TitleBox } from '../../styled';
+//redux
+import { fetchRandomRestaurants } from '../../../../redux/randomRestaurants/actions';
 
 //외부 import
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
 
 /** 랜덤 카테고리 타이틀 */
-const Category_Title = () => {
-  const [isCategoy, setIsCategory] = useState([]);
-
+const Category_Title = ({ fetchRandomRestaurants, restaurants }) => {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${SERVER_URL}/restaurants`);
-        const { data } = response;
-        //랜덤 카테고리를 가져옴
-        const randomIndex = Math.floor(Math.random() * data.length);
-        const randomCategory = data[randomIndex].category;
-        setIsCategory(randomCategory);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    //최초 렌더시 서버 데이터 가져옴
+    fetchRandomRestaurants();
   }, []);
-
   return (
-    <TitleBox>
-      <div className="Title_Tag">&#35; 푸드피디아 pick!</div>
-      <div className="Title_Desc_First">
-        <span className="point">{isCategoy}</span> 맛집
-      </div>
-      <div className="Title_Desc_Second">순위별로 골라보기</div>
-    </TitleBox>
+    <>
+      {restaurants && (
+        <TitleBox>
+          <h2 className="Title_Tag">&#35; 푸드피디아 pick!</h2>
+          <h1 className="Title_Desc">
+            <span className="randomCategory">{restaurants.category}</span> 맛집 순위별로 모아보기
+          </h1>
+        </TitleBox>
+      )}
+    </>
   );
 };
-export default Category_Title;
+const mapStateToProps = state => {
+  return {
+    restaurants: state.randomRestaurants.restaurants[0],
+  };
+};
+export default connect(mapStateToProps, { fetchRandomRestaurants })(Category_Title);

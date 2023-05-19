@@ -31,10 +31,11 @@ export const ReviewComponent = ({ reviewId, review }) => {
             <TiThumbsUp className="icon" />
             {review.voteCount}
           </ReviewThumbsUp>
+
           {review.images === null ? null : (
             <MdOutlineInsertPhoto className="icon" onClick={openModal} />
           )}
-          <p>{review.createdAt.slice(0, 10)}</p>
+          <p>작성날짜</p>
         </ReviewDate>
       </div>
       {review.images === null ? null : (

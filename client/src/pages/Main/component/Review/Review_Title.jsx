@@ -6,46 +6,38 @@ import styled from 'styled-components';
 const Review_Title = () => {
   return (
     <ReviewTitleContainer>
-      <HotReviewTitle>푸피 감수성 MAX 많은 공감을 받는 리뷰</HotReviewTitle>
-      <HotReviewBox>핫 리뷰</HotReviewBox>
-      <MemberReviewTitle>회원님들의 식당리뷰</MemberReviewTitle>{' '}
+      <ReviewDesc>&#35; 푸피 감수성 max</ReviewDesc>
+      <ReviewTitle>많은 공감을 받는 회원님들의 리뷰</ReviewTitle>{' '}
     </ReviewTitleContainer>
   );
 };
 export default Review_Title;
 
 //style
-
-const ReviewTitleContainer = styled.section`
+/** 타이틀을 감싸는 컨테이너 */
+const ReviewTitleContainer = styled.div`
   width: 100%;
   height: 100%;
+  font-weight: 700;
 
   display: flex;
   flex-direction: column;
+  justify-content: end;
+  margin-bottom: 20px;
 `;
 
-const HotReviewTitle = styled.h1`
-  font-weight: 700;
-  font-size: 2.2rem;
+/** 부가 텍스트 */
+const ReviewDesc = styled.h2`
+  font-size: 20px;
+  color: gray;
 
-  flex: 1;
   display: flex;
-  align-items: end;
+  flex-direction: column;
 
-  padding-bottom: 10px;
-`;
-const HotReviewBox = styled.section`
-  width: 100%;
-
-  flex: 3;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-bottom: 5px;
 `;
 
-const MemberReviewTitle = styled.h1`
-  font-weight: 700;
-  font-size: 1.5rem;
-  padding-bottom: 0.8rem;
-  margin-left: 3.5rem;
+/** 리뷰 타이틀 */
+const ReviewTitle = styled.h1`
+  font-size: 26px;
 `;

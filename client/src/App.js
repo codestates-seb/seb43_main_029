@@ -7,13 +7,12 @@ import Search from './pages/search/Search';
 import Restaurant from './pages/restaurant/Restaurant';
 import Registration from './pages/registration/Registration';
 import Favorites from './pages/favorites/FavoritesListPage';
+import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
 import Login from './pages/registration/Login';
 
-import { Provider } from 'react-redux';
-import store from './redux/store.js';
 import { useState } from 'react';
 
 const GlobalStyle = createGlobalStyle`
@@ -42,32 +41,31 @@ function App() {
 
   return (
     <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <GlobalStyle />
-          <GlobalLayout>
-            {isUserLoggedIn ? (
-              <HeaderLogged onLogout={handleLogout} />
-            ) : (
-              <Header onLogin={handleLogin} />
-            )}
+      <BrowserRouter>
+        <GlobalStyle />
+        <GlobalLayout>
+          {isUserLoggedIn ? (
+            <HeaderLogged onLogout={handleLogout} />
+          ) : (
+            <Header onLogin={handleLogin} />
+          )}
+          <Routes>
+            <Route exact path="/" Component={Login} />
+          </Routes>
+          <div className="App">
             <Routes>
-              <Route exact path="/" Component={Login} />
+              <Route path="/" element={<Main />} />
+              <Route path="/mypage/:id" element={<MyPage />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/restaurant" element={<Restaurant />} />
+              <Route path="/registration" element={<Registration />} />
+              <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
+              <Route path="/mypage/:id/reviews" element={<Reviews />} />
             </Routes>
-            <div className="App">
-              <Routes>
-                <Route path="/" element={<Main />} />
-                <Route path="/mypage/:id" element={<MyPage />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/restaurant/:id" element={<Restaurant />} />
-                <Route path="/registration" element={<Registration />} />
-                <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
-              </Routes>
-            </div>
-            <Footer className="footer" />
-          </GlobalLayout>
-        </BrowserRouter>
-      </Provider>
+          </div>
+          <Footer className="footer" />
+        </GlobalLayout>
+      </BrowserRouter>
     </>
   );
 }
