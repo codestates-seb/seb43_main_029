@@ -30,7 +30,7 @@ const Bookmark_BigRestaurant_Info = ({ fetchBookmarkRestaurants, restaurants }) 
               <FaHeart className="icons" /> {restaurants.bookmark}
             </span>
           </div>
-          <span className="BigRestaurant_Address">{restaurants.address}</span>
+          <span className="BigRestaurant_Address">{restaurants.location}</span>
         </Bookmark_BigRestaurantInfo>
       )}
     </>
