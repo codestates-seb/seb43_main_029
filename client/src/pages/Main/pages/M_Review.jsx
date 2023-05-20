@@ -34,5 +34,4 @@ export default M_Review;
 //style
 const R_RootContainer = styled(M_RootContainer)`
   background-color: #cee6eb;
-  height: 80vh;
 `;
