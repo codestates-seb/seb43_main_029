@@ -11,7 +11,8 @@ import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
-import Login from './pages/registration/Login';
+// import Login from './pages/registration/Login';
+import RestaurantSearchDetail from './pages/restaurantSearchDetail/RestaurantSearchDetail';
 
 import { useState } from 'react';
 
@@ -49,9 +50,7 @@ function App() {
           ) : (
             <Header onLogin={handleLogin} />
           )}
-          <Routes>
-            <Route exact path="/" Component={Login} />
-          </Routes>
+          <Routes>{/* <Route exact path="/" Component={Login} /> */}</Routes>
           <div className="App">
             <Routes>
               <Route path="/" element={<Main />} />
@@ -61,6 +60,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
               <Route path="/mypage/:id/reviews" element={<Reviews />} />
+              <Route path="/restaurant/search/:id" element={<RestaurantSearchDetail />} />
             </Routes>
           </div>
           <Footer className="footer" />
