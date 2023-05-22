@@ -8,6 +8,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface BookmarkRepository extends JpaRepository<Bookmark, Long> {
-    @Query("SELECT b FROM Bookmark b WHERE b.member.memberId = :memberId")
+    @Query("SELECT b FROM Bookmark b WHERE b.member.memberId = :memberId ORDER BY b.createdAt DESC")
     List<Bookmark> findBookmarkListByMemberId(@Param("memberId") long memberId);
 }

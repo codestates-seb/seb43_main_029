@@ -11,7 +11,6 @@ import application.member.entity.Member;
 import application.member.repository.MemberRepository;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.repository.RestaurantRepository;
-import application.Review.dto.ReviewDto;
 import application.Review.entity.Review;
 import application.Review.entity.ReviewImage;
 import application.Review.mapper.ReviewMapper;

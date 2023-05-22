@@ -5,8 +5,6 @@ import application.Review.entity.Review;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-import java.util.List;
-
 @Mapper(componentModel = "spring", uses = {ReviewImageMapper.class})
 public interface ReviewMapper {
     @Mapping(source = "memberId", target = "member.memberId")
