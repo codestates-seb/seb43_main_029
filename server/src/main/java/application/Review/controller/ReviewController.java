@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/review")
+@RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
     private final AwsS3Service awsS3Service;
@@ -55,7 +55,7 @@ public class ReviewController {
         return new ResponseEntity(response, HttpStatus.OK);
     }
 
-    @GetMapping("/{review-id}") // 리뷰 디테일
+    @GetMapping("/{review-id}") // 리뷰 상세정보
     public ResponseEntity getReview(@PathVariable("review-id") @Positive long reviewId) {
         Review review = reviewService.findVerifiedReview(reviewId);
         return new ResponseEntity<>(

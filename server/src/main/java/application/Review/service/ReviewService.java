@@ -17,6 +17,7 @@ import application.Review.entity.ReviewImage;
 import application.Review.mapper.ReviewMapper;
 import application.Review.repository.ReviewImageRepository;
 import application.Review.repository.ReviewRepository;
+import application.restaurant.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,6 +38,7 @@ public class ReviewService {
     private final ImageMapper imageMapper;
     private final ReviewMapper reviewMapper;
     private final AwsS3Service awsS3Service;
+    private final RestaurantService restaurantService;
     private static String dirName = "review-images";
 
     // Other methods...
@@ -55,6 +57,7 @@ public class ReviewService {
             reviewImageRepository.save(reviewImage);
             reviewImageList.add(reviewImage);
         }
+        updateRestaurantScore(restaurantService.findVerifiedRestaurant(review.getRestaurant().getRestaurantId()));
         saveReview.setReviewImageList(reviewImageList);
         return saveReview;
     }
@@ -69,13 +72,14 @@ public class ReviewService {
             throw new BusinessLogicException(ExceptionCode.NO_PERMISSION_EDITING_POST);
         }
         updateReviewInfo(review, findReview);
+        updateRestaurantScore(findReview.getRestaurant());
 
         return reviewRepository.save(findReview);
     }
 
     private void updateReviewInfo(Review reviewToUpdate, Review existingReview) {
         Optional.ofNullable(reviewToUpdate.getScore()).ifPresent(existingReview::setScore);
-        Optional.ofNullable(reviewToUpdate.getContent()).ifPresent(existingReview::setContent);
+        Optional.ofNullable(reviewToUpdate.getComment()).ifPresent(existingReview::setComment);
         // continue for all the fields you want to update
     }
 
@@ -140,9 +144,27 @@ public class ReviewService {
             imageFileRepository.delete(image);
             reviewImageRepository.delete(reviewImage);
         }
-
         reviewRepository.deleteById(reviewId);
+        findReview.getRestaurant().getReviewList().remove(findReview);
+        updateRestaurantScore(findReview.getRestaurant());
     }
 
+    private void updateRestaurantScore(Restaurant restaurant) {
+        List<Review> reviewList = restaurant.getReviewList();
 
+        if (reviewList.isEmpty()) { //리뷰가 하나도 없는 경우 0.0점으로 계산
+            restaurant.setScore(0.0);
+        } else { // 리뷰 별점 평균값 계산
+            double totalScore = reviewList.stream()
+                    .mapToDouble(Review::getScore)
+                    .sum();
+            double averageScore = totalScore / reviewList.size();
+
+            // 레스토랑 별점 갱신
+            restaurant.setScore(averageScore);
+        }
+
+        // 레스토랑 별점 저장
+        restaurantRepository.save(restaurant);
+    }
 }

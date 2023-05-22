@@ -1,5 +1,6 @@
 package application.restaurant.entity;
 
+import application.Review.entity.Review;
 import application.audit.Auditable;
 import application.bookmark.entity.Bookmark;
 import application.member.entity.Member;
@@ -43,6 +44,8 @@ public class Restaurant extends Auditable {
     private String businessDay;
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL)
     private List<RestaurantImage> restaurantImageList = new ArrayList<>();
-    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE)
     private List<Bookmark> bookmarkList = new ArrayList<>();
+    @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE)
+    private List<Review> reviewList = new ArrayList<>();
 }

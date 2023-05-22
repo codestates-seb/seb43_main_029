@@ -12,10 +12,10 @@ public class ReviewDto {
     @Setter
     @Getter
     public static class ReviewPostDto {
-        private long memberId;
-        private long restaurantId;
+        private Long memberId;
+        private Long restaurantId;
         @NotBlank(message = "리뷰 내용을 작성해야 합니다.")
-        private String content;
+        private String comment;
         @NotNull(message = "별점을 부여해야 합니다.")
         private double score;
     }
@@ -28,7 +28,7 @@ public class ReviewDto {
         private long memberId;
         private long restaurantId;
         @NotBlank(message = "리뷰 내용을 작성해야 합니다.")
-        private String content;
+        private String comment;
         @NotNull(message = "별점을 부여해야 합니다.")
         private double score;
 
@@ -42,7 +42,7 @@ public class ReviewDto {
     public static class ReviewResponseDto {
         private long reviewId;
         private long memberId;
-        private String content;
+        private String comment;
         private double score;
         private String createdAt;
         private String modifiedAt;

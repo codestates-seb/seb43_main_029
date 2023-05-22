@@ -17,6 +17,7 @@ public interface ReviewMapper {
     @Mapping(source = "restaurantId", target = "restaurant.restaurantId")
     Review reviewPatchDtoToReview(ReviewDto.ReviewPatchDto reviewPatchDto);
 
+    @Mapping(source = "member.memberId", target = "memberId")
     @Mapping(source = "reviewImageList", target = "imageList")
     ReviewDto.ReviewResponseDto reviewToReviewResponseDto(Review review);
 

@@ -59,10 +59,9 @@ public class BookmarkService {
         }
     }
 
-    public Page<Bookmark> getBookmarkList(Pageable pageable, long memberId) {
-        Pageable pageRequest = PageRequest.of(pageable.getPageNumber() - 1,
-                pageable.getPageSize(), Sort.by("createdAt").descending());
-        return bookmarkRepository.findBookmarkListByMemberId(memberId, pageRequest);
+    public List<Bookmark> getBookmarkList(long memberId) {
+
+        return bookmarkRepository.findBookmarkListByMemberId(memberId);
     }
 
     public List<BookmarkDto.BookmarkResponseDto> setRestaurant(List<BookmarkDto.BookmarkResponseDto> bookmarkResponseDtoList){
