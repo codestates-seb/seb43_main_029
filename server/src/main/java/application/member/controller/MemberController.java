@@ -100,7 +100,6 @@ public class MemberController {
 
         Member member = memberService.findMember(memberId);
 
-        // TODO: List타입의 roles 변경 여부 논의
         List<String> roles = member.getRoles();
         String role = roles.get(0);
 

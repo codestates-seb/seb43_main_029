@@ -2,7 +2,10 @@ package application.member.mapper;
 
 import application.member.dto.MemberDto;
 import application.member.entity.Member;
+import application.restaurant.dto.MenuDto;
+import application.restaurant.dto.RestaurantDto;
 import application.restaurant.dto.RestaurantImageDto;
+import application.restaurant.entity.Menu;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.entity.RestaurantImage;
 import org.mapstruct.Mapper;
@@ -22,28 +25,20 @@ public interface MemberMapper {
     @Mapping(source = "image.url", target = "url")
     @Mapping(source = "member.roles", target = "role")
     MemberDto.Response memberToMemberResponseDto(Member member);
-//    @Mapping(source = "member.restaurants", target = "restaurantList")
-//    @Mapping(source = "image.url", target = "url")
-//    @Mapping(source = "member.roles", target = "role")
-//    MemberDto.ResponseOwner memberToMemberResponseOwnerDto(Member member);
 
     @Mapping(source = "member.restaurants", target = "restaurantList")
-    @Mapping(source = "member.restaurants", target = "imageList", qualifiedByName = "restaurantToImageList")
-    @Mapping(source = "member.roles", target = "role")
     @Mapping(source = "image.url", target = "url")
+    @Mapping(source = "member.roles", target = "role")
     MemberDto.ResponseOwner memberToMemberResponseOwnerDto(Member member);
 
-    @Named("restaurantToImageList")
-    static List<RestaurantImageDto.RestaurantImageResponseDto> restaurantToImageList(List<Restaurant> restaurants) {
-        List<RestaurantImageDto.RestaurantImageResponseDto> imageList = new ArrayList<>();
-        for (Restaurant restaurant : restaurants) {
-            for (RestaurantImage restaurantImage : restaurant.getRestaurantImageList()) {
-                RestaurantImageDto.RestaurantImageResponseDto imageResponseDto = new RestaurantImageDto.RestaurantImageResponseDto();
-                imageResponseDto.setImageId(restaurantImage.getImage().getImageId());
-                imageResponseDto.setUrl(restaurantImage.getImage().getUrl());
-                imageList.add(imageResponseDto);
-            }
-        }
-        return imageList;
-    }
+    @Mapping(source = "restaurantImageList", target = "imageList")
+    @Mapping(source = "menuList", target = "menuList")
+    @Mapping(source = "category.name", target = "categoryName")
+    RestaurantDto.RestaurantResponseDto restaurantToRestaurantResponseDto(Restaurant restaurant);
+
+    List<RestaurantImageDto.RestaurantImageResponseDto> restaurantImageListToDtoList(List<RestaurantImage> restaurantImageList);
+
+    @Mapping(target = "imageId", source = "restaurantImage.image.imageId")
+    @Mapping(target = "url", source = "restaurantImage.image.url")
+    RestaurantImageDto.RestaurantImageResponseDto restaurantImageToDto(RestaurantImage restaurantImage);
 }

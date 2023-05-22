@@ -29,8 +29,7 @@ public class MemberDto {
                  message = "닉네임은 2자 이상 10자 이하로 입력해주세요.")
         private String nickname;
 
-        // TODO: 전화번호 입력시 '-'의 처리 여부 논의 필요
-        @Pattern(regexp = "^\\d{2,3}-\\d{3,4}-\\d{4}$",
+        @Pattern(regexp = "^[0-9]{11}$",
                  message = "올바른 전화번호 형식을 입력해주세요.")
         private String phone;
         @Pattern(regexp = "^[0-9]{11}$",
@@ -62,7 +61,6 @@ public class MemberDto {
     @NoArgsConstructor
     public static class Response{
         private long memberId;
-        // TODO: 이미지 등록 후 수정할 것
         private String email;
         private String url;
         private String nickname;
@@ -72,12 +70,6 @@ public class MemberDto {
         private String createdAt;
         private String modifiedAt;
         private List<String> role;
-
-        // TODO: 리뷰 추가시 구현
-        //private List<Review> reviews;
-
-        // TODO: 즐겨찾기 추가시 구현
-        //private List<Bookmark> bookmarks;
     }
 
     @Getter
@@ -86,7 +78,6 @@ public class MemberDto {
     @NoArgsConstructor
     public static class ResponseOwner{
         private long memberId;
-        // TODO: 이미지 등록 후 수정할
         private String email;
         private String url;
         private String nickname;
@@ -96,7 +87,6 @@ public class MemberDto {
         private String memberStatus;
         private List<String> role;
         private List<RestaurantDto.RestaurantResponseDto> restaurantList = new ArrayList<>();
-        private List<RestaurantImageDto.RestaurantImageResponseDto> imageList = new ArrayList<>();
 
     }
 
