@@ -29,7 +29,7 @@ public class Review extends Auditable {
     private Restaurant restaurant;
 
     @Column(nullable = false)
-    private String content;
+    private String comment;
 
     @Column(nullable = false)
     private double score;

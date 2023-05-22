@@ -5,6 +5,9 @@ import application.bookmark.entity.Bookmark;
 import application.bookmark.mapper.BookmarkMapper;
 import application.bookmark.service.BookmarkService;
 import application.dto.MultiResponseDto;
+import application.dto.SingleResponseDto;
+import application.restaurant.dto.RestaurantDto;
+import application.restaurant.entity.Restaurant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,14 +37,15 @@ public class BookmarkController {
     }
 
     @GetMapping("/members/{member-id}/bookmark")
-    public ResponseEntity getBookmarkList(@PathVariable("member-id") @Positive long memberId,
-                                          @PageableDefault(page = 1, size = 15) Pageable pageable) {
-        Page<Bookmark> bookmarkPage = bookmarkService.getBookmarkList(pageable, memberId);
-        List<BookmarkDto.BookmarkResponseDto> bookmarkDtoList = mapper.bookmarkListToDtoList(bookmarkPage.getContent());
-        bookmarkDtoList = bookmarkService.setRestaurant(bookmarkDtoList);
-        MultiResponseDto<BookmarkDto.BookmarkResponseDto> responseDto = new MultiResponseDto<>(
-                bookmarkDtoList, bookmarkPage);
+    public ResponseEntity getBookmarkList(@PathVariable("member-id") @Positive long memberId){
+        List<Bookmark> bookmarkList = bookmarkService.getBookmarkList(memberId);
 
-        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+        List<BookmarkDto.BookmarkResponseDto> responseDtoList = mapper.bookmarkListToDtoList(bookmarkList);
+        responseDtoList = bookmarkService.setRestaurant(responseDtoList);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(responseDtoList), HttpStatus.OK
+        );
     }
+
 }
