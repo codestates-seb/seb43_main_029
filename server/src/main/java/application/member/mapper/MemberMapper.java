@@ -2,18 +2,14 @@ package application.member.mapper;
 
 import application.member.dto.MemberDto;
 import application.member.entity.Member;
-import application.restaurant.dto.MenuDto;
 import application.restaurant.dto.RestaurantDto;
 import application.restaurant.dto.RestaurantImageDto;
-import application.restaurant.entity.Menu;
 import application.restaurant.entity.Restaurant;
 import application.restaurant.entity.RestaurantImage;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)

@@ -1,7 +1,6 @@
 package application.member.dto;
 
 import application.restaurant.dto.RestaurantDto;
-import application.restaurant.dto.RestaurantImageDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
