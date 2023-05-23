@@ -5,6 +5,7 @@ import application.Review.dto.ReviewDto;
 import application.Review.entity.Review;
 import application.Review.mapper.ReviewMapper;
 import application.Review.service.ReviewService;
+import application.Review.service.ReviewLikeService;
 import application.image.service.AwsS3Service;
 import application.image.dto.ImageDto;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import java.util.List;
 @RequestMapping("/reviews")
 public class ReviewController {
     private final ReviewService reviewService;
+    private final ReviewLikeService reviewLikeService;
     private final AwsS3Service awsS3Service;
     private final ReviewMapper mapper;
     private static String dirName = "review-images";
@@ -69,4 +71,18 @@ public class ReviewController {
         reviewService.deleteReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+    @PostMapping("/{review-id}/like/{member-id}") // Review like
+    public ResponseEntity likeReview(@PathVariable("review-id") @Positive long reviewId,
+                                     @PathVariable("member-id") @Positive long memberId) {
+        reviewLikeService.addLikeToReview(reviewId, memberId);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{review-id}/like/{member-id}") // Remove review like
+    public ResponseEntity unlikeReview(@PathVariable("review-id") @Positive long reviewId,
+                                       @PathVariable("member-id") @Positive long memberId) {
+        reviewLikeService.removeLikeFromReview(reviewId, memberId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
 }
+

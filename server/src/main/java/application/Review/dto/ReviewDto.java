@@ -31,7 +31,14 @@ public class ReviewDto {
         private String comment;
         @NotNull(message = "별점을 부여해야 합니다.")
         private double score;
+    }
 
+    @NoArgsConstructor
+    @Setter
+    @Getter
+    public static class ReviewLikeDto {
+        private Long memberId;
+        private Long reviewId;
     }
 
     @AllArgsConstructor
@@ -47,6 +54,7 @@ public class ReviewDto {
         private String createdAt;
         private String modifiedAt;
         private List<ReviewImageDto.ReviewImageResponseDto> imageList = new ArrayList<>();
+        private long likeCount; // Include the number of likes for the review
+        private boolean likedByUser; // Include whether the current user has liked the review
     }
-
 }
