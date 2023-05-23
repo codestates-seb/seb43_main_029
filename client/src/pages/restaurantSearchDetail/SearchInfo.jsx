@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 /** 서치의 검색 결과 타이틀이 담긴 컴포넌트 */
-const SearchInfo = () => {
+const SearchInfo = ({ searchValue }) => {
   return (
     <SearchInfoContainer>
-      <SearchTitle>노원 맛집 검색 결과</SearchTitle>
+      <SearchTitle>{searchValue} 검색 결과</SearchTitle>
     </SearchInfoContainer>
   );
 };

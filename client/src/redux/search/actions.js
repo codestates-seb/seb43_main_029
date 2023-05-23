@@ -10,9 +10,9 @@ export const fetchSearchRestaurant = () => {
     dispatch(fetchSearchRestaurantRequest());
 
     axios
-      .get(`${process.env.REACT_APP_API_URL}/restaurant/search`)
+      .get(`${process.env.REACT_APP_API_URL}/restaurant/search/keyword=서울`)
       .then(response => {
-        const restaurants = response.data.data;
+        const restaurants = response.data;
         console.log(restaurants);
         dispatch(fetchSearchRestaurantSuccess(restaurants));
       })
