@@ -21,7 +21,7 @@ import java.util.List;
 public class BookmarkController {
     private final BookmarkMapper mapper;
     private final BookmarkService bookmarkService;
-    @PostMapping("/restaurants/{member-id}/{restaurant-id}")
+    @PostMapping("/restaurant/{member-id}/{restaurant-id}")
     public ResponseEntity postBookmark(@PathVariable("member-id") @Positive long memberId,
                                        @PathVariable("restaurant-id") @Positive long restaurantId,
                                       @RequestBody BookmarkDto.BookmarkPostDto bookmarkPostDto) {
