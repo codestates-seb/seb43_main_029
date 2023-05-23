@@ -36,4 +36,7 @@ public class Review extends Auditable {
 
     @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
     private List<ReviewImage> reviewImageList = new ArrayList<>();
+
+    @Column
+    private int likeCount = 0;
 }

@@ -38,6 +38,7 @@ public class SecurityConfiguration {
         this.memberService = memberService;
     }
 
+    // TODO: 페이지별 권한 부여, 식당, 리뷰 등 추가되면 진행할 것
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
@@ -64,25 +65,25 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests(authorize -> authorize
                         .antMatchers(HttpMethod.POST, "/members").anonymous() // 회원 가입
-                        .antMatchers(HttpMethod.PATCH, "/members/{memberId}/nickname").access("@authorizationChecker.check(#memberId, authentication)") // 회원 닉네임 수정
-                        .antMatchers(HttpMethod.PATCH, "/members/{memberId}/profile").access("@authorizationChecker.check(#memberId, authentication)") // 회원 프로필사진 수정
-                        .antMatchers(HttpMethod.GET, "/members/{memberId}").access("hasRole('ADMIN') or @authorizationChecker.check(#memberId, authentication)") // 회원 정보(마이페이지) 조회
-                        .antMatchers(HttpMethod.GET, "members/{memberId}/review").hasAnyRole("USER", "ADMIN") // 회원 리뷰 조회
-                        .antMatchers(HttpMethod.GET, "/members/{memberId}/bookmark").hasAnyRole("USER", "ADMIN") // 회원 즐겨찾기 검색
-                        .antMatchers(HttpMethod.DELETE, "/members/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 회원 탈퇴
+                        .antMatchers(HttpMethod.PATCH, "/members/{member-id}/nickname").hasAnyRole("USER", "OWNER", "ADMIN") // 회원 닉네임 수정
+                        .antMatchers(HttpMethod.PATCH, "/members/{member-id}/profile").hasAnyRole("USER", "OWNER", "ADMIN") // 회원 프로필사진 수정
+                        .antMatchers(HttpMethod.GET, "/members/{member-id}").hasAnyRole("USER", "OWNER", "ADMIN") // 회원 정보(마이페이지) 조회
+                        .antMatchers(HttpMethod.GET, "members/{member-id}/review").hasAnyRole("USER", "ADMIN") // 회원 리뷰 조회
+                        .antMatchers(HttpMethod.GET, "/members/{member-id}/bookmark").hasAnyRole("USER", "ADMIN") // 회원 즐겨찾기 검색
+                        .antMatchers(HttpMethod.DELETE, "/members/{member-id}").hasAnyRole("USER", "OWNER", "ADMIN") // 회원 탈퇴
                         .antMatchers(HttpMethod.POST, "/login").anonymous() // 로그인
                         .antMatchers(HttpMethod.POST, "/logout").hasAnyRole("USER", "OWNER", "ADMIN") // 로그아웃
                         .antMatchers(HttpMethod.POST, "/restaurant").hasAnyRole("OWNER", "ADMIN") // 식당 등록
-                        .antMatchers(HttpMethod.PATCH, "/restaurant/{restaurantId}").access("@authorizationChecker.checkRestaurant(#restaurantId, authentication)") // 식당 수정
+                        .antMatchers(HttpMethod.PATCH, "/restaurant/{member-id}/{restaurant-id}").hasAnyRole("OWNER", "ADMIN") // 식당 정보 수정
                         .antMatchers(HttpMethod.GET, "/restaurant/{restaurant-id}").permitAll() // 식당 정보 상세 조회
                         .antMatchers(HttpMethod.GET, "/restaurant/search").permitAll() // 식당 검색결과 조회
-                        .antMatchers(HttpMethod.DELETE, "/restaurant/{memberId}/{restaurantId}").access("@authorizationChecker.check(#memberId, authentication)") // 식당 삭제
-                        .antMatchers(HttpMethod.POST, "/restaurants/{memberId}/{restaurantsId}").access("@authorizationChecker.check(#memberId, authentication)") // 식당 즐겨찾기 추가 및 삭제
+                        .antMatchers(HttpMethod.DELETE, "/restaurant/{member-id}/{restaurant-id}").hasAnyRole("OWNER", "ADMIN") // 식당 삭제
+                        .antMatchers(HttpMethod.POST, "/restaurant/{member-id}/{restaurants-id}").hasAnyRole("USER", "ADMIN") // 식당 즐겨찾기 추가 및 삭제
                         .antMatchers(HttpMethod.POST, "/reviews").hasAnyRole("USER", "ADMIN") // 리뷰 등록
-                        .antMatchers(HttpMethod.PATCH, "/reviews/{reviewId}").access("@authorizationChecker.checkReview(#memberId, authentication)") // 리뷰 수정
-                        .antMatchers(HttpMethod.GET, "/reviews/{reviewId}").permitAll() // 리뷰 조회
-                        .antMatchers(HttpMethod.DELETE, "/reviews/{reviewId}/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 리뷰 삭제
-                        .antMatchers(HttpMethod.POST, "/reviews/{reviewId}/like").hasAnyRole("USER", "ADMIN") // 리뷰 좋아요
+                        .antMatchers(HttpMethod.PATCH, "/reviews/{review-id}").hasAnyRole("USER", "ADMIN") // 리뷰 수정
+                        .antMatchers(HttpMethod.GET, "/reviews/{review-id}").permitAll() // 리뷰 조회
+                        .antMatchers(HttpMethod.DELETE, "/reviews/{review-id}").hasAnyRole("USER", "ADMIN") // 리뷰 삭제
+                        .antMatchers(HttpMethod.POST, "/reviews/{review-id}/like").hasAnyRole("USER", "ADMIN") // 리뷰 좋아요
                         .antMatchers(HttpMethod.GET, "/restaurant/today").permitAll() // 오늘 뭐먹지
                         .anyRequest().permitAll());
 

@@ -31,7 +31,14 @@ public class ReviewDto {
         private String comment;
         @NotNull(message = "별점을 부여해야 합니다.")
         private double score;
+    }
 
+    @NoArgsConstructor
+    @Setter
+    @Getter
+    public static class ReviewLikeDto {
+        private Long memberId;
+        private Long reviewId;
     }
 
     @AllArgsConstructor
@@ -47,6 +54,7 @@ public class ReviewDto {
         private String createdAt;
         private String modifiedAt;
         private List<ReviewImageDto.ReviewImageResponseDto> imageList = new ArrayList<>();
+        private long likeCount; // 리뷰에 대한 좋아요 수
+        private boolean likedByUser; // 현재 사용자가 리뷰를 좋아했는지 여부
     }
-
 }
