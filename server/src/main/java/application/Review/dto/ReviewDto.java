@@ -54,7 +54,7 @@ public class ReviewDto {
         private String createdAt;
         private String modifiedAt;
         private List<ReviewImageDto.ReviewImageResponseDto> imageList = new ArrayList<>();
-        private long likeCount; // Include the number of likes for the review
-        private boolean likedByUser; // Include whether the current user has liked the review
+        private long likeCount; // 리뷰에 대한 좋아요 수
+        private boolean likedByUser; // 현재 사용자가 리뷰를 좋아했는지 여부
     }
 }

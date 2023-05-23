@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"review_id", "member_id"})) // to ensure that a member can like a review only once
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"review_id", "member_id"})) // 리뷰 좋아요 한번만 하기 위해
 public class ReviewLike {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

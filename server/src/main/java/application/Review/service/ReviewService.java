@@ -1,5 +1,8 @@
 package application.Review.service;
 
+import application.Review.dto.ReviewDto;
+import application.Review.entity.ReviewLike;
+import application.Review.repository.ReviewLikeRepository;
 import application.exception.BusinessLogicException;
 import application.exception.ExceptionCode;
 import application.image.dto.ImageDto;
@@ -38,9 +41,8 @@ public class ReviewService {
     private final ReviewMapper reviewMapper;
     private final AwsS3Service awsS3Service;
     private final RestaurantService restaurantService;
+    private final ReviewLikeRepository reviewLikeRepository;
     private static String dirName = "review-images";
-
-    // Other methods...
 
 
     //리뷰생성
@@ -79,7 +81,6 @@ public class ReviewService {
     private void updateReviewInfo(Review reviewToUpdate, Review existingReview) {
         Optional.ofNullable(reviewToUpdate.getScore()).ifPresent(existingReview::setScore);
         Optional.ofNullable(reviewToUpdate.getComment()).ifPresent(existingReview::setComment);
-        // continue for all the fields you want to update
     }
 
     public Review findVerifiedReview(long reviewId) {
@@ -89,7 +90,6 @@ public class ReviewService {
         return findReview;
     }
 
-    // Continue implementing similar methods for deleteReview, addReviewImages, deleteReviewImages, etc.
 
     //이미지 추가
     public Review addReviewImages(Review review, List<ImageDto.ImageRequestDto> imageRequestDtoList) {
@@ -165,5 +165,18 @@ public class ReviewService {
 
         // 레스토랑 별점 저장
         restaurantRepository.save(restaurant);
+    }
+    public ReviewDto.ReviewResponseDto getReview(Long reviewId, Long memberId) {
+        Review review = reviewRepository.findById(reviewId).orElseThrow(
+                () -> new RuntimeException(String.format("Review not found with id %d", reviewId)));
+        Member member = memberRepository.findById(memberId).orElseThrow(
+                () -> new RuntimeException(String.format("Member not found with id %d", memberId)));
+
+        ReviewDto.ReviewResponseDto reviewDto = reviewMapper.reviewToReviewResponseDto(review);
+
+        Optional<ReviewLike> reviewLike = reviewLikeRepository.findByReviewAndMember(review, member);
+        reviewDto.setLikedByUser(reviewLike.isPresent());
+
+        return reviewDto;
     }
 }

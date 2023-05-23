@@ -71,14 +71,14 @@ public class ReviewController {
         reviewService.deleteReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
-    @PostMapping("/{review-id}/like/{member-id}") // Review like
+    @PostMapping("/{review-id}/like/{member-id}") // 리뷰 좋아요
     public ResponseEntity likeReview(@PathVariable("review-id") @Positive long reviewId,
                                      @PathVariable("member-id") @Positive long memberId) {
         reviewLikeService.addLikeToReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{review-id}/like/{member-id}") // Remove review like
+    @DeleteMapping("/{review-id}/like/{member-id}") // 리뷰 좋아요 삭제
     public ResponseEntity unlikeReview(@PathVariable("review-id") @Positive long reviewId,
                                        @PathVariable("member-id") @Positive long memberId) {
         reviewLikeService.removeLikeFromReview(reviewId, memberId);
