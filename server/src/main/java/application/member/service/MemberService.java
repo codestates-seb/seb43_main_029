@@ -10,6 +10,7 @@ import application.image.repository.ImageFileRepository;
 import application.image.service.AwsS3Service;
 import application.member.entity.Member;
 import application.member.repository.MemberRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,14 +60,9 @@ public class MemberService {
 
     public Member updateMember(Member member){
         Member findMember = findMember(member.getMemberId());
-        //findMember.setNickname(member.getNickname());
 
-        // null이 아닌 쪽의 변경만 수행
         Optional.ofNullable(member.getNickname())
                 .ifPresent(nickname -> findMember.setNickname(member.getNickname()));
-        // TODO: 이미지 변경 추가시 수정
-//        Optional.ofNullable(member.getProfileUrl())
-//                .ifPresent(profile -> findMember.setProfileUrl(member.getProfileUrl()));
 
         return memberRepository.save(findMember);
     }
@@ -83,6 +79,8 @@ public class MemberService {
         findMember.setMemberStatus(Member.MemberStatus.MEMBER_QUIT);
 
         memberRepository.save(findMember);
+
+        SecurityContextHolder.clearContext();
     }
 
 
