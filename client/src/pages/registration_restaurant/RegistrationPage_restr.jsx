@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 // import RegistrationForm from './Registration_form';
 
 function Registration_restaurant() {
@@ -14,6 +15,10 @@ function Registration_restaurant() {
   const [selectedImages, setSelectedImages] = useState([]);
   const [menuInput, setMenuInput] = useState({ name: '', price: 0 });
   const [previewImages, setPreviewImages] = useState([]);
+
+  const userInfo = useSelector(state => state.userinfo.user);
+  const memberId = userInfo.memberId;
+  const accessToken = useSelector(state => state.Auth.token);
 
   const handleMenuChange = event => {
     const { name, value } = event.target;
@@ -44,16 +49,21 @@ function Registration_restaurant() {
     const formData = new FormData();
     formData.append(
       'restaurantPostDto',
-      JSON.stringify({
-        memberId: 1,
-        categoryName,
-        name,
-        phone,
-        address,
-        menuList,
-        restDay,
-        businessDay,
-      })
+      new Blob(
+        [
+          JSON.stringify({
+            memberId: Number(memberId),
+            categoryName: Number(categoryName),
+            name,
+            phone,
+            address,
+            menuList,
+            restDay,
+            businessDay,
+          }),
+        ],
+        { type: 'application/json' }
+      )
     );
 
     selectedImages.forEach(image => {
@@ -63,10 +73,13 @@ function Registration_restaurant() {
     const config = {
       Headers: {
         'Content-Type': 'application/json',
+        Authorization: `${accessToken}`,
       },
     };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/restaurant `, formData, config);
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/restaurant `, formData, config)
+      .catch(error => console.log(error));
   };
 
   return (
