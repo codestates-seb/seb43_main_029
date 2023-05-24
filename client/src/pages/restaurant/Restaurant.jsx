@@ -29,7 +29,6 @@ function Restaurant() {
     menuList,
   } = restaurant;
   const [isOn, setIsOn] = useState(false);
-  const [BookmarkOn, setBookmarkOn] = useState(false);
 
   // 레스토랑 정보 가져오기
   const restaurantApi = async () => {
@@ -44,13 +43,11 @@ function Restaurant() {
       `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
     );
     axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-    setBookmarkOn(response.data.heart);
+    setIsOn(response.data.heart);
   };
-
   // 즐겨찾기 추가 및 삭제 api
   const handleBookmark = async () => {
     setIsOn(!isOn);
-    setBookmarkOn(!BookmarkOn);
     await axios
       .post(`${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`, {
         memberId,
@@ -60,7 +57,7 @@ function Restaurant() {
         if (response.status === 201) {
           // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
           axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-          navigate('');
+          navigate();
         }
       })
       .catch(error => console.log(error));
@@ -98,7 +95,7 @@ function Restaurant() {
                 </li>
                 <li className="bookmarkToggle">
                   <button onClick={handleBookmark}>
-                    {BookmarkOn ? (
+                    {!isOn ? (
                       <TiHeartFullOutline className="bookmarkIcon" />
                     ) : (
                       <TiHeartOutline className="bookmarkIcon" />

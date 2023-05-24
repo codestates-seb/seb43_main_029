@@ -14,11 +14,23 @@ function MyBookmark({ userInfo }) {
   const [arrowDisable, setArrowDisable] = useState(true);
   const accessToken = useSelector(state => state.Auth.token);
 
+  const bookmarkApi = async () => {
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`, {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      })
+      .then(response => {
+        setBookmark(response.data.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
-      axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-      setBookmark(res.data.data);
-    });
+    bookmarkApi();
   }, []);
 
   const handleHorizantalScroll = (element, speed, distance, step) => {
@@ -78,6 +90,7 @@ function MyBookmark({ userInfo }) {
     </MyBookmarkBlock>
   );
 }
+
 const MyBookmarkBlock = styled.section`
   display: flex;
   flex-direction: column;

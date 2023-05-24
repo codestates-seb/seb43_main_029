@@ -14,11 +14,17 @@ function MyReivew({ userInfo }) {
   const accessToken = useSelector(state => state.Auth.token);
 
   const reviewApi = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/reviews/member/${userInfo.memberId}`
-    );
-    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-    setReviews(response.data);
+    await axios
+      .get(`${process.env.REACT_APP_API_URL}/reviews/member/${userInfo.memberId}`, {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      })
+      .then(response => {
+        console.log(response.data);
+        setReviews(response.data);
+      })
+      .catch(error => console.log(error));
   };
 
   useEffect(() => {
@@ -45,7 +51,7 @@ function MyReivew({ userInfo }) {
     <MyReviewBlock>
       <MyReviewTitle>
         <h3>작성한 리뷰 목록</h3>
-        <Link to={`/mypage/${userInfo.memberId}/bookmarks`}>더보기</Link>
+        <Link to={`/mypage/${userInfo.memberId}/reviews`}>더보기</Link>
       </MyReviewTitle>
       <CarouselBlock>
         <ButtonContainer>

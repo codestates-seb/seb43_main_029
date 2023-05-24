@@ -1,23 +1,29 @@
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import RestaurantsComponent from '../myPage/RestaurantsComponent.jsx';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
+import { useSelector } from 'react-redux';
 
 function MyRestaurant() {
   const { id } = useParams();
   const [restaurants, setRestaurant] = useState([]);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
-  const [imageList, setImageList] = useState([]);
+  const accessToken = useSelector(state => state.Auth.token);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      console.log(res);
-      setRestaurant(res.data.data.restaurantList);
-      setImageList(res.data.data.imageList);
-    });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/members/${id}`, {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      })
+      .then(res => {
+        console.log(res);
+        setRestaurant(res.data.data.restaurantList);
+      });
   }, []);
 
   const handleHorizantalScroll = (element, speed, distance, step) => {
@@ -39,6 +45,7 @@ function MyRestaurant() {
   return (
     <MyRestaurantBlock>
       <h3>나의 식당</h3>
+      <Link to={`/restaurant`}>식당등록</Link>
       <CarouselBlock>
         <ButtonContainer>
           <button
@@ -63,14 +70,7 @@ function MyRestaurant() {
           <Restaurants>
             {restaurants ? (
               restaurants.map((restaurant, idx) => {
-                return (
-                  <RestaurantsComponent
-                    key={idx}
-                    restaurant={restaurant}
-                    idx={idx}
-                    imageList={imageList}
-                  />
-                );
+                return <RestaurantsComponent key={idx} restaurant={restaurant} idx={idx} />;
               })
             ) : (
               <p>추가하신 즐겨찾기가 없습니다.</p>

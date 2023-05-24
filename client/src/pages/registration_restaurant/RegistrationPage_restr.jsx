@@ -53,7 +53,7 @@ function Registration_restaurant() {
         [
           JSON.stringify({
             memberId: Number(memberId),
-            categoryName: Number(categoryName),
+            categoryId: Number(categoryName),
             name,
             phone,
             address,
@@ -71,14 +71,13 @@ function Registration_restaurant() {
     });
 
     const config = {
-      Headers: {
-        'Content-Type': 'application/json',
+      headers: {
         Authorization: `${accessToken}`,
       },
     };
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/restaurant `, formData, config)
+      .post(`${process.env.REACT_APP_API_URL}/restaurant`, formData, config)
       .catch(error => console.log(error));
   };
 
