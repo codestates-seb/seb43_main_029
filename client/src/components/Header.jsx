@@ -3,23 +3,7 @@ import { BiSearchAlt2 } from 'react-icons/bi';
 import Login from '../pages/registration/Login';
 import SignUp from '../pages/registration/SignUp';
 
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-function Header({ searchValue, onSearchValueChange, page, size }) {
-  const navigate = useNavigate();
-
-  const handleOnKeyPress = event => {
-    // event.preventDefault();
-    if (event.key === 'Enter') {
-      navigate(`/restaurant/search/page=${page}&size=${size}&keyword=${searchValue}`);
-    }
-  };
-
-  useEffect(() => {
-    onSearchValueChange;
-  }, [handleOnKeyPress]);
-  console.log(searchValue);
+function Header({ searchValue, onSearchValueChange, handleOnKeyPress }) {
   return (
     <HeaderBox>
       <ContentBox>
@@ -31,8 +15,7 @@ function Header({ searchValue, onSearchValueChange, page, size }) {
 
         <SearchBox>
           <input
-            onKeyPress={handleOnKeyPress}
-            // onSubmit={handleSearchSubmit}
+            onKeyDown={handleOnKeyPress}
             className="searchInput"
             type="text"
             placeholder="맛집을 검색하세요!"

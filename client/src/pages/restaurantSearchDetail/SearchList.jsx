@@ -5,19 +5,19 @@ import Restaurant from '../main/component/Bookmark/Bookmark_Restaurant';
 import styled from 'styled-components';
 
 /** 검색 결과 식당 컴포넌트들을 정렬 */
-const SearchList = ({ currentPosts, loading }) => {
+const SearchList = ({ posts, loading }) => {
   return (
     <SearchListContainer>
-      {currentPosts?.map(currentPost => (
+      {posts?.map(post => (
         <Restaurant
-          key={currentPost.restaurantId}
-          name={currentPost.name}
-          url={currentPost.url}
-          score={currentPost.score}
-          bookmark={currentPost.bookmark}
-          location={currentPost.location}
+          key={post.restaurantId}
+          name={post.name}
+          url={post.url}
+          score={post.score}
+          bookmark={post.bookmark}
+          location={post.location}
           loading={loading}
-          restaurantId={currentPost.restaurantId}
+          restaurantId={post.restaurantId}
         />
       ))}
     </SearchListContainer>

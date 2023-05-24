@@ -1,11 +1,10 @@
 //내부 import
 
 //외부 import
-// import { useState } from 'react';
 import Pagination from 'react-js-pagination';
 
 /** props를 받는 페이지 네이션 */
-const Paging = ({ page, size, totalPosts, handlePageChange, totalPages }) => {
+const Paging = ({ page, size, totalPosts, totalPages, handlePageChange }) => {
   return (
     <Pagination
       activePage={page} //현재 페이지
