@@ -23,7 +23,7 @@ function Header({ setSearchValue }) {
   const handleSearch = event => {
     event.preventDefault();
     setSearchValue(searchInput);
-    navigate('/restaurant/search');
+    navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
   };
   return (
     <HeaderBox>
@@ -72,7 +72,7 @@ const HeaderBox = styled.div`
   box-shadow: 0 10px 10px -10px #999;
 
   //헤더 천장에 고정 - sinyaenok
-  /* background-color: #fff; */
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;

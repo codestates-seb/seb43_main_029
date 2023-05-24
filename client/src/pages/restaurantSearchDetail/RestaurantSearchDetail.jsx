@@ -1,43 +1,65 @@
 //내부
 import SearchInfo from './SearchInfo';
 import SearchList from './SearchList';
-// import Paging from './Paging';
-import { fetchSearchRestaurant } from '../../redux/search/actions';
+import Paging from './Paging';
 
 //외부 import
 import styled from 'styled-components';
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
-// import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 /** 서버주소/restaurant/search에서 데이터 불러오기 */
-const RestaurantSearchDetail = ({ fetchSearchRestaurant, currentPosts }) => {
-  useEffect(() => {
-    fetchSearchRestaurant();
-  }, []);
-  console.log(currentPosts, 'currentPosts');
+const RestaurantSearchDetail = ({ searchValue }) => {
+  //api로 받아온 검색 조회 식당데이터값
+  const [currentPosts, setCurrentPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [size, setSize] = useState(12);
+  const [totalPosts, setTotalPosts] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  //검색값
+  const isSearchValue = searchValue.searchValue;
 
-  // let posts = useSelector(state => state.search.restaurants.pageInfo);
-  // console.log(posts, 'posts');
+  const handlePageChange = page => {
+    setPage(page);
+  };
+  useEffect(() => {
+    axios
+      .get(
+        `${process.env.REACT_APP_API_URL}/restaurant/search/?page=1&size=12&keyword=${isSearchValue}`
+      )
+      .then(response => {
+        setCurrentPosts(response.data.data);
+        setPage(response.data.pageInfo.page);
+        setSize(response.data.pageInfo.size);
+        setTotalPosts(response.data.pageInfo.totalElements);
+        setTotalPages(response.data.pageInfo.totalPages);
+      });
+  }, [isSearchValue, page]);
+
   return (
     <RestaurantSearchDetailContainer>
       <ArticleBox>
         <ContentBox>
-          <SearchInfo />
-          <SearchList />
+          <SearchInfo isSearchValue={isSearchValue} />
+          <SearchList currentPosts={currentPosts} />
+          <Paging
+            page={page}
+            size={size}
+            totalPosts={totalPosts}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+          />
         </ContentBox>
       </ArticleBox>
     </RestaurantSearchDetailContainer>
   );
 };
-const mapStateToProps = state => {
-  const loading = state.search.loading;
-  return {
-    loading: loading,
-    currentPosts: state.search.restaurants.data,
-  };
-};
-export default connect(mapStateToProps, { fetchSearchRestaurant })(RestaurantSearchDetail);
+const mapStateToProps = state => ({
+  searchValue: state.searchValue,
+});
+
+export default connect(mapStateToProps)(RestaurantSearchDetail);
 
 //style
 const RestaurantSearchDetailContainer = styled.main``;
@@ -49,7 +71,5 @@ const ArticleBox = styled.article`
 const ContentBox = styled.section`
   max-width: 1000px;
   min-height: 1000px;
-
-  border: 1px solid #000;
   margin: auto;
 `;
