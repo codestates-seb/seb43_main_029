@@ -6,25 +6,26 @@ import { useParams } from 'react-router-dom';
 import MyReivew from './MyReivew.jsx';
 import MyBookmark from './MyBookmark.jsx';
 import MyRestaurant from './MyRestaurant.jsx';
+import { useSelector } from 'react-redux';
 
 function MyPage() {
   const { id } = useParams();
   const [userInfo, setUserInfo] = useState({});
   const [role, setRole] = useState();
+  const accessToken = useSelector(state => state.Auth.token);
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-      setUserInfo(res.data.data);
-      setRole(res.data.data.role[0]);
-    });
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/members/${id}`, {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      })
+      .then(response => {
+        setUserInfo(response.data.data);
+        setRole(response.data.data.role[0]);
+      });
   }, []);
-
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-  //     setUserInfo(res.data);
-  //     setRole(res.data.role[0]);
-  //   });
-  // }, []);
 
   if (role === 'USER') {
     return (

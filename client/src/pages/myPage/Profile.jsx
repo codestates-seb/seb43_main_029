@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { TiPencil } from 'react-icons/ti';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import Button from '../../components/Button';
+import { useSelector } from 'react-redux';
 
 function Profile({ userInfo }) {
   const { id } = useParams();
@@ -14,6 +14,7 @@ function Profile({ userInfo }) {
   const [image, setImage] = useState(null);
   const [files, setFiles] = useState({});
   const [preview, setPreview] = useState(false);
+  const accessToken = useSelector(state => state.Auth.token);
 
   function nameEditBtn() {
     setIsEdit(!isEdit);
@@ -33,7 +34,13 @@ function Profile({ userInfo }) {
       const editName = {
         nickname: `${name}`,
       };
-      axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}/nickname`, editName);
+      axios
+        .patch(`${process.env.REACT_APP_API_URL}/members/${id}/nickname`, editName)
+        .then(response => {
+          if (response.status === 200) {
+            axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+          }
+        });
     }
   }
 
@@ -43,10 +50,9 @@ function Profile({ userInfo }) {
   }, [url, nickname]);
 
   function imgChange(e) {
+    console.log(e.target.files[0]);
     const file = e.target.files[0];
-
     setFiles(file);
-
     setPreview(!preview);
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -62,6 +68,7 @@ function Profile({ userInfo }) {
     const config = {
       Headers: {
         'content-type': 'multipart/form-data',
+        Authorization: `${accessToken}`,
       },
     };
     axios.patch(`${process.env.REACT_APP_API_URL}/members/${id}/profile`, formdata, config);
@@ -71,7 +78,7 @@ function Profile({ userInfo }) {
     <>
       <ProfileBlock>
         <UserLayout>
-          <UserImg background={image} htmlFor="file" />
+          <UserImg background={image} />
           <form encType="multipart/form-data">
             <input
               id="file"
@@ -82,9 +89,11 @@ function Profile({ userInfo }) {
             />
           </form>
           {preview ? (
-            <UserImgButton onClick={handleChangeImg}>이미지변경</UserImgButton>
+            <UserImgButton onClick={handleChangeImg}>이미지등록</UserImgButton>
           ) : (
-            <UserImgButton onClick={imgChange}>이미지선택</UserImgButton>
+            <UserImgButton onChange={imgChange} htmlFor="file">
+              이미지선택
+            </UserImgButton>
           )}
         </UserLayout>
         <div>
@@ -124,7 +133,7 @@ const UserLayout = styled.div`
   flex-direction: column;
   position: relative;
 `;
-const UserImg = styled.label`
+const UserImg = styled.div`
   width: 128px;
   height: 128px;
   border-radius: 50%;
@@ -133,10 +142,18 @@ const UserImg = styled.label`
   cursor: pointer;
 `;
 
-const UserImgButton = styled(Button)`
+const UserImgButton = styled.label`
   position: absolute;
   bottom: 0;
   left: 15%;
+  padding: 5.5px 8px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1rem;
+  white-space: nowrap;
+  background: #2f3134;
+  color: white;
+  border: 1px solid #2f3134;
 `;
 
 const UserName = styled.div`

@@ -1,7 +1,122 @@
 import axios from 'axios';
-import React, { useState } from 'react'; // eslint-disable-line no-unused-vars
+import React, { useEffect, useState } from 'react'; // eslint-disable-line no-unused-vars
 import styled from 'styled-components';
-// import LoginLink from './components/Header.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, loginSuccess } from '../../actions/index';
+import { useNavigate } from 'react-router-dom';
+import { setToken } from '../../redux/authReducer';
+
+function Login() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [clickLogin, setClickLogin] = useState(false);
+
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const accessToken = useSelector(state => state.Auth.token);
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+    setUsername('');
+    setPassword('');
+  };
+
+  const handleEmailChange = e => {
+    setUsername(e.target.value);
+  };
+
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    setClickLogin(!clickLogin);
+
+    // 로그인 처리
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/login`, {
+        username,
+        password,
+      })
+      .then(response => {
+        if (response.status === 200) {
+          // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+          axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+          // memberId를 기존 회원들과 비교하도록 변수처리
+          const apiMemberId = response.headers.memberid;
+          // 기존 db의 회원정보중 memberId가 같은 정보 조회
+
+          dispatch(setToken(response.headers.authorization));
+          axios.get(`${process.env.REACT_APP_API_URL}/members/${apiMemberId}`).then(response => {
+            if (response.status === 200) {
+              // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+              axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+
+              const nickname = response.data.data.nickname;
+              const url = response.data.data.url;
+              const memberId = response.data.data.memberId;
+              dispatch(login());
+              dispatch(
+                loginSuccess({
+                  nickname,
+                  url,
+                  memberId,
+                })
+              );
+            }
+          });
+
+          navigate();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+    handleModalClose();
+  };
+
+  return (
+    <>
+      <LoginButton onClick={handleModalOpen}>로그인</LoginButton>
+      {isModalOpen && (
+        <ModalBackground>
+          <ModalContent onClick={e => e.stopPropagation()}>
+            <LoginExitButton onClick={handleModalClose}>X</LoginExitButton>
+            <Logo>
+              <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
+            </Logo>
+            <H3> 로그인 </H3>
+            <LoginForm onSubmit={handleSubmit}>
+              <LoginInput
+                type="email"
+                placeholder="example@email.com"
+                value={username}
+                onChange={handleEmailChange}
+              />
+              <LoginInput
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <LoginSubmitButton type="submit">로그인</LoginSubmitButton>
+              <p> 아직 계정이 없으신가요? 회원가입</p>
+              <p> ID / 비밀번호를 잊어버리셨나요?</p>
+            </LoginForm>
+          </ModalContent>
+        </ModalBackground>
+      )}
+    </>
+  );
+}
 
 const Logo = styled.div`
   display: flex;
@@ -129,92 +244,5 @@ const LoginExitButton = styled.button`
   border: none;
   font-size: 20px;
 `;
-
-function Login() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-    setUsername('');
-    setPassword('');
-  };
-
-  const handleEmailChange = e => {
-    setUsername(e.target.value);
-  };
-
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    // const formData = new FormData(e.target);
-    // const username = formData.get('email');
-    // const password = formData.get('password');
-
-    // 로그인 처리
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/login`, {
-        username,
-        password,
-      })
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.data);
-          const { accessToken } = response.data;
-
-          // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-          axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    // onLogin();
-
-    handleModalClose();
-  };
-
-  return (
-    <>
-      <LoginButton onClick={handleModalOpen}>로그인</LoginButton>
-      {isModalOpen && (
-        <ModalBackground>
-          <ModalContent onClick={e => e.stopPropagation()}>
-            <LoginExitButton onClick={handleModalClose}>X</LoginExitButton>
-            <Logo>
-              <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
-            </Logo>
-            <H3> 로그인 </H3>
-            <LoginForm onSubmit={handleSubmit}>
-              <LoginInput
-                type="email"
-                placeholder="example@email.com"
-                value={username}
-                onChange={handleEmailChange}
-              />
-              <LoginInput
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-              <LoginSubmitButton type="submit">로그인</LoginSubmitButton>
-              <p> 아직 계정이 없으신가요? 회원가입</p>
-              <p> ID / 비밀번호를 잊어버리셨나요?</p>
-            </LoginForm>
-          </ModalContent>
-        </ModalBackground>
-      )}
-    </>
-  );
-}
 
 export default Login;

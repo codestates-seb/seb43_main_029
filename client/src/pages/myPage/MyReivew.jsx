@@ -4,21 +4,20 @@ import styled from 'styled-components';
 import { ReviewComponent } from '../../components/Review';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function MyReivew({ userInfo }) {
   const [reviews, setReviews] = useState([]);
-  // const recentReview = reviews.slice(-9);
+  const recentReview = reviews.slice(-9);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
-
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}`).then(res => {
-  //     setReviews(res.data.reviews);
-  //   });
-  // }, [id]);
+  const accessToken = useSelector(state => state.Auth.token);
 
   const reviewApi = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/reviews`);
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/reviews/member/${userInfo.memberId}`
+    );
+    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
     setReviews(response.data);
   };
 
@@ -29,8 +28,8 @@ function MyReivew({ userInfo }) {
   const handleHorizantalScroll = (element, speed, distance, step) => {
     let scrollAmount = 0;
     const slideTimer = setInterval(() => {
-      element.scrollLeft += step;
-      scrollAmount += Math.abs(step);
+      element.scrollLeft = element.scrollLeft + step;
+      scrollAmount = scrollAmount + Math.abs(step);
       if (scrollAmount >= distance) {
         clearInterval(slideTimer);
       }
@@ -71,7 +70,7 @@ function MyReivew({ userInfo }) {
         <ReivewsList ref={elementRef}>
           <Reviews>
             {reviews ? (
-              reviews.map((review, index) => {
+              recentReview.map((review, index) => {
                 return <ReviewComponent key={index} reviewId={reviews.reviewId} review={review} />;
               })
             ) : (

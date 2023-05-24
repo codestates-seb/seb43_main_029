@@ -4,23 +4,19 @@ import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { BookmarkComponent } from '../../components/Bookmark';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
+import { useSelector } from 'react-redux';
 
 function MyBookmark({ userInfo }) {
   const { id } = useParams();
   const [bookmarks, setBookmark] = useState([]);
-  // const recentBookmark = bookmarks.slice(-9);
+  const recentBookmark = bookmarks.slice(-9);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
-
-  // useEffect(() => {
-  //   axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
-  //     setBookmark(res.data);
-  //   });
-  // }, []);
+  const accessToken = useSelector(state => state.Auth.token);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
-      console.log(res.data.data);
+      axios.defaults.headers.common['Authorization'] = `${accessToken}`;
       setBookmark(res.data.data);
     });
   }, []);
@@ -70,7 +66,7 @@ function MyBookmark({ userInfo }) {
         <BookmarkList ref={elementRef}>
           <Bookmarks>
             {bookmarks ? (
-              bookmarks.map((bookmarks, idx) => {
+              recentBookmark.map((bookmarks, idx) => {
                 return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
               })
             ) : (
