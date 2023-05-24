@@ -45,9 +45,7 @@ public class MemberController {
         return ResponseEntity.created(location).build();
     }
 
-    // FIXME: 회원가입, 닉네임 변경 시 닉네임 중복 체크 로직
-    //  - 1. 새로 DTO를 만들어야함(닉네임만 관리)
-    //  - 2.
+
     @GetMapping("/check")
     public ResponseEntity checkNickname(@Valid @RequestBody MemberDto.PatchNickname requestBody){
 
