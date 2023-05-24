@@ -1,5 +1,6 @@
 package application.Review.dto;
 
+import application.Review.entity.Review;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;

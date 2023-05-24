@@ -182,17 +182,17 @@ public class ReviewService {
         return reviewDto;
     }
 
-    //리뷰 조회(특정식당)
+    // 리뷰 조회(특정식당)
     public List<ReviewDto.ReviewResponseDto> getReviewsByRestaurantId(Long restaurantId) {
-        List<Review> reviews = reviewRepository.findAllByRestaurantId(restaurantId);
+        List<Review> reviews = reviewRepository.findAllByRestaurantRestaurantId(restaurantId);
         return reviews.stream()
                 .map(reviewMapper::reviewToReviewResponseDto)
                 .collect(Collectors.toList());
     }
 
     //리뷰 조회(특정유저)
-    public List<ReviewDto.ReviewResponseDto> getReviewsByMemberId(Long memberId) {
-        List<Review> reviews = reviewRepository.findAllByMemberId(memberId);
+    public List<ReviewDto.ReviewResponseDto> getReviewsByMember_MemberId(Long memberId) {
+        List<Review> reviews = reviewRepository.findAllByMember_MemberId(memberId);
         return reviews.stream()
                 .map(reviewMapper::reviewToReviewResponseDto)
                 .collect(Collectors.toList());
