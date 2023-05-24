@@ -2,7 +2,6 @@
 import { TitleBox } from '../../styled';
 
 //외부 import
-// import styled from 'styled-components';
 
 /** 즐겨찾기 타이틀 */
 const Bookmark_Title = () => {

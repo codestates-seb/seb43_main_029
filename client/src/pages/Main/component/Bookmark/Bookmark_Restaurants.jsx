@@ -20,10 +20,10 @@ const Bookmark_Restaurants = ({ fetchBookmarkRestaurants, restaurants, loading }
         <Bookmark_Restaurant
           key={restaurant.restaurantId}
           name={restaurant.name}
-          images={restaurant.images}
+          url={restaurant.url}
           score={restaurant.score}
           bookmark={restaurant.bookmark}
-          address={restaurant.address}
+          location={restaurant.location}
           loading={loading}
           restaurantId={restaurant.restaurantId}
         />
