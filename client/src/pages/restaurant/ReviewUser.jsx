@@ -1,33 +1,31 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { TiPencil } from 'react-icons/ti';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-function ReviewUser({ memberId }) {
-  const [initialUser, setInitialUser] = useState([]);
-
-  const user = initialUser.filter(el => el.memberId === memberId);
-
-  const restaurantReviewApi = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_API_URL}/members`);
-    setInitialUser(response.data);
-  };
+function ReviewUser({ memberId, likecount }) {
+  const [reviewAuthor, setReviewAuthor] = useState([]);
+  const accessToken = useSelector(state => state.Auth.token);
 
   useEffect(() => {
-    restaurantReviewApi();
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}`).then(response => {
+      axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+      setReviewAuthor(response.data.data);
+    });
   }, [memberId]);
 
   return (
     <>
-      {user.length > 0 ? (
+      {reviewAuthor ? (
         <User>
           <UserInfo>
-            <UserImg background={user[0].url}></UserImg>
-            <p>{user[0].nickname}</p>
+            <UserImg background={reviewAuthor.url}></UserImg>
+            <p>{reviewAuthor.nickname}</p>
           </UserInfo>
           <p>
             <TiPencil />
-            {user[0].reviews ? user[0].reviews.length : 0}
+            {likecount > 0 ? `${likecount}` : 0}
           </p>
         </User>
       ) : null}
