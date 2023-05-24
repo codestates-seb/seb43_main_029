@@ -30,6 +30,14 @@ public class BookmarkController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @GetMapping("/restaurant/{member-id}/{restaurant-id}")
+    public ResponseEntity getBookmarkHeart(@PathVariable("member-id") @Positive long memberId,
+                                       @PathVariable("restaurant-id") @Positive long restaurantId) {
+        BookmarkDto.BookmarkHeartResponseDto responseDto = bookmarkService.getBookmarkHeart(memberId, restaurantId);
+
+        return new ResponseEntity<>(responseDto, HttpStatus.OK);
+    }
+
     @GetMapping("/members/{member-id}/bookmark")
     public ResponseEntity getBookmarkList(@PathVariable("member-id") @Positive long memberId){
         List<Bookmark> bookmarkList = bookmarkService.getBookmarkList(memberId);
