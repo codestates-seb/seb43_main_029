@@ -20,11 +20,19 @@ function Header({ setSearchValue }) {
     setSearchInput(event.target.value);
   };
 
-  const handleSearch = event => {
-    event.preventDefault();
-    setSearchValue(searchInput);
-    navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
-  };
+  function enterPress(e) {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+      setSearchValue(searchInput);
+      navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
+    }
+  }
+
+  // const handleSearch = event => {
+  //   event.preventDefault();
+  //   setSearchValue(searchInput);
+  //   navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
+  // };
   return (
     <HeaderBox>
       <ContentBox>
@@ -35,13 +43,14 @@ function Header({ setSearchValue }) {
         </Logo>
 
         <SearchBox>
-          <form onSubmit={handleSearch}>
+          <form>
             <input
               className="searchInput"
               type="text"
               value={searchInput}
               placeholder="맛집을 검색하세요!"
               onChange={handleInputChange}
+              onKeyPress={enterPress}
             />
           </form>
           <BiSearchAlt2 className="searchIcon" />

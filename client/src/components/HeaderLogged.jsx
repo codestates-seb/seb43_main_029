@@ -4,11 +4,34 @@ import { BiSearchAlt2 } from 'react-icons/bi';
 import { logout } from '../actions';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { setSearchValue } from '../redux/searchValue/actions';
+import { useState } from 'react';
+import { connect } from 'react-redux';
 
-function HeaderLogged({ userInfo }) {
+function HeaderLogged({ userInfo, setSearchValue }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const memberId = userInfo.memberId;
+  const [searchInput, setSearchInput] = useState('');
+
+  //헨들 이벤트
+  const handleInputChange = event => {
+    setSearchInput(event.target.value);
+  };
+
+  function enterPress(e) {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+      setSearchValue(searchInput);
+      navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
+    }
+  }
+
+  // const handleSearch = event => {
+  //   event.preventDefault();
+  //   setSearchValue(searchInput);
+  //   navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
+  // };
 
   const handleLogOutBtn = () => {
     dispatch(logout());
@@ -29,8 +52,18 @@ function HeaderLogged({ userInfo }) {
         </Logo>
 
         <SearchBox>
-          <input className="searchInput" type="text" placeholder="맛집을 검색하세요!" />
+          <form>
+            <input
+              className="searchInput"
+              type="text"
+              value={searchInput}
+              placeholder="맛집을 검색하세요!"
+              onChange={handleInputChange}
+              onKeyPress={enterPress}
+            />
+          </form>
           <BiSearchAlt2 className="searchIcon" />
+          {/* <button onClick={handleSearchSubmit}>식당조회페이지 버튼</button> */}
         </SearchBox>
 
         <ProfileBox>
@@ -41,6 +74,11 @@ function HeaderLogged({ userInfo }) {
     </HeaderBox>
   );
 }
+const mapDispatchToProps = dispatch => {
+  return {
+    setSearchValue: value => dispatch(setSearchValue(value)),
+  };
+};
 
 const HeaderBox = styled.div`
   display: flex;
@@ -166,4 +204,4 @@ const LogoutLink = styled.button`
   }
 `;
 
-export default HeaderLogged;
+export default connect(null, mapDispatchToProps)(HeaderLogged);
