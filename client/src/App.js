@@ -11,6 +11,7 @@ import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
+import Registration_restaurant from './pages/registration_restaurant/RegistrationPage_restr';
 import RestaurantSearchDetail from './pages/restaurantSearchDetail/RestaurantSearchDetail';
 
 const GlobalStyle = createGlobalStyle`
@@ -45,8 +46,8 @@ function App() {
             <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
             <Route path="/mypage/:id/reviews" element={<Reviews />} />
             <Route path="/restaurant/search" element={<RestaurantSearchDetail />} />
+            <Route path="/restaurant" element={<Registration_restaurant />} />
           </Routes>
-
           <Footer className="footer" />
         </GlobalLayout>
       </BrowserRouter>
