@@ -77,13 +77,15 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.GET, "/restaurant/{restaurant-id}").permitAll() // 식당 정보 상세 조회
                         .antMatchers(HttpMethod.GET, "/restaurant/search").permitAll() // 식당 검색결과 조회
                         .antMatchers(HttpMethod.DELETE, "/restaurant/{memberId}/{restaurantId}").access("@authorizationChecker.check(#memberId, authentication)") // 식당 삭제
-                        .antMatchers(HttpMethod.POST, "/restaurants/{memberId}/{restaurantsId}").access("@authorizationChecker.check(#memberId, authentication)") // 식당 즐겨찾기 추가 및 삭제
+                        .antMatchers(HttpMethod.POST, "/restaurant/{memberId}/{restaurantsId}").access("@authorizationChecker.check(#memberId, authentication)") // 식당 즐겨찾기 추가 및 삭제
                         .antMatchers(HttpMethod.POST, "/reviews").hasAnyRole("USER", "ADMIN") // 리뷰 등록
                         .antMatchers(HttpMethod.PATCH, "/reviews/{reviewId}").access("@authorizationChecker.checkReview(#memberId, authentication)") // 리뷰 수정
                         .antMatchers(HttpMethod.GET, "/reviews/{reviewId}").permitAll() // 리뷰 조회
                         .antMatchers(HttpMethod.DELETE, "/reviews/{reviewId}/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 리뷰 삭제
                         .antMatchers(HttpMethod.POST, "/reviews/{reviewId}/like/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 리뷰 좋아요 추가
                         .antMatchers(HttpMethod.DELETE, "/reviews/{reviewId}/like/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 리뷰 좋아요 삭제
+                        .antMatchers(HttpMethod.GET, "/reviews/restaurant/{restaurantId}").permitAll()
+                        .antMatchers(HttpMethod.GET, "/reviews/member/{memberId}").hasAnyRole("ADMIN", "USER", "OWNER")
                         .antMatchers(HttpMethod.GET, "/restaurant/today").permitAll() // 식당 전체 조회
                         .anyRequest().permitAll());
 
