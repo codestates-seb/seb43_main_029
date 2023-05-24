@@ -27,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -166,6 +167,7 @@ public class ReviewService {
         // 레스토랑 별점 저장
         restaurantRepository.save(restaurant);
     }
+    //리뷰 좋아요
     public ReviewDto.ReviewResponseDto getReview(Long reviewId, Long memberId) {
         Review review = reviewRepository.findById(reviewId).orElseThrow(
                 () -> new RuntimeException(String.format("Review not found with id %d", reviewId)));
@@ -178,5 +180,21 @@ public class ReviewService {
         reviewDto.setLikedByUser(reviewLike.isPresent());
 
         return reviewDto;
+    }
+
+    //리뷰 조회(특정식당)
+    public List<ReviewDto.ReviewResponseDto> getReviewsByRestaurantId(Long restaurantId) {
+        List<Review> reviews = reviewRepository.findAllByRestaurantId(restaurantId);
+        return reviews.stream()
+                .map(reviewMapper::reviewToReviewResponseDto)
+                .collect(Collectors.toList());
+    }
+
+    //리뷰 조회(특정유저)
+    public List<ReviewDto.ReviewResponseDto> getReviewsByMemberId(Long memberId) {
+        List<Review> reviews = reviewRepository.findAllByMemberId(memberId);
+        return reviews.stream()
+                .map(reviewMapper::reviewToReviewResponseDto)
+                .collect(Collectors.toList());
     }
 }

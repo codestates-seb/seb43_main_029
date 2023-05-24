@@ -84,5 +84,16 @@ public class ReviewController {
         reviewLikeService.removeLikeFromReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+    @GetMapping("/restaurant/{restaurantId}") // 리뷰 조회(특정식당)
+    public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getReviewsByRestaurantId(@PathVariable Long restaurantId) {
+        List<ReviewDto.ReviewResponseDto> reviewDtoList = reviewService.getReviewsByRestaurantId(restaurantId);
+        return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/member/{memberId}") //리뷰 조회(특정유저)
+    public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getReviewsByMemberId(@PathVariable Long memberId) {
+        List<ReviewDto.ReviewResponseDto> reviewDtoList = reviewService.getReviewsByMemberId(memberId);
+        return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+    }
 }
 
