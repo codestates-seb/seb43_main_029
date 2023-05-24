@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import { TiHeartFullOutline } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 
-function RestaurantsComponent({ idx, restaurant, imageList }) {
-  const { name, score, bookmark, createdAt, restaurantId } = restaurant;
+function RestaurantsComponent({ restaurant }) {
+  const { name, score, bookmark, createdAt, restaurantId, imageList } = restaurant;
   return (
-    <Bookmark key={idx}>
+    <Bookmark key={restaurantId}>
       <Link to={`/restaurant/${restaurantId}`}>
         <BookmarkContent>
           <img src={imageList[0].url} alt={name} />
