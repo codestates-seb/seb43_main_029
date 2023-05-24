@@ -1,12 +1,27 @@
 import { combineReducers } from 'redux';
 import randomRestaurantsReducer from './randomRestaurants/reducers';
 import bookmarkRestaurantsReducer from './bookmarkRestaurants/reducers';
-import reviewsReducer from './reviews/reducers';
+import { persistReducer } from 'redux-persist';
+import { loginReducer } from './loginReducer';
+import { userInfoReducer } from './userInfoReducer';
+import { AuthReducer } from './authReducer';
+
+// 세션에 저장
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['login', 'userinfo', 'Auth'], // 브라우저 새로고침시 데이터 storage에 저장
+  blacklist: ['randomRestaurants', 'bookmarkRestaurants'], // 제외
+};
 
 const rootReducer = combineReducers({
   randomRestaurants: randomRestaurantsReducer,
   bookmarkRestaurants: bookmarkRestaurantsReducer,
-  reviews: reviewsReducer,
+  login: loginReducer,
+  userinfo: userInfoReducer,
+  Auth: AuthReducer,
 });
 
-export default rootReducer;
+export default persistReducer(persistConfig, rootReducer);
