@@ -233,8 +233,9 @@ export const BigRestaurantInfo = styled.div`
 /** 식당 컴포넌트 */
 export const RestaurantBox = styled.li`
   width: 100%;
-  height: 250px;
+  height: 100%;
   display: flex;
+
   flex-direction: column;
 
   //식당 이미지
@@ -286,6 +287,7 @@ export const RestaurantBox = styled.li`
     flex-direction: column;
     padding: 8px;
     align-items: end;
+    /* justify-content: center; */
   }
   .Restaurant_Name {
     color: #000;

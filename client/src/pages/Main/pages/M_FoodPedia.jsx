@@ -125,6 +125,7 @@ const IconContainer = styled.div`
   .guideText {
     font-size: 20px;
     padding-bottom: 5px;
+    cursor: pointer;
     //텍스트 커지는 효과
     :hover {
       -ms-transform: scale(1.5); /* IE 9 */

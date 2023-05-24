@@ -1,9 +1,30 @@
+//redux
+import { setSearchValue } from '../redux/searchValue/actions';
+
 import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import Login from '../pages/registration/Login';
 import SignUp from '../pages/registration/SignUp';
 
-function Header() {
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+function Header({ setSearchValue }) {
+  const [searchInput, setSearchInput] = useState('');
+
+  const navigate = useNavigate();
+
+  //헨들 이벤트
+  const handleInputChange = event => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearch = event => {
+    event.preventDefault();
+    setSearchValue(searchInput);
+    navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
+  };
   return (
     <HeaderBox>
       <ContentBox>
@@ -14,8 +35,17 @@ function Header() {
         </Logo>
 
         <SearchBox>
-          <input className="searchInput" type="text" placeholder="맛집을 검색하세요!" />
+          <form onSubmit={handleSearch}>
+            <input
+              className="searchInput"
+              type="text"
+              value={searchInput}
+              placeholder="맛집을 검색하세요!"
+              onChange={handleInputChange}
+            />
+          </form>
           <BiSearchAlt2 className="searchIcon" />
+          {/* <button onClick={handleSearchSubmit}>식당조회페이지 버튼</button> */}
         </SearchBox>
 
         <LogBox>
@@ -28,7 +58,11 @@ function Header() {
     </HeaderBox>
   );
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    setSearchValue: value => dispatch(setSearchValue(value)),
+  };
+};
 const HeaderBox = styled.div`
   display: flex;
   width: 100%;
@@ -38,7 +72,7 @@ const HeaderBox = styled.div`
   box-shadow: 0 10px 10px -10px #999;
 
   //헤더 천장에 고정 - sinyaenok
-  /* background-color: #fff; */
+  background-color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -195,4 +229,4 @@ const LogBox = styled.div`
 //   }
 // `;
 
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);

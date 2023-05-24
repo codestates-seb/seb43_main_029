@@ -15,6 +15,9 @@ const persistConfig = {
   whitelist: ['login', 'userinfo', 'Auth'], // 브라우저 새로고침시 데이터 storage에 저장
   blacklist: ['randomRestaurants', 'bookmarkRestaurants'], // 제외
 };
+import reviewsReducer from './reviews/reducers';
+import searchRestaurantReducer from './search/reducers';
+import searchValueReducer from './searchValue/reducers';
 
 const rootReducer = combineReducers({
   randomRestaurants: randomRestaurantsReducer,
@@ -22,6 +25,9 @@ const rootReducer = combineReducers({
   login: loginReducer,
   userinfo: userInfoReducer,
   Auth: AuthReducer,
+  reviews: reviewsReducer,
+  search: searchRestaurantReducer,
+  searchValue: searchValueReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
