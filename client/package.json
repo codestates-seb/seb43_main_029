@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@ap.cx/react-fullpage": "^0.3.0",
+    "@emotion/react": "^11.11.0",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.13.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -23,6 +26,7 @@
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.10",
     "styled-reset": "^4.4.6",
     "swiper": "^9.3.0",

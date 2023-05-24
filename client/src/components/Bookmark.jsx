@@ -7,7 +7,7 @@ export const BookmarkComponent = ({ idx, bookmarks }) => {
     <Bookmark key={idx}>
       <Link to={`/restaurant/${bookmarks.restaurantId}`}>
         <BookmarkContent>
-          <img src={bookmarks.url} alt={bookmarks.name} />
+          <BookmarkImage background={bookmarks.url} alt={bookmarks.name} />
         </BookmarkContent>
         <BookmarkDesc>
           <BookmarkTitle>
@@ -46,6 +46,14 @@ const Bookmark = styled.li`
     width: 45%;
   }
 `;
+
+const BookmarkImage = styled.div`
+  width: 264px;
+  height: 150px;
+  background: ${props => `url(${props.background}) no-repeat center`};
+  background-size: 264px;
+  margin: 12px 0 15px;
+`;
 const BookmarkDesc = styled.div`
   display: flex;
   flex-direction: column;
@@ -64,12 +72,7 @@ const BookmarkTitle = styled.p`
   }
 `;
 
-const BookmarkContent = styled.div`
-  img {
-    width: 100%;
-    margin: 12px 0 15px;
-  }
-`;
+const BookmarkContent = styled.div``;
 
 const BookmarkInfo = styled.div`
   display: flex;

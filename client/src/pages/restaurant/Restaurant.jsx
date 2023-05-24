@@ -1,17 +1,22 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { TiHeartFullOutline, TiHeartOutline } from 'react-icons/ti';
 import RestaurantDesc from './RestaurantDesc';
 import MapContainer from './MapContainer';
 import RestaurantReview from './RestaurantReview';
+import { useSelector } from 'react-redux';
 
 function Restaurant() {
+  const userInfo = useSelector(state => state.userinfo.user);
+  const memberId = userInfo.memberId;
+  const accessToken = useSelector(state => state.Auth.token);
+
   const { id } = useParams();
+  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
   const {
-    restaurantId,
     name,
     phone,
     restDay,
@@ -24,19 +29,47 @@ function Restaurant() {
     menuList,
   } = restaurant;
   const [isOn, setIsOn] = useState(false);
+  const [BookmarkOn, setBookmarkOn] = useState(false);
 
+  // 레스토랑 정보 가져오기
   const restaurantApi = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API_URL}/restaurant/${id}`);
-    console.log(response.data.data);
+    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
     setRestaurant(response.data.data);
   };
+
+  // 유저 즐겨찾기 체크 여부 조회
+  const userBookmarkApi = async () => {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
+    );
+    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+    setBookmarkOn(response.data.heart);
+  };
+
+  // 즐겨찾기 추가 및 삭제 api
+  const handleBookmark = async () => {
+    setIsOn(!isOn);
+    setBookmarkOn(!BookmarkOn);
+    await axios
+      .post(`${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`, {
+        memberId,
+        restaurantId: Number(id),
+      })
+      .then(response => {
+        if (response.status === 201) {
+          // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
+          axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+          navigate('');
+        }
+      })
+      .catch(error => console.log(error));
+  };
+
   useEffect(() => {
     restaurantApi();
+    userBookmarkApi();
   }, []);
-
-  function handleBookmark() {
-    setIsOn(!isOn);
-  }
 
   return (
     <>
@@ -65,7 +98,7 @@ function Restaurant() {
                 </li>
                 <li className="bookmarkToggle">
                   <button onClick={handleBookmark}>
-                    {isOn ? (
+                    {BookmarkOn ? (
                       <TiHeartFullOutline className="bookmarkIcon" />
                     ) : (
                       <TiHeartOutline className="bookmarkIcon" />
@@ -75,9 +108,6 @@ function Restaurant() {
                 </li>
               </ul>
               <ul>
-                <li className="moreInfoIcon">
-                  <TiHeartFullOutline className="icon" /> <p>{bookmark}</p>
-                </li>
                 <li className="moreInfoIcon">
                   <TiHeartFullOutline className="icon" /> <p>{bookmark}</p>
                 </li>
@@ -95,7 +125,7 @@ function Restaurant() {
             />
             <MapContainer address={address} />
           </RestaurantInfo>
-          <RestaurantReview restaurantId={restaurantId} />
+          <RestaurantReview restaurantId={id} name={name} />
         </RestaurantBlock>
       </RestaurantSection>
     </>
@@ -117,7 +147,6 @@ const RestaurantSection = styled.section`
     margin: -1px;
     border: 0;
     padding: 0;
-
     white-space: nowrap;
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
@@ -129,8 +158,20 @@ const RestaurantImageList = styled.ul`
   display: flex;
   flex-direction: row;
   gap: 5px;
+  li {
+    position: relative;
+    width: 381px;
+    height: 340px;
+  }
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50, 50);
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: auto;
   }
 `;
 

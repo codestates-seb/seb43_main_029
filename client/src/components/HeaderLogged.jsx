@@ -1,13 +1,29 @@
 import styled from 'styled-components';
 import { CgProfile } from 'react-icons/cg';
 import { BiSearchAlt2 } from 'react-icons/bi';
+import { logout } from '../actions';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-function HeaderLogged() {
+function HeaderLogged({ userInfo }) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const memberId = userInfo.memberId;
+
+  const handleLogOutBtn = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
+  const handleMyPageBtn = () => {
+    navigate(`/mypage/${memberId}`);
+  };
+
   return (
     <HeaderBox>
       <ContentBox>
         <Logo>
-          <LogoLink href="#">
+          <LogoLink href="/">
             <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
           </LogoLink>
         </Logo>
@@ -18,8 +34,8 @@ function HeaderLogged() {
         </SearchBox>
 
         <ProfileBox>
-          <ProfileLink />
-          <LogoutLink>Log out</LogoutLink>
+          <ProfileLink onClick={handleMyPageBtn} />
+          <LogoutLink onClick={handleLogOutBtn}>Log out</LogoutLink>
         </ProfileBox>
       </ContentBox>
     </HeaderBox>
