@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { BookmarkComponent } from '../../components/Bookmark';
