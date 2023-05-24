@@ -13,17 +13,16 @@ const Category_Restaurants = ({ fetchRandomRestaurants, restaurants, loading }) 
   useEffect(() => {
     fetchRandomRestaurants();
   }, []);
-
   return (
     <RestaurantsBox>
       {restaurants?.map(restaurant => (
         <Category_Restaurant
           key={restaurant.restaurantId}
           name={restaurant.name}
-          images={restaurant.images}
+          url={restaurant.url}
           score={restaurant.score}
           bookmark={restaurant.bookmark}
-          address={restaurant.address}
+          location={restaurant.location}
           loading={loading}
           restaurantId={restaurant.restaurantId}
         />
