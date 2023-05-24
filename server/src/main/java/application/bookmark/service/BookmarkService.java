@@ -24,7 +24,6 @@ public class BookmarkService {
     private final MemberRepository memberRepository;
     private final BookmarkRepository bookmarkRepository;
     private final RestaurantRepository restaurantRepository;
-    private final ImageFileRepository imageFileRepository;
     public void createBookmark(Bookmark bookmark, long memberId, long restaurantId){
         Member member = findMemberById(memberId);
         Restaurant restaurant = findRestaurantById(restaurantId);
@@ -60,6 +59,24 @@ public class BookmarkService {
         return bookmarkRepository.findBookmarkListByMemberId(memberId);
     }
 
+    public BookmarkDto.BookmarkHeartResponseDto getBookmarkHeart(long memberId, long restaurantId) {
+        Member member = findMemberById(memberId);
+        List<Bookmark> bookmarkList = member.getBookmarkList();
+        String heart = "false";
+
+        for (Bookmark bookmark : bookmarkList) {
+            if (bookmark.getRestaurant().getRestaurantId() == restaurantId) {
+                heart = "true";
+                break;
+            }
+        }
+
+        BookmarkDto.BookmarkHeartResponseDto responseDto = new BookmarkDto.BookmarkHeartResponseDto();
+        responseDto.setHeart(heart);
+
+        return responseDto;
+    }
+
     public List<BookmarkDto.BookmarkResponseDto> setRestaurant(List<BookmarkDto.BookmarkResponseDto> bookmarkResponseDtoList){
         for(BookmarkDto.BookmarkResponseDto bookmarkResponseDto : bookmarkResponseDtoList){
             Restaurant restaurant = findRestaurantById(bookmarkResponseDto.getRestaurantId());
@@ -86,5 +103,12 @@ public class BookmarkService {
         Restaurant restaurant = optionalRestaurant.orElseThrow(()
                 -> new BusinessLogicException(ExceptionCode.RESTAURANT_NOT_FOUND));
         return restaurant;
+    }
+
+    public Bookmark findBookmarkById(long bookmarkId) {
+        Optional<Bookmark> optionalBookmark = bookmarkRepository.findById(bookmarkId);
+        Bookmark bookmark = optionalBookmark.orElseThrow(()
+                -> new BusinessLogicException(ExceptionCode.BOOKMARK_NOT_FOUND));
+        return bookmark;
     }
 }

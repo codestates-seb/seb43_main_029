@@ -46,7 +46,7 @@ public class RestaurantController {
 
     @PatchMapping("/{restaurant-id}") //식당 수정
     public ResponseEntity patchRestaurant(@PathVariable("restaurant-id") @Positive long restaurantId,
-                                          @RequestPart RestaurantDto.RestaurantPatchDto restaurantPatchDto,
+                                          @Valid @RequestPart RestaurantDto.RestaurantPatchDto restaurantPatchDto,
                                           @RequestPart(required = false) List<MultipartFile> multipartFile,
                                           @RequestPart(required = false) List<Long> deleteImageList,
                                           @RequestPart(required = false) List<Long> deleteMenuList,
@@ -96,7 +96,7 @@ public class RestaurantController {
 
     @GetMapping("/search") //식당 검색
     public ResponseEntity getSearchRestaurant(@RequestParam String keyword,
-                                          @PageableDefault(page = 1, size = 15) Pageable pageable) {
+                                          @PageableDefault(page = 1, size = 12) Pageable pageable) {
         //검색어가 두글자 이상이 아닌경우
         if (keyword == null || keyword.trim().isEmpty() || keyword.length() < 2) {
             throw new BusinessLogicException(ExceptionCode.INVALID_SEARCH_CONDITION);
