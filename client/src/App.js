@@ -12,6 +12,7 @@ import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
 import Login from './pages/registration/Login';
+import Registration_restaurant from './pages/registration_restaurant/RegistrationPage_restr';
 
 import { useState } from 'react';
 
@@ -61,6 +62,7 @@ function App() {
               <Route path="/registration" element={<Registration />} />
               <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
               <Route path="/mypage/:id/reviews" element={<Reviews />} />
+              <Route path="/restaurant" element={<Registration_restaurant />} />
             </Routes>
           </div>
           <Footer className="footer" />
