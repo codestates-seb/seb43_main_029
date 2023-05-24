@@ -1,43 +1,43 @@
 //내부
 import SearchInfo from './SearchInfo';
 import SearchList from './SearchList';
-import Paging from './Paging';
+// import Paging from './Paging';
+import { fetchSearchRestaurant } from '../../redux/search/actions';
 
 //외부 import
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+// import { useParams } from 'react-router-dom';
 
 /** 서버주소/restaurant/search에서 데이터 불러오기 */
-const RestaurantSearchDetail = ({
-  searchValue,
-  page,
-  size,
-  posts,
-  totalPosts,
-  totalPages,
-  loading,
-  handlePageChange,
-}) => {
+const RestaurantSearchDetail = ({ fetchSearchRestaurant, currentPosts }) => {
+  useEffect(() => {
+    fetchSearchRestaurant();
+  }, []);
+  console.log(currentPosts, 'currentPosts');
+
+  // let posts = useSelector(state => state.search.restaurants.pageInfo);
+  // console.log(posts, 'posts');
   return (
     <RestaurantSearchDetailContainer>
       <ArticleBox>
         <ContentBox>
-          <SearchInfo searchValue={searchValue} />
-          <SearchList posts={posts} loading={loading} />
+          <SearchInfo />
+          <SearchList />
         </ContentBox>
       </ArticleBox>
-      {/* 페이지 네이션 */}
-      <Paging
-        page={page}
-        size={size}
-        totalPosts={totalPosts}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-      />
     </RestaurantSearchDetailContainer>
   );
 };
-
-export default RestaurantSearchDetail;
+const mapStateToProps = state => {
+  const loading = state.search.loading;
+  return {
+    loading: loading,
+    currentPosts: state.search.restaurants.data,
+  };
+};
+export default connect(mapStateToProps, { fetchSearchRestaurant })(RestaurantSearchDetail);
 
 //style
 const RestaurantSearchDetailContainer = styled.main``;

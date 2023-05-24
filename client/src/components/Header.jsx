@@ -1,9 +1,30 @@
+//redux
+import { setSearchValue } from '../redux/searchValue/actions';
+
 import styled from 'styled-components';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import Login from '../pages/registration/Login';
 import SignUp from '../pages/registration/SignUp';
 
-function Header({ searchValue, onSearchValueChange, handleOnKeyPress }) {
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+
+function Header({ setSearchValue }) {
+  const [searchInput, setSearchInput] = useState('');
+
+  const navigate = useNavigate();
+
+  //헨들 이벤트
+  const handleInputChange = event => {
+    setSearchInput(event.target.value);
+  };
+
+  const handleSearch = event => {
+    event.preventDefault();
+    setSearchValue(searchInput);
+    navigate('/restaurant/search');
+  };
   return (
     <HeaderBox>
       <ContentBox>
@@ -14,14 +35,15 @@ function Header({ searchValue, onSearchValueChange, handleOnKeyPress }) {
         </Logo>
 
         <SearchBox>
-          <input
-            onKeyDown={handleOnKeyPress}
-            className="searchInput"
-            type="text"
-            placeholder="맛집을 검색하세요!"
-            value={searchValue}
-            onChange={onSearchValueChange}
-          />
+          <form onSubmit={handleSearch}>
+            <input
+              className="searchInput"
+              type="text"
+              value={searchInput}
+              placeholder="맛집을 검색하세요!"
+              onChange={handleInputChange}
+            />
+          </form>
           <BiSearchAlt2 className="searchIcon" />
           {/* <button onClick={handleSearchSubmit}>식당조회페이지 버튼</button> */}
         </SearchBox>
@@ -36,7 +58,11 @@ function Header({ searchValue, onSearchValueChange, handleOnKeyPress }) {
     </HeaderBox>
   );
 }
-
+const mapDispatchToProps = dispatch => {
+  return {
+    setSearchValue: value => dispatch(setSearchValue(value)),
+  };
+};
 const HeaderBox = styled.div`
   display: flex;
   width: 100%;
@@ -203,4 +229,4 @@ const LogBox = styled.div`
 //   }
 // `;
 
-export default Header;
+export default connect(null, mapDispatchToProps)(Header);

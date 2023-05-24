@@ -1,15 +1,20 @@
+//외부 import
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 /** 서치의 검색 결과 타이틀이 담긴 컴포넌트 */
 const SearchInfo = ({ searchValue }) => {
   return (
     <SearchInfoContainer>
-      <SearchTitle>{searchValue} 검색 결과</SearchTitle>
+      <SearchTitle>{searchValue.searchValue} 검색 결과</SearchTitle>
     </SearchInfoContainer>
   );
 };
 
-export default SearchInfo;
+const mapStateToProps = state => ({
+  searchValue: state.searchValue,
+});
+export default connect(mapStateToProps)(SearchInfo);
 
 //style
 
