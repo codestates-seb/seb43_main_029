@@ -46,10 +46,10 @@ public class ReviewController {
         Review review = mapper.reviewPatchDtoToReview(reviewPatchDto);
         review.setReviewId(reviewId);
         Review updatedReview = reviewService.updateReview(review);
-        if(deleteImageList != null){
+        if (deleteImageList != null) {
             updatedReview = reviewService.deleteReviewImages(updatedReview, deleteImageList);
         }
-        if(multipartFile != null){
+        if (multipartFile != null) {
             List<ImageDto.ImageRequestDto> imageRequestDtos = awsS3Service.uploadFile(multipartFile, dirName);
             updatedReview = reviewService.addReviewImages(updatedReview, imageRequestDtos);
         }
@@ -71,6 +71,7 @@ public class ReviewController {
         reviewService.deleteReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
+
     @PostMapping("/{review-id}/like/{member-id}") // 리뷰 좋아요
     public ResponseEntity likeReview(@PathVariable("review-id") @Positive long reviewId,
                                      @PathVariable("member-id") @Positive long memberId) {
@@ -83,6 +84,18 @@ public class ReviewController {
                                        @PathVariable("member-id") @Positive long memberId) {
         reviewLikeService.removeLikeFromReview(reviewId, memberId);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/restaurant/{restaurantId}") // 리뷰 조회(특정식당)
+    public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getReviewsByRestaurantId(@PathVariable Long restaurantId) {
+        List<ReviewDto.ReviewResponseDto> reviewDtoList = reviewService.getReviewsByRestaurantId(restaurantId);
+        return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/member/{memberId}")   //리뷰 조회(특정 유저)
+    public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getReviewsByMMember_MemberId(@PathVariable Long memberId) {
+        List<ReviewDto.ReviewResponseDto> reviewDtoList = reviewService.getReviewsByMember_MemberId(memberId);
+        return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
     }
 }
 
