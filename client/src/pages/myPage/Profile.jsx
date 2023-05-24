@@ -35,12 +35,12 @@ function Profile({ userInfo }) {
         nickname: `${name}`,
       };
       axios
-        .patch(`${process.env.REACT_APP_API_URL}/members/${id}/nickname`, editName)
-        .then(response => {
-          if (response.status === 200) {
-            axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-          }
-        });
+        .patch(`${process.env.REACT_APP_API_URL}/members/${id}/nickname`, editName, {
+          Headers: {
+            Authorization: `${accessToken}`,
+          },
+        })
+        .catch(error => console.log(error));
     }
   }
 

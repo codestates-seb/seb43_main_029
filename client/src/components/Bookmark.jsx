@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { TiPencil, TiHeartFullOutline } from 'react-icons/ti';
 import { Link } from 'react-router-dom';
 
 export const BookmarkComponent = ({ idx, bookmarks }) => {
@@ -15,15 +14,7 @@ export const BookmarkComponent = ({ idx, bookmarks }) => {
             <span className="score">{bookmarks.score}</span>
           </BookmarkTitle>
           <BookmarkInfo>
-            <p>
-              <TiPencil className="icon" />
-              {bookmarks.reviewCount}
-            </p>
-            <p>
-              <TiHeartFullOutline className="icon" />
-              {bookmarks.bookmarkCount}
-            </p>
-            <p>작성날짜</p>
+            <p>{bookmarks.createdAt.slice(0, 10)}</p>
           </BookmarkInfo>
         </BookmarkDesc>
       </Link>

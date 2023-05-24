@@ -12,7 +12,6 @@ import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
-import Login from './pages/registration/Login';
 
 const GlobalStyle = createGlobalStyle`
 ${reset}
@@ -37,9 +36,6 @@ function App() {
         <GlobalStyle />
         <GlobalLayout>
           {isLoggedIn ? <HeaderLogged userInfo={userInfo} /> : <Header />}
-          <Routes>
-            <Route exact path="/" Component={Login} />
-          </Routes>
           <div className="App">
             <Routes>
               <Route path="/" element={<Main />} />

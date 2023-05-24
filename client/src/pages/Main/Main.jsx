@@ -7,31 +7,31 @@ import M_Review from './pages/M_Review';
 //외부 import
 import styled from 'styled-components';
 //fullpage 스크롤 애니메이션 라이브러리
-import { Fullpage, FullPageSections, FullpageSection } from '@ap.cx/react-fullpage';
+// import { Fullpage, FullPageSections, FullpageSection } from '@ap.cx/react-fullpage';
 
 // 메인 페이지를 감싸는 컴포 넌트
 const Main = () => {
   return (
     <M_Container>
-      <Fullpage>
-        <FullPageSections>
-          <FullpageSection>
-            <M_FoodPedia />
-          </FullpageSection>
+      {/* <Fullpage> */}
+      {/* <FullPageSections> */}
+      {/* <FullpageSection> */}
+      <M_FoodPedia />
+      {/* </FullpageSection> */}
 
-          <FullpageSection>
-            <M_Category />
-          </FullpageSection>
+      {/* <FullpageSection> */}
+      <M_Category />
+      {/* </FullpageSection> */}
 
-          <FullpageSection>
-            <M_Bookmark />
-          </FullpageSection>
+      {/* <FullpageSection> */}
+      <M_Bookmark />
+      {/* </FullpageSection> */}
 
-          <FullpageSection>
-            <M_Review />
-          </FullpageSection>
-        </FullPageSections>
-      </Fullpage>
+      {/* <FullpageSection> */}
+      <M_Review />
+      {/* </FullpageSection> */}
+      {/* </FullPageSections> */}
+      {/* </Fullpage> */}
     </M_Container>
   );
 };
