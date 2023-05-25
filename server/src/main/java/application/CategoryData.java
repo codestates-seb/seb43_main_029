@@ -23,6 +23,10 @@ public class CategoryData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         if (categoryRepository.count() == 0) {
+            Image image1 = new Image("회원프로필", "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png");
+
+            imageFileRepository.save(image1);
+
             Category category1 = new Category("한식");
             Category category2 = new Category("중식");
             Category category3 = new Category("일식");
