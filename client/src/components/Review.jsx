@@ -19,7 +19,7 @@ export const ReviewComponent = ({ reviewId, review }) => {
       <div className="padding">
         <ReviewTitle className="underLine">
           <Link to={`/restaurant/${review.restaurantId}`}>
-            <MarginP>{review.name}</MarginP>
+            <MarginP>{review.restaurantName}</MarginP>
           </Link>
           <p>{review.score}</p>
         </ReviewTitle>
