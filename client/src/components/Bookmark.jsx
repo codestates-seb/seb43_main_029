@@ -6,7 +6,7 @@ export const BookmarkComponent = ({ idx, bookmarks }) => {
     <Bookmark key={idx}>
       <Link to={`/restaurant/${bookmarks.restaurantId}`}>
         <BookmarkContent>
-          <BookmarkImage background={bookmarks.url} alt={bookmarks.name} />
+          <BookmarkImage background={bookmarks.url} />
         </BookmarkContent>
         <BookmarkDesc>
           <BookmarkTitle>

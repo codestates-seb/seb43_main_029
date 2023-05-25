@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { TiPencil } from 'react-icons/ti';
+import { FiThumbsUp } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -11,7 +11,6 @@ function ReviewUser({ memberId, likeCount }) {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}`).then(response => {
       axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-      console.log(response.data.data);
       setReviewAuthor(response.data.data);
     });
   }, []);
@@ -25,7 +24,7 @@ function ReviewUser({ memberId, likeCount }) {
             <p>{reviewAuthor.nickname}</p>
           </UserInfo>
           <p>
-            <TiPencil />
+            <FiThumbsUp className="thumbs" />
             {likeCount}
           </p>
         </User>
@@ -40,6 +39,11 @@ const User = styled.div`
   align-items: center;
   gap: 15px;
   margin: 1rem 2rem 1rem 0;
+  .thumbs {
+    margin-bottom: -2px;
+    margin-right: 4px;
+    font-size: 1.125rem;
+  }
 `;
 
 const UserInfo = styled.div`
