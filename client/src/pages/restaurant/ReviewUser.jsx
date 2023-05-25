@@ -4,16 +4,17 @@ import { TiPencil } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-function ReviewUser({ memberId, likecount }) {
+function ReviewUser({ memberId, likeCount }) {
   const [reviewAuthor, setReviewAuthor] = useState([]);
   const accessToken = useSelector(state => state.Auth.token);
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}`).then(response => {
       axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+      console.log(response.data.data);
       setReviewAuthor(response.data.data);
     });
-  }, [memberId]);
+  }, []);
 
   return (
     <>
@@ -25,7 +26,7 @@ function ReviewUser({ memberId, likecount }) {
           </UserInfo>
           <p>
             <TiPencil />
-            {likecount > 0 ? `${likecount}` : 0}
+            {likeCount}
           </p>
         </User>
       ) : null}

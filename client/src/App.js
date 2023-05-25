@@ -5,12 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Main from './pages/main/Main';
 import Restaurant from './pages/restaurant/Restaurant';
-import Registration from './pages/registration/Registration';
 import Favorites from './pages/favorites/FavoritesListPage';
 import Reviews from './pages/reviews/ReviewPage';
 import Header from './components/Header';
 import HeaderLogged from './components/HeaderLogged';
 import Footer from './components/Footer';
+import Registration_restaurant from './pages/registration_restaurant/RegistrationPage_restr';
 import RestaurantSearchDetail from './pages/restaurantSearchDetail/RestaurantSearchDetail';
 
 const GlobalStyle = createGlobalStyle`
@@ -41,12 +41,11 @@ function App() {
             <Route path="/mypage/:id" element={<MyPage />} />
             {/* <Route path="/search" element={<Search />} /> */}
             <Route path="/restaurant/:id" element={<Restaurant />} />
-            <Route path="/registration" element={<Registration />} />
             <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
             <Route path="/mypage/:id/reviews" element={<Reviews />} />
             <Route path="/restaurant/search" element={<RestaurantSearchDetail />} />
+            <Route path="/restaurant" element={<Registration_restaurant />} />
           </Routes>
-
           <Footer className="footer" />
         </GlobalLayout>
       </BrowserRouter>

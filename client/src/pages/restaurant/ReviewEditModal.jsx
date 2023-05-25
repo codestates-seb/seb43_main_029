@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { BsPlusSquare } from 'react-icons/bs';
 import { useSelector } from 'react-redux';
 
-function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
+function ReviewEditModal({ isOpen, closeModal, name, restaurantId, reviewId }) {
   const userInfo = useSelector(state => state.userinfo.user);
   const memberId = userInfo.memberId;
   const accessToken = useSelector(state => state.Auth.token);
@@ -24,7 +24,7 @@ function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
     setComment(e.target.value);
   }
 
-  function imgChange(e) {
+  function editImgChange(e) {
     let reader = new FileReader();
 
     if (e.target.files[0]) {
@@ -50,15 +50,15 @@ function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
   };
 
   function handleClickFormData() {
-    const formData = new FormData();
-
+    const formdata = new FormData();
+    // formdata.append('reviewPostDto', data);
     //객체를 Json타입으로 파싱하여 Blob객체 생성, type에 json 타입 지정
-    formData.append(
-      'reviewPostDto',
+    formdata.append(
+      'reviewPatchDto',
       new Blob([JSON.stringify(data)], { type: 'application/json' })
     );
 
-    files.forEach(file => formData.append('multipartFile', file));
+    files.forEach(file => formdata.append('multipartFile', file));
 
     const config = {
       headers: {
@@ -66,13 +66,11 @@ function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
       },
     };
     axios
-      .post(`${process.env.REACT_APP_API_URL}/reviews`, formData, config)
-      .then(response => console.log(response))
+      .patch(`${process.env.REACT_APP_API_URL}/reviews/${reviewId}`, formdata, config)
       .catch(error => console.log(error));
 
     closeModal();
   }
-
   return (
     <ModalBackground style={{ display: isOpen ? 'flex' : 'none' }}>
       <ModalBlock>
@@ -94,9 +92,15 @@ function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
           </ReviewImageUpload>
           {images &&
             images.map((image, index) => {
-              return <ReviewImagePreview key={index} background={PreviewImage[index]} />;
+              return <ReviewImagePreview key={index} background={image[index]} />;
             })}
-          <input id="file" type="file" onChange={imgChange} accept={'image/*'} className="hidden" />
+          <input
+            id="file"
+            type="file"
+            onChange={editImgChange}
+            accept={'image/*'}
+            className="hidden"
+          />
         </ReviewImage>
         <div>
           <CloseButton onClick={closeModal}>취소</CloseButton>
@@ -182,4 +186,4 @@ const CloseButton = styled.button`
   cursor: pointer;
 `;
 
-export default ReviewPostModal;
+export default ReviewEditModal;

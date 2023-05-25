@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 import { useState, useEffect, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { BookmarkComponent } from '../../components/Bookmark';
 import Paging from './Pagination';
 
 function FavoritesList() {
-  const { id } = useParams();
   const [favorites, setFavorites] = useState([]);
   const [count, setCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,11 +15,21 @@ function FavoritesList() {
   const [indexOfFirstItem, setIndexOfFirstItem] = useState(0);
   const [currentItems, setCurrentItems] = useState(0);
 
+  const userInfo = useSelector(state => state.userinfo.user);
+  const memberId = userInfo.memberId;
+
+  const accessToken = useSelector(state => state.Auth.token);
+  const config = {
+    headers: {
+      Authorization: `${accessToken}`,
+    },
+  };
+
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${id}/bookmark`).then(res => {
+    axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}/bookmark`, config).then(res => {
       setFavorites(res.data.data);
     });
-  }, [id]);
+  }, [memberId]);
 
   useEffect(() => {
     setCount(favorites.length);

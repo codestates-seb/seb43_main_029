@@ -26,7 +26,7 @@ const RestaurantSearchDetail = ({ searchValue }) => {
   useEffect(() => {
     axios
       .get(
-        `${process.env.REACT_APP_API_URL}/restaurant/search/?page=1&size=12&keyword=${isSearchValue}`
+        `${process.env.REACT_APP_API_URL}/restaurant/search/?page=${page}&size=${size}&keyword=${isSearchValue}`
       )
       .then(response => {
         setCurrentPosts(response.data.data);
@@ -35,7 +35,7 @@ const RestaurantSearchDetail = ({ searchValue }) => {
         setTotalPosts(response.data.pageInfo.totalElements);
         setTotalPages(response.data.pageInfo.totalPages);
       });
-  }, [isSearchValue, page]);
+  }, [searchValue, page]);
 
   return (
     <RestaurantSearchDetailContainer>

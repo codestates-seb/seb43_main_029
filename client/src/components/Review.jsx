@@ -24,23 +24,21 @@ export const ReviewComponent = ({ reviewId, review }) => {
           <p>{review.score}</p>
         </ReviewTitle>
         <ReviewContent className="underLine">
-          <p>{review.content}</p>
+          <p>{review.comment}</p>
         </ReviewContent>
         <ReviewDate>
           <ReviewThumbsUp>
             <TiThumbsUp className="icon" />
-            {review.voteCount}
+            {review.likeCount}
           </ReviewThumbsUp>
 
-          {review.images === null ? null : (
+          {review.imageList === null ? null : (
             <MdOutlineInsertPhoto className="icon" onClick={openModal} />
           )}
-          <p>작성날짜</p>
+          <p>{review.createdAt.slice(0, 10)}</p>
         </ReviewDate>
       </div>
-      {review.images === null ? null : (
-        <Modal isOpen={isModal} closeModal={closeModal} gallery={review.images} />
-      )}
+      <Modal isOpen={isModal} closeModal={closeModal} gallery={review.imageList} />
     </Review>
   );
 };
