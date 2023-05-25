@@ -5,30 +5,30 @@ import { Link } from 'react-router-dom';
 function RestaurantsComponent({ restaurant }) {
   const { name, score, bookmark, createdAt, restaurantId, imageList } = restaurant;
   return (
-    <Bookmark key={restaurantId}>
+    <Restaurant key={restaurantId}>
       <Link to={`/restaurant/${restaurantId}`}>
-        <BookmarkContent>
+        <RestaurantContent>
           <img src={imageList[0].url} alt={name} />
-        </BookmarkContent>
-        <BookmarkDesc>
-          <BookmarkTitle>
+        </RestaurantContent>
+        <RestaurantDesc>
+          <RestaurantTitle>
             <span>{name}</span>
             <span className="score">{score}</span>
-          </BookmarkTitle>
-          <BookmarkInfo>
+          </RestaurantTitle>
+          <RestaurantInfo>
             <p>
               <TiHeartFullOutline className="icon" />
               {bookmark}
             </p>
             <p>{createdAt.slice(0, 10)}</p>
-          </BookmarkInfo>
-        </BookmarkDesc>
+          </RestaurantInfo>
+        </RestaurantDesc>
       </Link>
-    </Bookmark>
+    </Restaurant>
   );
 }
 
-const Bookmark = styled.li`
+const Restaurant = styled.li`
   .padding {
     padding: 5px 15px;
     width: 100%;
@@ -43,12 +43,12 @@ const Bookmark = styled.li`
     width: 45%;
   }
 `;
-const BookmarkDesc = styled.div`
+const RestaurantDesc = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
 `;
-const BookmarkTitle = styled.p`
+const RestaurantTitle = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -61,14 +61,14 @@ const BookmarkTitle = styled.p`
   }
 `;
 
-const BookmarkContent = styled.div`
+const RestaurantContent = styled.div`
   img {
     width: 100%;
     margin: 12px 0 15px;
   }
 `;
 
-const BookmarkInfo = styled.div`
+const RestaurantInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;

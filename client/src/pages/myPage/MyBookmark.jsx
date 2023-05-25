@@ -78,9 +78,18 @@ function MyBookmark({ userInfo }) {
         <BookmarkList ref={elementRef}>
           <Bookmarks>
             {bookmarks ? (
-              recentBookmark.map((bookmarks, idx) => {
-                return <BookmarkComponent key={idx} bookmarks={bookmarks} idx={idx} />;
-              })
+              recentBookmark
+                .slice(0)
+                .reverse()
+                .map(bookmark => {
+                  return (
+                    <BookmarkComponent
+                      key={bookmark.bookmarkId}
+                      bookmarks={bookmark}
+                      idx={bookmark.bookmarkId}
+                    />
+                  );
+                })
             ) : (
               <p>추가하신 즐겨찾기가 없습니다.</p>
             )}

@@ -69,9 +69,12 @@ function MyRestaurant() {
         <RestaurantList ref={elementRef}>
           <Restaurants>
             {restaurants ? (
-              restaurants.map((restaurant, idx) => {
-                return <RestaurantsComponent key={idx} restaurant={restaurant} idx={idx} />;
-              })
+              restaurants
+                .slice(0)
+                .reverse()
+                .map((restaurant, idx) => {
+                  return <RestaurantsComponent key={idx} restaurant={restaurant} idx={idx} />;
+                })
             ) : (
               <p>추가하신 즐겨찾기가 없습니다.</p>
             )}

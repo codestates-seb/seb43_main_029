@@ -8,7 +8,10 @@ import ReviewComponent from './ReviewComponent';
 function RestaurantReview({ restaurantId, name }) {
   const [reviews, setReviews] = useState([]);
   const [isModal, setIsModal] = useState(false);
+  const [role, setRole] = useState();
   const accessToken = useSelector(state => state.Auth.token);
+  const userInfo = useSelector(state => state.userinfo.user);
+  const memberId = userInfo.memberId;
 
   const restaurantReviewApi = async () => {
     const response = await axios.get(
@@ -23,6 +26,18 @@ function RestaurantReview({ restaurantId, name }) {
   };
 
   useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/members/${memberId}`, {
+        headers: {
+          Authorization: `${accessToken}`,
+        },
+      })
+      .then(response => {
+        setRole(response.data.data.role[0]);
+      });
+  }, []);
+
+  useEffect(() => {
     restaurantReviewApi();
   }, []);
 
@@ -31,21 +46,29 @@ function RestaurantReview({ restaurantId, name }) {
   }
   function closeModal() {
     setIsModal(false);
+    window.location.reload();
   }
 
   return (
     <ReviewBlock>
       <ReviewTitle>
         <h2>리뷰 ({reviews.length})</h2>
-        <button onClick={openModal}>리뷰 남기기</button>
+        {role === 'USER' ? <button onClick={openModal}>리뷰 남기기</button> : null}
       </ReviewTitle>
       <ReviewList>
         {Array.isArray(reviews)
-          ? reviews.map(review => {
-              return (
-                <ReviewComponent key={review.reviewId} review={review} reviewId={review.reviewId} />
-              );
-            })
+          ? reviews
+              .slice(0)
+              .reverse()
+              .map(review => {
+                return (
+                  <ReviewComponent
+                    key={review.reviewId}
+                    review={review}
+                    reviewId={review.reviewId}
+                  />
+                );
+              })
           : null}
       </ReviewList>
       <ReviewPostModal

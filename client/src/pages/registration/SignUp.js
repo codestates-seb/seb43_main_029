@@ -35,15 +35,6 @@ const ModalContent = styled.div`
   justify-content: right;
 `;
 
-// const FormGroup = styled.div`
-//   margin-bottom: 20px;
-// `;
-
-// const Label = styled.label`
-//   display: block;
-//   margin-bottom: 5px;
-// `;
-
 const SignUpButton = styled.button`
   background-color: #ff0099;
   border-radius: 3px;

@@ -28,11 +28,6 @@ function Header({ setSearchValue }) {
     }
   }
 
-  // const handleSearch = event => {
-  //   event.preventDefault();
-  //   setSearchValue(searchInput);
-  //   navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
-  // };
   return (
     <HeaderBox>
       <ContentBox>
@@ -54,14 +49,11 @@ function Header({ setSearchValue }) {
             />
           </form>
           <BiSearchAlt2 className="searchIcon" />
-          {/* <button onClick={handleSearchSubmit}>식당조회페이지 버튼</button> */}
         </SearchBox>
 
         <LogBox>
           <Login className="loginLink"> 로그인 </Login>
-          {/* <LoginLink>로그인</LoginLink> */}
           <SignUp className="loginLink"> 회원가입 </SignUp>
-          {/* <RegistLink>회원가입</RegistLink> */}
         </LogBox>
       </ContentBox>
     </HeaderBox>
@@ -145,97 +137,10 @@ const SearchBox = styled.div`
   }
 `;
 
-// const LoginLink = styled.button`
-//   color: #ff0099;
-//   background-color: #fff;
-//   font-size: 13px;
-//   margin-right: 10px;
-//   padding: 10px;
-//   border: 1px solid #ff0099;
-//   border-radius: 3px;
-//   width: 70px;
-//   height: 33px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   cursor: pointer;
-//   transition: all 0.5s;
-
-//   &:hover,
-//   &:focus {
-//     background-color: #fabbc6;
-//     color: #fff;
-//     border: none;
-//   }
-
-//   &:focus {
-//     box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-//   }
-// `;
-
 const LogBox = styled.div`
   display: flex;
   justify-content: center;
   width: 216px;
 `;
-
-// const LoginLink = styled.button`
-//   color: #ff0099;
-//   background-color: #fff;
-//   font-size: 13px;
-//   margin-right: 10px;
-//   padding: 10px;
-//   border: 1px solid #ff0099;
-//   border-radius: 3px;
-//   width: 70px;
-//   height: 33px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   cursor: pointer;
-//   transition: all 0.5s;
-
-//   &:hover,
-//   &:focus {
-//     background-color: #fabbc6;
-//     color: #fff;
-//     border: none;
-//   }
-
-//   &:focus {
-//     box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-//   }
-// `;
-
-// const RegistLink = styled.button`
-//   background-color: #ff0099;
-//   border-radius: 3px;
-//   border: none;
-//   color: #fff;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-size: 13px;
-//   margin: 0;
-//   outline: none;
-//   padding: 8px 0.8em;
-//   white-space: nowrap;
-//   transition: all 0.5s;
-
-//   &:hover,
-//   &:focus {
-//     background-color: #e11d48;
-//   }
-
-//   &:focus {
-//     box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);
-//   }
-
-//   &:active {
-//     background-color: #0064bd;
-//     box-shadow: none;
-//   }
-// `;
 
 export default connect(null, mapDispatchToProps)(Header);

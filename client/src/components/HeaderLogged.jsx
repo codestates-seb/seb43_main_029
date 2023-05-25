@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { CgProfile } from 'react-icons/cg';
+import { BsPersonCircle } from 'react-icons/bs';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import { logout } from '../actions';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
 import { setSearchValue } from '../redux/searchValue/actions';
 import { useState } from 'react';
-import { connect } from 'react-redux';
 
 function HeaderLogged({ userInfo, setSearchValue }) {
   const navigate = useNavigate();
@@ -26,12 +25,6 @@ function HeaderLogged({ userInfo, setSearchValue }) {
       navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
     }
   }
-
-  // const handleSearch = event => {
-  //   event.preventDefault();
-  //   setSearchValue(searchInput);
-  //   navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
-  // };
 
   const handleLogOutBtn = () => {
     dispatch(logout());
@@ -63,7 +56,6 @@ function HeaderLogged({ userInfo, setSearchValue }) {
             />
           </form>
           <BiSearchAlt2 className="searchIcon" />
-          {/* <button onClick={handleSearchSubmit}>식당조회페이지 버튼</button> */}
         </SearchBox>
 
         <ProfileBox>
@@ -152,11 +144,11 @@ const ProfileBox = styled.div`
   width: 216px;
 `;
 
-const ProfileLink = styled(CgProfile)`
+const ProfileLink = styled(BsPersonCircle)`
   color: #ff0099;
   margin-right: 10px;
   width: 70px;
-  height: 33px;
+  font-size: 33px;
   display: flex;
   justify-content: center;
   align-items: center;

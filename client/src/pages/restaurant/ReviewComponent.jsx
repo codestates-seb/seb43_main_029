@@ -4,21 +4,11 @@ import ReviewUser from './ReviewUser';
 import { FiThumbsUp } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-// import { useState } from 'react';
-// import ReviewEditModal from './ReviewEditModal';
 
 function ReviewComponent({ review, reviewId }) {
   const userInfo = useSelector(state => state.userinfo.user);
   const memberId = userInfo.memberId;
   const accessToken = useSelector(state => state.Auth.token);
-  // const [isModal, setIsModal] = useState(false);
-
-  // function openModal() {
-  //   setIsModal(true);
-  // }
-  // function closeModal() {
-  //   setIsModal(false);
-  // }
 
   function thumbsUpReview() {
     axios
@@ -43,19 +33,22 @@ function ReviewComponent({ review, reviewId }) {
 
   return (
     <Review key={review.reviewId}>
-      <ReviewUser memberId={review.memberId} likecount={review.likecount} />
+      <ReviewUser memberId={review.memberId} likeCount={review.likeCount} />
       <ReviwContent>
         <p>{String(review.createdAt).slice(0, 10)}</p>
         <p>{review.comment}</p>
         <ReviewImg>
           {review.imageList &&
-            review.imageList.map(image => {
-              return (
-                <li key={image.imageId}>
-                  <img src={image.url} alt={image.imageId} />;
-                </li>
-              );
-            })}
+            review.imageList
+              .slice(0)
+              .reverse()
+              .map(image => {
+                return (
+                  <li key={image.imageId}>
+                    <img src={image.url} alt={image.imageId} />;
+                  </li>
+                );
+              })}
         </ReviewImg>
       </ReviwContent>
       <div>
@@ -63,18 +56,10 @@ function ReviewComponent({ review, reviewId }) {
         <FiThumbsUp className="icon" onClick={thumbsUpReview} />
         {review.memberId === memberId ? (
           <>
-            {/* <button onClick={openModal}>수정</button> */}
             <button onClick={deleteReview}>삭제</button>
           </>
         ) : null}
       </div>
-      {/* <ReviewEditModal
-        isOpen={isModal}
-        closeModal={closeModal}
-        name={name}
-        restaurantId={review.restaurantId}
-        reviewId={reviewId}
-      /> */}
     </Review>
   );
 }
