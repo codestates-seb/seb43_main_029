@@ -50,6 +50,8 @@ public class ReviewDto {
     public static class ReviewResponseDto {
         private long reviewId;
         private long memberId;
+        private long restaurantId;
+        private String restaurantName;
         private String comment;
         private double score;
         private String createdAt;
