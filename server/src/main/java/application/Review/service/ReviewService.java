@@ -159,7 +159,8 @@ public class ReviewService {
                     .mapToDouble(Review::getScore)
                     .sum();
             double averageScore = totalScore / reviewList.size();
-
+            // 소수점 한자리까지만 저장
+            averageScore = Math.floor(averageScore * 10) / 10;
             // 레스토랑 별점 갱신
             restaurant.setScore(averageScore);
         }
