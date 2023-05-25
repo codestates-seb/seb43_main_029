@@ -27,8 +27,8 @@ const M_Review = () => {
           <Review_Title />
         </M_ContentBox>
       </M_TopContainer>
-      <M_BottomContainer>
-        <M_ContentBox>
+      <S_BottomContainer>
+        <S_ContentBox>
           <ReviewPagination reviews={reviews} />
           {/* {reviews.map(review => {
             return (
@@ -45,8 +45,8 @@ const M_Review = () => {
               />
             );
           })} */}
-        </M_ContentBox>
-      </M_BottomContainer>
+        </S_ContentBox>
+      </S_BottomContainer>
     </R_RootContainer>
   );
 };
@@ -56,4 +56,13 @@ export default M_Review;
 //style
 const R_RootContainer = styled(M_RootContainer)`
   background-color: #cee6eb;
+`;
+
+const S_BottomContainer = styled(M_BottomContainer)`
+  /* align-items: start; */
+  height: 500px;
+`;
+
+const S_ContentBox = styled(M_ContentBox)`
+  align-items: start;
 `;
