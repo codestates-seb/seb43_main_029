@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
@@ -96,5 +97,14 @@ public class ReviewController {
     public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getReviewsByMMember_MemberId(@PathVariable Long memberId) {
         List<ReviewDto.ReviewResponseDto> reviewDtoList = reviewService.getReviewsByMember_MemberId(memberId);
         return new ResponseEntity<>(reviewDtoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/mostLiked") // 모든 리뷰 내림차순으로 정렬해서 조회
+    public ResponseEntity<List<ReviewDto.ReviewResponseDto>> getMostLikedReviews() {
+        List<Review> reviews = reviewService.getMostLikedReviews();
+        List<ReviewDto.ReviewResponseDto> reviewResponseDtos = reviews.stream()
+                .map(mapper::reviewToReviewResponseDto)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(reviewResponseDtos);
     }
 }
