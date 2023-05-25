@@ -66,7 +66,7 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.POST, "/members").anonymous() // 회원 가입
                         .antMatchers(HttpMethod.PATCH, "/members/{memberId}/nickname").access("@authorizationChecker.check(#memberId, authentication)") // 회원 닉네임 수정
                         .antMatchers(HttpMethod.PATCH, "/members/{memberId}/profile").access("@authorizationChecker.check(#memberId, authentication)") // 회원 프로필사진 수정
-                        .antMatchers(HttpMethod.GET, "/members/{memberId}").access("hasRole('ADMIN') or @authorizationChecker.check(#memberId, authentication)") // 회원 정보(마이페이지) 조회
+                        .antMatchers(HttpMethod.GET, "/members/{memberId}").permitAll() // 회원 정보(마이페이지) 조회
                         .antMatchers(HttpMethod.GET, "members/{memberId}/review").hasAnyRole("USER", "ADMIN") // 회원 리뷰 조회
                         .antMatchers(HttpMethod.GET, "/members/{memberId}/bookmark").hasAnyRole("USER", "ADMIN") // 회원 즐겨찾기 검색
                         .antMatchers(HttpMethod.DELETE, "/members/{memberId}").access("@authorizationChecker.check(#memberId, authentication)") // 회원 탈퇴
