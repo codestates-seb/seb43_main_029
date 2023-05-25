@@ -13,7 +13,7 @@ const Category_Title = ({ fetchRandomRestaurants, restaurants }) => {
     //최초 렌더시 서버 데이터 가져옴
     fetchRandomRestaurants();
   }, []);
-  console.log(restaurants);
+
   return (
     <>
       {restaurants && (
