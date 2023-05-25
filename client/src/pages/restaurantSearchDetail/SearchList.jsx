@@ -27,7 +27,8 @@ export default SearchList;
 //style
 const SearchListContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding-top: 50px;
-  column-gap: 50px;
+  column-gap: 15px;
+  row-gap: 15px;
 `;

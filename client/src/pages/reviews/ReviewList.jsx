@@ -26,8 +26,8 @@ function ReviewList() {
   };
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}`, config).then(res => {
-      setReviews(res.data.reviews);
+    axios.get(`${process.env.REACT_APP_API_URL}/reviews/member/${memberId}`, config).then(res => {
+      setReviews(res.data);
     });
   }, [memberId]);
 

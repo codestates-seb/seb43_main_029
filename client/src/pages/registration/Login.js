@@ -54,24 +54,9 @@ function Login() {
           // 기존 db의 회원정보중 memberId가 같은 정보 조회
 
           dispatch(setToken(response.headers.authorization));
-          axios.get(`${process.env.REACT_APP_API_URL}/members/${apiMemberId}`).then(response => {
-            if (response.status === 200) {
-              // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
-              axios.defaults.headers.common['Authorization'] = `${accessToken}`;
 
-              const nickname = response.data.data.nickname;
-              const url = response.data.data.url;
-              const memberId = response.data.data.memberId;
-              dispatch(login());
-              dispatch(
-                loginSuccess({
-                  nickname,
-                  url,
-                  memberId,
-                })
-              );
-            }
-          });
+          dispatch(login());
+          dispatch(loginSuccess({ memberId: apiMemberId }));
 
           navigate();
         }

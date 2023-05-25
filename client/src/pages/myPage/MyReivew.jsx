@@ -21,7 +21,6 @@ function MyReivew({ userInfo }) {
         },
       })
       .then(response => {
-        console.log(response.data);
         setReviews(response.data);
       })
       .catch(error => console.log(error));
@@ -76,9 +75,14 @@ function MyReivew({ userInfo }) {
         <ReivewsList ref={elementRef}>
           <Reviews>
             {reviews ? (
-              recentReview.map((review, index) => {
-                return <ReviewComponent key={index} reviewId={reviews.reviewId} review={review} />;
-              })
+              recentReview
+                .slice(0)
+                .reverse()
+                .map((review, index) => {
+                  return (
+                    <ReviewComponent key={index} reviewId={reviews.reviewId} review={review} />
+                  );
+                })
             ) : (
               <p>작성하신 리뷰가 없습니다.</p>
             )}
