@@ -12,7 +12,8 @@ import { useState } from 'react';
 
 function Header({ setSearchValue }) {
   const [searchInput, setSearchInput] = useState('');
-
+  const minInputLength = 2;
+  const maxInputLength = 20;
   const navigate = useNavigate();
 
   //헨들 이벤트
@@ -22,7 +23,10 @@ function Header({ setSearchValue }) {
 
   function enterPress(e) {
     e.preventDefault();
-    if (e.key === 'Enter') {
+    if (searchInput.length < minInputLength) {
+      alert('2글자 이상, 한글로 입력해주세요');
+    }
+    if (e.key === 'Enter' && searchInput.length >= minInputLength) {
       setSearchValue(searchInput);
       navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
     }
@@ -46,6 +50,7 @@ function Header({ setSearchValue }) {
               placeholder="맛집을 검색하세요!"
               onChange={handleInputChange}
               onKeyPress={enterPress}
+              maxLength={maxInputLength}
             />
           </form>
           <BiSearchAlt2 className="searchIcon" />
