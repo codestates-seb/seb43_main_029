@@ -7,9 +7,9 @@ function RestaurantsComponent({ restaurant }) {
   return (
     <Restaurant key={restaurantId}>
       <Link to={`/restaurant/${restaurantId}`}>
-        <RestaurantContent>
+        <div>
           <RestaurantImage background={imageList[0].url} />
-        </RestaurantContent>
+        </div>
         <RestaurantDesc>
           <RestaurantTitle>
             <span>{name}</span>
@@ -60,8 +60,6 @@ const RestaurantTitle = styled.p`
     color: #ff0099;
   }
 `;
-
-const RestaurantContent = styled.div``;
 
 const RestaurantImage = styled.div`
   width: 264px;
