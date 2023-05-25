@@ -19,13 +19,9 @@ public class Category {
     private Long categoryId;
     @Column(nullable = false)
     private String name;
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "image_id")
-    private Image image;
     @OneToMany(mappedBy = "category")
     private List<Restaurant> restaurantList = new ArrayList<>();
-    public Category(String name, Image image) {
+    public Category(String name) {
         this.name = name;
-        this.image = image;
     }
 }
