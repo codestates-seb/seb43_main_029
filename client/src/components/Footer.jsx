@@ -7,13 +7,13 @@ function Footer() {
       <ContentBox>
         <FooterLeftBox>
           <Logo>
-            <LogoLink href="#">
+            <LogoLink href="/">
               <LogoImg src={process.env.PUBLIC_URL + '/logo.svg'} />
             </LogoLink>
           </Logo>
           <TeamInfo>
             <TeamName># Be Fearless</TeamName>
-            <GithubLink href="#">
+            <GithubLink href="https://github.com/codestates-seb/seb43_main_029">
               <VscGithub />
             </GithubLink>
           </TeamInfo>

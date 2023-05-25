@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const ReviewComponent = ({ reviewId, review }) => {
   const [isModal, setIsModal] = useState(false);
-
+  console.log(review);
   function openModal() {
     setIsModal(true);
   }
@@ -19,7 +19,7 @@ export const ReviewComponent = ({ reviewId, review }) => {
       <div className="padding">
         <ReviewTitle className="underLine">
           <Link to={`/restaurant/${review.restaurantId}`}>
-            <MarginP>{review.restaurantName}</MarginP>
+            <p>{review.restaurantName}</p>
           </Link>
           <p>{review.score}</p>
         </ReviewTitle>
@@ -68,6 +68,11 @@ const ReviewTitle = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  p {
+    margin: 11px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
 `;
 const ReviewContent = styled.div`
   p {
@@ -98,9 +103,6 @@ const ReviewThumbsUp = styled.p`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
-const MarginP = styled.p`
-  margin: 11px 0;
 `;
 
 export default ReviewComponent;
