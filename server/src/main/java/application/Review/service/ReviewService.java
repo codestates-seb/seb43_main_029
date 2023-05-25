@@ -200,6 +200,6 @@ public class ReviewService {
 
     // 모든 리뷰 내림차순으로 정렬해서 조회
     public List<Review> getMostLikedReviews() {
-        return reviewRepository.findAllByOrderByLikesDesc();
+        return reviewRepository.findAllByOrderByLikeCountDesc();
     }
 }
