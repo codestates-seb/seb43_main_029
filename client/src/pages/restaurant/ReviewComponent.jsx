@@ -4,6 +4,7 @@ import ReviewUser from './ReviewUser';
 import { FiThumbsUp } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import Button from '../../components/Button';
 
 function ReviewComponent({ review, reviewId }) {
   const userInfo = useSelector(state => state.userinfo.user);
@@ -51,15 +52,25 @@ function ReviewComponent({ review, reviewId }) {
               })}
         </ReviewImg>
       </ReviwContent>
-      <div>
+      <ReviewMore>
         <Rating name="read-only" value={review.score} precision={0.5} readOnly />
-        <FiThumbsUp className="icon" onClick={thumbsUpReview} />
-        {review.memberId === memberId ? (
+        <LikeButton onClick={thumbsUpReview}>
+          <ReviewLike className="icon" />
+        </LikeButton>
+        {Number(review.memberId) === Number(memberId) ? (
           <>
-            <button onClick={deleteReview}>삭제</button>
+            <Button
+              onClick={deleteReview}
+              background={'#D9D9D9'}
+              border={'#D9D9D9'}
+              color={'#2f3134'}
+            >
+              삭제
+            </Button>
+            {/* <button onClick={editReview}>수정</button> */}
           </>
         ) : null}
-      </div>
+      </ReviewMore>
     </Review>
   );
 }
@@ -100,4 +111,37 @@ const ReviewImg = styled.ul`
   }
 `;
 
+const ReviewMore = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  }
+`;
+const LikeButton = styled.button`
+  background: transparent;
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+  &:hover {
+    background: #ff0099;
+    .icon {
+      color: #fff;
+    }
+  }
+`;
+const ReviewLike = styled(FiThumbsUp)`
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  &:hover {
+    color: #fff;
+  }
+`;
 export default ReviewComponent;

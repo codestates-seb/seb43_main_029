@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import ReviewPostModal from './ReviewPostModal';
 import { useSelector } from 'react-redux';
 import ReviewComponent from './ReviewComponent';
+import Button from '../../components/Button';
 
 function RestaurantReview({ restaurantId, name }) {
   const [reviews, setReviews] = useState([]);
@@ -48,12 +49,15 @@ function RestaurantReview({ restaurantId, name }) {
     setIsModal(false);
     window.location.reload();
   }
-
   return (
     <ReviewBlock>
       <ReviewTitle>
         <h2>리뷰 ({reviews.length})</h2>
-        {role === 'USER' ? <button onClick={openModal}>리뷰 남기기</button> : null}
+        {role === 'USER' ? (
+          <Button onClick={openModal} background={'#F475B5'} border={'#F475B5'}>
+            리뷰 남기기
+          </Button>
+        ) : null}
       </ReviewTitle>
       <ReviewList>
         {Array.isArray(reviews)

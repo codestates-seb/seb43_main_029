@@ -11,7 +11,6 @@ function ReviewUser({ memberId, likeCount }) {
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_API_URL}/members/${memberId}`).then(response => {
       axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-      console.log(response.data.data);
       setReviewAuthor(response.data.data);
     });
   }, []);
