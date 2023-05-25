@@ -14,5 +14,3 @@ public interface ReviewRepository extends JpaRepository<Review, Long>{
 
     List<Review> findAllByMember_MemberId(Long memberId); // 특정 사용자가 작성한 리뷰를 가져오는 방법
 }
-//    List<Review> findAllByMember_MemberId(Long memberId);
-//List<Review> findAllByMemberId(Long memberId);
