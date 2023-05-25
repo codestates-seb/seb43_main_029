@@ -18,7 +18,7 @@ function ReviewComponent({ review, reviewId }) {
           Authorization: `${accessToken}`,
         },
       })
-      .then()
+      .then(location.reload())
       .catch(error => console.log(error));
   }
 

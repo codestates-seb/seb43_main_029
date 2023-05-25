@@ -8,7 +8,7 @@ function RestaurantsComponent({ restaurant }) {
     <Restaurant key={restaurantId}>
       <Link to={`/restaurant/${restaurantId}`}>
         <RestaurantContent>
-          <img src={imageList[0].url} alt={name} />
+          <RestaurantImage background={imageList[0].url} />
         </RestaurantContent>
         <RestaurantDesc>
           <RestaurantTitle>
@@ -61,11 +61,14 @@ const RestaurantTitle = styled.p`
   }
 `;
 
-const RestaurantContent = styled.div`
-  img {
-    width: 100%;
-    margin: 12px 0 15px;
-  }
+const RestaurantContent = styled.div``;
+
+const RestaurantImage = styled.div`
+  width: 264px;
+  height: 150px;
+  background: ${props => `url(${props.background}) no-repeat center`};
+  background-size: 264px;
+  margin: 12px 0 15px;
 `;
 
 const RestaurantInfo = styled.div`
