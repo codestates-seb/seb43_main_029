@@ -48,7 +48,7 @@ public class MemberService {
         List<String> roles = authorityUtils.createRoles(member.getEmail(), member.getCompanyNumber());
         member.setRoles(roles);
 
-        Optional<Image> image = imageFileRepository.findById(11L);
+        Optional<Image> image = imageFileRepository.findById(1L);
 
         Image findImage = image.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.IMAGE_NOT_FOUND));
@@ -125,7 +125,7 @@ public class MemberService {
 
     public Member deleteMemberImage(Member member){
 
-        if(member.getImage().getImageId() != 11L){
+        if(member.getImage().getImageId() != 1L){
             Image image = member.getImage();
             imageFileRepository.deleteById(image.getImageId());
             awsS3Service.deleteFile(image.getUrl());
