@@ -12,6 +12,13 @@ public class BookmarkDto {
     }
     @AllArgsConstructor
     @NoArgsConstructor
+    @Getter
+    @Setter
+    public static class BookmarkHeartResponseDto {
+        String heart;
+    }
+    @AllArgsConstructor
+    @NoArgsConstructor
     @Builder
     @Getter
     @Setter
