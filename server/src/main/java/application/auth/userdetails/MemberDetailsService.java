@@ -39,7 +39,7 @@ public class MemberDetailsService implements UserDetailsService {
     public Member createMember(Member member){
         verifyExistEmail(member.getEmail());
 
-        Optional<Image> image = imageFileRepository.findById(11L);
+        Optional<Image> image = imageFileRepository.findById(1L);
 
         Image findImage = image.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.IMAGE_NOT_FOUND));

@@ -72,8 +72,7 @@ public class MemberController {
                 HttpStatus.OK);
     }
 
-    // 프로필 변경
-    // TODO : 이미지 변경 추가시 수정
+
     @PatchMapping("/{member-id}/profile")
     public ResponseEntity patchMemberProfile(@PathVariable("member-id") @Positive long memberId,
                                              @RequestPart(required = false) MultipartFile multipartFile
