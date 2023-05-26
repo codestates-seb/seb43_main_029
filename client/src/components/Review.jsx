@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 export const ReviewComponent = ({ reviewId, review }) => {
   const [isModal, setIsModal] = useState(false);
-  console.log(review);
+
   function openModal() {
     setIsModal(true);
   }
