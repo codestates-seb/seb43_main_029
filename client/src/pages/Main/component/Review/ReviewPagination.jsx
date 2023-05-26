@@ -4,7 +4,6 @@ import { ReviewComponent } from '../../../../components/Review';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 
 function ReviewPagination({ reviews }) {
-  //   const recentReview = reviews.slice(-9);
   const elementRef = useRef(null);
   const [arrowDisable, setArrowDisable] = useState(true);
 
@@ -52,8 +51,8 @@ function ReviewPagination({ reviews }) {
               reviews.map(review => {
                 return (
                   <ReviewComponent
-                    key={reviews.reviewId}
-                    reviewId={reviews.reviewId}
+                    key={review.reviewId}
+                    reviewId={review.reviewId}
                     review={review}
                   />
                 );

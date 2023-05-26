@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import RestaurantsComponent from '../myPage/RestaurantsComponent.jsx';
 import { TiChevronLeft, TiChevronRight } from 'react-icons/ti';
 import { useSelector } from 'react-redux';
+import Button from '../../components/Button.jsx';
 
 function MyRestaurant() {
   const { id } = useParams();
@@ -21,7 +22,6 @@ function MyRestaurant() {
         },
       })
       .then(res => {
-        console.log(res);
         setRestaurant(res.data.data.restaurantList);
       });
   }, []);
@@ -44,8 +44,12 @@ function MyRestaurant() {
 
   return (
     <MyRestaurantBlock>
-      <h3>나의 식당</h3>
-      <Link to={`/restaurant`}>식당등록</Link>
+      <MyRestaurantTitle>
+        <h3>나의 식당</h3>
+        <Button>
+          <Link to={`/restaurant`}>식당등록</Link>
+        </Button>
+      </MyRestaurantTitle>
       <CarouselBlock>
         <ButtonContainer>
           <button
@@ -87,11 +91,18 @@ function MyRestaurant() {
 const MyRestaurantBlock = styled.section`
   display: flex;
   flex-direction: column;
+`;
+
+const MyRestaurantTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
   h3 {
     font-size: 1.5rem;
   }
   a {
-    color: #2f3134;
+    color: #fff;
     text-decoration: none;
   }
 `;

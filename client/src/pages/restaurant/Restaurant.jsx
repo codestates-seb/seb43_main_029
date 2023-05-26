@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { TiHeartFullOutline, TiHeartOutline } from 'react-icons/ti';
 import RestaurantDesc from './RestaurantDesc';
@@ -14,7 +14,6 @@ function Restaurant() {
   const accessToken = useSelector(state => state.Auth.token);
 
   const { id } = useParams();
-  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
   const {
     name,
@@ -28,6 +27,7 @@ function Restaurant() {
     imageList,
     menuList,
   } = restaurant;
+
   const [isOn, setIsOn] = useState(false);
 
   // 레스토랑 정보 가져오기
@@ -37,17 +37,8 @@ function Restaurant() {
     setRestaurant(response.data.data);
   };
 
-  // 유저 즐겨찾기 체크 여부 조회
-  const userBookmarkApi = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
-    );
-    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-    setIsOn(response.data.heart);
-  };
   // 즐겨찾기 추가 및 삭제 api
   const handleBookmark = async () => {
-    setIsOn(!isOn);
     await axios
       .post(`${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`, {
         memberId,
@@ -57,13 +48,24 @@ function Restaurant() {
         if (response.status === 201) {
           // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
           axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-          navigate();
+          setIsOn(!isOn);
+          window.location.reload();
         }
       })
       .catch(error => console.log(error));
   };
 
   useEffect(() => {
+    // 유저 즐겨찾기 체크 여부 조회
+    const userBookmarkApi = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
+      );
+      axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+      if (response.data.heart === 'true') {
+        setIsOn(true);
+      }
+    };
     restaurantApi();
     userBookmarkApi();
   }, []);
@@ -95,7 +97,7 @@ function Restaurant() {
                 </li>
                 <li className="bookmarkToggle">
                   <button onClick={handleBookmark}>
-                    {!isOn ? (
+                    {isOn ? (
                       <TiHeartFullOutline className="bookmarkIcon" />
                     ) : (
                       <TiHeartOutline className="bookmarkIcon" />
