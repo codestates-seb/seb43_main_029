@@ -1,4 +1,3 @@
-
 <div align="center">
 <img src="https://github.com/Latada/seb43_main_029/assets/110769132/0f897c7f-1b7b-4ada-8991-770359abdb3d" alt="로고" />
 </div>
@@ -187,15 +186,22 @@ $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
 |나의 리뷰 목록|나의 즐겨찾기 목록|
 |![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/e8a6d65b-3916-4a81-bc0e-507f74133d2a)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/53e3064b-d97b-4ebd-a2c6-7fa53c76c088)|
 |식당등록페이지|식당상세페이지|
-|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5f69f957-8cea-4f92-baa4-f38a097e2f09)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5f69f957-8cea-4f92-baa4-f38a097e2f09)|
+|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/74d4cf01-22fa-4520-a416-1fb3b3693a55)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5f69f957-8cea-4f92-baa4-f38a097e2f09)|
 |리뷰컴포넌트||
 |![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/81c42e61-c6e3-4428-8b31-038dd1cbf332)||
-
 <br>
 <br>
 
 # 팀원 소개
 
+|윤근상<br>✨(BE 팀장)</br>|장준영<br>(BE)</br>|유제선<br>(BE)</br>|여동희<br>✨(FE 팀장)</br>|안현우<br>(FE)</br>|황에녹<br>(FE)</br>|  심현보<br>(FE)</br>|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|[@YunGeunSang](https://github.com/YunGeunSang)|[@SEBBE43JUN](https://github.com/SEBBE43JUN)|[@YuJeSeon](https://github.com/YuJeSeon)|[@Latada](https://github.com/Latada)|[@uyV-git](https://github.com/uyV-git)|[@sinyaenok](https://github.com/sinyaenok)|[@NoblesseCode](https://github.com/NoblesseCode)|
+|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/98323914?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/119933990?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120304866?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/104845427?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/119961147?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/104323906?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/97720335?v=4" alt="icon" width="80" height="80" /></div>|
+|- User<br>- Security<br>- JWT<br>- AWS deployment|- Answer<br>- Answer Comment<br>- Answer Vote<br>- CRUD<br>- AWS deployment|- Question<br>- Question Comment<br>- Question Vote<br>- CRUD<br>| - Main page(infinite scroll) <br> - My page/edit/delete <br> - Question Read, User Update features <br> - loading component | - Detail page <br> -Common component <br>-sidebar /buttons <br>-Questio Edit page <br>-Answer Edit Page|- Login / Signup page <br> - user CR<br>- JWT <br>- Footer component |- Ask question page <br> - Question Create feature <br> - Header component <br> - Nav component |
+
+<br>
+<br>
 ## ✉️ Commit  Message
 |Message|설명|
 |:---:|:---|
