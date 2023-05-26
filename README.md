@@ -1,12 +1,21 @@
 
-![로고5](https://github.com/Latada/seb43_main_029/assets/110769132/0f897c7f-1b7b-4ada-8991-770359abdb3d)
+<div align="center">
+<img src="https://github.com/Latada/seb43_main_029/assets/110769132/0f897c7f-1b7b-4ada-8991-770359abdb3d" alt="로고" />
+</div>
+<br>
+<br>
 
 # 푸드피디아 (FoodPedia)
-> 프로젝트 소개: 맛집 검색 및 리뷰 플랫폼 <br>
+> 프로젝트 소개: 정보의 범람으로 맛집을 찾기 어려운 당신을 위한 맛집 검색 서비스! <br>
 > 프로젝트 기간: 2023.04.28 ~ 2023.05.25
 > 팀명: 👁️ Be Fearless
+<br>
+<br>
+
 # 배포주소
 > 개발 버전: http://foodpedia.co.kr/
+<br>
+<br>
 
 # 시작 가이드
 ## 설치
@@ -120,6 +129,8 @@ $ cd build/libs
 $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
   ```
 </details>
+<br>
+<br>
 
 # 기술 스택
 
@@ -151,24 +162,37 @@ $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
 ![AWS_RDS](https://img.shields.io/badge/AWS%20RDS-007BFF?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![AWS_Route53](https://img.shields.io/badge/AWS%20Route%2053-FFA500?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![AWS_CodePipeline](https://img.shields.io/badge/AWS%20CodePipeline-006400?style=for-the-badge&logo=amazonaws&logoColor=white)
+<br>
+<br>
 
 # 주요 기능
+
+* 로그인 및 회원가입
+* 식당 검색 및 조회
+* 식당 즐겨찾기 추가 기능
+* 리뷰와 평점 등록 기능
+* 마이페이지에서 등록한 즐겨찾기와 리뷰 조회 
+* 사업자 회원을 위한 식당 등록 
+<br>
+<br>
 
 # 화면 구성
 |메인페이지|식당조회페이지|
 |-----|-----|
 |![image](https://github.com/Latada/seb43_main_029/assets/110769132/05d1952b-5e8d-4186-9720-0ab6b4a48258)|![image](https://github.com/Latada/seb43_main_029/assets/110769132/d7f6e826-566b-45b8-92e9-51bfee7b05d6)|
 |로그인|회원가입|
-|-----|-----|
-|![image](https://github.com/Latada/seb43_main_029/assets/110769132/05d1952b-5e8d-4186-9720-0ab6b4a48258)|![image](https://github.com/Latada/seb43_main_029/assets/110769132/d7f6e826-566b-45b8-92e9-51bfee7b05d6)|
+|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/10ce2bfb-baaf-487c-9ae6-b6db884bb275)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/4ddb2320-a0c7-4c76-89ae-b36537d4f39b)|
 |일반회원 마이페이지|사업자회원 마이페이지|
-|-----|-----|
 |![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5674ad52-4dfa-4665-a6f3-0bab94cb8fe1)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/93bb6493-a72b-413b-9dbd-b687569589c9)|
-|로그인|회원가입|
-|-----|-----|
-|![image](https://github.com/Latada/seb43_main_029/assets/110769132/05d1952b-5e8d-4186-9720-0ab6b4a48258)|![image](https://github.com/Latada/seb43_main_029/assets/110769132/d7f6e826-566b-45b8-92e9-51bfee7b05d6)|
+|나의 리뷰 목록|나의 즐겨찾기 목록|
+|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/e8a6d65b-3916-4a81-bc0e-507f74133d2a)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/53e3064b-d97b-4ebd-a2c6-7fa53c76c088)|
+|식당등록페이지|식당상세페이지|
+|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5f69f957-8cea-4f92-baa4-f38a097e2f09)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/5f69f957-8cea-4f92-baa4-f38a097e2f09)|
+|리뷰컴포넌트||
+|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/81c42e61-c6e3-4428-8b31-038dd1cbf332)||
 
-
+<br>
+<br>
 
 # 팀원 소개
 
