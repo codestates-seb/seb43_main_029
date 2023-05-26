@@ -19,7 +19,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://{JDBC_URL:PORT}/application?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://{JDBC_URL:PORT}/{DATABASE_NAME}?serverTimezone=Asia/Seoul
     username: {JDBC_USERNAME}
     password: {JDBC_PASSWORD}
 
