@@ -194,11 +194,23 @@ $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
 
 # 팀원 소개
 
-|윤근상<br>✨(BE 팀장)</br>|장준영<br>(BE)</br>|유제선<br>(BE)</br>|여동희<br>✨(FE 팀장)</br>|안현우<br>(FE)</br>|황에녹<br>(FE)</br>|  심현보<br>(FE)</br>|
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-|[@YunGeunSang](https://github.com/YunGeunSang)|[@SEBBE43JUN](https://github.com/SEBBE43JUN)|[@YuJeSeon](https://github.com/YuJeSeon)|[@Latada](https://github.com/Latada)|[@uyV-git](https://github.com/uyV-git)|[@sinyaenok](https://github.com/sinyaenok)|[@NoblesseCode](https://github.com/NoblesseCode)|
-|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120304078?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120020108?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120304866?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/110769132?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/85952797?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/104334554?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/119962359?v=4" alt="icon" width="80" height="80" /></div>|
-|- 유저 CRUD<br>- 로그인 / JWT<br>- Spring Security<br>- AWS CodePipeline 배포 자동화|- 리뷰 CRUD<br>- 리뷰 좋아요<br>- Spring Batch|- 식당 CRUD<br>- 식당 즐겨찾기<br>- 식당 검색<br>- AWS S3 이미지 업로드|- 마이페이지(일반회원/사업자회원)<br>- 식당 상세페이지(즐겨찾기, 지도)<br>- 리뷰 컴포넌트(리뷰등록/삭제/좋아요)<br>-JWT를 이용한 로그인 유지기능|- Header(로그인 전/후), Footer 컴포넌트<br>- (일반)회원별 전체 즐겨찾기/리뷰 페이지<br>- (사업자)회원 식당 등록페이지|- 메인페이지<br>- 식당 검색기능<br>- 식당 검색조회 페이지|- 로그인<br>- 회원가입<br>- 모달 페이지|
+### 프론트엔드
+
+|여동희<br>✨(FE 팀장)</br>|안현우<br>(FE)</br>|황에녹<br>(FE)</br>|심현보<br>(FE)</br>|
+|:---:|:---:|:---:|:---:|
+|[@Latada](https://github.com/Latada)|[@uyV-git](https://github.com/uyV-git)|[@sinyaenok](https://github.com/sinyaenok)|[@NoblesseCode](https://github.com/NoblesseCode)|
+|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/110769132?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/85952797?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/104334554?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/119962359?v=4" alt="icon" width="80" height="80" /></div>|
+|- 마이페이지<br>(일반회원/사업자회원)<br>- 식당 상세페이지(즐겨찾기, 지도)<br>- 리뷰 컴포넌트<br>(리뷰등록/삭제/좋아요)<br>-JWT를 이용한 로그인 유지기능|- Header(로그인 전/후), Footer 컴포넌트<br>- (일반)회원별 전체 즐겨찾기/리뷰 페이지<br>- (사업자)회원 식당 등록페이지|- 메인페이지<br>- 식당 검색기능<br>- 식당 검색조회 페이지|- 로그인<br>- 회원가입<br>- 모달 페이지|
+
+<br>
+
+### 백엔드
+
+|윤근상<br>✨(BE 팀장)</br>|장준영<br>(BE)</br>|유제선<br>(BE)</br>|
+|:---:|:---:|:---:|
+|[@YunGeunSang](https://github.com/YunGeunSang)|[@SEBBE43JUN](https://github.com/SEBBE43JUN)|[@YuJeSeon](https://github.com/YuJeSeon)|
+|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120304078?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120020108?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/120304866?v=4" alt="icon" width="80" height="80" /></div>|
+|- 유저 CRUD<br>- 로그인 / JWT<br>- Spring Security<br>- AWS CodePipeline 배포 자동화|- 리뷰 CRUD<br>- 리뷰 좋아요<br>- Spring Batch|- 식당 CRUD<br>- 식당 즐겨찾기<br>- 식당 검색<br>- AWS S3 이미지 업로드|
 
 <br>
 <br>
