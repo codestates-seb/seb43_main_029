@@ -178,7 +178,7 @@ $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
 
 # 화면 구성
 |메인페이지|식당조회페이지|
-|:---:|:---|
+|:---:|:---:|
 |![image](https://github.com/Latada/seb43_main_029/assets/110769132/05d1952b-5e8d-4186-9720-0ab6b4a48258)|![image](https://github.com/Latada/seb43_main_029/assets/110769132/d7f6e826-566b-45b8-92e9-51bfee7b05d6)|
 |로그인|회원가입|
 |![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/10ce2bfb-baaf-487c-9ae6-b6db884bb275)|![image](https://github.com/codestates-seb/seb43_main_029/assets/110769132/4ddb2320-a0c7-4c76-89ae-b36537d4f39b)|
