@@ -95,6 +95,7 @@ cloud:
 ## Start
 ```
 $ cd seb43_main_029
+$ cd server
 $ ./gradlew build
 $ cd build/libs
 $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
