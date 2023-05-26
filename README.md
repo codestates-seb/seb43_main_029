@@ -200,7 +200,7 @@ $ java -jar seb43_main_029-0.0.1-SNAPSHOT.jar
 |:---:|:---:|:---:|:---:|
 |[@Latada](https://github.com/Latada)|[@uyV-git](https://github.com/uyV-git)|[@sinyaenok](https://github.com/sinyaenok)|[@NoblesseCode](https://github.com/NoblesseCode)|
 |<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/110769132?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/85952797?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/104334554?v=4" alt="icon" width="80" height="80" /></div>|<div style="display: flex; align-items: flex-start;"><img src="https://avatars.githubusercontent.com/u/119962359?v=4" alt="icon" width="80" height="80" /></div>|
-|- 마이페이지<br>(일반회원/사업자회원)<br>- 식당 상세페이지(즐겨찾기, 지도)<br>- 리뷰 컴포넌트<br>(리뷰등록/삭제/좋아요)<br>-JWT를 이용한 로그인 유지기능|- Header(로그인 전/후)<br>Footer 컴포넌트<br>- (일반)회원별 즐겨찾기 페이지<br>회원별 리뷰페이지 <br>- (사업자)회원 식당 등록페이지|- 메인페이지<br>- 식당 검색기능<br>- 식당 검색조회 페이지|- 로그인<br>- 회원가입<br>- 모달 페이지|
+|- 마이페이지          <br>(일반회원/사업자회원)<br>- 식당 상세페이지(즐겨찾기, 지도)<br>- 리뷰 컴포넌트<br>(리뷰등록/삭제/좋아요)<br>-JWT를 이용한 로그인 유지기능|- Header(로그인 전/후)<br>Footer 컴포넌트<br>- (일반)회원별 즐겨찾기 페이지<br>회원별 리뷰페이지 <br>- (사업자)회원 식당 등록페이지|- 메인페이지<br>- 식당 검색기능<br>- 식당 검색조회 페이지|- 로그인   <br>- 회원가입<br>- 모달 페이지|
 
 <br>
 
