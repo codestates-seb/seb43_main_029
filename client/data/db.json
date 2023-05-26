@@ -1,0 +1,472 @@
+{
+  "members": [
+    {
+      "id": 1,
+      "memberId": 1,
+      "url": "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png",
+      "email": "user@gmail.com",
+      "nickname": "사용자닉네임",
+      "role": ["USER"],
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20",
+      "bookmarks": [
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 2,
+          "restaurantId": 2,
+          "memberId": 1,
+          "name": "백반집",
+          "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 3,
+          "score": 3,
+          "reviewCount": 4
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        },
+        {
+          "bookmarkId": 1,
+          "restaurantId": 1,
+          "memberId": 1,
+          "name": "김밥천국",
+          "image": "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+          "bookmarkCount": 100,
+          "score": 4,
+          "reviewCount": 3
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "memberId": 2,
+      "email": "owner@gmail.com",
+      "url": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "nickname": "점주",
+      "role": ["OWNER"],
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20",
+      "restaurantList": [
+        {
+          "restaurantId": 1,
+          "memberId": 2,
+          "name": "김밥천국",
+          "phone": "010-1111-1111",
+          "address": "서울 동작구",
+          "menuList": [
+            {
+              "menuId": 1,
+              "name": "김밥",
+              "price": 1000
+            },
+            {
+              "menuId": 2,
+              "name": "김치김밥",
+              "price": 2000
+            }
+          ],
+          "restDay": "일요일",
+          "businessDay": "월요일",
+          "score": 4.5,
+          "bookmark": 0,
+          "imageList": [
+            "https://images.unsplash.com/photo-1608731002187-d3448d224d18?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          ],
+          "createdAt": "2023-05-12 10:50:29",
+          "modifiedAt": "2023-05-12 10:50:29"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "memberId": 3,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": "NORMAL",
+      "url": "https://seb43-main-029-images.s3.ap-northeast-2.amazonaws.com/profile-images/profile1.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 4,
+      "memberId": 4,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 5,
+      "memberId": 5,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 6,
+      "memberId": 6,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 7,
+      "memberId": 7,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 8,
+      "memberId": 8,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 9,
+      "memberId": 9,
+      "email": "aaa@gmail.com",
+      "password": "00000000",
+      "nickname": "메인프로젝트",
+      "phone": "010-1234-5678",
+      "role": ["USER"],
+      "profileUrl": "http://localhost:3000/static/media/profile1.b64a86a49140603b68b2.png",
+      "companyNumber": 12345678901,
+      "memberStatus": "MEMBER_ACTIVE",
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "restaurantId": 1,
+      "categoryName": "한식",
+      "name": "농민백암왕순대",
+      "phone": "02-501-2772",
+      "address": "서울특별시 강남구 역삼로3길 20-4",
+      "menuList": [
+        {
+          "menuId": 1,
+          "name": "국밥",
+          "price": 8000
+        },
+        {
+          "menuId": 2,
+          "name": "라면",
+          "price": 4000
+        },
+        {
+          "menuId": 3,
+          "name": "튀김",
+          "price": 5000
+        }
+      ],
+      "restDay": "일요일",
+      "businessDay": "일요일제외",
+      "score": 3.5,
+      "bookmark": 0,
+      "imageList": [
+        {
+          "imageId": 1,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/87430/59_1491141169295_9384?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 2,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637197922598.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 3,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637277688728.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 4,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637278769008.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        },
+        {
+          "imageId": 5,
+          "url": "https://mp-seoul-image-production-s3.mangoplate.com/2925_1679637279790475.jpg?fit=around|512:512&crop=512:512;*,*&output-format=jpg&output-quality=80"
+        }
+      ],
+      "createdAt": "2023-05-11 12:55:27",
+      "modifiedAt": "2023-05-11 12:55:27"
+    },
+    {
+      "restaurantId": 2,
+      "name": "백반집",
+      "score": 3.5,
+      "category": "한식",
+      "bookmark": 25,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "김밥 2000원 라면 3000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1596883313954-b67579fa3f17?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 3,
+      "name": "버거왕",
+      "score": 4.5,
+      "category": "양식",
+      "bookmark": 10,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "치즈버거 19000원",
+      "restDay": "월요일",
+      "businessDay": "화~일 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1609167830220-7164aa360951?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Zm9vZHN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 4,
+      "name": "가정식 치킨하우스",
+      "score": 3,
+      "category": "양식",
+      "bookmark": 13,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 한글비석로 47길 99",
+      "menu": "가정식 치킨 스테이크 7000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHN0ZWFrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    },
+    {
+      "restaurantId": 5,
+      "name": "뉴욕 피자헛",
+      "score": 4,
+      "category": "양식",
+      "bookmark": 44,
+      "phone": "010-1111-2222",
+      "address": "서울특별시 서대문구 북아현로 8길 32",
+      "menu": "치즈 피자 14000원",
+      "restDay": "일요일",
+      "businessDay": "월~토 9:00 ~ 22:00",
+      "images": [
+        "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+        "url2"
+      ],
+      "createdAt": "2023-05-03 11:24:31",
+      "lastModifiedAt": "2023-05-03 11:24:31"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "memberId": 1,
+      "restaurantId": 1,
+      "reviewId": 1,
+      "content": "다시 갔는데 예전보다 별로에요",
+      "score": 3.5,
+      "images": [
+        "https://images.unsplash.com/photo-1588315029754-2dd089d39a1a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+        "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpY2tlbiUyMHN0ZWFrfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+      ],
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 2,
+      "memberId": 1,
+      "restaurantId": 1,
+      "reviewId": 2,
+      "content": "별로에요",
+      "score": 3.5,
+      "images": null,
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    },
+    {
+      "id": 3,
+      "memberId": 1,
+      "restaurantId": 2,
+      "reviewId": 3,
+      "content": "별로에요",
+      "score": 3.5,
+      "images": ["url1", "url2"],
+      "createdAt": "2023-05-03 10:24:31",
+      "lastModifiedAt": "2023-05-03 10:29:20"
+    }
+  ]
+}
