@@ -74,16 +74,18 @@ function Restaurant() {
     <>
       <RestaurantSection>
         <h1 className="visually-hidden">식당상세페이지</h1>
-        <RestaurantImageList>
-          {imageList &&
-            imageList.map((image, restaurantId) => {
-              return (
-                <li key={restaurantId}>
-                  <img src={image.url} alt="name" />
-                </li>
-              );
-            })}
-        </RestaurantImageList>
+        <RestaurantImageBlock>
+          <RestaurantImageList>
+            {imageList &&
+              imageList.map((image, restaurantId) => {
+                return (
+                  <li key={restaurantId}>
+                    <RestaurantImage background={image.url} />
+                  </li>
+                );
+              })}
+          </RestaurantImageList>
+        </RestaurantImageBlock>
         <RestaurantBlock>
           <RestaurantTop>
             <RestaurantTitle>
@@ -132,7 +134,7 @@ function Restaurant() {
 }
 
 const RestaurantSection = styled.section`
-  margin: 2rem 0 10rem;
+  margin: 50px 0 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -153,24 +155,36 @@ const RestaurantSection = styled.section`
   }
 `;
 
+const RestaurantImageBlock = styled.div`
+  width: 100%;
+  @media screen and (min-width: 1500px) {
+    overflow: hidden;
+  }
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+`;
+
 const RestaurantImageList = styled.ul`
   display: flex;
   flex-direction: row;
   gap: 5px;
   li {
-    position: relative;
-    width: 381px;
-    height: 340px;
-  }
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(50, 50);
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin: auto;
+  }
+  white-space: nowrap;
+`;
+
+const RestaurantImage = styled.div`
+  width: 330px;
+  height: 300px;
+  background: ${props => `url(${props.background}) no-repeat center`};
+  background-size: 600px;
+  @media screen and (min-width: 1500px) {
+    width: 100%;
   }
 `;
 
@@ -267,6 +281,9 @@ const RestaurantInfo = styled.section`
   gap: 10px;
   padding: 0 20px 2rem;
   border-bottom: 1px solid #9e9e9e;
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export default Restaurant;

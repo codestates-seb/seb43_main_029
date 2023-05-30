@@ -1,5 +1,6 @@
 /* global kakao */
 import { useRef, useEffect } from 'react';
+import styled from 'styled-components';
 
 const MapContainer = ({ address }) => {
   const container = useRef(null);
@@ -32,6 +33,17 @@ const MapContainer = ({ address }) => {
     });
   }, [address]);
 
-  return <div id="map" ref={container} style={{ width: '100%', height: '300px', flex: '1' }}></div>;
+  return <MapContainerBlock id="map" ref={container}></MapContainerBlock>;
 };
+
+const MapContainerBlock = styled.div`
+  width: 100%;
+  height: 300px;
+  flex: 1;
+  @media screen and (max-width: 768px) {
+    flex: auto;
+    margin-bottom: 2rem;
+  }
+`;
+
 export default MapContainer;

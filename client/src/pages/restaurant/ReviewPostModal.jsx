@@ -58,7 +58,9 @@ function ReviewPostModal({ isOpen, closeModal, name, restaurantId }) {
       new Blob([JSON.stringify(data)], { type: 'application/json' })
     );
 
-    files.forEach(file => formData.append('multipartFile', file));
+    if (files !== []) {
+      files.forEach(file => formData.append('multipartFile', file));
+    }
 
     const config = {
       headers: {

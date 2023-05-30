@@ -30,7 +30,7 @@ function RestaurantDesc({ address, phone, businessDay, restDay, menuList }) {
                     <li key={idx}>
                       <p>
                         <span>{menu.name}</span>
-                        <span>{menu.price}</span>원
+                        <span>{menu.price}원</span>
                       </p>
                     </li>
                   );
@@ -69,16 +69,13 @@ const RestaurantInfo = styled.table`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    list-style-type: disc;
+    margin-left: 1rem;
   }
-  p::before {
-    content: '';
-    display: inline-block;
-    width: 4px;
-    height: 4px;
-    margin: -5px 10px 0;
-    vertical-align: middle;
-    background: #2f3134;
-    border-radius: 50%;
+  p {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
   span:first-child {
     margin-right: 10px;
