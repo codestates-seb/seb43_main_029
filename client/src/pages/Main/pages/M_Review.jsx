@@ -1,8 +1,8 @@
 //내부 import
 import { M_RootContainer, M_TopContainer, M_BottomContainer, M_ContentBox } from '../styled';
 import Review_Title from '../component/Review/Review_Title';
-// import Review from '../component/Review/ReviewList';
 import ReviewPagination from '../component/Review/ReviewPagination';
+
 //외부 import
 import styled from 'styled-components';
 import axios from 'axios';
@@ -18,8 +18,6 @@ const M_Review = () => {
     });
   }, []);
 
-  console.log(reviews);
-
   return (
     <R_RootContainer>
       <M_TopContainer>
@@ -30,21 +28,6 @@ const M_Review = () => {
       <S_BottomContainer>
         <S_ContentBox>
           <ReviewPagination reviews={reviews} />
-          {/* {reviews.map(review => {
-            return (
-              <Review
-                key={review.reviewsId}
-                reviewId={review.reviewId}
-                comment={review.comment}
-                restaurantId={review.restaurantId}
-                restaurantName={review.restaurantName}
-                score={review.score}
-                likeCount={review.likeCount}
-                imageList={review.imageList}
-                createdAt={review.createdAt}
-              />
-            );
-          })} */}
         </S_ContentBox>
       </S_BottomContainer>
     </R_RootContainer>
