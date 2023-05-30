@@ -2,6 +2,7 @@
 import { M_RootContainer, M_TopContainer, M_BottomContainer, M_ContentBox } from '../styled';
 import Review_Title from '../component/Review/Review_Title';
 import ReviewPagination from '../component/Review/ReviewPagination';
+
 //외부 import
 import styled from 'styled-components';
 import axios from 'axios';

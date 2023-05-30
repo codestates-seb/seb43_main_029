@@ -12,6 +12,7 @@ import { useState } from 'react';
 
 function Header({ setSearchValue }) {
   const [searchInput, setSearchInput] = useState('');
+
   const minInputLength = 2;
   const maxInputLength = 20;
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ function Header({ setSearchValue }) {
     }
     if (e.key === 'Enter' && searchInput.length >= minInputLength) {
       setSearchValue(searchInput);
+      setSearchInput(searchInput);
       navigate(`/restaurant/search/?page=1&size=12&keyword=${searchInput}`);
     }
   }
