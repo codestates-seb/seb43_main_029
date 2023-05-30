@@ -20,7 +20,7 @@ const Category_BigRestaurant_Image = ({ fetchRandomRestaurants, restaurants }) =
     //최초 렌더시 redux 데이터 받아옴.
     fetchRandomRestaurants();
   }, []);
-
+  console.log(restaurants);
   return (
     <>
       {restaurants && (
