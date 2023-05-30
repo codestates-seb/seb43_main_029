@@ -3,6 +3,7 @@ import { reset } from 'styled-reset';
 import MyPage from './pages/myPage/MyPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import ScrollToTop from './components/ScrollToTop';
 import Main from './pages/main/Main';
 import Restaurant from './pages/restaurant/Restaurant';
 import Favorites from './pages/favorites/FavoritesListPage';
@@ -35,11 +36,11 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <GlobalLayout>
+          <ScrollToTop />
           {isLoggedIn ? <HeaderLogged userInfo={userInfo} /> : <Header />}
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/mypage/:id" element={<MyPage />} />
-            {/* <Route path="/search" element={<Search />} /> */}
             <Route path="/restaurant/:id" element={<Restaurant />} />
             <Route path="/mypage/:id/bookmarks" element={<Favorites />} />
             <Route path="/mypage/:id/reviews" element={<Reviews />} />
