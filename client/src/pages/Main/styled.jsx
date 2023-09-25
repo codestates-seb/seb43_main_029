@@ -182,9 +182,15 @@ export const BigRestaurantInfo = styled.div`
     }
     .BigRestaurant_Score {
       font-size: 16px;
+      .icons {
+        font-size: 14px;
+      }
     }
-    .BigRestaurant_Score {
+    .BigRestaurant_Bookmark {
       font-size: 16px;
+      .icons {
+        font-size: 14px;
+      }
     }
     .BigRestaurant_Address {
       font-size: 14px;
@@ -199,16 +205,18 @@ export const BigRestaurantInfo = styled.div`
     }
     .BigRestaurant_Score {
       font-size: 14px;
+      .icons {
+        font-size: 10px;
+      }
     }
-    .BigRestaurant_Score {
+    .BigRestaurant_Bookmark {
       font-size: 14px;
+      .icons {
+        font-size: 10px;
+      }
     }
     .BigRestaurant_Address {
       font-size: 12px;
-    }
-
-    .icons {
-      font-size: 8px;
     }
   }
 
@@ -220,9 +228,15 @@ export const BigRestaurantInfo = styled.div`
     }
     .BigRestaurant_Score {
       font-size: 12px;
+      .icons {
+        font-size: 8px;
+      }
     }
-    .BigRestaurant_Score {
+    .BigRestaurant_Bookmark {
       font-size: 12px;
+      .icons {
+        font-size: 8px;
+      }
     }
     .BigRestaurant_Address {
       font-size: 10px;
@@ -405,30 +419,35 @@ export const RestaurantsBox = styled.ul`
 export const BigRestaurantImageContainer = styled.div`
   padding-bottom: 30px;
   width: 100%;
-  height: 480px;
+  /* height: 480px; */
+  height: calc(100% - 120px);
 
   /* PC */
   @media all and (min-width: 1024px) and (max-width: 1250px) {
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
+    height: calc(100% - 200px);
   }
 
   /* 테블릿 세로 (해상도 768px ~ 1023px)*/
   @media all and (min-width: 768px) and (max-width: 1023px) {
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
+    height: calc(100% - 200px);
   }
 
   /* 모바일 가로, 테블릿 세로 (해상도 480px ~ 767px)*/
   @media all and (min-width: 480px) and (max-width: 767px) {
     width: 95%;
-    height: 230px;
+    /* height: 230px; */
+    height: calc(100% - 370px);
   }
 
   /* 모바일 가로, 테블릿 세로 (해상도 ~ 479px)*/
   @media all and (max-width: 479px) {
     width: 95%;
-    height: 100px;
+    /* height: 100px; */
+    height: calc(100% - 430px);
   }
   img {
     border-radius: 2px;

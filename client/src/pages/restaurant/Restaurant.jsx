@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { TiHeartFullOutline, TiHeartOutline } from 'react-icons/ti';
 import RestaurantDesc from './RestaurantDesc';
@@ -14,7 +14,6 @@ function Restaurant() {
   const accessToken = useSelector(state => state.Auth.token);
 
   const { id } = useParams();
-  const navigate = useNavigate();
   const [restaurant, setRestaurant] = useState([]);
   const {
     name,
@@ -28,6 +27,7 @@ function Restaurant() {
     imageList,
     menuList,
   } = restaurant;
+
   const [isOn, setIsOn] = useState(false);
 
   // 레스토랑 정보 가져오기
@@ -37,17 +37,8 @@ function Restaurant() {
     setRestaurant(response.data.data);
   };
 
-  // 유저 즐겨찾기 체크 여부 조회
-  const userBookmarkApi = async () => {
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
-    );
-    axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-    setIsOn(response.data.heart);
-  };
   // 즐겨찾기 추가 및 삭제 api
   const handleBookmark = async () => {
-    setIsOn(!isOn);
     await axios
       .post(`${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`, {
         memberId,
@@ -57,13 +48,24 @@ function Restaurant() {
         if (response.status === 201) {
           // API 요청하는 콜마다 헤더에 accessToken 담아 보내도록 설정
           axios.defaults.headers.common['Authorization'] = `${accessToken}`;
-          navigate();
+          setIsOn(!isOn);
+          window.location.reload();
         }
       })
       .catch(error => console.log(error));
   };
 
   useEffect(() => {
+    // 유저 즐겨찾기 체크 여부 조회
+    const userBookmarkApi = async () => {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/restaurant/${memberId}/${id}`
+      );
+      axios.defaults.headers.common['Authorization'] = `${accessToken}`;
+      if (response.data.heart === 'true') {
+        setIsOn(true);
+      }
+    };
     restaurantApi();
     userBookmarkApi();
   }, []);
@@ -72,16 +74,18 @@ function Restaurant() {
     <>
       <RestaurantSection>
         <h1 className="visually-hidden">식당상세페이지</h1>
-        <RestaurantImageList>
-          {imageList &&
-            imageList.map((image, restaurantId) => {
-              return (
-                <li key={restaurantId}>
-                  <img src={image.url} alt="name" />
-                </li>
-              );
-            })}
-        </RestaurantImageList>
+        <RestaurantImageBlock>
+          <RestaurantImageList>
+            {imageList &&
+              imageList.map((image, restaurantId) => {
+                return (
+                  <li key={restaurantId}>
+                    <RestaurantImage background={image.url} />
+                  </li>
+                );
+              })}
+          </RestaurantImageList>
+        </RestaurantImageBlock>
         <RestaurantBlock>
           <RestaurantTop>
             <RestaurantTitle>
@@ -95,7 +99,7 @@ function Restaurant() {
                 </li>
                 <li className="bookmarkToggle">
                   <button onClick={handleBookmark}>
-                    {!isOn ? (
+                    {isOn ? (
                       <TiHeartFullOutline className="bookmarkIcon" />
                     ) : (
                       <TiHeartOutline className="bookmarkIcon" />
@@ -130,7 +134,7 @@ function Restaurant() {
 }
 
 const RestaurantSection = styled.section`
-  margin: 2rem 0 10rem;
+  margin: 50px 0 10rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -151,24 +155,36 @@ const RestaurantSection = styled.section`
   }
 `;
 
+const RestaurantImageBlock = styled.div`
+  width: 100%;
+  @media screen and (min-width: 1500px) {
+    overflow: hidden;
+  }
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  touch-action: pan-x;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+`;
+
 const RestaurantImageList = styled.ul`
   display: flex;
   flex-direction: row;
   gap: 5px;
   li {
-    position: relative;
-    width: 381px;
-    height: 340px;
-  }
-  img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(50, 50);
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    margin: auto;
+  }
+  white-space: nowrap;
+`;
+
+const RestaurantImage = styled.div`
+  width: 330px;
+  height: 300px;
+  background: ${props => `url(${props.background}) no-repeat center`};
+  background-size: 600px;
+  @media screen and (min-width: 1500px) {
+    width: 100%;
   }
 `;
 
@@ -265,6 +281,9 @@ const RestaurantInfo = styled.section`
   gap: 10px;
   padding: 0 20px 2rem;
   border-bottom: 1px solid #9e9e9e;
+  @media screen and (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 export default Restaurant;
